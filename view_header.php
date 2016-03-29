@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="images/favicon.png">
 
-    <title><?php echo title;;?></title>
+    <title><?php echo title;?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo full_url;?>/web/css/bootstrap/css/bootstrap.css" rel="stylesheet">
