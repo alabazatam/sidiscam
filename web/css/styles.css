@@ -1,8 +1,15 @@
 @import url("//fonts.googleapis.com/css?family=Open+Sans:400,700,900,300");
+body {
+  font-family: 'Open Sans',serif;  
+}
+* {
+   font-size: 12px;  
+}
 
-*, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
     font-family: 'Open Sans',serif;
-    font-weight: 300;
+    font-weight: 600;
+    font-size: 25px !important;
 }
 
 .breadcrumb {
@@ -18,16 +25,20 @@
     color: #418d49;
 }
 .navbar-default {
-    background-color: #bce8f1 !important;
-    border-color: #E7E7E7;
+    background-color: #6a85ee !important;
+    border-color: #6a85ee;
+    color: #ffffff !important;
 }
+
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus,
 .navbar-inverse .navbar-nav > li > a:focus {
     border-bottom-color: #3E84C2;
 }
-
+.navbar-default .dropdown-menu > li > a:focus {
+    color: #ffffff !important;
+}
 .navbar-default .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
@@ -112,10 +123,11 @@ a.thumbnail:focus {
 .dropdown-menu > .active > a:focus {
     color: #3E84C2;
 }
-
+.dropdown-menu > li > a,
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
     color: #3E84C2;
+    font-size: 12px;
 }
 
 .pager li > a:hover,
@@ -579,4 +591,41 @@ footer *{
 }
 .title span{
     font-weight: 900;
+}
+.facebook_font{
+    
+    color: #fff !important;
+    font-size: 12px;
+}
+.facebook_font:hover{
+    
+    color: #cccccc !important;
+    background-color:  #1e396f !important;
+}
+.facebook_font:hover,
+.facebook_font:focus,
+.facebook_font:active{
+    
+    color: #cccccc !important;
+    background-color:  #1e396f !important;
+}
+.panel-info > .panel-heading {
+  color: #cccccc !important;
+  background-color: #6a85ee;
+  border-color: #6a85ee;
+}
+.panel-info {
+
+  border-color: #6a85ee;
+}
+.btn {
+   font-size: 12px;  
+}
+.readonly {
+   background-color: #ccc !important;
+}
+input[readonly="readonly"] {
+
+   background-color: #ccc !important;
+
 }

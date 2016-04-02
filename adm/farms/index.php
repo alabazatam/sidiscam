@@ -37,29 +37,31 @@ $values = $_REQUEST;
 	function executeNew($values = null)
 	{
 		$values['action'] = 'add';
+                $values['status'] = 1;
 		require('farms_form_view.php');
 	}
 	function executeSave($values = null)
 	{
-		
+		$Messages = new Messages();
 		$Farms = new Farms();
 		$values = $Farms->saveFarms($values);
-		executeEdit($values);die;
+		executeEdit($values,message_created);die;
 	}
-	function executeEdit($values = null)
+	function executeEdit($values = null,$msg = null)
 	{
-		
+
 		$Farms = new Farms();
-		$values = $Farms->getFarmsById($values);
+                $values = $Farms->getFarmsById($values);
 		$values['action'] = 'update';
+                $values['msg'] = $msg;
 		require('farms_form_view.php');
 	}
 	function executeUpdate($values = null)
 	{
 		
 		$Farms = new Farms();
-		$Farms->updateFarms($values);		
-		executeEdit($values);die;
+		$Farms->updateFarms($values);
+		executeEdit($values,message_updated);die;
 	}	
 	function executeFarmsListJson($values)
 	{
@@ -89,7 +91,7 @@ $values = $_REQUEST;
 					"status" => $message_status,
 					"date_created" => $farm['date_created'],
                                         "date_updated" => $farm['date_created'],
-					"actions" => '<a href="index.php?action=edit&id_farm='.$id_farm.'" class="btn btn-default btn-sm"><i class="fa fa-edit  fa-pull-left fa-border"></i></a>'
+					"actions" => '<form method="POST" action ="'.full_url.'/adm/farms/index.php"><input type="hidden" name="action" value="edit"><input type="hidden" name="id_farm" value="'.$id_farm.'"><button type="submit" class="btn btn-default"><i class="fa fa-edit fa-pull-left fa-border"></i></button><form>'
 
 					);	
 			}	

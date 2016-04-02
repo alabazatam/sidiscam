@@ -1,7 +1,8 @@
 <?php
 $project_folder = '';
 $development_env = false;
-if($_SERVER['HTTP_HOST'] == '127.0.0.1' or $_SERVER['HTTP_HOST'] == 'localhost')
+
+if($_SERVER['HTTP_HOST'] == '127.0.0.1' or $_SERVER['HTTP_HOST'] == 'localhost' or strpos($_SERVER['HTTP_HOST'], "192.168") !== false)
 {
 	$development_env = true;
 }
@@ -11,7 +12,7 @@ if($development_env == true)
 }
 
 define("main_folder",$project_folder);//Project name and directory name//prueba 2
-define("title","Sidiscam");
+define("title","SIDISCAM");
 define("Author","Marcos De Andrade");
 define("Company","Compañia de Desarrollo");
 define("version","V1.0");
@@ -47,7 +48,8 @@ define("image_url",full_url."/web/images/");
  * 
  * */
  define('mail_from',"noreply@frbcomputersgroup.com.ve");
-
+ define('message_updated',"Registro actualizado satisfactoriamente");
+ define('message_created',"Registro creado satisfactoriamente");
 //Class definition
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/notorm-master/NotORM.php");//se debe incluir una sola vez en todo el cms
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/ConnectionORM.class.php");

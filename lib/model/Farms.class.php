@@ -46,7 +46,7 @@
 			//echo $column_order;die;
             $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->farms
-			->select("*")
+			->select("*, DATE_FORMAT(date_created, '%d/%m/%Y') as date_created,DATE_FORMAT(date_updated, '%d/%m/%Y') as date_updated")
 			->order("$column_order $order")
 			->where("$where")
 			->limit($limit,$offset);
@@ -68,9 +68,9 @@
 		public function getFarmsById($values){
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->farms
-			->select("*")
+			->select("*, DATE_FORMAT(date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
 			->where("id_farm=?",$values['id_farm'])->fetch();
-			return $q; 				
+                        return $q; 				
 			
 		}
 		function deleteFarms($id_farm){
@@ -82,7 +82,8 @@
 		}		
 		function saveFarms($values){
 			unset($values['action']);
-			$values['password'] = hash('sha256', $values['password']);
+                        $values['date_created'] = new NotORM_Literal("NOW()");
+                        $values['date_updated'] = new NotORM_Literal("NOW()");
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->farms()->insert($values);
 			$values['id_farm'] = $ConnectionORM->getConnect()->farms()->insert_id();
@@ -91,14 +92,8 @@
 		}
 		function updateFarms($values){
 			unset($values['action']);
-			if(isset($values['password']) and $values['password']!='')
-			{
-				$values['password'] = hash('sha256', $values['password']);
-			}else
-			{
-				unset($values['password']);
-			}
 			$id_farm = $values['id_farm'];
+                        $values['date_updated'] = new NotORM_Literal("NOW()");
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->farms("id_farm", $id_farm)->update($values);
 			return $q;

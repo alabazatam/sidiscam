@@ -3,8 +3,8 @@
         	</div>
         	
             <div class="col-md-4 col-lg-4">
-				 <div class="panel panel-info">
-				  <div class="panel-heading">
+				 <div class="panel panel-info ">
+				  <div class="panel-heading ">
 				    <h3 class="panel-title">
 				    <?php echo title; ?> <small> <?php echo version; ?></small>
 				    <!--<img width='100' class="img-responsive img-hover img-thumbnail img-rounded" src="<?php echo full_url?>/web/images/fedcom1.png"/>-->
@@ -13,7 +13,7 @@
 				  </div>
 				  <div class="panel-body">
                                       <div align='center' class="visible-lg visible-md">
-                                         <img src="<?php echo full_url;?>/web/img/Coseinca.png" class="img-responsive" width="200"> 
+                                         <img src="<?php echo full_url;?>/web/img/Coseinca.png" class="img-responsive" width="150"> 
                                       </div>
                                       <div align='center' class="visible-sm visible-xs">
                                          <img src="<?php echo full_url;?>/web/img/Coseinca.png" class="img-responsive" width="100"> 
@@ -23,7 +23,7 @@
                                          <input type="hidden" name="action" value="acceso"/>
 			                    <div class="control-group form-group">
 			                        <div class="controls">
-			                            <label>Usuarios:</label>
+			                            <label>Usuario:</label>
 			                            <input  autocomplete="off" name='login' type="text" class="form-control" id="login" required data-validation-required-message="Please enter your login.">
 			                            <p class="help-block"></p>
 			                        </div>
@@ -50,7 +50,7 @@
 			                        </div>
 			                    </div>-->
 			
-			                    <button type="submit" class="btn btn-info"><span class="fa fa-sign-in fa-pull-left"> Conectar</span></button>
+			                    <button type="submit" class="btn btn-default"><span class="fa fa-sign-in fa-pull-left"> Conectar</span></button>
 			                    <!-- For success/fail messages -->
 			                    
 			                    <?php if(isset($values['message']) and $values['message']!=''):?>
