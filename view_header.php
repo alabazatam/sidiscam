@@ -6,17 +6,19 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="images/favicon.png">
-
     <title><?php echo title;?></title>
-
     <!-- Bootstrap core CSS -->
-    <link href="<?php echo full_url;?>/web/css/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo full_url;?>/web/css/bootstrap.css" rel="stylesheet">
+
     <!--<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">-->
-	<link href="<?php echo full_url;?>/web/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="<?php echo full_url;?>/web/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	<link href="<?php echo full_url;?>/web/css/caroussel.css" rel="stylesheet">
+         
     <!-- Custom styles for this template -->
-    <link href="<?php echo full_url;?>/web/css/style.css" rel="stylesheet">
+            <!-- CSS -->
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link href="<?php echo full_url;?>/web/css/datatables.css" rel="stylesheet">
+        <link href="<?php echo full_url;?>/web/css/styles.css" rel="stylesheet">    <link href="<?php echo full_url;?>/web/css/styles.css" rel="stylesheet">
 
 </head>
 <body>
-    <div class="container-fluid">

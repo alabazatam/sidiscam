@@ -3,19 +3,19 @@ $project_folder = '';
 $development_env = false;
 if($_SERVER['HTTP_HOST'] == '127.0.0.1' or $_SERVER['HTTP_HOST'] == 'localhost')
 {
-    $development_env = true;   
+	$development_env = true;
 }
 if($development_env == true)
 {
     $project_folder = '/sidiscam';
 }
 
-define("main_folder",$project_folder);//Project name and directory name
-define("title","SIDISCAM");
+define("main_folder",$project_folder);//Project name and directory name//prueba 2
+define("title","Sidiscam");
 define("Author","Marcos De Andrade");
-define("Company","SIDISCAM");
+define("Company","Compañia de Desarrollo");
 define("version","V1.0");
-define("development_by","G & M Consultores");
+define("development_by","Compañia de Desarrollo");
 define("upload_temp_dir",$_SERVER["DOCUMENT_ROOT"]."/".main_folder."/web/uploads/temp");
 define("upload_dir",$_SERVER["DOCUMENT_ROOT"]."/".main_folder."/web/uploads/documentos");
 define("images_dir","../../../../web/images/");
@@ -46,20 +46,23 @@ define("image_url",full_url."/web/images/");
  * 
  * 
  * */
- 
+ define('mail_from',"noreply@frbcomputersgroup.com.ve");
 
 //Class definition
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/notorm-master/NotORM.php");//se debe incluir una sola vez en todo el cms
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/ConnectionORM.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/vendors/swiftmailer/lib/swift_required.php");
 //include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Panels.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/SecurityBase.class.php");
-
-include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/web/securimage/securimage.php");
-
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/RegistroModel.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Menu.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/CarousselDetails.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/Mail.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Farms.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/ContentsHtml.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Message.class.php");
 /*validation class*/
-
 //include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/vendor/GUMP/gump.class.php");
-
 
 /***
  Class autoloads by model_base_generator.php

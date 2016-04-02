@@ -17,7 +17,10 @@
 .btn-link:focus {
     color: #418d49;
 }
-
+.navbar-default {
+    background-color: #bce8f1 !important;
+    border-color: #E7E7E7;
+}
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus,

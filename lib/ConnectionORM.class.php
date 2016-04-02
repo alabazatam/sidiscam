@@ -2,36 +2,28 @@
 
 
 	class ConnectionORM {
-		public function connect($dns,$user,$password){
-			//error_reporting(E_ALL | E_STRICT);
-			//include dirname(__FILE__) . "/notorm-master/NotORM.php";
+            
+                function __construct() 
+                {
+                    $this->dbname = "catcgrco_sidiscam";
+                    $this->host = 'localhost';
+                    $this->port = "3306";
+                    $this->charset = "utf8";
+                    $this->dsn = "mysql:dbname=".$this->dbname.";host=".$this->host.";port=".$this->port.";charset=".$this->charset;  
+                    $this->username = 'catcgrco_root';
+                    $this->password = '230386';
+                    
+                }            
+		public function getConnect($connect = ''){
+				
+                    $connection = new PDO($this->dsn,$this->username, $this->password,array(PDO::ATTR_PERSISTENT => true));
+                    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+                    $connection->setAttribute(PDO::ATTR_CASE, PDO::CASE_LOWER);
+                    $connect = new NotORM($connection);
 			
-			$connection = new PDO($dns,$user, $password);
-			$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-			$connection->setAttribute(PDO::ATTR_CASE, PDO::CASE_LOWER);
-			$connect = new NotORM($connection);
-			
-			return $connect;	
-					
-			
-		}
-		
-		public function getConnect($connect){
-				switch ($connect) {
-					case 'sidiscam':
-						$dns = "mysql:dbname=sidiscam;host=localhost;port=3306;charset=utf8";
-						$user =  "root";
-						$password = "230386";
-										
-					break;								
-					default:
-						echo "Error on connection <hr>";die;
-					break;
-							
-					
-					
-			}
-				return $this->connect($dns, $user, $password);
+		return $connect;                    
+                    
+                    
 	
 		}
 		
