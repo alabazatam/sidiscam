@@ -46,7 +46,7 @@
 			//echo $column_order;die;
             $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->farms
-			->select("*, DATE_FORMAT(date_created, '%d/%m/%Y') as date_created,DATE_FORMAT(date_updated, '%d/%m/%Y') as date_updated")
+			->select("*, DATE_FORMAT(date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
 			->order("$column_order $order")
 			->where("$where")
 			->limit($limit,$offset);
@@ -92,6 +92,7 @@
 		}
 		function updateFarms($values){
 			unset($values['action']);
+                        unset($values['date_created']);
 			$id_farm = $values['id_farm'];
                         $values['date_updated'] = new NotORM_Literal("NOW()");
 			$ConnectionORM = new ConnectionORM();
