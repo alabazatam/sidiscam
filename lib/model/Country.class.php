@@ -98,7 +98,7 @@
 			
 		}
 		function updateCountry($values){
-			unset($values['action'],$values['date_created']);
+			unset($values['action'],$values['PHPSESSID'],$values['date_created']);
 			$values['date_updated'] = new NotORM_Literal("NOW()");
 			$id_country = $values['id_country'];
 			$ConnectionORM = new ConnectionORM();

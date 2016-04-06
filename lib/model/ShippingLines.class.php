@@ -88,7 +88,7 @@
 			
 		}		
 		function saveShippingLines($values){
-			unset($values['action']);
+			unset($values['action'],$values['PHPSESSID']);
 			$values['date_created'] = new NotORM_Literal("NOW()");
 			$values['date_updated'] = new NotORM_Literal("NOW()");
 			$ConnectionORM = new ConnectionORM();
@@ -98,7 +98,7 @@
 			
 		}
 		function updateShippingLines($values){
-			unset($values['action'],$values['date_created']);
+			unset($values['action'],$values['date_created'],$values['PHPSESSID']);
 			$values['date_updated'] = new NotORM_Literal("NOW()");
 			$id_shipping_lines = $values['id_shipping_lines'];
 			$ConnectionORM = new ConnectionORM();

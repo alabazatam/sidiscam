@@ -75,14 +75,14 @@
 			
 		}
 		function deleteUser($id_user){
-			unset($values['action']);
+			unset($values['action'],$values['PHPSESSID']);
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->users("id_user", $id_user)->delete();
 			
 			
 		}		
 		function saveUser($values){
-			unset($values['action']);
+			unset($values['action'],$values['PHPSESSID']);
 			$values['password'] = hash('sha256', $values['password']);
                         $values['date_created'] = new NotORM_Literal("NOW()");
                         $values['date_updated'] = new NotORM_Literal("NOW()");
@@ -93,7 +93,7 @@
 			
 		}
 		function updateUser($values){
-			unset($values['action'],$values['date_created']);
+			unset($values['action'],$values['PHPSESSID'],$values['date_created']);
                         $values['date_updated'] = new NotORM_Literal("NOW()");
 			if(isset($values['password']) and $values['password']!='')
 			{

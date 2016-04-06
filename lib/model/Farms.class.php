@@ -81,7 +81,7 @@
 			
 		}		
 		function saveFarms($values){
-			unset($values['action']);
+			unset($values['action'],$values['PHPSESSID']);
                         $values['date_created'] = new NotORM_Literal("NOW()");
                         $values['date_updated'] = new NotORM_Literal("NOW()");
 			$ConnectionORM = new ConnectionORM();
@@ -91,7 +91,7 @@
 			
 		}
 		function updateFarms($values){
-			unset($values['action']);
+			unset($values['action'],$values['PHPSESSID']);
                         unset($values['date_created']);
 			$id_farm = $values['id_farm'];
                         $values['date_updated'] = new NotORM_Literal("NOW()");

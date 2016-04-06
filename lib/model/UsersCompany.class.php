@@ -92,14 +92,14 @@
 			
 		}
 		function deleteUsersCompany($id){
-			unset($values['action']);
+			unset($values['action'],$values['PHPSESSID']);
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->users_company("id", $id)->delete();
 			
 			
 		}		
 		function saveUsersCompany($values){
-			unset($values['action']);
+			unset($values['action'],$values['PHPSESSID']);
 			$values['date_created'] = new NotORM_Literal("NOW()");
 			$values['date_updated'] = new NotORM_Literal("NOW()");
 			$ConnectionORM = new ConnectionORM();
@@ -109,7 +109,7 @@
 			
 		}
 		function updateUsersCompany($values){
-			unset($values['action'],$values['date_created']);
+			unset($values['action'],$values['PHPSESSID'],$values['date_created']);
 			$values['date_updated'] = new NotORM_Literal("NOW()");
 			$id = $values['id'];
 			$ConnectionORM = new ConnectionORM();
