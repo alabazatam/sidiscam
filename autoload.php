@@ -1,4 +1,5 @@
 <?php
+session_start();
 $project_folder = '';
 $development_env = false;
 
@@ -57,12 +58,16 @@ include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/vendors/swiftmailer/lib/
 //include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Panels.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/SecurityBase.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/RegistroModel.class.php");
-include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Menu.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/CarousselDetails.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/Mail.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Farms.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/ContentsHtml.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Message.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Users.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Company.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/UsersCompany.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Country.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/ShippingLines.class.php");
 /*validation class*/
 //include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/vendor/GUMP/gump.class.php");
 

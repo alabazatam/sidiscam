@@ -1,4 +1,4 @@
-<?php include("../view_header.php");?>	
+<?php include("../view_header.php"); print_r($_SESSION)?>
         	<div class="col-md-4 col-lg-4">
         	</div>
         	
@@ -53,9 +53,9 @@
 			                    <button type="submit" class="btn btn-default"><span class="fa fa-sign-in fa-pull-left"> Conectar</span></button>
 			                    <!-- For success/fail messages -->
 			                    
-			                    <?php if(isset($values['message']) and $values['message']!=''):?>
+			                    <?php if(isset($values['error']) and $values['error']!=''):?>
 			                    	
-			                    	<div id="" class="alert alert-danger"><?php echo $values['message'];?></div>
+			                    	<div id="" class="alert alert-danger"><?php echo $values['error'];?></div>
 			                    <?php endif;?>
 			                </form>
 				  </div>

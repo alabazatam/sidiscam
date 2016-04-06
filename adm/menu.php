@@ -30,6 +30,9 @@
           <a href="#" class="dropdown-toggle facebook_font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-line-chart"></i> Maestros <span class="caret"></span></a>
           <ul class="dropdown-menu" class="facebook_font">
             <li><a href="<?php echo full_url;?>/adm/farms/index.php">Granjas</a></li>
+			<li><a href="<?php echo full_url;?>/adm/users/index.php">Usuarios</a></li>
+			<li><a href="<?php echo full_url;?>/adm/country/index.php">Paises</a></li>
+			<li><a href="<?php echo full_url;?>/adm/country/index.php">Lineas Navieras</a></li>
             <!--<li><a href="#">Productos</a></li>
             <li><a href="#">Clientes</a></li>
             <li><a href="#">Incoterms</a></li>
@@ -58,11 +61,11 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-          <li class="visible-lg visible-md"><small>Usuario: Invitado</small></li>
+          <li class="visible-lg visible-md"><small>Usuario: <?php echo $_SESSION['login'];?></small></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle facebook_font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Usuario <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Cambio de clave</a></li>
+            <li><a href="<?php echo full_url;?>/adm/users/index.php?action=change_pass_view">Cambio de clave</a></li>
           </ul>
         </li>
         <li><a class="facebook_font" href="<?php echo full_url;?>/adm/index.php?action=logout"><i class="fa fa-sign-out"></i> Cerrar sesión</a></li>

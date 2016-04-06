@@ -5,7 +5,7 @@
 * @method NotORM_Result or(mixed $condition, mixed $parameters = array()) Add OR condition
 */
 class NotORM_Result extends NotORM_Abstract implements Iterator, ArrayAccess, Countable, JsonSerializable {
-	protected $single;
+	protected $single, $customizedJoins = array();
 	protected $select = array(), $conditions = array(), $where = array(), $parameters = array(), $order = array(), $limit = null, $offset = null, $group = "", $having = "", $lock = null;
 	protected $union = array(), $unionOrder = array(), $unionLimit = null, $unionOffset = null;
 	protected $data, $referencing = array(), $aggregation = array(), $accessed, $access, $keys = array();
@@ -87,9 +87,9 @@ class NotORM_Result extends NotORM_Abstract implements Iterator, ArrayAccess, Co
 		return "";
 	}
 	
-	protected function createJoins($val) {
+	/*protected function createJoins($val) {
 		$return = array();
-		preg_match_all('~\\b([a-z_][a-z0-9_.:]*[.:])[a-z_*]~i', $val, $matches);
+                preg_match_all('~\\b([a-z_][a-z0-9_.:]*[.:])[a-z_*]~i', $val, $matches);
 		foreach ($matches[1] as $names) {
 			$parent = $this->table;
 			if ($names != "$parent.") { // case-sensitive
@@ -105,7 +105,20 @@ class NotORM_Result extends NotORM_Abstract implements Iterator, ArrayAccess, Co
 			}
 		}
 		return $return;
-	}
+	}*/
+        protected function createJoins($val) {
+                $return = array();
+
+                if (count($this->customizedJoins) > 0) {
+                        foreach($this->customizedJoins as $name=>$query)
+                                $return[$name] = " ".$query;
+                }
+                return $return;
+        }
+        function join($tableName, $joinQuery) {
+                $this->customizedJoins[$tableName] = $joinQuery;
+                return $this;
+        }
 	
 	/** Get SQL query
 	* @return string

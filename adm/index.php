@@ -34,9 +34,37 @@ $values = $_REQUEST;
 	}
 	function executeBienvenida($values = null){
 	
-	require('bienvenida.php');
+		
+		
+		if((!isset($values['password']) or $values['password'] == '')  or (!isset($values['password']) or $values['password'] == '') )
+		{
+			$values['error'] = "Debe indicar el usuario y la clave";
+			require('login.php');die;
+		}else
+		{
+			$Users = new Users();
+			$user_data = $Users->getUserByPassword($values);
+			if($user_data['id_user']=="")
+			{
+				$values['error'] = "Usuario o clave incorrecto";
+				require('login.php');die;
+			}
+			else
+			{	
+				$id_user =  $user_data['id_user'];
+				$values['id_user'] = $id_user;
+				$user_data = $Users->getUserById($values);
+				$_SESSION['login'] = $user_data['login'];
+				$_SESSION['id_user'] = $user_data['id_user'];
+				require('bienvenida.php');die;
+			}
+			
+		}
+		
+		
+
 	}
 	function executeLogout($values = null){
-	
+			session_unset();
             executeIndex($values);
 	}							
