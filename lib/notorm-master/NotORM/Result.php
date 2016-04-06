@@ -280,6 +280,7 @@ class NotORM_Result extends NotORM_Abstract implements Iterator, ArrayAccess, Co
 	* @return int number of affected rows or false in case of an error
 	*/
 	function update(array $data) {
+		unset($data['PHPSESSID']);
 		if ($this->notORM->freeze) {
 			return false;
 		}
