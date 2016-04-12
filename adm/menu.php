@@ -32,7 +32,8 @@
             <li><a href="<?php echo full_url;?>/adm/farms/index.php">Granjas</a></li>
 			<li><a href="<?php echo full_url;?>/adm/users/index.php">Usuarios</a></li>
 			<li><a href="<?php echo full_url;?>/adm/country/index.php">Paises</a></li>
-			<li><a href="<?php echo full_url;?>/adm/country/index.php">Lineas Navieras</a></li>
+			<li><a href="<?php echo full_url;?>/adm/shipping_lines/index.php">Lineas Navieras</a></li>
+			<li><a href="<?php echo full_url;?>/adm/products/index.php">Productos</a></li>
             <!--<li><a href="#">Productos</a></li>
             <li><a href="#">Clientes</a></li>
             <li><a href="#">Incoterms</a></li>
