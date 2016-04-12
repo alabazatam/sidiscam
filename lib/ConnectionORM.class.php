@@ -5,13 +5,13 @@
             
                 function __construct() 
                 {
-                    $this->dbname = "catcgrco_sidiscam";
+                    $this->dbname = "intelign_sidiscam";
                     $this->host = 'localhost';
                     $this->port = "3306";
                     $this->charset = "utf8";
                     $this->dsn = "mysql:dbname=".$this->dbname.";host=".$this->host.";port=".$this->port.";charset=".$this->charset;  
-                    $this->username = 'catcgrco_root';
-                    $this->password = '230386';
+                    $this->username = 'intelign_root';
+                    $this->password = 'marcos230386';
                     
                 }            
 		public function getConnect($connect = ''){
