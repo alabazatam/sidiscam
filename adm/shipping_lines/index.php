@@ -45,8 +45,15 @@ $values = $_REQUEST;
 	{
 		
 		$ShippingLines = new ShippingLines();
-		$values = $ShippingLines->saveShippingLines($values);
-		executeEdit($values,message_created);die;
+		$errors = validate($values);
+		if(count($errors)>0)
+		{	
+			$values['errors'] = $errors;
+			require('shipping_lines_form_view.php');die;
+		}else{		
+			$values = $ShippingLines->saveShippingLines($values);			
+			executeEdit($values,message_created);die;
+		}
 	}
 	function executeEdit($values = null,$msg = null)
 	{
@@ -55,14 +62,22 @@ $values = $_REQUEST;
                 $id_shipping_lines = $values['id_shipping_lines'];
                 $values['action'] = 'update';
                 $values['msg'] = $msg;
+				$values['errors'] = array();
 		require('shipping_lines_form_view.php');
 	}
 	function executeUpdate($values = null)
 	{
 		
 		$ShippingLines = new ShippingLines();
-		$ShippingLines->updateShippingLines($values);			
-		executeEdit($values,message_updated);die;
+		$errors = validate($values);
+		if(count($errors)>0)
+		{	
+			$values['errors'] = $errors;
+			require('shipping_lines_form_view.php');die;
+		}else{		
+			$ShippingLines->updateShippingLines($values);			
+			executeEdit($values,message_updated);die;
+		}
 	}	
 	function executeShippingLinesListJson($values)
 	{
