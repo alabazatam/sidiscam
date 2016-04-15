@@ -6,11 +6,7 @@
 		<input type="hidden" name='action' value='<?php if(isset($values['action']))echo $values['action'];?>'>
 	  <div class="form-group">
 		<label for="">Id</label>
-		<input autocomplete="off" readonly="readonly" type="text" class="form-control input-sm" id="" placeholder="" name="id_country" value="<?php if(isset($values['id_country'])) echo $values['id_country']?>">
-	  </div>
-	  <div class="form-group">
-		<label for="">Región</label>
-		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="id_region" value="<?php if(isset($values['id_region'])) echo $values['id_region']?>">
+		<input autocomplete="off" readonly="readonly" type="text" class="form-control input-sm" id="" placeholder="" name="id_region" value="<?php if(isset($values['id_region'])) echo $values['id_region']?>">
 	  </div>
 	  <div class="form-group">
 		<label for="">name</label>
@@ -41,7 +37,7 @@
 		<input autocomplete="off" readonly="readonly" type="text" class="form-control input-sm" id="" placeholder="" name="date_updated" value="<?php if(isset($values['date_updated'])) echo $values['date_updated']?>">
 	  </div>
 
-		<a class="btn btn-default"  href="<?php echo full_url."/adm/country/index.php"?>"><i class="fa fa-arrow-left  fa-pull-left fa-border"></i> Regresar</a>
+		<a class="btn btn-default"  href="<?php echo full_url."/adm/regions/index.php"?>"><i class="fa fa-arrow-left  fa-pull-left fa-border"></i> Regresar</a>
 		<button type="submit" class="btn btn-default"><i class="fa fa-save fa-pull-left fa-border"></i> Guardar</button>
     <?php if(isset($values['msg']) and $values['msg']!=''):?>
         <div class="alert alert-success" role="alert"><?php echo $values['msg'];?></div>

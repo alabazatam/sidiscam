@@ -69,6 +69,10 @@ include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/UsersCompany.class
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Country.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/ShippingLines.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Products.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/ProductsType.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Regions.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Ports.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Bank.class.php");
 /*validation class*/
 //include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/vendor/GUMP/gump.class.php");
 
