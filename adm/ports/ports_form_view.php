@@ -11,27 +11,45 @@
       <div class="form-group">
         <label for="">Nombre</label>
         <input type="text" autocomplete="off" class="form-control input-sm" id="" placeholder="" name="name" value="<?php if(isset($values['name'])) echo $values['name']?>">
-      </div>
+		<?php if(isset($values['errors']['name']) and $values['errors']['name']!=''):?>
+			<label class="alert alert-danger"><?php echo $values['errors']['name']?></label>
+		<?php endif;?>
+	  </div>
       <div class="form-group">
         <label for="">Abreviatura</label>
         <input type="text" autocomplete="off" class="form-control input-sm" id="" placeholder="" name="abr" value="<?php if(isset($values['abr'])) echo $values['abr']?>">
-      </div>
+		<?php if(isset($values['errors']['abr']) and $values['errors']['abr']!=''):?>
+			<label class="alert alert-danger"><?php echo $values['errors']['abr']?></label>
+		<?php endif;?>
+	  </div>
       <div class="form-group">
         <label for="">Descripción</label>
         <input type="text" autocomplete="off" class="form-control input-sm" id="" placeholder="" name="description" value="<?php if(isset($values['description'])) echo $values['description']?>">
-      </div>
+		<?php if(isset($values['errors']['description']) and $values['errors']['description']!=''):?>
+			<label class="alert alert-danger"><?php echo $values['errors']['description']?></label>
+		<?php endif;?>
+	  </div>
       <div class="form-group">
         <label for="">Código</label>
         <input type="text" autocomplete="off" class="form-control input-sm" id="" placeholder="" name="cod_port" value="<?php if(isset($values['cod_port'])) echo $values['cod_port']?>">
-      </div>
+		<?php if(isset($values['errors']['cod_port']) and $values['errors']['cod_port']!=''):?>
+			<label class="alert alert-danger"><?php echo $values['errors']['cod_port']?></label>
+		<?php endif;?>
+	  </div>
       <div class="form-group">
         <label for="">Región</label>
         <input type="text" autocomplete="off" class="form-control input-sm" id="" placeholder="" name="id_region" value="<?php if(isset($values['id_region'])) echo $values['id_region']?>">
-      </div>
+		<?php if(isset($values['errors']['id_region']) and $values['errors']['id_region']!=''):?>
+			<label class="alert alert-danger"><?php echo $values['errors']['id_region']?></label>
+		<?php endif;?>
+	  </div>
       <div class="form-group">
         <label for="">País</label>
         <input type="text" autocomplete="off" class="form-control input-sm" id="" placeholder="" name="id_country" value="<?php if(isset($values['id_country'])) echo $values['id_country']?>">
-      </div>
+		<?php if(isset($values['errors']['id_country']) and $values['errors']['id_country']!=''):?>
+			<label class="alert alert-danger"><?php echo $values['errors']['id_country']?></label>
+		<?php endif;?>
+	  </div>
             <div class="form-group">
               <label class="label label-danger">
                     <input type="radio" name="status" id="status" value="0" <?php if(isset($values['status']) and $values['status'] =='0' ) echo "checked=checked"?>>

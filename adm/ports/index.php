@@ -44,24 +44,39 @@ $values = $_REQUEST;
 	{
 		$Messages = new Messages();
 		$Ports = new Ports();
-		$values = $Ports->savePorts($values);
-		executeEdit($values,message_created);die;
+		$errors = validate($values);
+		if(count($errors)>0)
+		{	
+			$values['errors'] = $errors;
+			require('ports_form_view.php');die;
+		}else{		
+			$values = $Ports->savePorts($values);			
+			executeEdit($values,message_created);die;
+		}
 	}
 	function executeEdit($values = null,$msg = null)
 	{
 
 		$Ports = new Ports();
-                $values = $Ports->getPortsById($values);
+        $values = $Ports->getPortsById($values);
 		$values['action'] = 'update';
                 $values['msg'] = $msg;
+				 $values['errors'] = array();
 		require('ports_form_view.php');
 	}
 	function executeUpdate($values = null)
 	{
 		
 		$Ports = new Ports();
-		$Ports->updatePorts($values);
-		executeEdit($values,message_updated);die;
+		$errors = validate($values);
+		if(count($errors)>0)
+		{	
+			$values['errors'] = $errors;
+			require('ports_form_view.php');die;
+		}else{		
+			$Ports->updatePorts($values);			
+			executeEdit($values,message_updated);die;
+		}
 	}	
 	function executePortsListJson($values)
 	{
