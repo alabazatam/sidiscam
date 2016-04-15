@@ -11,11 +11,17 @@
       <div class="form-group">
         <label for="">Nombre</label>
         <input type="text" autocomplete="off" class="form-control input-sm" id="" placeholder="" name="name" value="<?php if(isset($values['name'])) echo $values['name']?>">
-      </div>
+		<?php if(isset($values['errors']['name']) and $values['errors']['name']!=''):?>
+			<label class="alert alert-danger"><?php echo $values['errors']['name']?></label>
+		<?php endif;?>
+	  </div>
       <div class="form-group">
         <label for="">Descripción</label>
         <input type="text" autocomplete="off" class="form-control input-sm" id="" placeholder="" name="description" value="<?php if(isset($values['description'])) echo $values['description']?>">
-      </div>
+		<?php if(isset($values['errors']['description']) and $values['errors']['description']!=''):?>
+			<label class="alert alert-danger"><?php echo $values['errors']['description']?></label>
+		<?php endif;?>
+	  </div>
             <div class="form-group">
               <label class="label label-danger">
                     <input type="radio" name="status" id="status" value="0" <?php if(isset($values['status']) and $values['status'] =='0' ) echo "checked=checked"?>>

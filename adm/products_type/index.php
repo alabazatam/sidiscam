@@ -44,8 +44,15 @@ $values = $_REQUEST;
 	{
 		$Messages = new Messages();
 		$ProductsType = new ProductsType();
-		$values = $ProductsType->saveProductsType($values);
-		executeEdit($values,message_created);die;
+		$errors = validate($values);
+		if(count($errors)>0)
+		{	
+			$values['errors'] = $errors;
+			require('products_type_form_view.php');die;
+		}else{		
+			$values = $ProductsType->saveProductsType($values);			
+			executeEdit($values,message_created);die;
+		}
 	}
 	function executeEdit($values = null,$msg = null)
 	{
@@ -54,14 +61,22 @@ $values = $_REQUEST;
                 $values = $ProductsType->getProductsTypeById($values);
 		$values['action'] = 'update';
                 $values['msg'] = $msg;
+				$values['errors'] = array();
 		require('products_type_form_view.php');
 	}
 	function executeUpdate($values = null)
 	{
 		
 		$ProductsType = new ProductsType();
-		$ProductsType->updateProductsType($values);
-		executeEdit($values,message_updated);die;
+		$errors = validate($values);
+		if(count($errors)>0)
+		{	
+			$values['errors'] = $errors;
+			require('products_type_form_view.php');die;
+		}else{		
+			$ProductsType->updateProductsType($values);			
+			executeEdit($values,message_updated);die;
+		}
 	}	
 	function executeProductsTypeListJson($values)
 	{

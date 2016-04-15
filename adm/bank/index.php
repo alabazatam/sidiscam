@@ -63,6 +63,7 @@ unset($values['PHPSESSID']);
         $id_bank = $values['id_bank'];
         $values['action'] = 'update';
         $values['msg'] = $msg;
+		$values['errors'] = array();
 		require('bank_form_view.php');
 	}
 	function executeUpdate($values = null)

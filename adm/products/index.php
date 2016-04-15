@@ -44,24 +44,39 @@ $values = $_REQUEST;
 	{
 		$Messages = new Messages();
 		$Products = new Products();
-		$values = $Products->saveProducts($values);
-		executeEdit($values,message_created);die;
+		$errors = validate($values);
+		if(count($errors)>0)
+		{	
+			$values['errors'] = $errors;
+			require('products_form_view.php');die;
+		}else{		
+			$values = $Products->saveProducts($values);			
+			executeEdit($values,message_created);die;
+		}
 	}
 	function executeEdit($values = null,$msg = null)
 	{
 
 		$Products = new Products();
-                $values = $Products->getProductsById($values);
+        $values = $Products->getProductsById($values);
 		$values['action'] = 'update';
-                $values['msg'] = $msg;
+        $values['msg'] = $msg;
+		$values['errors'] = array();
 		require('products_form_view.php');
 	}
 	function executeUpdate($values = null)
 	{
 		
 		$Products = new Products();
-		$Products->updateProducts($values);
-		executeEdit($values,message_updated);die;
+		$errors = validate($values);
+		if(count($errors)>0)
+		{	
+			$values['errors'] = $errors;
+			require('products_form_view.php');die;
+		}else{		
+			$Products->updateProducts($values);			
+			executeEdit($values,message_updated);die;
+		}
 	}	
 	function executeProductsListJson($values)
 	{

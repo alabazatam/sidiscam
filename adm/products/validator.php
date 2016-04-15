@@ -1,30 +1,32 @@
 <?php
 
-	function validaFormulario1($values)
-	{
+
+ 
+ 
+	function validate($values){
 		$errors = array();
-		if(count($values)>0)
-		{
-			foreach($values as $campos)
-			
-				if(empty($campos))
-					{
-						$errors[]="Todos los campos deben ser llenados";
-					}
-		}
+		$validator_values = array();
 		
-		return $errors;
-	}
-	function validaFormulario2($values)
-	{
-		$errors = array();
-		if(count($values)>0)
-		{
-			foreach($values as $campos)
+		$validator_values['name'] = array(
 			
-				if(empty($campos))
-					{
-						$errors[]="Todos los campos deben ser llenados";
-					}
-		}
+			"minlength" => 3,
+			"maxlength" => 100,
+			"type" => "text",
+			"label" => "nombre",
+			"required" => true
+		);
+		$validator_values['description'] = array(
+			
+			"minlength" => 3,
+			"maxlength" => 100,
+			"type" => "text",
+			"label" => "nombre",
+			"required" => true
+		);
+		$ValidateBase = new ValidateBase();
+		$errors = $ValidateBase->validate_base($validator_values, $values);
+		return $errors;
+		
+		
 	}
+	
