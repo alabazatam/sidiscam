@@ -44,13 +44,22 @@ unset($values['PHPSESSID']);
 	{
 		
 		$Bank = new Bank();
-		$values = $Bank->saveBank($values);
-		executeEdit($values,message_created);die;
+		$errors = validate($values);
+		if(count($errors)>0)
+		{	
+			$values['errors'] = $errors;
+			require('bank_form_view.php');die;
+		}else{		
+			$values = $Bank->saveBank($values);			
+			executeEdit($values,message_created);die;
+		}
+
 	}
-	function executeEdit($values = null,$msg = null)
+	function executeEdit($values = null,$msg = null,$errors = null)
 	{
 		$Bank = new Bank();
 		$values = $Bank->getBankById($values);
+		$values['errors'] = $errors;
                 $id_bank = $values['id_bank'];
                 $values['action'] = 'update';
                 $values['msg'] = $msg;
@@ -60,8 +69,16 @@ unset($values['PHPSESSID']);
 	{
 		
 		$Bank = new Bank();
-		$Bank->updateBank($values);			
-		executeEdit($values,message_updated);die;
+		$errors = validate($values);
+		if(count($errors)>0)
+		{	
+			$values['errors'] = $errors;
+			require('bank_form_view.php');die;
+		}else{		
+			$Bank->updateBank($values);			
+			executeEdit($values,message_updated);die;
+		}
+
 	}	
 	function executeBankListJson($values)
 	{

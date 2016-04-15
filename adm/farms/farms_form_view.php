@@ -12,6 +12,62 @@
         <label for="">Nombre</label>
         <input type="text" autocomplete="off" class="form-control input-sm" id="" placeholder="" name="name" value="<?php if(isset($values['name'])) echo $values['name']?>">
       </div>
+	  <div class="form-group">
+		<label for="">Abreviatura</label>
+		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="abr" value="<?php if(isset($values['abr'])) echo $values['abr']?>">
+	  </div>
+	  <div class="form-group">
+		<label for="">País</label>
+		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="id_country" value="<?php if(isset($values['id_country'])) echo $values['id_country']?>">
+	  </div>	
+	  <div class="form-group">
+		<label for="">Estado</label>
+		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="id_state" value="<?php if(isset($values['id_state'])) echo $values['id_state']?>">
+	  </div>	
+	  <div class="form-group">
+		<label for="">Dirección</label>
+		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="address" value="<?php if(isset($values['address'])) echo $values['address']?>">
+	  </div>
+	  <div class="form-group">
+		<label for="">phone1</label>
+		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="phone1" value="<?php if(isset($values['phone1'])) echo $values['phone1']?>">
+	  </div>
+	  <div class="form-group">
+		<label for="">phone2</label>
+		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="phone2" value="<?php if(isset($values['phone2'])) echo $values['phone2']?>">
+	  </div>
+	  <div class="form-group">
+		<label for="">email1</label>
+		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="email1" value="<?php if(isset($values['email1'])) echo $values['email1']?>">
+	  </div>
+	  <div class="form-group">
+		<label for="">email2</label>
+		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="email2" value="<?php if(isset($values['email2'])) echo $values['email2']?>">
+	  </div>
+	  <div class="form-group">
+		<label for="">contact1</label>
+		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="contact1" value="<?php if(isset($values['contact1'])) echo $values['contact1']?>">
+	  </div>
+	  <div class="form-group">
+		<label for="">phone_contact1</label>
+		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="phone_contact1" value="<?php if(isset($values['phone_contact1'])) echo $values['phone_contact1']?>">
+	  </div>
+	  <div class="form-group">
+		<label for="">email_contact1</label>
+		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="email_contact1" value="<?php if(isset($values['email_contact1'])) echo $values['email_contact1']?>">
+	  </div>
+	  <div class="form-group">
+		<label for="">contact2</label>
+		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="contact2" value="<?php if(isset($values['contact2'])) echo $values['contact2']?>">
+	  </div>
+	  <div class="form-group">
+		<label for="">phone_contact2</label>
+		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="phone_contact2" value="<?php if(isset($values['phone_contact2'])) echo $values['phone_contact2']?>">
+	  </div>
+	  <div class="form-group">
+		<label for="">email_contact2</label>
+		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="email_contact2" value="<?php if(isset($values['email_contact2'])) echo $values['email_contact2']?>">
+	  </div>
             <div class="form-group">
               <label class="label label-danger">
                     <input type="radio" name="status" id="status" value="0" <?php if(isset($values['status']) and $values['status'] =='0' ) echo "checked=checked"?>>
