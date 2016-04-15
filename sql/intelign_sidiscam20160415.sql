@@ -1,6 +1,6 @@
 /*
-SQLyog Community v12.15 (64 bit)
-MySQL - 5.5.47-0ubuntu0.14.04.1 : Database - intelign_sidiscam
+SQLyog Community v12.2.1 (64 bit)
+MySQL - 5.6.17 : Database - intelign_sidiscam
 *********************************************************************
 */
 
@@ -38,12 +38,14 @@ CREATE TABLE `bank` (
   PRIMARY KEY (`id_bank`),
   KEY `bank_country` (`id_country`),
   CONSTRAINT `bank_country` FOREIGN KEY (`id_country`) REFERENCES `country` (`id_country`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `bank` */
 
 insert  into `bank`(`id_bank`,`name`,`id_country`,`address`,`phone1`,`phone2`,`email1`,`email2`,`account_number`,`aba`,`swif`,`status`,`date_created`,`date_updated`) values 
-(1,'BANCO',1,'','phone1','phone2','email1','email2','account_number','aba','swif',1,'2016-04-14 23:04:02','2016-04-14 23:05:48');
+(1,'MERCANTIL',1,'','1234567890','1234512345','deandrademarcos@gmail.com','deandrademarcos@gmail.com','12345678901234567890','aba','swif',1,'2016-04-14 23:04:02','2016-04-15 13:39:55'),
+(3,'BOD',1,'','02128601223','','deandrademarcos@gmail.com','','12345678901234567890','','',1,'2016-04-15 13:01:18','2016-04-15 13:39:55'),
+(4,'BANESCO',1,'','1234567890','','deandrademarcos@gmail.com','','12345678901234567890','','',1,'2016-04-15 13:02:17','2016-04-15 13:39:56');
 
 /*Table structure for table `bills` */
 
@@ -159,7 +161,7 @@ CREATE TABLE `country` (
 /*Data for the table `country` */
 
 insert  into `country`(`id_country`,`id_region`,`name`,`abr`,`status`,`date_created`,`date_updated`) values 
-(1,5,'Venezuela','VE',1,'2016-04-05 20:58:17','2016-04-14 22:14:29');
+(1,1,'VENEZUELA','VE',1,'2016-04-05 20:58:17','2016-04-15 16:19:53');
 
 /*Table structure for table `farms` */
 
@@ -168,13 +170,32 @@ DROP TABLE IF EXISTS `farms`;
 CREATE TABLE `farms` (
   `id_farm` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,
+  `id_country` int(11) NOT NULL,
+  `id_state` int(11) NOT NULL,
+  `abr` varchar(10) NOT NULL,
+  `capacity` int(11) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `phone1` varchar(20) NOT NULL,
+  `phone2` varchar(20) NOT NULL,
+  `email1` varchar(100) NOT NULL,
+  `email2` varchar(100) NOT NULL,
+  `contact1` varchar(100) NOT NULL,
+  `phone_contact1` varchar(20) NOT NULL,
+  `email_contact1` varchar(100) NOT NULL,
+  `contact2` varchar(100) NOT NULL,
+  `phone_contact2` varchar(20) NOT NULL,
+  `email_contact2` varchar(100) NOT NULL,
   `status` int(11) NOT NULL DEFAULT '1',
   `date_created` datetime NOT NULL,
   `date_updated` datetime NOT NULL,
   PRIMARY KEY (`id_farm`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `farms` */
+
+insert  into `farms`(`id_farm`,`name`,`id_country`,`id_state`,`abr`,`capacity`,`address`,`phone1`,`phone2`,`email1`,`email2`,`contact1`,`phone_contact1`,`email_contact1`,`contact2`,`phone_contact2`,`email_contact2`,`status`,`date_created`,`date_updated`) values 
+(1,'Granja 1',1,1,'G001',0,'Dirección','02121234567','02121234567','email1@h.com','','contact1','02121234567','','email1@h.com','02121234567','',1,'2016-04-15 10:20:20','2016-04-15 17:14:03'),
+(2,'GRANJA2',1,1,'GR2',0,'Hello how are youy','1234567890','','','','','','','','','',1,'2016-04-15 15:22:59','2016-04-15 17:14:03');
 
 /*Table structure for table `incoterms` */
 
@@ -213,8 +234,8 @@ CREATE TABLE `ports` (
 /*Data for the table `ports` */
 
 insert  into `ports`(`id_port`,`name`,`abr`,`description`,`cod_port`,`id_country`,`id_region`,`status`,`date_created`,`date_updated`) values 
-(1,'Puero1','Abreviatur','Descripción','Código',1,1,1,'2016-04-14 22:46:22','2016-04-14 22:46:22'),
-(2,'aaaaaaaaa','aaaaaaaaaa','aaaaaaaaaaaaaaaaaaa','aaaaaaaaaaaaaaa',1,1,1,'2016-04-14 22:46:53','2016-04-14 22:46:53');
+(1,'puerto1','ABC','aaa','a2',1,1,1,'2016-04-14 22:46:22','2016-04-15 16:48:38'),
+(2,'aaaaaaaaa','aaaaaaaaaa','aaaaaaaaaaaaaaaaaaa','aaaaaaaaaaaaaaa',1,1,1,'2016-04-14 22:46:53','2016-04-15 16:48:38');
 
 /*Table structure for table `products` */
 
@@ -228,12 +249,13 @@ CREATE TABLE `products` (
   `date_created` datetime DEFAULT NULL,
   `date_updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id_product`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `products` */
 
 insert  into `products`(`id_product`,`name`,`description`,`status`,`date_created`,`date_updated`) values 
-(1,'camaron','camaron',1,'2016-04-12 17:54:03','2016-04-14 21:44:46');
+(1,'camaron','camaron',1,'2016-04-12 17:54:03','2016-04-15 17:03:52'),
+(2,'CAMARON2','CAMARON2',1,'2016-04-15 17:03:41','2016-04-15 17:03:41');
 
 /*Table structure for table `products_type` */
 
@@ -251,12 +273,13 @@ CREATE TABLE `products_type` (
   PRIMARY KEY (`id_product_type`),
   KEY `produc_product_type` (`id_product`),
   CONSTRAINT `produc_product_type` FOREIGN KEY (`id_product`) REFERENCES `products` (`id_product`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `products_type` */
 
 insert  into `products_type`(`id_product_type`,`id_product`,`name`,`description`,`abr`,`status`,`date_created`,`date_updated`) values 
-(1,1,'40/40','CAMARON SIN CABEZA','40/40',1,'2016-04-14 21:59:45','2016-04-14 22:00:44');
+(1,1,'CAMARON','40/40','40/40',0,'2016-04-14 21:59:45','2016-04-15 17:10:24'),
+(5,1,'CAMARON','40/50','40/50',1,'2016-04-15 17:12:49','2016-04-15 17:12:49');
 
 /*Table structure for table `providers` */
 
@@ -287,14 +310,14 @@ CREATE TABLE `regions` (
 /*Data for the table `regions` */
 
 insert  into `regions`(`id_region`,`name`,`abr`,`status`,`date_created`,`date_updated`) values 
-(1,'NORTE AMERICA','t',1,'2016-04-14 22:33:45','2016-04-14 22:34:20'),
-(2,'ASIA','',1,'2016-04-14 22:33:45','2016-04-14 22:33:45'),
-(3,'EUROPA','',1,'2016-04-14 22:33:45','2016-04-14 22:33:45'),
-(4,'OCEANIA','',1,'2016-04-14 22:33:45','2016-04-14 22:33:45'),
-(5,'SUR AMERICA','',1,'2016-04-14 22:33:45','2016-04-14 22:33:45'),
-(6,'CENTRO AMERICA','',1,'2016-04-14 22:33:45','2016-04-14 22:33:45'),
-(7,'CARIBE','',1,'2016-04-14 22:33:45','2016-04-14 22:33:45'),
-(8,'MEDIO ORIENTE','',1,'2016-04-14 22:33:45','2016-04-14 22:33:45');
+(1,'NORTE AMERICA','NOR',1,'2016-04-14 22:33:45','2016-04-15 16:25:28'),
+(2,'ASIA','AS',1,'2016-04-14 22:33:45','2016-04-15 16:13:23'),
+(3,'EUROPA','EUR',1,'2016-04-14 22:33:45','2016-04-15 16:13:33'),
+(4,'OCEANIA','OCE',1,'2016-04-14 22:33:45','2016-04-15 16:13:42'),
+(5,'SUR AMERICA','SA',1,'2016-04-14 22:33:45','2016-04-15 16:25:38'),
+(6,'CENTRO AMERICA','',1,'2016-04-14 22:33:45','2016-04-15 10:27:32'),
+(7,'CARIBE','',1,'2016-04-14 22:33:45','2016-04-15 10:27:33'),
+(8,'MEDIO ORIENTE','',1,'2016-04-14 22:33:45','2016-04-15 10:27:34');
 
 /*Table structure for table `shipping_lines` */
 
@@ -319,13 +342,30 @@ CREATE TABLE `shipping_lines` (
   `phone_contact2` tinytext,
   `email_contact2` text,
   PRIMARY KEY (`id_shipping_lines`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `shipping_lines` */
 
 insert  into `shipping_lines`(`id_shipping_lines`,`name`,`status`,`date_created`,`date_updated`,`abr`,`address`,`phone1`,`phone2`,`email1`,`email2`,`contact1`,`phone_contact1`,`email_contact1`,`contact2`,`phone_contact2`,`email_contact2`) values 
-(1,'linea 1',1,'2016-04-05 20:56:01','2016-04-14 21:44:09','l1','address','phone1','phone2','email1','email2','contact1',' phone_contact1','email_contact1','contact2','phone_contact2','email_contact2'),
-(2,'linea 2',0,'2016-04-05 20:56:19','2016-04-05 20:56:27','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+(1,'linea1',1,'2016-04-05 20:56:01','2016-04-15 16:40:25','l1','dirección','1234567890','','','','','','','contact2','1234567890','deandrademarcos@gmail.com'),
+(2,'linea 2',1,'2016-04-05 20:56:19','2016-04-15 16:40:26','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(3,'aaaaa',1,'2016-04-15 16:39:38','2016-04-15 16:40:27','aaa','aaaaaaaaaaaa','1234567890','','','','','','','','','');
+
+/*Table structure for table `states` */
+
+DROP TABLE IF EXISTS `states`;
+
+CREATE TABLE `states` (
+  `id_state` int(11) NOT NULL AUTO_INCREMENT,
+  `id_country` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '1',
+  `date_created` datetime NOT NULL,
+  `date_updated` datetime NOT NULL,
+  PRIMARY KEY (`id_state`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `states` */
 
 /*Table structure for table `status` */
 
@@ -364,12 +404,12 @@ CREATE TABLE `users` (
 /*Data for the table `users` */
 
 insert  into `users`(`id_user`,`login`,`password`,`status`,`date_created`,`date_updated`,`mail`,`mail_alternative`) values 
-(1,'mdeandrade','18bfddf1020067bbd33fad652bc8f1a59b2427ff8c7ebfd62bbfef6c2dddff49',1,'2016-04-02 20:55:08','2016-04-05 20:37:31','',NULL),
-(2,'M-V18020594','cd19ffa6452e2a0a0d0a4fcd4197e16789b627bd20da6883593d36fcfba733ec',0,'2016-04-02 21:28:41','2016-04-03 12:07:48','deandrademarcos@gmail.com',NULL),
-(3,'M-V18020594','a2ba9b5660b268265788d2323285226620c610b2e2cf0b3cec6fbcc30875ad7e',1,'2016-04-03 17:41:26','2016-04-03 20:55:58','deandrademarcos@hotmail.com','deandrademarcos@hotmail.com'),
-(4,'M-V18020594','9e6174adf47fdc4f671977510ccb7a52fd9f05d722ece859c070cc89f53fd688',1,'2016-04-03 17:44:48','2016-04-03 17:44:48','deandrademarcos@hotmail.com','deandrademarcos@hotmail.com'),
-(5,'M-V20303709','35922aa7db6be7607d2c79dfe8cb6cadcbf7a6e32be47a509353e2cdc77333a8',1,'2016-04-03 20:38:36','2016-04-03 20:38:36','jeancufm@gmail.com','jeancufm@gmail.com'),
-(6,'O-V20303709','18bfddf1020067bbd33fad652bc8f1a59b2427ff8c7ebfd62bbfef6c2dddff49',1,'2016-04-03 20:50:13','2016-04-03 20:50:13','jeancufm@gmail.com',NULL);
+(1,'mdeandrade','18bfddf1020067bbd33fad652bc8f1a59b2427ff8c7ebfd62bbfef6c2dddff49',1,'2016-04-02 20:55:08','2016-04-15 10:37:24','',NULL),
+(2,'M-V18020594','cd19ffa6452e2a0a0d0a4fcd4197e16789b627bd20da6883593d36fcfba733ec',0,'2016-04-02 21:28:41','2016-04-15 16:28:49','deandrademarcos@gmail.com',NULL),
+(3,'M-V18020594','a2ba9b5660b268265788d2323285226620c610b2e2cf0b3cec6fbcc30875ad7e',0,'2016-04-03 17:41:26','2016-04-15 16:26:09','deandrademarcos@hotmail.com','deandrademarcos@hotmail.com'),
+(4,'M-V18020594','9e6174adf47fdc4f671977510ccb7a52fd9f05d722ece859c070cc89f53fd688',0,'2016-04-03 17:44:48','2016-04-15 16:26:10','deandrademarcos@hotmail.com','deandrademarcos@hotmail.com'),
+(5,'M-V20303709','35922aa7db6be7607d2c79dfe8cb6cadcbf7a6e32be47a509353e2cdc77333a8',0,'2016-04-03 20:38:36','2016-04-15 16:26:10','jeancufm@gmail.com','jeancufm@gmail.com'),
+(6,'O-V20303709','18bfddf1020067bbd33fad652bc8f1a59b2427ff8c7ebfd62bbfef6c2dddff49',0,'2016-04-03 20:50:13','2016-04-15 16:26:11','jeancufm@gmail.com',NULL);
 
 /*Table structure for table `users_company` */
 
