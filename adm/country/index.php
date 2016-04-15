@@ -45,8 +45,15 @@ unset($values['PHPSESSID']);
 	{
 		
 		$Country = new Country();
-		$values = $Country->saveCountry($values);
-		executeEdit($values,message_created);die;
+		$errors = validate($values);
+		if(count($errors)>0)
+		{	
+			$values['errors'] = $errors;
+			require('country_form_view.php');die;
+		}else{		
+			$values = $Country->saveCountry($values);			
+			executeEdit($values,message_created);die;
+		}
 	}
 	function executeEdit($values = null,$msg = null)
 	{
@@ -55,14 +62,22 @@ unset($values['PHPSESSID']);
                 $id_country = $values['id_country'];
                 $values['action'] = 'update';
                 $values['msg'] = $msg;
+		$values['errors'] = array();
 		require('country_form_view.php');
 	}
 	function executeUpdate($values = null)
 	{
 		
 		$Country = new Country();
-		$Country->updateCountry($values);			
-		executeEdit($values,message_updated);die;
+		$errors = validate($values);
+		if(count($errors)>0)
+		{	
+			$values['errors'] = $errors;
+			require('country_form_view.php');die;
+		}else{		
+			$Country->updateCountry($values);			
+			executeEdit($values,message_updated);die;
+		}
 	}	
 	function executeCountryListJson($values)
 	{

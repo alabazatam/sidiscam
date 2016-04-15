@@ -45,8 +45,15 @@ unset($values['PHPSESSID']);
 	{
 		
 		$Regions = new Regions();
-		$values = $Regions->saveRegions($values);
-		executeEdit($values,message_created);die;
+		$errors = validate($values);
+		if(count($errors)>0)
+		{	
+			$values['errors'] = $errors;
+			require('regions_form_view.php');die;
+		}else{		
+			$values = $Regions->saveRegions($values);			
+			executeEdit($values,message_created);die;
+		}
 	}
 	function executeEdit($values = null,$msg = null)
 	{
@@ -55,14 +62,22 @@ unset($values['PHPSESSID']);
                 $id_region = $values['id_region'];
                 $values['action'] = 'update';
                 $values['msg'] = $msg;
+		$values['errors'] = array();
 		require('regions_form_view.php');
 	}
 	function executeUpdate($values = null)
 	{
 		
 		$Regions = new Regions();
-		$Regions->updateRegions($values);			
-		executeEdit($values,message_updated);die;
+		$errors = validate($values);
+		if(count($errors)>0)
+		{	
+			$values['errors'] = $errors;
+			require('regions_form_view.php');die;
+		}else{		
+			$Regions->updateRegions($values);			
+			executeEdit($values,message_updated);die;
+		}
 	}	
 	function executeRegionsListJson($values)
 	{

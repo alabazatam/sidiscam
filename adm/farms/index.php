@@ -38,30 +38,46 @@ $values = $_REQUEST;
 	{
 		$values['action'] = 'add';
                 $values['status'] = 1;
+				$values['errors'] = array();
 		require('farms_form_view.php');
 	}
 	function executeSave($values = null)
 	{
 		$Messages = new Messages();
 		$Farms = new Farms();
-		$values = $Farms->saveFarms($values);
-		executeEdit($values,message_created);die;
+		$errors = validate($values);
+		if(count($errors)>0)
+		{	
+			$values['errors'] = $errors;
+			require('farms_form_view.php');die;
+		}else{		
+			$values = $Bank->saveFarms($values);			
+			executeEdit($values,message_created);die;
+		}
 	}
 	function executeEdit($values = null,$msg = null)
 	{
-
+		
 		$Farms = new Farms();
-                $values = $Farms->getFarmsById($values);
+        $values = $Farms->getFarmsById($values);
 		$values['action'] = 'update';
-                $values['msg'] = $msg;
+        $values['msg'] = $msg;
+		$values['errors'] = array();
 		require('farms_form_view.php');
 	}
 	function executeUpdate($values = null)
 	{
 		
 		$Farms = new Farms();
-		$Farms->updateFarms($values);
-		executeEdit($values,message_updated);die;
+		$errors = validate($values);
+		if(count($errors)>0)
+		{	
+			$values['errors'] = $errors;
+			require('farms_form_view.php');die;
+		}else{		
+			$Farms->updateFarms($values);			
+			executeEdit($values,message_updated);die;
+		}
 	}	
 	function executeFarmsListJson($values)
 	{

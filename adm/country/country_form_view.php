@@ -1,7 +1,7 @@
 <?php include('../../view_header.php')?>
 <?php include('../menu.php')?>
 <div class="container">
-	<h1 class="text-center"><label class="label label-default">Paises</label></h1>
+		<h1 class="text-center">Paises</h1>
 	<form class="" action="index.php" method="POST">
 		<input type="hidden" name='action' value='<?php if(isset($values['action']))echo $values['action'];?>'>
 	  <div class="form-group">
@@ -11,14 +11,23 @@
 	  <div class="form-group">
 		<label for="">Región</label>
 		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="id_region" value="<?php if(isset($values['id_region'])) echo $values['id_region']?>">
+		<?php if(isset($values['errors']['id_region']) and $values['errors']['id_region']!=''):?>
+			<label class="alert alert-danger"><?php echo $values['errors']['id_region']?></label>
+		<?php endif;?>
 	  </div>
 	  <div class="form-group">
 		<label for="">name</label>
 		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="name" value="<?php if(isset($values['name'])) echo $values['name']?>">
+		<?php if(isset($values['errors']['name']) and $values['errors']['name']!=''):?>
+			<label class="alert alert-danger"><?php echo $values['errors']['name']?></label>
+		<?php endif;?>
 	  </div>
 	  <div class="form-group">
 		<label for="">Abreviatura</label>
 		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="abr" value="<?php if(isset($values['abr'])) echo $values['abr']?>">
+		<?php if(isset($values['errors']['abr']) and $values['errors']['abr']!=''):?>
+			<label class="alert alert-danger"><?php echo $values['errors']['abr']?></label>
+		<?php endif;?>
 	  </div>
 		<div class="form-group">
 		  <label class="label label-danger">

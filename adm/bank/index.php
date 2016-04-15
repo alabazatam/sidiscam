@@ -55,14 +55,14 @@ unset($values['PHPSESSID']);
 		}
 
 	}
-	function executeEdit($values = null,$msg = null,$errors = null)
-	{
+	function executeEdit($values = null,$msg = null)
+	{	
+		
 		$Bank = new Bank();
 		$values = $Bank->getBankById($values);
-		$values['errors'] = $errors;
-                $id_bank = $values['id_bank'];
-                $values['action'] = 'update';
-                $values['msg'] = $msg;
+        $id_bank = $values['id_bank'];
+        $values['action'] = 'update';
+        $values['msg'] = $msg;
 		require('bank_form_view.php');
 	}
 	function executeUpdate($values = null)
