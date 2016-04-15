@@ -76,15 +76,16 @@ $values = $_REQUEST;
 			foreach ($farms_list_json as $farm) 
 			{
 				$status = $farm['status'];
+				$id_farm = $farm['id_farm'];
 				if($status == 0)
 				{
-					$message_status = "<label class='label label-danger'>Desactivado</label>";
+					$message_status = "<label class='label label-danger'><a href='#' onclick = ".'"'."status_changer('farms','id_farm', '$id_farm','1')".'"'.">Desactivado</a></label>";
 				}
 				if($status == 1)
 				{
-					$message_status = "<label class='label label-success'>Activo</label>";
+					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('farms','id_farm', '$id_farm','0')".'"'.">Activo</a></label>";
 				}
-				$id_farm = $farm['id_farm'];
+				
 				$array_json['data'][] = array(
 					"id_farm" => $id_farm,
 					"name" => $farm['name'],

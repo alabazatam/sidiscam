@@ -76,15 +76,16 @@ $values = $_REQUEST;
 			foreach ($products_types_list_json as $products_type) 
 			{
 				$status = $products_type['status'];
+				$id_product_type = $products_type['id_product_type'];
 				if($status == 0)
 				{
-					$message_status = "<label class='label label-danger'>Desactivado</label>";
+					$message_status = "<label class='label label-danger'><a href='#' onclick = ".'"'."status_changer('products_type','id_product_type', '$id_product_type','1')".'"'.">Desactivado</a></label>";
 				}
 				if($status == 1)
 				{
-					$message_status = "<label class='label label-success'>Activo</label>";
+					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('products_type','id_product_type', '$id_product_type','0')".'"'.">Activo</a></label>";
 				}
-				$id_product_type = $products_type['id_product_type'];
+				
 				$array_json['data'][] = array(
 					"id_product_type" => $id_product_type,
 					"name" => $products_type['name'],

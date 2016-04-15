@@ -76,15 +76,16 @@ $values = $_REQUEST;
 			foreach ($ports_list_json as $product) 
 			{
 				$status = $product['status'];
+				$id_port = $product['id_port'];
 				if($status == 0)
 				{
-					$message_status = "<label class='label label-danger'>Desactivado</label>";
+					$message_status = "<label class='label label-danger'><a href='#' onclick = ".'"'."status_changer('ports','id_port', '$id_port','1')".'"'.">Desactivado</a></label>";
 				}
 				if($status == 1)
 				{
-					$message_status = "<label class='label label-success'>Activo</label>";
+					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('ports','id_port', '$id_port','0')".'"'.">Activo</a></label>";
 				}
-				$id_port = $product['id_port'];
+				
 				$array_json['data'][] = array(
 					"id_port" => $id_port,
 					"name" => $product['name'],

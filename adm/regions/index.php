@@ -77,15 +77,16 @@ unset($values['PHPSESSID']);
 			foreach ($regions_list_json as $regions) 
 			{
 				$status = $regions['status'];
+				$id_region= $regions['id_region'];
 				if($status == 0)
 				{
-					$message_status = "<label class='label label-danger'>Desactivado</label>";
+					$message_status = "<label class='label label-danger'><a href='#' onclick = ".'"'."status_changer('regions','id_region', '$id_region','1')".'"'.">Desactivado</a></label>";
 				}
 				if($status == 1)
 				{
-					$message_status = "<label class='label label-success'>Activo</label>";
+					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('regions','id_region', '$id_region','0')".'"'.">Activo</a></label>";
 				}
-				$id_region= $regions['id_region'];
+				
 				$array_json['data'][] = array(
 					"id_region" => $id_region,
 					"name" => $regions['name'],

@@ -85,15 +85,16 @@ $values = $_REQUEST;
 			foreach ($company_list_json as $company) 
 			{
 				$status = $company['status'];
+				$id = $company['id'];
 				if($status == 0)
 				{
-					$message_status = "<label class='label label-danger'>Desactivado</label>";
+					$message_status = "<label class='label label-danger'><a href='#' onclick = ".'"'."status_changer('company','id', '$id','1')".'"'.">Desactivado</a></label>";
 				}
 				if($status == 1)
 				{
-					$message_status = "<label class='label label-success'>Activo</label>";
+					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('company','id', '$id','0')".'"'.">Activo</a></label>";
 				}
-				$id = $company['id'];
+				
 				$array_json['data'][] = array(
 					"id" => $id,
 					"RIF" => $company['rif'],

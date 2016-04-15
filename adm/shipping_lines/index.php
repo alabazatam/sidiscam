@@ -76,16 +76,17 @@ $values = $_REQUEST;
 		{
 			foreach ($shipping_lines_list_json as $shipping_lines) 
 			{
+				$id_shipping_lines= $shipping_lines['id_shipping_lines'];
 				$status = $shipping_lines['status'];
 				if($status == 0)
 				{
-					$message_status = "<label class='label label-danger'>Desactivado</label>";
+					$message_status = "<label class='label label-danger'><a href='#' onclick = ".'"'."status_changer('shipping_lines','id_shipping_lines', '$id_shipping_lines','1')".'"'.">Desactivado</a></label>";
 				}
 				if($status == 1)
 				{
-					$message_status = "<label class='label label-success'>Activo</label>";
+					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('shipping_lines','id_shipping_lines', '$id_shipping_lines','0')".'"'.">Activo</a></label>";
 				}
-				$id_shipping_lines= $shipping_lines['id_shipping_lines'];
+				
 				$array_json['data'][] = array(
 					"id_shipping_lines" => $id_shipping_lines,
 					"name" => $shipping_lines['name'],

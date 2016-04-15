@@ -4,7 +4,6 @@
 if(isset($_REQUEST["action"]) and $_REQUEST["action"]!=""){
 	$action = $_REQUEST["action"];
 }
-
 $values = $_REQUEST;
 unset($values['PHPSESSID']);
 	switch ($action) {
@@ -76,16 +75,17 @@ unset($values['PHPSESSID']);
 		{
 			foreach ($bank_list_json as $bank) 
 			{
+				$id_bank= $bank['id_bank'];
 				$status = $bank['status'];
 				if($status == 0)
 				{
-					$message_status = "<label class='label label-danger'>Desactivado</label>";
+					$message_status = "<label class='label label-danger'><a href='#' onclick = ".'"'."status_changer('bank','id_bank', '$id_bank','1')".'"'.">Desactivado</a></label>";
 				}
 				if($status == 1)
 				{
-					$message_status = "<label class='label label-success'>Activo</label>";
+					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('bank','id_bank', '$id_bank','0')".'"'.">Activo</a></label>";
 				}
-				$id_bank= $bank['id_bank'];
+				
 				$array_json['data'][] = array(
 					"id_bank" => $id_bank,
 					"name" => $bank['name'],

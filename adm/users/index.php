@@ -81,16 +81,17 @@ $values = $_REQUEST;
 		{
 			foreach ($users_list_json as $user) 
 			{
+				$id_user = $user['id_user'];
 				$status = $user['status'];
 				if($status == 0)
 				{
-					$message_status = "<label class='label label-danger'>Desactivado</label>";
+					$message_status = "<label class='label label-danger'><a href='#' onclick = ".'"'."status_changer('users','id_user', '$id_user','1')".'"'.">Desactivado</a></label>";
 				}
 				if($status == 1)
 				{
-					$message_status = "<label class='label label-success'>Activo</label>";
+					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('users','id_user', '$id_user','0')".'"'.">Activo</a></label>";
 				}
-				$id_user = $user['id_user'];
+				
 				$array_json['data'][] = array(
 					"id_user" => $id_user,
 					"login" => $user['login'],

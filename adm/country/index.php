@@ -77,15 +77,16 @@ unset($values['PHPSESSID']);
 			foreach ($country_list_json as $country) 
 			{
 				$status = $country['status'];
+				$id_country= $country['id_country'];
 				if($status == 0)
 				{
-					$message_status = "<label class='label label-danger'>Desactivado</label>";
+					$message_status = "<label class='label label-danger'><a href='#' onclick = ".'"'."status_changer('country','id_country', '$id_country','1')".'"'.">Desactivado</a></label>";
 				}
 				if($status == 1)
 				{
-					$message_status = "<label class='label label-success'>Activo</label>";
+					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('country','id_country', '$id_country','0')".'"'.">Activo</a></label>";
 				}
-				$id_country= $country['id_country'];
+				
 				$array_json['data'][] = array(
 					"id_country" => $id_country,
 					"name" => $country['name'],
