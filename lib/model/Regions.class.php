@@ -23,7 +23,7 @@
 			$columns[0] = 'id_region';
 			$columns[1] = 'name';
 			$columns[2] = 'abr';
-			$columns[3] = 'status';
+			$columns[3] = 'status.name';
 			$columns[4] = 'date_created';
 			$columns[5] = 'date_updated';
 			$column_order = $columns[0];
@@ -51,7 +51,7 @@
 			//echo $column_order;die;
                         $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->regions()
-			->select("regions.*,status.name as status,DATE_FORMAT(regions.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(regions.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->select("regions.*,DATE_FORMAT(regions.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(regions.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
 			->join("status","LEFT JOIN status on status.id_status = regions.status")
                         ->where("$where")
                         ->order("$column_order $order")
