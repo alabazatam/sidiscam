@@ -5,12 +5,12 @@
 		<div class="row">
 			<p class="text-center">
 				
-				Debe iniciar sesión para proceder con su operación
+				<label class="alert alert-danger">Debe iniciar sesión para poder continuar</label>
 				
 			
 			</p>
 			<p class="text-center">
-				<a class="btn btn-success" href="<?php echo full_url?>/adm/index.php">Login</a>
+				<a class="btn btn-default" href="<?php echo full_url?>/adm/index.php">Login</a>
 			
 			</p>			
 
