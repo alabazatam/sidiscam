@@ -105,9 +105,8 @@ $values = $_REQUEST;
 				$array_json['data'][] = array(
 					"id_farm" => $id_farm,
 					"name" => $farm['name'],
+					"abr" => $farm['abr'],
 					"status" => $message_status,
-					"date_created" => $farm['date_created'],
-                                        "date_updated" => $farm['date_created'],
 					"actions" => '<form method="POST" action ="'.full_url.'/adm/farms/index.php"><input type="hidden" name="action" value="edit"><input type="hidden" name="id_farm" value="'.$id_farm.'"><button type="submit" class="btn btn-default"><i class="fa fa-edit fa-pull-left fa-border"></i></button><form>'
 
 					);	
@@ -115,7 +114,7 @@ $values = $_REQUEST;
 		}else{
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
-			$array_json['data'][0] = array("id_farm"=>null,"name"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
+			$array_json['data'][0] = array("id_farm"=>null,"name"=>"","abr"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
 		}
 
 		echo json_encode($array_json);die;

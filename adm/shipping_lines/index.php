@@ -104,7 +104,8 @@ $values = $_REQUEST;
 				
 				$array_json['data'][] = array(
 					"id_shipping_lines" => $id_shipping_lines,
-					"name" => $shipping_lines['name'],
+					"name" => $shipping_lines['shipping_line'],
+					"abr" => $shipping_lines['abr'],
 					"status" => $message_status,
 					"date_created" => $shipping_lines['date_created'],
 					"date_updated" => $shipping_lines['date_updated'],
@@ -120,7 +121,7 @@ $values = $_REQUEST;
 		}else{
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
-			$array_json['data'][0] = array("id_shipping_lines"=>null,"name"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
+			$array_json['data'][0] = array("id_shipping_lines"=>null,"name"=>"","abr"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
 		}
 
 		echo json_encode($array_json);die;

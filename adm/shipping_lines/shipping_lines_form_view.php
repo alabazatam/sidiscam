@@ -100,6 +100,12 @@
 		<?php endif;?>
 	  </div>
 		<div class="form-group">
+		  <label class="label label-danger">
+			<input type="radio" name="status" id="status" value="0" <?php if(isset($values['status']) and $values['status'] =='0' ) echo "checked=checked"?>>
+			Desactivar
+		  </label>
+		</div>
+		<div class="form-group">
 		  <label class="label label-success">
 			<input type="radio" name="status" id="status" value="1" <?php if(isset($values['status']) and $values['status'] =='1' ) echo "checked=checked"?>>
 			Activar

@@ -22,9 +22,10 @@
 			$columns = array();
 			$columns[0] = 'id_region';
 			$columns[1] = 'name';
-			$columns[2] = 'status';
-			$columns[3] = 'date_created';
-			$columns[4] = 'date_updated';
+			$columns[2] = 'abr';
+			$columns[3] = 'status';
+			$columns[4] = 'date_created';
+			$columns[5] = 'date_updated';
 			$column_order = $columns[0];
 			$where = '1 = 1';
 			$order = 'asc';
@@ -36,6 +37,7 @@
 				$where = ""
                                         . "upper(status.name) like upper('%$str%') "
                                         . "or upper(regions.name) like upper('%$str%')"
+										. "or upper(regions.abr) like upper('%$str%')"
                                         . "";
 			}
 			if(isset($values['order'][0]['column']) and $values['order'][0]['column']!='0')
@@ -49,7 +51,7 @@
 			//echo $column_order;die;
                         $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->regions()
-			->select("regions.*,DATE_FORMAT(regions.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(regions.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->select("regions.*,status.name as status,DATE_FORMAT(regions.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(regions.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
 			->join("status","LEFT JOIN status on status.id_status = regions.status")
                         ->where("$where")
                         ->order("$column_order $order")
@@ -65,11 +67,14 @@
 				$where = ""
                                         . "upper(status.name) like upper('%$str%') "
                                         . "or upper(regions.name) like upper('%$str%')"
+										. "or upper(regions.abr) like upper('%$str%')"
                                         . "";
 			}
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->regions
-			->select("count(*) as cuenta")->where("$where")->fetch();
+			->select("count(*) as cuenta")
+			->join("status","LEFT JOIN status on status.id_status = regions.status")	
+			->where("$where")->fetch();
 			return $q['cuenta']; 			
 		}
 		public function getRegionsById($values){

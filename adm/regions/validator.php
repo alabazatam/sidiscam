@@ -23,12 +23,6 @@
 			"label" => "Abreviatura",
 			"required" => false
 		);
-		$validator_values['id_country'] = array(
-			
-			"type" => "number",
-			"label" => "País",
-			"required" => true
-		);
 		$validator_values['id_region'] = array(
 			
 			"type" => "number",

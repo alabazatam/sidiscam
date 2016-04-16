@@ -105,6 +105,7 @@ unset($values['PHPSESSID']);
 				$array_json['data'][] = array(
 					"id_country" => $id_country,
 					"name" => $country['name'],
+					"abr" => $country['abr'],
 					"status" => $message_status,
 					"date_created" => $country['date_created'],
 					"date_updated" => $country['date_updated'],
@@ -120,7 +121,7 @@ unset($values['PHPSESSID']);
 		}else{
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
-			$array_json['data'][0] = array("id_country"=>null,"name"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
+			$array_json['data'][0] = array("id_country"=>null,"name"=>"","abr"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
 		}
 
 		echo json_encode($array_json);die;

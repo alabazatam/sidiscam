@@ -22,9 +22,10 @@
 			$columns = array();
 			$columns[0] = 'id_country';
 			$columns[1] = 'name';
-			$columns[2] = 'status';
-			$columns[3] = 'date_created';
-			$columns[4] = 'date_updated';
+			$columns[2] = 'abr';
+			$columns[3] = 'status';
+			$columns[4] = 'date_created';
+			$columns[5] = 'date_updated';
 			$column_order = $columns[0];
 			$where = '1 = 1';
 			$order = 'asc';
@@ -35,6 +36,7 @@
 				$str = $values['search']['value'];
 				$where = ""
                                         . "upper(status.name) like upper('%$str%') "
+										. "or upper(country.abr) like upper('%$str%') "
                                         . "or upper(country.name) like upper('%$str%')"
                                         . "";
 			}
@@ -49,7 +51,7 @@
 			//echo $column_order;die;
                         $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->country()
-			->select("country.*,DATE_FORMAT(country.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(country.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->select("country.*,status.name as status,DATE_FORMAT(country.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(country.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
 			->join("status","LEFT JOIN status on status.id_status = country.status")
                         ->where("$where")
                         ->order("$column_order $order")
@@ -64,12 +66,15 @@
 				$str = $values['search']['value'];
 				$where = ""
                                         . "upper(status.name) like upper('%$str%') "
+										. "or upper(country.abr) like upper('%$str%') "
                                         . "or upper(country.name) like upper('%$str%')"
                                         . "";
 			}
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->country
-			->select("count(*) as cuenta")->where("$where")->fetch();
+			->select("count(*) as cuenta")
+			->join("status","LEFT JOIN status on status.id_status = country.status")
+			->where("$where")->fetch();
 			return $q['cuenta']; 			
 		}
 		public function getCountryById($values){

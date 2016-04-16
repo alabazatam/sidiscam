@@ -22,9 +22,10 @@
 			$columns = array();
 			$columns[0] = 'id_farm';
 			$columns[1] = 'name';
-			$columns[2] = 'status';
-			$columns[3] = 'date_created';
-			$columns[4] = 'date_updated';
+			$columns[2] = 'abr';
+			$columns[3] = 'status';
+			$columns[4] = 'date_created';
+			$columns[5] = 'date_updated';
 			$column_order = $columns[0];
 			$where = '1 = 1';
 			$order = 'asc';
@@ -33,7 +34,7 @@
 			if(isset($values['search']['value']) and $values['search']['value'] !='')
 			{	
 				$str = $values['search']['value'];
-				$where = "upper(name) like upper('%$str%')";
+				$where = "upper(name) like upper('%$str%')or upper(abr) like upper('%$str%')";
 			}
 			if(isset($values['order'][0]['column']) and $values['order'][0]['column']!='0')
 			{
@@ -58,7 +59,7 @@
 			if(isset($values['search']['value']) and $values['search']['value'] !='')
 			{	
 				$str = $values['search']['value'];
-				$where = "upper(name) like upper('%$str%') ";
+				$where = "upper(name) like upper('%$str%')or upper(abr) like upper('%$str%')";
 			}
             $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->farms
