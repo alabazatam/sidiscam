@@ -1,4 +1,4 @@
-<?php include("../view_header.php"); print_r($_SESSION)?>
+<?php include("../view_header.php");?>
         	<div class="col-md-4 col-lg-4">
         	</div>
         	
