@@ -29,7 +29,7 @@ $values = $_REQUEST;
 	}
 						
 	function executeIndex($values = null){
-	
+	session_unset();
 	require('login.php');
 	}
 	function executeBienvenida($values = null){
