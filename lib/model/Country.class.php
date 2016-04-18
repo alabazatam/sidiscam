@@ -38,7 +38,7 @@
                                         . "upper(status.name) like upper('%$str%') "
 										. "or upper(country.abr) like upper('%$str%') "
                                         . "or upper(country.name) like upper('%$str%')"
-                                        . "";
+                                        . "or cast(id_country as char(100)) =  '$str' ";
 			}
 			if(isset($values['order'][0]['column']) and $values['order'][0]['column']!='0')
 			{
@@ -51,7 +51,7 @@
 			//echo $column_order;die;
                         $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->country()
-			->select("country.*,status.name as status,DATE_FORMAT(country.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(country.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->select("country.*,DATE_FORMAT(country.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(country.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
 			->join("status","LEFT JOIN status on status.id_status = country.status")
                         ->where("$where")
                         ->order("$column_order $order")
@@ -68,7 +68,7 @@
                                         . "upper(status.name) like upper('%$str%') "
 										. "or upper(country.abr) like upper('%$str%') "
                                         . "or upper(country.name) like upper('%$str%')"
-                                        . "";
+                                        . "or cast(id_country as char(100)) =  '$str' ";
 			}
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->country

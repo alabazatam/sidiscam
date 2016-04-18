@@ -109,6 +109,8 @@ unset($values['PHPSESSID']);
 				$array_json['data'][] = array(
 					"id_bank" => $id_bank,
 					"name" => $bank['name'],
+					"swif" => $bank['swif'],
+					"aba" => $bank['aba'],
 					"status" => $message_status,
 					"date_created" => $bank['date_created'],
 					"date_updated" => $bank['date_updated'],
@@ -124,7 +126,7 @@ unset($values['PHPSESSID']);
 		}else{
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
-			$array_json['data'][0] = array("id_bank"=>null,"name"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
+			$array_json['data'][0] = array("id_bank"=>null,"name"=>"","aba"=>"","swif"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
 		}
 
 		echo json_encode($array_json);die;

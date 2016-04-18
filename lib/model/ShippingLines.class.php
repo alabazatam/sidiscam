@@ -38,7 +38,7 @@
                                         . "upper(status.name) like upper('%$str%') "
 										. "or upper(shipping_lines.abr) like upper('%$str%') "
                                         . "or upper(shipping_lines.name) like upper('%$str%')"
-                                        . "";
+                                        . "or cast(id_shipping_lines as char(100)) =  '$str' ";
 			}
 			if(isset($values['order'][0]['column']) and $values['order'][0]['column']!='0')
 			{
@@ -68,7 +68,7 @@
                                         . "upper(status.name) like upper('%$str%') "
 										. "or upper(shipping_lines.abr) like upper('%$str%') "
                                         . "or upper(shipping_lines.name) like upper('%$str%')"
-                                        . "";
+                                        . "or cast(id_shipping_lines as char(100)) =  '$str' ";
 			}
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->shipping_lines

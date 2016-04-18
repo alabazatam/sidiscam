@@ -105,9 +105,10 @@ $values = $_REQUEST;
 				$array_json['data'][] = array(
 					"id_port" => $id_port,
 					"name" => $product['name'],
+					"abr" => $product['abr'],
 					"status" => $message_status,
 					"date_created" => $product['date_created'],
-                                        "date_updated" => $product['date_created'],
+                    "date_updated" => $product['date_created'],
 					"actions" => '<form method="POST" action ="'.full_url.'/adm/ports/index.php"><input type="hidden" name="action" value="edit"><input type="hidden" name="id_port" value="'.$id_port.'"><button type="submit" class="btn btn-default"><i class="fa fa-edit fa-pull-left fa-border"></i></button><form>'
 
 					);	
@@ -115,7 +116,7 @@ $values = $_REQUEST;
 		}else{
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
-			$array_json['data'][0] = array("id_port"=>null,"name"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
+			$array_json['data'][0] = array("id_port"=>null,"name"=>"","abr"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
 		}
 
 		echo json_encode($array_json);die;

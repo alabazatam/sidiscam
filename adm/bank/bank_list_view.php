@@ -7,9 +7,9 @@
 				<tr>
 					<th>Id</th>
 					<th>name</th>
+					<th>ABA</th>
+					<th>swif</th>
 					<th>Status</th>
-					<th>Fecha creado</th>
-					<th>Fecha modificado</th>
 					<th>Acciones</th>
 				</tr>
 			</thead>
@@ -17,9 +17,9 @@
 				<tr>
 					<th>Id</th>
 					<th>name</th>
+					<th>ABA</th>
+					<th>swif</th>
 					<th>Status</th>
-					<th>Fecha creado</th>
-					<th>Fecha modificado</th>
 					<th>Acciones</th>
 				</tr>
 			</tfoot>
@@ -40,9 +40,9 @@ $(document).ready(function() {
         "columns": [
             { "data": "id_bank" },
             { "data": "name" },
+            { "data": "aba" },
+            { "data": "swif" },
             { "data": "status" },
-            { "data": "date_created" },
-            { "data": "date_updated" },
             { "data": "actions" }
         ],
       "aoColumnDefs": [

@@ -21,10 +21,11 @@
 		{	
 			$columns = array();
 			$columns[0] = 'id_product_type';
-			$columns[1] = 'name';
-			$columns[2] = 'status';
-			$columns[3] = 'date_created';
-			$columns[4] = 'date_updated';
+			$columns[1] = 'products_type.name';
+			$columns[2] = 'abr';
+			$columns[3] = 'status';
+			$columns[4] = 'date_created';
+			$columns[5] = 'date_updated';
 			$column_order = $columns[0];
 			$where = '1 = 1';
 			$order = 'asc';
@@ -33,7 +34,10 @@
 			if(isset($values['search']['value']) and $values['search']['value'] !='')
 			{	
 				$str = $values['search']['value'];
-				$where = "upper(name) like upper('%$str%')";
+				$where = "upper(products_type.name) like upper('%$str%')"
+					. "or upper(status.name) like upper('%$str%')"
+					. "or upper(products_type.abr) like upper('%$str%')"
+					. "or cast(id_product_type as char(100)) =  '$str' ";
 			}
 			if(isset($values['order'][0]['column']) and $values['order'][0]['column']!='0')
 			{
@@ -46,7 +50,8 @@
 			//echo $column_order;die;
             $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->products_type
-			->select("*, DATE_FORMAT(date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->select("*,products_type.name as name, DATE_FORMAT(products_type.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(products_type.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->join("status","LEFT JOIN status on status.id_status = products_type.status")
 			->order("$column_order $order")
 			->where("$where")
 			->limit($limit,$offset);
@@ -58,11 +63,17 @@
 			if(isset($values['search']['value']) and $values['search']['value'] !='')
 			{	
 				$str = $values['search']['value'];
-				$where = "upper(name) like upper('%$str%') ";
+				$where = "upper(products_type.name) like upper('%$str%')"
+					. "or upper(status.name) like upper('%$str%')"
+					. "or upper(products_type.abr) like upper('%$str%')"
+					. "or cast(id_product_type as char(100)) =  '$str' ";
 			}
             $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->products_type
-			->select("count(*) as cuenta")->where("$where")->fetch();
+			->select("count(*) as cuenta")
+			->join("status","LEFT JOIN status on status.id_status = products_type.status")	
+			->where("$where")
+			->fetch();
 			return $q['cuenta']; 			
 		}
 		public function getProductsTypeById($values){

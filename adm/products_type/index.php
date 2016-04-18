@@ -105,6 +105,7 @@ $values = $_REQUEST;
 				$array_json['data'][] = array(
 					"id_product_type" => $id_product_type,
 					"name" => $products_type['name'],
+					"abr" => $products_type['abr'],
 					"status" => $message_status,
 					"date_created" => $products_type['date_created'],
                                         "date_updated" => $products_type['date_created'],
@@ -115,7 +116,7 @@ $values = $_REQUEST;
 		}else{
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
-			$array_json['data'][0] = array("id_product_type"=>null,"name"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
+			$array_json['data'][0] = array("id_product_type"=>null,"name"=>"","abr"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
 		}
 
 		echo json_encode($array_json);die;

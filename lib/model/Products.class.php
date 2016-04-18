@@ -21,7 +21,7 @@
 		{	
 			$columns = array();
 			$columns[0] = 'id_product';
-			$columns[1] = 'name';
+			$columns[1] = 'products.name';
 			$columns[2] = 'status';
 			$columns[3] = 'date_created';
 			$columns[4] = 'date_updated';
@@ -33,7 +33,9 @@
 			if(isset($values['search']['value']) and $values['search']['value'] !='')
 			{	
 				$str = $values['search']['value'];
-				$where = "upper(name) like upper('%$str%')";
+				$where = "upper(products.name) like upper('%$str%')"
+					. "or upper(status.name) like upper('%$str%')"
+					. "or cast(id_product as char(100)) =  '$str' ";
 			}
 			if(isset($values['order'][0]['column']) and $values['order'][0]['column']!='0')
 			{
@@ -46,7 +48,8 @@
 			//echo $column_order;die;
             $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->products
-			->select("*, DATE_FORMAT(date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->select("*,products.name as name, DATE_FORMAT(products.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(products.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->join("status","LEFT JOIN status on status.id_status = products.status")
 			->order("$column_order $order")
 			->where("$where")
 			->limit($limit,$offset);
@@ -58,17 +61,22 @@
 			if(isset($values['search']['value']) and $values['search']['value'] !='')
 			{	
 				$str = $values['search']['value'];
-				$where = "upper(name) like upper('%$str%') ";
+				$where = "upper(products.name) like upper('%$str%')"
+					. "or upper(status.name) like upper('%$str%')"
+					. "or cast(id_product as char(100)) =  '$str' ";
 			}
             $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->products
-			->select("count(*) as cuenta")->where("$where")->fetch();
+			->select("count(*) as cuenta")
+			->join("status","LEFT JOIN status on status.id_status = products.status")
+			->where("$where")->fetch();
 			return $q['cuenta']; 			
 		}
 		public function getProductsById($values){
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->products
 			->select("*, DATE_FORMAT(date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			
 			->where("id_product=?",$values['id_product'])->fetch();
                         return $q; 				
 			

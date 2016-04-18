@@ -21,10 +21,11 @@
 		{	
 			$columns = array();
 			$columns[0] = 'id_port';
-			$columns[1] = 'name';
-			$columns[2] = 'status';
-			$columns[3] = 'date_created';
-			$columns[4] = 'date_updated';
+			$columns[1] = 'ports.name';
+			$columns[2] = 'ports.abr';
+			$columns[3] = 'status';
+			$columns[4] = 'date_created';
+			$columns[5] = 'date_updated';
 			$column_order = $columns[0];
 			$where = '1 = 1';
 			$order = 'asc';
@@ -33,7 +34,10 @@
 			if(isset($values['search']['value']) and $values['search']['value'] !='')
 			{	
 				$str = $values['search']['value'];
-				$where = "upper(name) like upper('%$str%')";
+				$where = "upper(ports.name) like upper('%$str%')"
+					. "or upper(status.name) like upper('%$str%')"
+					. "or upper(ports.abr) like upper('%$str%')"
+					. "or cast(id_port as char(100)) =  '$str' ";
 			}
 			if(isset($values['order'][0]['column']) and $values['order'][0]['column']!='0')
 			{
@@ -46,8 +50,9 @@
 			//echo $column_order;die;
             $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->ports
-			->select("*, DATE_FORMAT(date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->select("*,ports.name as name, DATE_FORMAT(ports.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(ports.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
 			->order("$column_order $order")
+			->join("status","LEFT JOIN status on status.id_status = ports.status")
 			->where("$where")
 			->limit($limit,$offset);
 			return $q; 			
@@ -58,11 +63,16 @@
 			if(isset($values['search']['value']) and $values['search']['value'] !='')
 			{	
 				$str = $values['search']['value'];
-				$where = "upper(name) like upper('%$str%') ";
+				$where = "upper(ports.name) like upper('%$str%')"
+					. "or upper(status.name) like upper('%$str%')"
+					. "or upper(ports.abr) like upper('%$str%')"
+					. "or cast(id_port as char(100)) =  '$str' ";
 			}
             $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->ports
-			->select("count(*) as cuenta")->where("$where")->fetch();
+			->select("count(*) as cuenta")
+			->join("status","LEFT JOIN status on status.id_status = ports.status")
+			->where("$where")->fetch();
 			return $q['cuenta']; 			
 		}
 		public function getPortsById($values){

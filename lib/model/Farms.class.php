@@ -21,9 +21,9 @@
 		{	
 			$columns = array();
 			$columns[0] = 'id_farm';
-			$columns[1] = 'name';
+			$columns[1] = 'farms.name';
 			$columns[2] = 'abr';
-			$columns[3] = 'status';
+			$columns[3] = 'status.name';
 			$columns[4] = 'date_created';
 			$columns[5] = 'date_updated';
 			$column_order = $columns[0];
@@ -34,7 +34,10 @@
 			if(isset($values['search']['value']) and $values['search']['value'] !='')
 			{	
 				$str = $values['search']['value'];
-				$where = "upper(name) like upper('%$str%')or upper(abr) like upper('%$str%')";
+				$where = "upper(farms.name) like upper('%$str%')"
+					. "or upper(abr) like upper('%$str%')"
+					. "or upper(status.name) like upper('%$str%')"
+					. "or cast(id_farm as char(100)) =  '$str' ";
 			}
 			if(isset($values['order'][0]['column']) and $values['order'][0]['column']!='0')
 			{
@@ -47,8 +50,9 @@
 			//echo $column_order;die;
             $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->farms
-			->select("*, DATE_FORMAT(date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->select("*,farms.name as name, DATE_FORMAT(farms.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(farms.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
 			->order("$column_order $order")
+			->join("status","LEFT JOIN status on status.id_status = farms.status")	
 			->where("$where")
 			->limit($limit,$offset);
 			return $q; 			
@@ -59,11 +63,17 @@
 			if(isset($values['search']['value']) and $values['search']['value'] !='')
 			{	
 				$str = $values['search']['value'];
-				$where = "upper(name) like upper('%$str%')or upper(abr) like upper('%$str%')";
+				$where = "upper(farms.name) like upper('%$str%')"
+					. "or upper(abr) like upper('%$str%')"
+					. "or upper(status.name) like upper('%$str%')"
+					. "or cast(id_farm as char(100)) =  '$str' ";
 			}
             $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->farms
-			->select("count(*) as cuenta")->where("$where")->fetch();
+			->select("count(*) as cuenta")
+			->where("$where")
+			->join("status","LEFT JOIN status on status.id_status = farms.status")	
+			->fetch();
 			return $q['cuenta']; 			
 		}
 		public function getFarmsById($values){

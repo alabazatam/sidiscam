@@ -7,9 +7,8 @@
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
+					<th>Abreviatura</th>
                     <th>Status</th>
-                    <th>Fecha creado</th>
-                    <th>Fecha Modificado</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -17,9 +16,8 @@
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
+					<th>Abreviatura</th>
                     <th>Status</th>
-                    <th>Fecha creado</th>
-                    <th>Fecha Modificado</th>
                     <th>Acciones</th>
                 </tr>
             </tfoot>
@@ -40,13 +38,12 @@ $(document).ready(function() {
         "columns": [
             { "data": "id_port" },
             { "data": "name" },
+			{ "data": "abr" },
             { "data": "status" },
-            { "data": "date_created" },
-            { "data": "date_updated" },
             { "data": "actions" }
         ],
       "aoColumnDefs": [
-          { 'bSortable': false, 'aTargets': [ 5 ] }
+          { 'bSortable': false, 'aTargets': [ 4 ] }
        ]				
     });
 } );

@@ -8,8 +8,6 @@
                     <th>Id</th>
                     <th>Nombre</th>
                     <th>Status</th>
-                    <th>Fecha creado</th>
-                    <th>Fecha Modificado</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -18,8 +16,6 @@
                     <th>Id</th>
                     <th>Nombre</th>
                     <th>Status</th>
-                    <th>Fecha creado</th>
-                    <th>Fecha Modificado</th>
                     <th>Acciones</th>
                 </tr>
             </tfoot>
@@ -41,12 +37,10 @@ $(document).ready(function() {
             { "data": "id_product" },
             { "data": "name" },
             { "data": "status" },
-            { "data": "date_created" },
-            { "data": "date_updated" },
             { "data": "actions" }
         ],
       "aoColumnDefs": [
-          { 'bSortable': false, 'aTargets': [ 5 ] }
+          { 'bSortable': false, 'aTargets': [ 3 ] }
        ]				
     });
 } );
