@@ -4,6 +4,7 @@
 
 
 
+
 $action = "";
 if(isset($_REQUEST["action"]) and $_REQUEST["action"]!=""){
 	$action = $_REQUEST["action"];
@@ -33,9 +34,14 @@ $values = $_REQUEST;
 	require('login.php');
 	}
 	function executeBienvenida($values = null){
-	
 		
-		
+		$securimage = new Securimage();
+		$captcha = $values['ct_captcha'];
+		if ($securimage->check($captcha) == false) {
+		  $errors['captcha_error'] = 'Incorrect security code entered<br />';
+				$values['error'] = "Imagen incorrecta";
+				require('login.php');die;
+		}
 		if((!isset($values['password']) or $values['password'] == '')  or (!isset($values['password']) or $values['password'] == '') )
 		{
 			$values['error'] = "Debe indicar el usuario y la clave";

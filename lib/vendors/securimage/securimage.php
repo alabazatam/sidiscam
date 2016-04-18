@@ -368,7 +368,7 @@ class Securimage
      * The color of the captcha text
      * @var Securimage_Color|string
      */
-    public $text_color     = '#707070';
+    public $text_color     = '#000000';
 
     /**
      * The color of the lines over the captcha
@@ -389,7 +389,7 @@ class Securimage
      *
      * @var int
      */
-    public $text_transparency_percentage = 20;
+    public $text_transparency_percentage = 10;
 
     /**
      * Whether or not to draw the text transparently.
@@ -419,7 +419,7 @@ class Securimage
      * The character set to use for generating the captcha code
      * @var string
      */
-    public $charset        = 'ABCDEFGHKLMNPRSTUVWYZabcdefghklmnprstuvwyz23456789';
+    public $charset        = 'ABCDEFGHKMNPRSTUVWYZabcdefghkmnprstuvwyz23456789';
 
     /**
      * How long in seconds a captcha remains valid, after this time it will be
@@ -453,19 +453,19 @@ class Securimage
      *
      * @var double
      */
-    public $perturbation = 0.85;
+    public $perturbation = 0.1;
 
     /**
      * How many lines to draw over the captcha code to increase security
      * @var int
      */
-    public $num_lines    = 5;
+    public $num_lines    = 1;
 
     /**
      * The level of noise (random dots) to place on the image, 0-10
      * @var int
      */
-    public $noise_level  = 2;
+    public $noise_level  = 1;
 
     /**
      * The signature text to draw on the bottom corner of the image
@@ -1279,7 +1279,7 @@ class Securimage
         $show_input        = (isset($options['show_text_input'])) ? (bool)$options['show_text_input'] : true;
         $refresh_alt       = (isset($options['refresh_alt_text'])) ? $options['refresh_alt_text'] : 'Refresh Image';
         $refresh_title     = (isset($options['refresh_title_text'])) ? $options['refresh_title_text'] : 'Refresh Image';
-        $input_text        = (isset($options['input_text'])) ? $options['input_text'] : 'Type the text:';
+        $input_text        = (isset($options['input_text'])) ? $options['input_text'] : 'Escriba los caracteres de la imagen:';
         $input_id          = (isset($options['input_id'])) ? $options['input_id'] : 'captcha_code';
         $input_name        = (isset($options['input_name'])) ? $options['input_name'] :  $input_id;
         $input_attrs       = (isset($options['input_attributes'])) ? $options['input_attributes'] : array();
