@@ -9,8 +9,6 @@
 					<th>Login</th>
 					<th>Password</th>
 					<th>Status</th>
-                                        <th>Fecha creado</th>
-                                        <th>Fecha modificado</th>
 					<th>Acciones</th>
 				</tr>
 			</thead>
@@ -20,8 +18,6 @@
 					<th>Login</th>
 					<th>Password</th>
 					<th>Status</th>
-                                        <th>Fecha creado</th>
-                                        <th>Fecha modificado</th>
 					<th>Acciones</th>
 				</tr>
 			</tfoot>
@@ -44,12 +40,10 @@ $(document).ready(function() {
             { "data": "login" },
             { "data": "password" },
             { "data": "status" },
-            { "data": "date_created" },
-            { "data": "date_updated" },
             { "data": "actions" }
         ],
       "aoColumnDefs": [
-          { 'bSortable': false, 'aTargets': [ 6 ] }
+          { 'bSortable': false, 'aTargets': [ 4 ] }
        ]				
     });
 } );

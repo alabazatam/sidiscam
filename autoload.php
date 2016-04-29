@@ -75,6 +75,9 @@ include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/ProductsType.class
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Regions.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Ports.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Bank.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Clients.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Plants.class.php");
+
 require($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/vendors/securimage/securimage.php');
 /*validation class*/
 //include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/vendor/GUMP/gump.class.php");

@@ -34,7 +34,8 @@
 			if(isset($values['search']['value']) and $values['search']['value'] !='')
 			{	
 				$str = $values['search']['value'];
-				$where = "upper(login) like upper('%$str%')";
+				$where = "upper(login) like upper('%$str%')"
+					. "or upper(status.name) like upper('%$str%') ";
 			}
 			if(isset($values['order'][0]['column']) and $values['order'][0]['column']!='0')
 			{
@@ -47,7 +48,8 @@
 			//echo $column_order;die;
             $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->users
-			->select("*, DATE_FORMAT(date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->select("*, DATE_FORMAT(users.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(users.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->join("status","LEFT JOIN status on status.id_status = users.status")
 			->order("$column_order $order")
 			->where("$where")
 			->limit($limit,$offset);
@@ -59,11 +61,15 @@
 			if(isset($values['search']['value']) and $values['search']['value'] !='')
 			{	
 				$str = $values['search']['value'];
-				$where = "upper(login) like upper('%$str%') ";
+				$where = "upper(login) like upper('%$str%') "
+					. "or upper(status.name) like upper('%$str%') ";
 			}
             $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->users
-			->select("count(*) as cuenta")->where("$where")->fetch();
+			->select("count(*) as cuenta")
+			->join("status","LEFT JOIN status on status.id_status = users.status")
+			->where("$where")
+			->fetch();
 			return $q['cuenta']; 			
 		}
 		public function getUserById($values){

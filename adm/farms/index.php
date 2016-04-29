@@ -52,7 +52,7 @@ $values = $_REQUEST;
 			$values['errors'] = $errors;
 			require('farms_form_view.php');die;
 		}else{		
-			$values = $Bank->saveFarms($values);			
+			$values = $Farms->saveFarms($values);			
 			executeEdit($values,message_created);die;
 		}
 	}
