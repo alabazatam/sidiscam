@@ -27,7 +27,7 @@
           </ul>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle facebook_font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-line-chart"></i> Maestros <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle facebook_font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-book"></i> Maestros <span class="caret"></span></a>
           <ul class="dropdown-menu" class="facebook_font">
 			 <li><a href="<?php echo full_url;?>/adm/clients/index.php">Clientes</a></li>
             <li><a href="<?php echo full_url;?>/adm/farms/index.php">Granjas</a></li>
