@@ -1,6 +1,6 @@
 <?php include('../../view_header.php')?>
 <?php include('../menu.php')?>
-<div class="container">
+<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
 	<h1 class="text-center">Cambio de clave</h1>
 	<form class="" action="index.php" method="POST">
 		<input type="hidden" name='action' value='<?php if(isset($values['action']))echo $values['action'];?>'>
@@ -10,16 +10,19 @@
 		<?php echo $_SESSION['login'];?>
 	  </div>
 	  <div class="form-group">
-		<label for="">Clave actual</label>
+		<label for="">Clave actual <small class="text-danger">(*)</small></label>
 		<input autocomplete="off" type="password" id="" class="form-control input-sm" name="password" value="">
 	  </div>
 	  <div class="form-group">
-		<label for="">Clave nueva</label>
+		<label for="">Clave nueva <small class="text-danger">(*)</small></label>
 		<input autocomplete="off" type="password" id="" class="form-control input-sm" name="new_password" value="">
 	  </div>
 	  <div class="form-group">
-		<label for="">Repetir clave nueva</label>
+		<label for="">Repetir clave nueva <small class="text-danger">(*)</small></label>
 		<input autocomplete="off" type="password" id="" class="form-control input-sm" name="retype_password" value="">
+	  </div>
+	  <div class="form-group">
+			<label class="text-danger">Campos requeridos (*)</label>
 	  </div>
 		
 		<button type="submit" class="btn btn-default"><i class="fa fa-save fa-pull-left fa-border"></i> Guardar</button>

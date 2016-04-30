@@ -2,7 +2,7 @@
 <?php include("menu.php");?>
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <div class="page-header">
-        <h1>Bienvenido(a) <strong>Usuario </strong><small> a <?php echo title;?> <?php echo version;?></small></h1>
+        <h1>Bienvenido(a) <strong><?php echo $_SESSION['login'];?> </strong><small> a <?php echo title;?> <?php echo version;?></small></h1>
     </div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -14,7 +14,7 @@
 		  <div class="panel-body">
                     <ul class="list-group">
                         <li class="list-group-item">Empresa: <small>Distribuidora 1</small></li>
-                        <li class="list-group-item">Usuario: <small>Usuario</small></li>
+                        <li class="list-group-item">Usuario: <small><?php echo $_SESSION['login'];?></small></li>
                         <li class="list-group-item">Ultima Conexion: <small> <?php echo date('d-m-Y h:i:s')?></small></li>
                         
                     </ul>                    

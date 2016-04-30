@@ -1,6 +1,6 @@
 <?php include('../../view_header.php')?>
 <?php include('../menu.php')?>
-<div class="col-xs-10 col-sm-10 col-md-8 col-lg-8 col-xs-offset-1 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
+<div class="container">
     <h1 class="text-center">Puertos</h1>
     <table id="example" class="table table-striped table-bordered table-responsive" width="100%" cellspacing="0">
             <thead>
