@@ -1,13 +1,13 @@
 <?php include('../../view_header.php')?>
 <?php include('../menu.php')?>
 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
-	<h1 class="text-center">Lineas Navieras</h1>
+	<h1 class="text-center">Brokers</h1>
 	<form class="form-horizontal" action="index.php" method="POST">
 		<input type="hidden" name='action' value='<?php if(isset($values['action']))echo $values['action'];?>'>
 	  <div class="form-group">
 		<div class="col-sm-3">
 			<label for="">Id</label>
-			<input autocomplete="off" readonly="readonly" type="text" class="form-control input-sm" id="" placeholder="" name="id_shipping_lines" value="<?php if(isset($values['id_shipping_lines'])) echo $values['id_shipping_lines']?>">
+			<input autocomplete="off" readonly="readonly" type="text" class="form-control input-sm" id="" placeholder="" name="id_broker" value="<?php if(isset($values['id_broker'])) echo $values['id_broker']?>">
 		</div>
 	</div>
       <div class="form-group">
@@ -53,66 +53,21 @@
 	  </div>
 	  <div class="form-group">
 		  <div class="col-sm-6">
-			<label for="">Correo electrónico principal</label>
+			<label for="">Email principal</label>
 			<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="email1" value="<?php if(isset($values['email1'])) echo $values['email1']?>">
 			<?php if(isset($values['errors']['email1']) and $values['errors']['email1']!=''):?>
 				<label class="alert alert-danger"><?php echo $values['errors']['email1']?></label>
 			<?php endif;?>
 		  </div>
 		  <div class="col-sm-6">
-		<label for="">Correo electrónico secundario</label>
+		<label for="">Email secundario</label>
 		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="email2" value="<?php if(isset($values['email2'])) echo $values['email2']?>">
 		<?php if(isset($values['errors']['email2']) and $values['errors']['email2']!=''):?>
 			<label class="alert alert-danger"><?php echo $values['errors']['email2']?></label>
 		<?php endif;?>
 		  </div>
 	  </div>
-	  <div class="form-group">
-		  <div class="col-sm-4">
-		<label for="">Contacto principal</label>
-		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="contact1" value="<?php if(isset($values['contact1'])) echo $values['contact1']?>">
-		<?php if(isset($values['errors']['contact1']) and $values['errors']['contact1']!=''):?>
-			<label class="alert alert-danger"><?php echo $values['errors']['contact1']?></label>
-		<?php endif;?>
-		  </div>
-		  <div class="col-sm-4">
-		<label for="">Teléfono contacto</label>
-		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="phone_contact1" value="<?php if(isset($values['phone_contact1'])) echo $values['phone_contact1']?>">
-		<?php if(isset($values['errors']['phone_contact1']) and $values['errors']['phone_contact1']!=''):?>
-			<label class="alert alert-danger"><?php echo $values['errors']['phone_contact1']?></label>
-		<?php endif;?>
-		  </div>
-		  <div class="col-sm-4">
-			<label for="">Correo electrónico</label>
-			<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="email_contact1" value="<?php if(isset($values['email_contact1'])) echo $values['email_contact1']?>">
-			<?php if(isset($values['errors']['email_contact1']) and $values['errors']['email_contact1']!=''):?>
-				<label class="alert alert-danger"><?php echo $values['errors']['email_contact1']?></label>
-			<?php endif;?>
-		  </div>
-	  </div>
-	  <div class="form-group">
-		  <div class="col-sm-4">
-		<label for="">Contacto secundario</label>
-		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="contact2" value="<?php if(isset($values['contact2'])) echo $values['contact2']?>">
-		<?php if(isset($values['errors']['contact2']) and $values['errors']['contact2']!=''):?>
-			<label class="alert alert-danger"><?php echo $values['errors']['contact2']?></label>
-		<?php endif;?>
-		  </div>
-		  <div class="col-sm-4">
-		<label for="">Teléfono contacto</label>
-		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="phone_contact2" value="<?php if(isset($values['phone_contact2'])) echo $values['phone_contact2']?>">
-		<?php if(isset($values['errors']['phone_contact2']) and $values['errors']['phone_contact2']!=''):?>
-			<label class="alert alert-danger"><?php echo $values['errors']['phone_contact2']?></label>
-		<?php endif;?>
-		  </div>
-		  <div class="col-sm-4">
-		<label for="">Correo electrónico</label>
-		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="email_contact2" value="<?php if(isset($values['email_contact2'])) echo $values['email_contact2']?>">
-		<?php if(isset($values['errors']['email_contact2']) and $values['errors']['email_contact2']!=''):?>
-			<label class="alert alert-danger"><?php echo $values['errors']['email_contact2']?></label>
-		<?php endif;?>
-		  </div>
-	  </div>
+	  
 		<div class="form-group">
 			<div class="col-sm-4">
 		  <label class="label label-danger">
@@ -145,7 +100,7 @@
 	  </div>
       <div class="form-group">
 		<div class="col-sm-6 col-sm-offset-4">		
-		<a class="btn btn-default"  href="<?php echo full_url."/adm/shipping_lines/index.php"?>"><i class="fa fa-arrow-left  fa-pull-left fa-border"></i> Regresar</a>
+		<a class="btn btn-default"  href="<?php echo full_url."/adm/brokers/index.php"?>"><i class="fa fa-arrow-left  fa-pull-left fa-border"></i> Regresar</a>
 		<button type="submit" class="btn btn-default"><i class="fa fa-save fa-pull-left fa-border"></i> Guardar</button>
 		</div>
 	  </div>

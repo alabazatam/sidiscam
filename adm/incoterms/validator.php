@@ -23,12 +23,6 @@
 			"label" => "Abreviatura",
 			"required" => false
 		);
-		$validator_values['id_region'] = array(
-			
-			"type" => "number",
-			"label" => "Región",
-			"required" => true
-		);
 		$ValidateBase = new ValidateBase();
 		$errors = $ValidateBase->validate_base($validator_values, $values);
 		return $errors;

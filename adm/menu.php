@@ -40,6 +40,9 @@
 			<li><a href="<?php echo full_url;?>/adm/products/index.php">Productos</a></li>
 			<li><a href="<?php echo full_url;?>/adm/products_type/index.php">Tipo de productos</a></li>
 			<li><a href="<?php echo full_url;?>/adm/bank/index.php">Bancos</a></li>
+			<li><a href="<?php echo full_url;?>/adm/incoterms/index.php">Incoterms</a></li>
+			<li><a href="<?php echo full_url;?>/adm/brokers/index.php">Brokers</a></li>
+
             <!--<li><a href="#">Productos</a></li>
             <li><a href="#">Clientes</a></li>
             <li><a href="#">Incoterms</a></li>

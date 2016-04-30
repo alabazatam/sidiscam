@@ -77,6 +77,8 @@ include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Ports.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Bank.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Clients.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Plants.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Incoterms.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Brokers.class.php");
 
 require($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/vendors/securimage/securimage.php');
 /*validation class*/

@@ -12,7 +12,19 @@
 			"minlength" => 3,
 			"maxlength" => 100,
 			"type" => "text",
-			"label" => "nombre",
+			"label" => "Nombre",
+			"required" => true
+		);
+		$validator_values['id_region'] = array(
+			
+			"type" => "number",
+			"label" => "Región",
+			"required" => true
+		);
+		$validator_values['id_country'] = array(
+			
+			"type" => "number",
+			"label" => "País",
 			"required" => true
 		);
 		$validator_values['description'] = array(

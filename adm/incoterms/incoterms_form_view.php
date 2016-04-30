@@ -1,23 +1,14 @@
 <?php include('../../view_header.php')?>
 <?php include('../menu.php')?>
 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
-		<h1 class="text-center">Paises</h1>
+		<h1 class="text-center">Incoterms</h1>
 	<form class="form-horizontal" action="index.php" method="POST">
 		<input type="hidden" name='action' value='<?php if(isset($values['action']))echo $values['action'];?>'>
 	  <div class="form-group">
 		<div class="col-sm-3">
 		<label for="">Id</label>
-		<input autocomplete="off" readonly="readonly" type="text" class="form-control input-sm" id="" placeholder="" name="id_country" value="<?php if(isset($values['id_country'])) echo $values['id_country']?>">
+		<input autocomplete="off" readonly="readonly" type="text" class="form-control input-sm" id="" placeholder="" name="id_incoterm" value="<?php if(isset($values['id_incoterm'])) echo $values['id_incoterm']?>">
 		</div>
-	  </div>
-	  <div class="form-group">
-		  <div class="col-sm-6">
-		<label for="">Región <small class="text-danger">(*)</small></label>
-		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="id_region" value="<?php if(isset($values['id_region'])) echo $values['id_region']?>">
-		<?php if(isset($values['errors']['id_region']) and $values['errors']['id_region']!=''):?>
-			<label class="alert alert-danger"><?php echo $values['errors']['id_region']?></label>
-		<?php endif;?>
-		  </div>
 	  </div>
 	  <div class="form-group">
 		<div class="col-sm-6">
@@ -67,7 +58,7 @@
 	  </div>
       <div class="form-group">
 		<div class="col-sm-6 col-sm-offset-4">	
-		<a class="btn btn-default"  href="<?php echo full_url."/adm/country/index.php"?>"><i class="fa fa-arrow-left  fa-pull-left fa-border"></i> Regresar</a>
+		<a class="btn btn-default"  href="<?php echo full_url."/adm/incoterms/index.php"?>"><i class="fa fa-arrow-left  fa-pull-left fa-border"></i> Regresar</a>
 		<button type="submit" class="btn btn-default"><i class="fa fa-save fa-pull-left fa-border"></i> Guardar</button>
 		</div>
 	  </div>

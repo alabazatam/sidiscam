@@ -42,7 +42,7 @@
 			"minlength" => 10,
 			"maxlength" => 11,
 			"type" => "number",
-			"label" => "Teléfono 1",
+			"label" => "Teléfono principal",
 			"required" => true
 		);
 		$validator_values['phone2'] = array(

@@ -9,11 +9,7 @@
         <input readonly="readonly" type="text" class="form-control input-sm" id="" placeholder="" name="id_product_type" value="<?php if(isset($values['id_product_type'])) echo $values['id_product_type']?>">
       </div>
       <div class="form-group">
-        <label for="">Producto</label>
-        <input type="text" class="form-control input-sm" id="" placeholder="" name="id_product" value="<?php if(isset($values['id_product'])) echo $values['id_product']?>">
-      </div>
-      <div class="form-group">
-        <label for="">Nombre</label>
+        <label for="">Nombre <small class="text-danger">(*)</small></label>
         <input type="text" autocomplete="off" class="form-control input-sm" id="" placeholder="" name="name" value="<?php if(isset($values['name'])) echo $values['name']?>">
 		<?php if(isset($values['errors']['name']) and $values['errors']['name']!=''):?>
 			<label class="alert alert-danger"><?php echo $values['errors']['name']?></label>
@@ -53,6 +49,9 @@
         <label for="">Fecha modificado</label>
         <input type="text" readonly="readonly" id="" class="form-control input-sm" name="date_updated" value="<?php if(isset($values['date_updated'])) echo $values['date_updated']?>">
       </div>
+	  <div class="form-group">
+			<label class="text-danger">Campos requeridos (*)</label>
+	  </div>
             <a class="btn btn-default"  href="<?php echo full_url."/adm/products_type/index.php"?>"><i class="fa fa-arrow-left  fa-pull-left fa-border"></i> Regresar</a>
             <button type="submit" class="btn btn-default"><i class="fa fa-save fa-pull-left fa-border"></i> Guardar</button>
 
