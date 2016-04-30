@@ -81,7 +81,7 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-          <li class="visible-lg visible-md"><small>Usuario: <?php echo $_SESSION['login'];?></small></li>
+          
         <li class="dropdown">
           <a href="#" class="dropdown-toggle facebook_font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Usuario <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -93,3 +93,4 @@
     </div><!-- /.navbar-collapse -->
 
 </nav>
+<div class="col-sm-2 col-sm-offset-10"><small><strong>Usuario:</strong> <?php echo $_SESSION['login'];?></small></div>
