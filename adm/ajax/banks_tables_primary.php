@@ -1,6 +1,6 @@
-
+<div id="bank_list" class="col-sm-12">
 <?php if(count($bank_list)>0):?>
-<table class="table-responsive table-bordered" width="100%">
+<table class="table-responsive table-bordered">
 	<thead>
 		<tr>
 			<th>Descripción</th>
@@ -25,3 +25,4 @@
     <?php endforeach;?>
 </table>
 <?php endif;?>
+</div>

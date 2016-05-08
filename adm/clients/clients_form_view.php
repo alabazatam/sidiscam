@@ -177,18 +177,21 @@
     </form>
 	</div>
     <div role="tabpanel" class="tab-pane" id="profile">
-		<?php if(isset($values['id_client'])):?>
-		<h2>Cuentas bancarias</h2>
-		<button onclick="openBank(2,<?php echo $values['id_client']?>)">Agregar <i class="fa fa-plus-circle"></i></button>
-		<div id="bank_list">
-			
-		</div>
-		<?php endif; ?>
+
+				<div class="col-sm-12">
+				<?php if(isset($values['id_client'])):?>
+				<h2>Cuentas bancarias</h2>
+				<button onclick="openBank(2,<?php echo $values['id_client']?>)">Asignar cuenta <i class="fa fa-plus-circle"></i></button>
+				<div id="bank_list" class="col-sm-12">
+
+				</div>
+				<?php endif; ?>
+				</div>
 	</div>
     <div role="tabpanel" class="tab-pane" id="address">
 		<?php if(isset($values['id_client'])):?>
 		<h2>Direcciones de entrega</h2>
-		<button onclick="openBank(2,<?php echo $values['id_client']?>)">Agregar dirección<i class="fa fa-plus-circle"></i></button>
+		<button onclick="openBank(2,<?php echo $values['id_client']?>)">Asignar dirección<i class="fa fa-plus-circle"></i></button>
 		<?php endif; ?>
 	</div>
   </div>
