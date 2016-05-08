@@ -21,6 +21,12 @@
 			"label" => "País",
 			"required" => true
 		);
+		$validator_values['id_table'] = array(
+			
+			"type" => "number",
+			"label" => "Maestro",
+			"required" => true
+		);
 		$validator_values['phone1'] = array(
 			
 			"minlength" => 10,
@@ -64,7 +70,7 @@
 		$validator_values['aba'] = array(
 			
 			"minlength" => 1,
-			"maxlength" => 10,
+			"maxlength" => 20,
 			"type" => "text",
 			"label" => "ABA",
 			"required" => false
@@ -72,12 +78,19 @@
 		$validator_values['swif'] = array(
 			
 			"minlength" => 1,
-			"maxlength" => 10,
+			"maxlength" => 20,
 			"type" => "text",
 			"label" => "swif",
 			"required" => false
 		);
-		
+		$validator_values['iban'] = array(
+			
+			"minlength" => 1,
+			"maxlength" => 20,
+			"type" => "text",
+			"label" => "swif",
+			"required" => false
+		);		
 		$ValidateBase = new ValidateBase();
 		$errors = $ValidateBase->validate_base($validator_values, $values);
 		return $errors;

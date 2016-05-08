@@ -20,10 +20,10 @@
 		public function getCompanyList($values)
 		{	
 			$columns = array();
-			$columns[0] = 'id';
-			$columns[1] = 'RIF';
-			$columns[2] = 'Razon_social';
-			$columns[3] = 'status';
+			$columns[0] = 'id_company';
+			$columns[1] = 'company.description';
+			$columns[2] = 'rif';
+			$columns[3] = 'status.name';
 			$columns[4] = 'date_created';
 			$columns[5] = 'date_updated';
 			$column_order = $columns[0];
@@ -34,11 +34,10 @@
 			if(isset($values['search']['value']) and $values['search']['value'] !='')
 			{	
 				$str = $values['search']['value'];
-				$where = ""
-                                        . "upper(status.name) like upper('%$str%') "
-                                        . "or upper(company.razon_social) like upper('%$str%')"
-                                        . "or upper(company.rif) like upper('%$str%')"
-                                        . "";
+				$where = "upper(company.description) like upper('%$str%')"
+					. "or upper(rif) like upper('%$str%')"
+					. "or upper(status.name) like upper('%$str%')"
+					. "or cast(id_company as char(100)) =  '$str' ";
 			}
 			if(isset($values['order'][0]['column']) and $values['order'][0]['column']!='0')
 			{
@@ -49,12 +48,12 @@
 				$order = $values['order'][0]['dir'];//asc o desc
 			}
 			//echo $column_order;die;
-                        $ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->company()
-			->select("company.*,DATE_FORMAT(company.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(company.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
-			->join("status","LEFT JOIN status on status.id_status = company.status")
-                        ->where("$where")
-                        ->order("$column_order $order")
+            $ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->company
+			->select("*,company.description as description, DATE_FORMAT(company.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(company.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->order("$column_order $order")
+			->join("status","LEFT JOIN status on status.id_status = company.status")	
+			->where("$where")
 			->limit($limit,$offset);
 			return $q; 			
 		}
@@ -64,44 +63,51 @@
 			if(isset($values['search']['value']) and $values['search']['value'] !='')
 			{	
 				$str = $values['search']['value'];
-				$where = "upper(razon_social) like upper('%$str%') ";
+				$where = "upper(company.description) like upper('%$str%')"
+					. "or upper(rif) like upper('%$str%')"
+					. "or upper(status.name) like upper('%$str%')"
+					. "or cast(id_company as char(100)) =  '$str' ";
 			}
-			$ConnectionORM = new ConnectionORM();
+            $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->company
-			->select("count(*) as cuenta")->where("$where")->fetch();
+			->select("count(*) as cuenta")
+			->where("$where")
+			->join("status","LEFT JOIN status on status.id_status = company.status")	
+			->fetch();
 			return $q['cuenta']; 			
 		}
 		public function getCompanyById($values){
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->company
 			->select("*, DATE_FORMAT(date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
-			->where("id=?",$values['id'])->fetch();
-			return $q; 				
+			->where("id_company=?",$values['id_company'])->fetch();
+                        return $q; 				
 			
 		}
-		function deleteCompany($id){
+		function deleteCompany($id_company){
 			unset($values['action']);
 			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->company("id", $id)->delete();
+			$q = $ConnectionORM->getConnect()->company("id_company", $id_company)->delete();
 			
 			
 		}		
 		function saveCompany($values){
-			unset($values['action'],$values['PHPSESSID']);
-			$values['date_created'] = new NotORM_Literal("NOW()");
-			$values['date_updated'] = new NotORM_Literal("NOW()");
+			unset($values['action'],$values['PHPSESSID'],$values['errors']);
+                        $values['date_created'] = new NotORM_Literal("NOW()");
+                        $values['date_updated'] = new NotORM_Literal("NOW()");
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->company()->insert($values);
-			$values['id'] = $ConnectionORM->getConnect()->Company()->insert_id();
+			$values['id_company'] = $ConnectionORM->getConnect()->company()->insert_id();
 			return $values;	
 			
 		}
 		function updateCompany($values){
-			unset($values['action'],$values['PHPSESSID'],$values['date_created']);
-			$values['date_updated'] = new NotORM_Literal("NOW()");
-			$id = $values['id'];
+			unset($values['action'],$values['PHPSESSID'],$values['errors']);
+                        unset($values['date_created']);
+			$id_company = $values['id_company'];
+                        $values['date_updated'] = new NotORM_Literal("NOW()");
 			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->company("id", $id)->update($values);
+			$q = $ConnectionORM->getConnect()->company("id_company", $id_company)->update($values);
 			return $q;
 			
 		}

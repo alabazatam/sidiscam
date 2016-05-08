@@ -116,5 +116,18 @@
 			return $q;
 			
 		}
+		public function getBankByIdTable($values){
+			$id_primary = $values['id_primary'];
+			$id_table = $values['id_table'];
+			//$id_bank = $values['id_bank'];
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->bank
+			->select("*")
+			->where("bank.id_bank not in(select id_bank from banks_tables_id where id_primary = $id_primary and id_table = $id_table and status = 1 )")
+			->and("bank.id_table=?",$values['id_table']);	
+			return $q; 				
+			
+		}
+		
 	}
 	

@@ -26,6 +26,15 @@
 		<?php endif;?>
 		</div>
 	  </div>
+	  <div class="form-group">
+		<div class="col-sm-12">
+		<label for="">Detalle</label>
+		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="detail" value="<?php if(isset($values['detail'])) echo $values['detail']?>">
+		<?php if(isset($values['errors']['detail']) and $values['errors']['detail']!=''):?>
+			<label class="alert alert-danger"><?php echo $values['errors']['detail']?></label>
+		<?php endif;?>
+		</div>
+	  </div>
 		<div class="form-group">
 			<div class="col-sm-4">
 				<label class="label label-danger">

@@ -12,6 +12,13 @@
 	  </div>
 		<div class="form-group">
 			<div class="col-sm-6">
+				<label for="">Maestro <small class="text-danger">(*)</small></label>
+				<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="id_table" value="<?php if(isset($values['id_table'])) echo $values['id_table']?>">
+				<?php if(isset($values['errors']['id_table']) and $values['errors']['id_table']!=''):?>
+					<label class="alert alert-danger"><?php echo $values['errors']['id_table']?></label>
+				<?php endif;?>
+			</div>
+			<div class="col-sm-6">
 				<label for="">País <small class="text-danger">(*)</small></label>
 				<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="id_country" value="<?php if(isset($values['id_country'])) echo $values['id_country']?>">
 				<?php if(isset($values['errors']['id_country']) and $values['errors']['id_country']!=''):?>
@@ -62,25 +69,32 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 			<label for="">Número de cuenta <small class="text-danger">(*)</small></label>
 			<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="account_number" value="<?php if(isset($values['account_number'])) echo $values['account_number']?>">
 			<?php if(isset($values['errors']['account_number']) and $values['errors']['account_number']!=''):?>
 				<label class="alert alert-danger"><?php echo $values['errors']['account_number']?></label>
 			<?php endif;?>
 			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 			<label for="">ABA</label>
 			<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="aba" value="<?php if(isset($values['aba'])) echo $values['aba']?>">
 			<?php if(isset($values['errors']['aba']) and $values['errors']['aba']!=''):?>
 				<label class="alert alert-danger"><?php echo $values['errors']['aba']?></label>
 			<?php endif;?>
 			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 			<label for="">SWIF</label>
 			<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="swif" value="<?php if(isset($values['swif'])) echo $values['swif']?>">
 			<?php if(isset($values['errors']['swif']) and $values['errors']['swif']!=''):?>
 				<label class="alert alert-danger"><?php echo $values['errors']['swif']?></label>
+			<?php endif;?>
+			</div>
+			<div class="col-sm-3">
+			<label for="">IBAN</label>
+			<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="iban" value="<?php if(isset($values['iban'])) echo $values['iban']?>">
+			<?php if(isset($values['errors']['iban']) and $values['errors']['iban']!=''):?>
+				<label class="alert alert-danger"><?php echo $values['errors']['iban']?></label>
 			<?php endif;?>
 			</div>
 		</div>

@@ -23,6 +23,14 @@
 			"label" => "Abreviatura",
 			"required" => false
 		);
+		$validator_values['detail'] = array(
+			
+			"minlength" => 3,
+			"maxlength" => 250,
+			"type" => "text",
+			"label" => "Detalle",
+			"required" => true
+		);
 		$ValidateBase = new ValidateBase();
 		$errors = $ValidateBase->validate_base($validator_values, $values);
 		return $errors;

@@ -1,34 +1,30 @@
 <?php include('../../view_header.php')?>
 <?php include('../menu.php')?>
 <div class="container">
-	<h1 class="text-center">Compañias</h1>
-	<table id="example" class="table table-striped table-bordered table-responsive" width="100%" cellspacing="0">
-			<thead>
-				<tr>
-					<th>Id</th>
-					<th>Rif</th>
-					<th>Razón social</th>
-					<th>Status</th>
-					<th>Fecha creado</th>
-					<th>Fecha modificado</th>
-					<th>Acciones</th>
-				</tr>
-			</thead>
-			<tfoot>
-				<tr>
-					<th>Id</th>
-					<th>Rif</th>
-					<th>Razón social</th>
-					<th>Status</th>
-					<th>Fecha creado</th>
-					<th>Fecha modificado</th>
-					<th>Acciones</th>
-				</tr>
-			</tfoot>
-		</table>
-	<a class="btn btn-default"  href="<?php echo full_url."/adm/company/index.php?action=new"?>"><i class="fa fa-file-o fa-pull-left fa-border"></i>Agregar</a>
+<h1 class="text-center">Compañias</h1>
+    <table id="example" class="table table-striped table-bordered table-responsive" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+					<th>Identificador fiscal</th>
+                    <th>Status</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+					<th>Identificador fiscal</th>
+                    <th>Status</th>
+                    <th>Acciones</th>
+                </tr>
+            </tfoot>
+        </table>
+    <a class="btn btn-default"  href="<?php echo full_url."/adm/company/index.php?action=new"?>"><i class="fa fa-file-o fa-pull-left fa-border"></i>Agregar</a>
 </div>
-	<?php include('../../view_footer.php')?>
+<?php include('../../view_footer.php')?>
 <script>
 $(document).ready(function() {
     $('#example').DataTable({
@@ -40,16 +36,14 @@ $(document).ready(function() {
                 "url": "<?php echo full_url."/web/js/"?>datatables.spanish.lang"
         },
         "columns": [
-            { "data": "id" },
-            { "data": "RIF" },
-			{ "data": "Razon_social" },
+            { "data": "id_company" },
+            { "data": "description" },
+			{ "data": "rif" },
             { "data": "status" },
-            { "data": "date_created" },
-            { "data": "date_updated" },
             { "data": "actions" }
         ],
       "aoColumnDefs": [
-          { 'bSortable': false, 'aTargets': [ 6 ] }
+          { 'bSortable': false, 'aTargets': [ 4 ] }
        ]				
     });
 } );

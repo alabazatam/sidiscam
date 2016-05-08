@@ -1,5 +1,5 @@
 <?php include("../../autoload.php");?>	
-<?php include("validator.php");?>	
+<?php include("validator.php");?>
 <?php include("../security/security.php");?>
 <?php $action = "";
 
@@ -37,41 +37,48 @@ $values = $_REQUEST;
 	}
 	function executeNew($values = null)
 	{
-        $values['status'] = '1';
 		$values['action'] = 'add';
-		
+                $values['status'] = 1;
+				$values['errors'] = array();
 		require('company_form_view.php');
 	}
 	function executeSave($values = null)
 	{
-		
+		$Messages = new Messages();
 		$Company = new Company();
-		$values = $Company->saveCompany($values);
-		executeEdit($values,message_created);die;
+		$errors = validate($values);
+		if(count($errors)>0)
+		{	
+			$values['errors'] = $errors;
+			require('company_form_view.php');die;
+		}else{		
+			$values = $Company->saveCompany($values);			
+			executeEdit($values,message_created);die;
+		}
 	}
 	function executeEdit($values = null,$msg = null)
 	{
+		
 		$Company = new Company();
-		$values = $Company->getCompanyById($values);
-                $id_company = $values['id'];
-                $values['action'] = 'update';
-                $values['msg'] = $msg;
+        $values = $Company->getCompanyById($values);
+		$values['action'] = 'update';
+        $values['msg'] = $msg;
+		$values['errors'] = array();
 		require('company_form_view.php');
 	}
 	function executeUpdate($values = null)
 	{
 		
 		$Company = new Company();
-		$Company->updateCompany($values);
-		$Users = new Users();
-		if($values['status']==1)
-		{
-			$Users->activeUserMasterCompany($values['id']);
-		}elseif($values['status']==0)
-		{
-			$Users->inactiveUserMasterCompany($values['id']);
-		}				
-		executeEdit($values,message_updated);die;
+		$errors = validate($values);
+		if(count($errors)>0)
+		{	
+			$values['errors'] = $errors;
+			require('company_form_view.php');die;
+		}else{		
+			$Company->updateCompany($values);			
+			executeEdit($values,message_updated);die;
+		}
 	}	
 	function executeCompanyListJson($values)
 	{
@@ -86,37 +93,29 @@ $values = $_REQUEST;
 			foreach ($company_list_json as $company) 
 			{
 				$status = $company['status'];
-				$id = $company['id'];
+				$id_company = $company['id_company'];
 				if($status == 0)
 				{
-					$message_status = "<label class='label label-danger'><a href='#' onclick = ".'"'."status_changer('company','id', '$id','1')".'"'.">Desactivado</a></label>";
+					$message_status = "<label class='label label-danger'><a href='#' onclick = ".'"'."status_changer('company','id_company', '$id_company','1')".'"'.">Desactivado</a></label>";
 				}
 				if($status == 1)
 				{
-					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('company','id', '$id','0')".'"'.">Activo</a></label>";
+					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('company','id_company', '$id_company','0')".'"'.">Activo</a></label>";
 				}
 				
 				$array_json['data'][] = array(
-					"id" => $id,
-					"RIF" => $company['rif'],
-					"Razon_social" => $company['razon_social'],
+					"id_company" => $id_company,
+					"description" => $company['description'],
+					"rif" => $company['rif'],
 					"status" => $message_status,
-					"date_created" => $company['date_created'],
-					"date_updated" => $company['date_updated'],
-					"actions" => 
-                                       
-                                       '<form method="POST" action = "'.full_url.'/adm/company/index.php" >'
-                                       .'<input type="hidden" name="action" value="edit">  '
-                                       .'<input type="hidden" name="id" value="'.$id.'">  '
-                                       .'<button class="btn btn-default btn-sm" type="submit"><i class="fa fa-edit  fa-pull-left fa-border"></i></button>'
-                                       .'<a href="'.full_url.'/adm/users_company/index.php?id_company='.$id.'" class="btn btn-default btn-sm"><i class="fa fa-users  fa-pull-left fa-border"></i></a>'
-                                       .'</form>'
+					"actions" => '<form method="POST" action ="'.full_url.'/adm/company/index.php"><input type="hidden" name="action" value="edit"><input type="hidden" name="id_company" value="'.$id_company.'"><button type="submit" class="btn btn-default"><i class="fa fa-edit fa-pull-left fa-border"></i></button><form>'
+
 					);	
 			}	
 		}else{
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
-			$array_json['data'][0] = array("id"=>null,"responsible_name"=>"","RIF"=>"","Razon_social"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
+			$array_json['data'][0] = array("id_company"=>null,"description"=>"","rif"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
 		}
 
 		echo json_encode($array_json);die;

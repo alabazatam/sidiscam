@@ -1,7 +1,19 @@
 <?php include('../../view_header.php')?>
 <?php include('../menu.php')?>
 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
-<h1 class="text-center">Clientes</h1>
+<div>
+	<h1 class="text-center">Clientes</h1>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Detalle</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Cuentas bancarias</a></li>
+	<li role="presentation"><a href="#address" aria-controls="address" role="tab" data-toggle="tab">Direcciones de entrega</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+
     <form class="form-horizontal" action="index.php" method="POST">
             <input type="hidden" name='action' value='<?php if(isset($values['action']))echo $values['action'];?>'>
       <div class="form-group">
@@ -159,10 +171,89 @@
 			
 		</div>
 	  </div>
-    </form>
     <?php if(isset($values['msg']) and $values['msg']!=''):?>
         <div class="alert alert-success" role="alert"><?php echo $values['msg'];?></div>
-    <?php endif;?>
- </div>
+    <?php endif;?>			
+    </form>
+	</div>
+    <div role="tabpanel" class="tab-pane" id="profile">
+		<?php if(isset($values['id_client'])):?>
+		<h2>Cuentas bancarias</h2>
+		<button onclick="openBank(2,<?php echo $values['id_client']?>)">Agregar <i class="fa fa-plus-circle"></i></button>
+		<div id="bank_list">
+			
+		</div>
+		<?php endif; ?>
+	</div>
+    <div role="tabpanel" class="tab-pane" id="address">
+		<?php if(isset($values['id_client'])):?>
+		<h2>Direcciones de entrega</h2>
+		<button onclick="openBank(2,<?php echo $values['id_client']?>)">Agregar dirección<i class="fa fa-plus-circle"></i></button>
+		<?php endif; ?>
+	</div>
+  </div>
+
+</div><!-- Nav tabs -->
+	
+
+
+		
+
+</div>
 
 <?php include('../../view_footer.php')?>
+<?php if(isset($values['id_client'])):?>
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$.ajax({
+		type: "POST",
+		url: '<?php echo full_url;?>/adm/ajax/index.php',
+		data: { action: "list_banks_tables",id_table: 2,id_primary:<?php echo $values['id_client']?>},
+		success: function(html){
+			$('#bank_list').html(html);
+		}
+	});	
+	
+});
+function openBank(id_table,id_primary) {
+		
+	$.ajax({
+		type: "POST",
+		url: '<?php echo full_url;?>/adm/ajax/index.php',
+		data: { action: "bank_list",id_table: id_table,id_primary:id_primary},
+		success: function(html){
+			$('.modal-body').html(html);
+			$('#myModal').modal('show');
+		}
+	});
+
+}
+function addBank(id_bank,id_table,id_primary) {
+	//alert(id_bank +"-" +id_table + "-" + id_primary);
+	$.ajax({
+		type: "POST",
+		url: '<?php echo full_url;?>/adm/ajax/index.php',
+		data: { action: "add_banks_tables",id_bank:id_bank,id_table: id_table,id_primary:id_primary},
+		success: function(){
+			$('#myModal').modal('toggle');
+			$('.form-horizontal').submit();
+		}
+	});
+
+}
+function deleteBank(id_bank,id_table,id_primary) {
+	//alert(id_bank +"-" +id_table + "-" + id_primary);
+	$.ajax({
+		type: "POST",
+		url: '<?php echo full_url;?>/adm/ajax/index.php',
+		data: { action: "delete_banks_tables",id_bank:id_bank,id_table: id_table,id_primary:id_primary},
+		success: function(){
+			
+			$('.form-horizontal').submit();
+		}
+	});
+
+}
+</script>
+<?php endif; ?>
