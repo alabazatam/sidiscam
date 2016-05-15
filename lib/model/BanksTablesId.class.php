@@ -72,5 +72,14 @@
 			return $q;
 			
 		}
+		
+		public function getListBanksTablesId($values){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->banks_tables_id
+			->select("*")
+			->where("banks_tables_id.status=?",1);
+			return $q; 				
+			
+		}
 	}
 	

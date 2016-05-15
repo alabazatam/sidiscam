@@ -1,35 +1,35 @@
 <?php include('../../view_header.php')?>
 <?php include('../menu.php')?>
 <?php 
-	$Regions = new Regions();
-	$list_regions = $Regions -> getListRegions();
+	$Country = new Country();
+	$list_country = $Country -> getListCountry();
 
 ?>
 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
-		<h1 class="text-center">Paises</h1>
+		<h1 class="text-center">Estados</h1>
 	<form class="form-horizontal" action="index.php" method="POST">
 		<input type="hidden" name='action' value='<?php if(isset($values['action']))echo $values['action'];?>'>
 	  <div class="form-group">
 		<div class="col-sm-3">
 		<label for="">Id</label>
-		<input autocomplete="off" readonly="readonly" type="text" class="form-control input-sm" id="" placeholder="" name="id_country" value="<?php if(isset($values['id_country'])) echo $values['id_country']?>">
+		<input autocomplete="off" readonly="readonly" type="text" class="form-control input-sm" id="" placeholder="" name="id_state" value="<?php if(isset($values['id_state'])) echo $values['id_state']?>">
 		</div>
 	  </div>
 	  <div class="form-group">
 		  <div class="col-sm-6">
-		<label for="">Región <small class="text-danger">(*)</small></label>
-				<select name="id_region"  class="form-control input-sm">
+		<label for="">País <small class="text-danger">(*)</small></label>
+				<select name="id_country"  class="form-control input-sm">
 					<option value="">Seleccione...</option>
-				<?php if(count($list_regions)>0): ?>
-					<?php foreach($list_regions as $list): ?>
+				<?php if(count($list_country)>0): ?>
+					<?php foreach($list_country as $list): ?>
 
-							<option value="<?php echo $list['id_region'];?>" <?php if($list['id_region'] == $values['id_region']) echo "selected = 'selected'" ?>><?php echo $list['name'];?></option>
+							<option value="<?php echo $list['id_country'];?>" <?php if($list['id_country'] == @$values['id_country']) echo "selected = 'selected'" ?>><?php echo $list['name'];?></option>
 						
 					<?php endforeach; ?>
 				<?php endif; ?>
 				</select>
-		<?php if(isset($values['errors']['id_region']) and $values['errors']['id_region']!=''):?>
-			<label class="alert alert-danger"><?php echo $values['errors']['id_region']?></label>
+		<?php if(isset($values['errors']['id_country']) and $values['errors']['id_country']!=''):?>
+			<label class="alert alert-danger"><?php echo $values['errors']['id_country']?></label>
 		<?php endif;?>
 		  </div>
 	  </div>
@@ -39,13 +39,6 @@
 		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="name" value="<?php if(isset($values['name'])) echo $values['name']?>">
 		<?php if(isset($values['errors']['name']) and $values['errors']['name']!=''):?>
 			<label class="alert alert-danger"><?php echo $values['errors']['name']?></label>
-		<?php endif;?>
-		</div>
-		<div class="col-sm-6">
-		<label for="">Abreviatura</label>
-		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="abr" value="<?php if(isset($values['abr'])) echo $values['abr']?>">
-		<?php if(isset($values['errors']['abr']) and $values['errors']['abr']!=''):?>
-			<label class="alert alert-danger"><?php echo $values['errors']['abr']?></label>
 		<?php endif;?>
 		</div>
 	  </div>
@@ -81,7 +74,7 @@
 	  </div>
       <div class="form-group">
 		<div class="col-sm-6 col-sm-offset-4">	
-		<a class="btn btn-default"  href="<?php echo full_url."/adm/country/index.php"?>"><i class="fa fa-arrow-left  fa-pull-left fa-border"></i> Regresar</a>
+		<a class="btn btn-default"  href="<?php echo full_url."/adm/states/index.php"?>"><i class="fa fa-arrow-left  fa-pull-left fa-border"></i> Regresar</a>
 		<button type="submit" class="btn btn-default"><i class="fa fa-save fa-pull-left fa-border"></i> Guardar</button>
 		</div>
 	  </div>

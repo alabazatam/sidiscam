@@ -1,5 +1,10 @@
 <?php include('../../view_header.php')?>
 <?php include('../menu.php')?>
+<?php 
+	$ProductsType = new ProductsType();
+	$list_products_type= $ProductsType -> getListProductsType();
+
+?>
 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
 <h1 class="text-center">Productos</h1>
     <form class="" action="index.php" method="POST">
@@ -8,6 +13,22 @@
         <label for="">Id.</label>
         <input readonly="readonly" type="text" class="form-control input-sm" id="" placeholder="" name="id_product" value="<?php if(isset($values['id_product'])) echo $values['id_product']?>">
       </div>
+      <div class="form-group">
+        <label for="">Tipo de producto <small class="text-danger">(*)</small></label>
+				<select name="id_product_type"  class="form-control input-sm">
+					<option value="">Seleccione...</option>
+				<?php if(count($list_products_type)>0): ?>
+					<?php foreach($list_products_type as $list): ?>
+
+							<option value="<?php echo $list['id_product_type'];?>" <?php if($list['id_product_type'] == $values['id_product_type']) echo "selected = 'selected'" ?>><?php echo $list['name'];?>-<?php echo $list['description'];?></option>
+						
+					<?php endforeach; ?>
+				<?php endif; ?>
+				</select>
+		<?php if(isset($values['errors']['name']) and $values['errors']['name']!=''):?>
+			<label class="alert alert-danger"><?php echo $values['errors']['name']?></label>
+		<?php endif;?>
+	  </div>
       <div class="form-group">
         <label for="">Nombre <small class="text-danger">(*)</small></label>
         <input type="text" autocomplete="off" class="form-control input-sm" id="" placeholder="" name="name" value="<?php if(isset($values['name'])) echo $values['name']?>">

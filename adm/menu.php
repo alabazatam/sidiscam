@@ -35,6 +35,8 @@
 			
 			<li><a href="<?php echo full_url;?>/adm/regions/index.php">Regiones</a></li>
 			<li><a href="<?php echo full_url;?>/adm/country/index.php">Paises</a></li>
+			<li><a href="<?php echo full_url;?>/adm/states/index.php">Estados</a></li>
+
 			<li><a href="<?php echo full_url;?>/adm/shipping_lines/index.php">Lineas Navieras</a></li>
 			<li><a href="<?php echo full_url;?>/adm/ports/index.php">Puertos</a></li>
 			<li><a href="<?php echo full_url;?>/adm/products/index.php">Productos</a></li>
@@ -42,7 +44,8 @@
 			<li><a href="<?php echo full_url;?>/adm/bank/index.php">Cuentas bancarias</a></li>
 			<li><a href="<?php echo full_url;?>/adm/incoterms/index.php">Incoterms</a></li>
 			<li><a href="<?php echo full_url;?>/adm/brokers/index.php">Brokers</a></li>
-			<li><a href="<?php echo full_url;?>/adm/company/index.php">Compañias</a></li>
+			<li><a href="<?php echo full_url;?>/adm/company/index.php">Compañias empacadoras</a></li>
+
 
             <!--<li><a href="#">Productos</a></li>
             <li><a href="#">Clientes</a></li>

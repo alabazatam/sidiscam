@@ -111,5 +111,13 @@
 			return $q;
 			
 		}
+		public function getListProductsType($values = null){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->products_type
+			->select("*")
+			->where("status=?",1);
+			return $q; 				
+			
+		}
 	}
 	

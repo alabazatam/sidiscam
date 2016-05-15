@@ -7,23 +7,23 @@
 	 */
 
 	/**
-	 * Description of Regions
+	 * Description of States
 	 *
 	 * @author marcos
 	 */
-	class Regions{
+	class States{
 		
 		public function __construct() 
 		{
 			
 		}
-		public function getRegionsList($values)
+		public function getStatesList($values)
 		{	
 			$columns = array();
-			$columns[0] = 'id_region';
+			$columns[0] = 'id_state';
 			$columns[1] = 'name';
-			$columns[2] = 'abr';
-			$columns[3] = 'status.name';
+			$columns[2] = 'id_country';
+			$columns[3] = 'status';
 			$columns[4] = 'date_created';
 			$columns[5] = 'date_updated';
 			$column_order = $columns[0];
@@ -36,9 +36,8 @@
 				$str = $values['search']['value'];
 				$where = ""
                                         . "upper(status.name) like upper('%$str%') "
-                                        . "or upper(regions.name) like upper('%$str%')"
-										. "or upper(regions.abr) like upper('%$str%')"
-                                        . "or cast(id_region as char(100)) =  '$str' ";
+                                        . "or upper(states.name) like upper('%$str%')"
+                                        . "or cast(id_state as char(100)) =  '$str' ";
 			}
 			if(isset($values['order'][0]['column']) and $values['order'][0]['column']!='0')
 			{
@@ -50,15 +49,15 @@
 			}
 			//echo $column_order;die;
                         $ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->regions()
-			->select("regions.*,DATE_FORMAT(regions.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(regions.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
-			->join("status","LEFT JOIN status on status.id_status = regions.status")
+			$q = $ConnectionORM->getConnect()->states()
+			->select("states.*,DATE_FORMAT(states.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(states.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->join("status","LEFT JOIN status on status.id_status = states.status")
                         ->where("$where")
                         ->order("$column_order $order")
 			->limit($limit,$offset);
 			return $q; 			
 		}
-		public function getCountRegionsList($values)
+		public function getCountStatesList($values)
 		{	
 			$where = '1 = 1';
 			if(isset($values['search']['value']) and $values['search']['value'] !='')
@@ -66,56 +65,56 @@
 				$str = $values['search']['value'];
 				$where = ""
                                         . "upper(status.name) like upper('%$str%') "
-                                        . "or upper(regions.name) like upper('%$str%')"
-										. "or upper(regions.abr) like upper('%$str%')"
-                                        . "or cast(id_region as char(100)) =  '$str' ";
+                                        . "or upper(states.name) like upper('%$str%')"
+                                        . "or cast(id_state as char(100)) =  '$str' ";
 			}
 			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->regions
+			$q = $ConnectionORM->getConnect()->states
 			->select("count(*) as cuenta")
-			->join("status","LEFT JOIN status on status.id_status = regions.status")	
+			->join("status","LEFT JOIN status on status.id_status = states.status")
 			->where("$where")->fetch();
 			return $q['cuenta']; 			
 		}
-		public function getRegionsById($values){
+		public function getStatesById($values){
 			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->regions
+			$q = $ConnectionORM->getConnect()->states
 			->select("*, DATE_FORMAT(date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
-			->where("id_region=?",$values['id_region'])->fetch();
+			->where("id_state=?",$values['id_state'])->fetch();
 			return $q; 				
 			
 		}
-		function deleteRegions($id){
+		function deleteStates($id){
 			unset($values['action']);
 			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->regions("id", $id)->delete();
+			$q = $ConnectionORM->getConnect()->states("id", $id)->delete();
 			
 			
 		}		
-		function saveRegions($values){
+		function saveStates($values){
 			unset($values['action']);
 			$values['date_created'] = new NotORM_Literal("NOW()");
 			$values['date_updated'] = new NotORM_Literal("NOW()");
 			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->regions()->insert($values);
-			$values['id_region'] = $ConnectionORM->getConnect()->Regions()->insert_id();
+			$q = $ConnectionORM->getConnect()->states()->insert($values);
+			$values['id_state'] = $ConnectionORM->getConnect()->States()->insert_id();
 			return $values;	
 			
 		}
-		function updateRegions($values){
+		function updateStates($values){
 			unset($values['action'],$values['PHPSESSID'],$values['date_created']);
 			$values['date_updated'] = new NotORM_Literal("NOW()");
-			$id_region = $values['id_region'];
+			$id_state = $values['id_state'];
 			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->regions("id_region", $id_region)->update($values);
+			$q = $ConnectionORM->getConnect()->states("id_state", $id_state)->update($values);
 			return $q;
 			
 		}
-		public function getListRegions($values = null){
+		public function getListStates($values = null){
 			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->regions
+			$q = $ConnectionORM->getConnect()->states
 			->select("*")
-			->where("status=?",1);
+			->where("status=?",1)
+			->order('name');
 			return $q; 				
 			
 		}

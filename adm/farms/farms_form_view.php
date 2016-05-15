@@ -1,5 +1,15 @@
 <?php include('../../view_header.php')?>
 <?php include('../menu.php')?>
+<?php 
+	$Country = new Country();
+	$list_country = $Country -> getListCountry();
+
+?>
+<?php 
+	$States = new States();
+	$list_states= $States -> getListStates();
+
+?>
 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
 <h1 class="text-center">Granjas</h1>
     <form class="form-horizontal" action="index.php" method="POST">
@@ -29,14 +39,32 @@
 	  <div class="form-group">
 		<div class="col-sm-6">
 		<label for="">País <small class="text-danger">(*)</small></label>
-		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="id_country" value="<?php if(isset($values['id_country'])) echo $values['id_country']?>">
+				<select name="id_country"  class="form-control input-sm">
+					<option value="">Seleccione...</option>
+				<?php if(count($list_country)>0): ?>
+					<?php foreach($list_country as $list): ?>
+
+							<option value="<?php echo $list['id_country'];?>" <?php if($list['id_country'] == @$values['id_country']) echo "selected = 'selected'" ?>><?php echo $list['name'];?></option>
+						
+					<?php endforeach; ?>
+				<?php endif; ?>
+				</select>
 		<?php if(isset($values['errors']['id_country']) and $values['errors']['id_country']!=''):?>
 			<label class="alert alert-danger"><?php echo $values['errors']['id_country']?></label>
 		<?php endif;?>
 		</div>
 		<div class="col-sm-6">
 		<label for="">Estado</label>
-		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="id_state" value="<?php if(isset($values['id_state'])) echo $values['id_state']?>">
+				<select name="id_state"  class="form-control input-sm">
+					<option value="">Seleccione...</option>
+				<?php if(count($list_states)>0): ?>
+					<?php foreach($list_states as $list): ?>
+
+							<option value="<?php echo $list['id_state'];?>" <?php if($list['id_state'] == @$values['id_state']) echo "selected = 'selected'" ?>><?php echo $list['name'];?></option>
+						
+					<?php endforeach; ?>
+				<?php endif; ?>
+				</select>
 		<?php if(isset($values['errors']['id_state']) and $values['errors']['id_state']!=''):?>
 			<label class="alert alert-danger"><?php echo $values['errors']['id_state']?></label>
 		<?php endif;?>

@@ -111,5 +111,14 @@
 			return $q;
 			
 		}
+		public function getListCountry($values = null){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->country
+			->select("*")
+			->where("status=?",1)
+			->order('name');
+			return $q; 				
+			
+		}
 	}
 	
