@@ -19,8 +19,9 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle facebook_font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-dollar"></i> Ventas <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <!--<li><a href="#">Granjas</a></li>
-            <li><a href="#">Productos</a></li>
+            <li><a href="<?php echo full_url;?>/adm/sales/index.php">Ventas</a></li>
+
+            <!--<li><a href="#">Productos</a></li>
             <li><a href="#">Clientes</a></li>
             <li><a href="#">Incoterms</a></li>
             <li><a href="#">Containers</a></li>-->
@@ -45,6 +46,7 @@
 			<li><a href="<?php echo full_url;?>/adm/incoterms/index.php">Incoterms</a></li>
 			<li><a href="<?php echo full_url;?>/adm/brokers/index.php">Brokers</a></li>
 			<li><a href="<?php echo full_url;?>/adm/company/index.php">Compañias empacadoras</a></li>
+			<li><a href="<?php echo full_url;?>/adm/type_destiny/index.php">Tipos de venta</a></li>
 
 
             <!--<li><a href="#">Productos</a></li>
