@@ -70,7 +70,7 @@ unset($values['PHPSESSID']);
 	}
 	function executeUpdate($values = null)
 	{
-		
+		$Sales = new Sales();	
 		$errors = validate($values);
 		if(count($errors)>0)
 		{	

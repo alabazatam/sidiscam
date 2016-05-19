@@ -111,5 +111,14 @@
 			return $q;
 			
 		}
+		public function getListClients($values = null){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->clients
+			->select("*")
+			->where("status=?",1)
+			->order('name');
+			return $q; 				
+			
+		}
 	}
 	
