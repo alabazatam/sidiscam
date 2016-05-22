@@ -7,7 +7,7 @@
 			<?php echo strtoupper($product['name']);?>
 		</div>
 		<div class="col-sm-4">
-			<a class="btn btn-default">Agregar</a>
+			<a class="btn btn-default" onclick="addProducts();">Agregar</a>
 		</div>		
 	</div>	
 </div>

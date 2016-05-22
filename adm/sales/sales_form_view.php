@@ -35,7 +35,7 @@
 					<div class="form-group">
 						<div class="col-sm-6">
 							<label for="">Fecha de venta<small class="text-danger">(*)</small></label>
-							<input type="text" autocomplete="off" class="form-control input-sm" id="" placeholder="" name="date_sale" value="<?php if(isset($values['date_sale'])) echo $values['date_sale']?>">
+							<input type="text" autocomplete="off" class="form-control input-sm datepicker" id="" placeholder="" name="date_sale" value="<?php if(isset($values['date_sale'])) echo $values['date_sale']?>">
 							<?php if(isset($values['errors']['date_sale']) and $values['errors']['date_sale']!=''):?>
 								<label class="alert alert-danger"><?php echo $values['errors']['date_sale']?></label>
 							<?php endif;?>
@@ -80,13 +80,13 @@
 						<div class="col-sm-4">
 						  <label class="label label-danger">
 							<input type="radio" name="status" id="status" value="0" <?php if(isset($values['status']) and $values['status'] =='0' ) echo "checked=checked"?>>
-							Desactivar
+							Completar venta
 						  </label>
 						</div>
 						<div class="col-sm-4">
 						  <label class="label label-success">
 							<input type="radio" name="status" id="status" value="1" <?php if(isset($values['status']) and $values['status'] =='1' ) echo "checked=checked"?>>
-							Activar
+							En transcripción
 						  </label>
 						</div>
 					</div>	
@@ -103,6 +103,10 @@
 		</div><!--Fin primer panel-->
 		<div role="tabpanel" class="tab-pane" id="productos"><!--segundo panel-->
 			<a onclick="openProducts();" class="btn btn-default">Agregar producto <i class="fa fa-plus-circle"></i></a>
+			<div id="products_details">
+				
+			</div>
+		
 		</div><!--Fin segundo panel-->
 		<div role="tabpanel" class="tab-pane" id="direcciones"><!--tercer panel-->
 			tercer panel
@@ -148,5 +152,20 @@ function openProducts() {
 		}
 	});
 
+}
+function addProducts() {
+		
+	/*$.ajax({
+		type: "GET",
+		url: '<?php echo full_url;?>/adm/ajax/index.php',
+		data: { action: "products_list"},
+		success: function(html){
+			$('.modal-body').html(html);
+			$('.modal-title').html('Productos');
+			$('#myModal').modal('show');
+		}
+	});*/
+	$('#products_details').append('Productos');
+	$('#myModal').modal('toggle');
 }
 </script>
