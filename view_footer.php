@@ -33,6 +33,6 @@
 
     <script>
         $( document ).ready(function() {
-				$(".datepicker").datepicker({ dateFormat: "yy-mm-dd" }).val()
-        }).val();
+				$(".datepicker").datepicker({ dateFormat: "yy-mm-dd" }).val();
+        });
     </script>
