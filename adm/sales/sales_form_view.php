@@ -102,7 +102,7 @@
 					</div>			
 		</div><!--Fin primer panel-->
 		<div role="tabpanel" class="tab-pane" id="productos"><!--segundo panel-->
-			segundo panel
+			<a onclick="openProducts();" class="btn btn-default">Agregar producto <i class="fa fa-plus-circle"></i></a>
 		</div><!--Fin segundo panel-->
 		<div role="tabpanel" class="tab-pane" id="direcciones"><!--tercer panel-->
 			tercer panel
@@ -134,3 +134,19 @@
 	</form>
 </div>
 <?php include('../../view_footer.php')?>
+<script>
+function openProducts() {
+		
+	$.ajax({
+		type: "GET",
+		url: '<?php echo full_url;?>/adm/ajax/index.php',
+		data: { action: "products_list"},
+		success: function(html){
+			$('.modal-body').html(html);
+			$('.modal-title').html('Productos');
+			$('#myModal').modal('show');
+		}
+	});
+
+}
+</script>

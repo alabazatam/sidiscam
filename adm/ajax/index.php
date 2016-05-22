@@ -24,6 +24,9 @@ unset($values['PHPSESSID']);
 		case "list_banks_tables":
 			executeListBanksTables($values);	
 		break;
+		case "products_list":
+			executeProductsList($values);	
+		break;
 	}
 	function executeStatusChanger($values = null)
 	{
@@ -72,4 +75,11 @@ unset($values['PHPSESSID']);
 		require('banks_tables_primary.php');
 
 	}
-	
+	function executeProductsList($values = null)
+	{
+		
+		$Products = new Products();
+		$products_list = $Products ->getProductsListSelect($values);
+		require('products_list.php');
+
+	}

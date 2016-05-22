@@ -108,5 +108,13 @@
 			return $q;
 			
 		}
+		public function getProductsListSelect($values){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->products
+			->select("*, DATE_FORMAT(date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->where("status=?",1);
+            return $q; 				
+			
+		}
 	}
 	
