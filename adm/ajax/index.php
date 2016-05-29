@@ -33,6 +33,9 @@ unset($values['PHPSESSID']);
 		case "delete_product":
 			executeDeleteProduct($values);	
 		break;
+		case "update_product":
+			executeUpdateProduct($values);	
+		break;
 	}
 	function executeStatusChanger($values = null)
 	{
@@ -110,5 +113,12 @@ unset($values['PHPSESSID']);
 		
 		$SalesProductsDetail = new SalesProductsDetail();		
 		$SalesProductsDetail->deleteSalesProductsDetail($values['id']);
+
+	}
+	
+	function executeUpdateProduct($values = null)
+	{
+		$SalesProductsDetail = new SalesProductsDetail();
+		$SalesProductsDetail ->updateSalesProductsDetail($values);
 
 	}

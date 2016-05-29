@@ -5,7 +5,7 @@
 	</td>
 	<td>
 		
-		<select name='id_product_type[<?php echo $values['id']?>]'>
+		<select name='id_product_type[<?php echo $values['id']?>]' id='id_product_type[<?php echo $values['id']?>]'>
 			<option value=''>...</option>
 			<?php if(count($products_type_list)>0):?>
 				<?php foreach($products_type_list as $list):?>
