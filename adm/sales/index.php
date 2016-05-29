@@ -62,6 +62,9 @@ unset($values['PHPSESSID']);
 		
 		$Sales= new Sales();
 		$values = $Sales->getSalesById($values);
+		
+		$SalesProductsDetail = new SalesProductsDetail();
+		$values['sales_products_detail'] = $SalesProductsDetail->getSalesListProductsDetailBySale($values['id_sale']);
         $id_sale = $values['id_sale'];
         $values['action'] = 'update';
         $values['msg'] = $msg;
@@ -94,22 +97,21 @@ unset($values['PHPSESSID']);
 		{
 			foreach ($sales_json as $sales) 
 			{
-				$id_sales= $sales['id_sales'];
+				$id_sale= $sales['id_sale'];
 				$status = $sales['status'];
 				if($status == 0)
 				{
-					$message_status = "<label class='label label-danger'><a href='#' onclick = ".'"'."status_changer('sales','id_sales', '$id_sales','1')".'"'.">Desactivado</a></label>";
+					$message_status = "<label class='label label-danger'><a href='#' onclick = ".'"'."status_changer('sales','$id_sale', '$id_sale','1')".'"'.">Desactivado</a></label>";
 				}
 				if($status == 1)
 				{
-					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('sales','id_sales', '$id_sales','0')".'"'.">Activo</a></label>";
+					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('sales','id_sale', '$id_sale','0')".'"'.">Activo</a></label>";
 				}
 				
 				$array_json['data'][] = array(
-					"id_sales" => $id_sales,
-					"name" => $sales['name'],
-					"swif" => $sales['swif'],
-					"aba" => $sales['aba'],
+					"id_sale" => $id_sale,
+					"id_type_destiny" => $sales['id_type_destiny'],
+					"date_sale" => $sales['date_sale'],
 					"status" => $message_status,
 					"date_created" => $sales['date_created'],
 					"date_updated" => $sales['date_updated'],
@@ -117,7 +119,7 @@ unset($values['PHPSESSID']);
                                        
                                        '<form method="POST" action = "'.full_url.'/adm/sales/index.php" >'
                                        .'<input type="hidden" name="action" value="edit">  '
-                                       .'<input type="hidden" name="id_sales" value="'.$id_sales.'">  '
+                                       .'<input type="hidden" name="id_sale" value="'.$id_sale.'">  '
                                        .'<button class="btn btn-default btn-sm" type="submit"><i class="fa fa-edit  fa-pull-left fa-border"></i></button>'
                                        .'</form>'
 					);	
@@ -125,7 +127,7 @@ unset($values['PHPSESSID']);
 		}else{
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
-			$array_json['data'][0] = array("id_sales"=>null,"name"=>"","aba"=>"","swif"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
+			$array_json['data'][0] = array("id_sale"=>null,"name"=>"","aba"=>"","swif"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
 		}
 
 		echo json_encode($array_json);die;

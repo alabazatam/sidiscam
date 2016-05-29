@@ -6,18 +6,22 @@
 			<thead>
 				<tr>
 					<th>Id</th>
-					<th>Nombre</th>
-					<th>Abreviatura</th>
+					<th>type_destiny</th>
+					<th>Fecha venta</th>
 					<th>Status</th>
+					<th>Fecha creación</th>
+					<th>Fecha actualización</th>
 					<th>Acciones</th>
 				</tr>
 			</thead>
 			<tfoot>
 				<tr>
 					<th>Id</th>
-					<th>Nombre</th>
-					<th>Abreviatura</th>
+					<th>type_destiny</th>
+					<th>Fecha venta</th>
 					<th>Status</th>
+					<th>Fecha creación</th>
+					<th>Fecha actualización</th>
 					<th>Acciones</th>
 				</tr>
 			</tfoot>
@@ -36,14 +40,16 @@ $(document).ready(function() {
                 "url": "<?php echo full_url."/web/js/"?>datatables.spanish.lang"
         },
         "columns": [
-            { "data": "id_sales" },
-            { "data": "name" },
-			{ "data": "abr" },
-            { "data": "status" },
+            { "data": "id_sale" },
+            { "data": "id_type_destiny" },
+			{ "data": "date_sale" },
+			{ "data": "status" },
+            { "data": "date_created" }, 
+			{ "data": "date_updated" },
             { "data": "actions" }
         ],
       "aoColumnDefs": [
-          { 'bSortable': false, 'aTargets': [ 4 ] }
+          { 'bSortable': false, 'aTargets': [ 6 ] }
        ]				
     });
 } );

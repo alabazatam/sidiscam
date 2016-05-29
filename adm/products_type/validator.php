@@ -31,6 +31,12 @@
 			"label" => "nombre",
 			"required" => false
 		);
+		$validator_values['id_product'] = array(
+			
+			"type" => "number",
+			"label" => "Producto",
+			"required" => true
+		);
 		$ValidateBase = new ValidateBase();
 		$errors = $ValidateBase->validate_base($validator_values, $values);
 		return $errors;

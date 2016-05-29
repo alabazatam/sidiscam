@@ -1,7 +1,6 @@
 <!-- Modal -->
-<div class="row">
-	<div class="container">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+
 			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			  <div class="modal-dialog" role="document">
 				<div class="modal-content">
@@ -17,9 +16,7 @@
 				</div>
 			  </div>
 			</div>
-		</div>
-	</div>
-</div>
+
 </body>
 </html>
 <script src="<?php echo full_url;?>/web/js/jquery.js"></script>

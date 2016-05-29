@@ -84,6 +84,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Tables.class.php")
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/States.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/TypeDestiny.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Sales.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/SalesProductsDetail.class.php");
 
 
 

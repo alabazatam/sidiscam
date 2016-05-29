@@ -1,5 +1,10 @@
 <?php include('../../view_header.php')?>
 <?php include('../menu.php')?>
+<?php 
+	$Products = new Products();
+	$list_products = $Products ->getProductsListSelect();
+
+?>
 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
 <h1 class="text-center">Tipos de productos</h1>
     <form class="" action="index.php" method="POST">
@@ -8,6 +13,22 @@
         <label for="">Id.</label>
         <input readonly="readonly" type="text" class="form-control input-sm" id="" placeholder="" name="id_product_type" value="<?php if(isset($values['id_product_type'])) echo $values['id_product_type']?>">
       </div>
+      <div class="form-group">
+        <label for="">Producto <small class="text-danger">(*)</small></label>
+        		<select name="id_product"  class="form-control input-sm">
+					<option value="">Seleccione...</option>
+				<?php if(count($list_products)>0): ?>
+					<?php foreach($list_products as $list): ?>
+
+							<option value="<?php echo $list['id_product'];?>" <?php if($list['id_product'] == @$values['id_product']) echo "selected = 'selected'" ?>><?php echo $list['name'];?></option>
+						
+					<?php endforeach; ?>
+				<?php endif; ?>
+				</select>
+		<?php if(isset($values['errors']['id_product']) and $values['errors']['id_product']!=''):?>
+			<label class="alert alert-danger"><?php echo $values['errors']['id_product']?></label>
+		<?php endif;?>
+	  </div>
       <div class="form-group">
         <label for="">Nombre <small class="text-danger">(*)</small></label>
         <input type="text" autocomplete="off" class="form-control input-sm" id="" placeholder="" name="name" value="<?php if(isset($values['name'])) echo $values['name']?>">

@@ -27,6 +27,12 @@ unset($values['PHPSESSID']);
 		case "products_list":
 			executeProductsList($values);	
 		break;
+		case "add_product":
+			executeAddProduct($values);	
+		break;
+		case "delete_product":
+			executeDeleteProduct($values);	
+		break;
 	}
 	function executeStatusChanger($values = null)
 	{
@@ -80,6 +86,29 @@ unset($values['PHPSESSID']);
 		
 		$Products = new Products();
 		$products_list = $Products ->getProductsListSelect($values);
+		
+
 		require('products_list.php');
+
+	}
+	function executeAddProduct($values = null)
+	{
+		$Products = new Products();
+		$products_data = $Products->getProductsById($values);
+		$ProductsType = new ProductsType();
+		$products_type_list = $ProductsType ->getListProductsTypeByIdProduct($values['id_product']);			
+		$SalesProductsDetail = new SalesProductsDetail();
+		$values_save['id_product'] = $values['id_product']; 
+		$values_save['id_sale'] = $values['id_sale']; 
+		$values_save['status'] = 1; 
+		$values['id'] = $SalesProductsDetail->saveSalesProductsDetail($values_save);
+		require('add_product.php');
+
+	}
+	function executeDeleteProduct($values = null)
+	{
+		
+		$SalesProductsDetail = new SalesProductsDetail();		
+		$SalesProductsDetail->deleteSalesProductsDetail($values['id']);
 
 	}

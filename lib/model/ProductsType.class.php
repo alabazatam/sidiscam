@@ -119,5 +119,14 @@
 			return $q; 				
 			
 		}
+		public function getListProductsTypeByIdProduct($id_product){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->products_type
+			->select("*")
+			->where("status=?",1)
+			->and('id_product =?',$id_product);
+			return $q; 				
+			
+		}		
 	}
 	
