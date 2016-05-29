@@ -54,10 +54,10 @@
 		function updateSalesProductsDetail($values){
 			unset($values['action'],$values['PHPSESSID'],$values['column_id']);
 			$values['date_updated'] = new NotORM_Literal("NOW()");
-			$id_sale = $values['id_sale'];
+			$id = $values['id'];
 			$column_name = $values['column_name'];
 			$ConnectionORM = new ConnectionORM();
-			$q = $ConnectionORM->getConnect()->sales_products_detail("id_sale", $id_sale)->update(array($column_name=>$values['value']));
+			$q = $ConnectionORM->getConnect()->sales_products_detail("id", $id)->update(array($column_name=>$values['value']));
 			return $q;
 			
 		}

@@ -37,7 +37,7 @@
 									<option value=''>...</option>
 									<?php if(count($products_type_list)>0):?>
 										<?php foreach($products_type_list as $list):?>
-										<option value='<?php echo $list['id_product_type']?>'><?php echo $list['name']?></option>
+										<option value='<?php echo $list['id_product_type']?>' <?php if($list['id_product_type'] == @$sales_products_details['id_product_type']) echo "selected='selected'";?>><?php echo $list['name']?></option>
 										<?php endforeach;?>
 									<?php endif;?>
 								</select>
