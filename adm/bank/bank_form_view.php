@@ -1,4 +1,4 @@
-<?php include('../../view_header.php')?>
+<?php include('../../view_header.php')?> 
 <?php include('../menu.php')?>
 <?php 
 	$Tables = new Tables();
