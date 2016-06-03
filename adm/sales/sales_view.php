@@ -7,7 +7,7 @@
 					<div class="form-group">
 						<div class="col-sm-6">
 							<label for="">Fecha de venta<small class="text-danger">(*)</small></label>
-							<input type="text" autocomplete="off" class="form-control input-sm" id="" placeholder="" name="date_sale" value="<?php if(isset($values['date_sale'])) echo $values['date_sale']?>">
+							<input type="date" autocomplete="off" class="form-control input-sm" id="" placeholder="" name="date_sale" value="<?php if(isset($values['date_sale'])) echo $values['date_sale']?>">
 							<?php if(isset($values['errors']['date_sale']) and $values['errors']['date_sale']!=''):?>
 								<label class="alert alert-danger"><?php echo $values['errors']['date_sale']?></label>
 							<?php endif;?>
