@@ -21,6 +21,10 @@
 		<li role="presentation" class="active"><a href="#venta" aria-controls="venta" role="tab" data-toggle="tab">Detalle de venta</a></li>
 		<?php if(isset($values['id_sale']) and $values['id_sale']!=''):?>
 		<li role="presentation"><a href="#productos" aria-controls="productos" role="tab" data-toggle="tab">Productos</a></li>
+		<li role="presentation"><a href="#plantas" aria-controls="plantas" role="tab" data-toggle="tab">Plantas procesadoras</a></li>
+		<li role="presentation"><a href="#granjas" aria-controls="granjas" role="tab" data-toggle="tab">Granjas</a></li>
+		<li role="presentation"><a href="#containers" aria-controls="containers" role="tab" data-toggle="tab">Containers</a></li>
+
 		<li role="presentation"><a href="#direcciones" aria-controls="direcciones" role="tab" data-toggle="tab">Datos de envio y recepción</a></li>
 		<?php endif;?>
 	</ul>
@@ -35,6 +39,15 @@
 		<div role="tabpanel" class="tab-pane" id="productos"><!--segundo panel-->
 			<?php include('products_view.php');?>	
 		</div><!--Fin segundo panel-->
+		<div role="tabpanel" class="tab-pane" id="plantas"><!--tercer panel-->
+			<?php include('plants_view.php');?>
+		</div><!--Fin tercer panel-->
+		<div role="tabpanel" class="tab-pane" id="granjas"><!--tercer panel-->
+			<?php include('farms_view.php');?>
+		</div><!--Fin tercer panel-->
+		<div role="tabpanel" class="tab-pane" id="containers"><!--tercer panel-->
+			<?php include('containers_view.php');?>
+		</div><!--Fin tercer panel-->
 		<div role="tabpanel" class="tab-pane" id="direcciones"><!--tercer panel-->
 			<?php include('billing_view.php');?>
 		</div><!--Fin tercer panel-->

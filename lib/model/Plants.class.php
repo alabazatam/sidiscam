@@ -111,5 +111,13 @@
 			return $q;
 			
 		}
+		public function getPlantsListSelect($values = null){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->plants
+			->select("*, DATE_FORMAT(date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->where("status=?",1);
+            return $q; 				
+			
+		}		
 	}
 	

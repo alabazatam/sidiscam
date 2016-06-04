@@ -36,6 +36,41 @@ unset($values['PHPSESSID']);
 		case "update_product":
 			executeUpdateProduct($values);	
 		break;
+	
+		case "plants_list":
+			executePlantsList($values);	
+		break;
+		case "add_plant":
+			executeAddPlant($values);	
+		break;
+		case "delete_plant":
+			executeDeletePlant($values);	
+		break;
+
+
+		case "farms_list":
+			executeFarmsList($values);	
+		break;
+		case "add_farm":
+			executeAddFarm($values);	
+		break;
+		case "delete_farm":
+			executeDeleteFarm($values);	
+		break;
+	
+		case "containers_list":
+			executeContainersList($values);	
+		break;
+		case "add_container":
+			executeAddContainer($values);	
+		break;
+		case "delete_container":
+			executeDeleteContainer($values);	
+		break;
+		case "update_container":
+			executeUpdateContainer($values);	
+		break;		
+	
 	}
 	function executeStatusChanger($values = null)
 	{
@@ -122,3 +157,107 @@ unset($values['PHPSESSID']);
 		$SalesProductsDetail ->updateSalesProductsDetail($values);
 
 	}
+	
+	/***********Plants*****/
+	
+function executePlantsList($values = null)
+	{
+		
+		$Plants = new Plants();
+		$plants_list = $Plants ->getPlantsListSelect($values);
+		
+
+		require('plants_list.php');
+
+	}
+	function executeAddPlant($values = null)
+	{
+		$Plants = new Plants();
+		$plants_data = $Plants->getPlantsById($values);			
+		$SalesPlantsDetail = new SalesPlantsDetail();
+		$values_save['id_plant'] = $values['id_plant']; 
+		$values_save['id_sale'] = $values['id_sale']; 
+		$values_save['status'] = 1; 
+		$values['id'] = $SalesPlantsDetail->saveSalesPlantsDetail($values_save);
+		require('add_plant.php');
+
+	}
+	function executeDeletePlant($values = null)
+	{
+		
+		$SalesPlantsDetail = new SalesPlantsDetail();		
+		$SalesPlantsDetail->deleteSalesPlantsDetail($values['id']);
+
+	}
+
+
+	/***********Farms*****/
+	
+function executeFarmsList($values = null)
+	{
+		
+		$Farms = new Farms();
+		$farms_list = $Farms ->getFarmsListSelect($values);
+		
+
+		require('farms_list.php');
+
+	}
+	function executeAddFarm($values = null)
+	{
+		$Farms = new Farms();
+		$farms_data = $Farms->getFarmsById($values);			
+		$SalesFarmsDetail = new SalesFarmsDetail();
+		$values_save['id_farm'] = $values['id_farm']; 
+		$values_save['id_sale'] = $values['id_sale']; 
+		$values_save['status'] = 1; 
+		$values['id'] = $SalesFarmsDetail->saveSalesFarmsDetail($values_save);
+		require('add_farm.php');
+
+	}
+	function executeDeleteFarm($values = null)
+	{
+		
+		$SalesFarmsDetail = new SalesFarmsDetail();	
+		$SalesFarmsDetail->deleteSalesFarmsDetail($values['id']);
+
+	}
+
+		/***********Containers*****/
+	
+function executeContainersList($values = null)
+	{
+		
+		$Containers = new Containers();
+		$containers_list = $Containers ->getContainersListSelect($values);
+		
+
+		require('containers_list.php');
+
+	}
+	function executeAddContainer($values = null)
+	{
+		$Containers = new Containers();
+		$containers_data = $Containers->getContainersById($values);			
+		$SalesContainersDetail = new SalesContainersDetail();
+		$values_save['id_container'] = $values['id_container']; 
+		$values_save['id_sale'] = $values['id_sale']; 
+		$values_save['status'] = 1; 
+		$values['id'] = $SalesContainersDetail->saveSalesContainersDetail($values_save);
+		require('add_container.php');
+
+	}
+	function executeDeleteContainer($values = null)
+	{
+		
+		$SalesContainersDetail = new SalesContainersDetail();
+		$SalesContainersDetail->deleteSalesContainersDetail($values['id']);
+
+	}
+		function executeUpdateContainer($values = null)
+	{
+		$SalesContainersDetail = new SalesContainersDetail();
+		$SalesContainersDetail ->updateSalesContainersDetail($values);
+
+	}
+		
