@@ -111,5 +111,14 @@
 			return $q;
 			
 		}
+		public function getListIncoterms($values = null){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->incoterms
+			->select("*")
+			->where("status=?",1)
+			->order('name');
+			return $q; 				
+			
+		}
 	}
 	

@@ -1,3 +1,12 @@
+	<?php 
+	$Incoterms = new Incoterms();
+	$list_incoterms = $Incoterms->getListIncoterms();
+	
+	$Brokers = new Brokers();
+	$list_brokers = $Brokers->getListBrokers($values);
+	?>					
+
+
 					<div class="form-group">
 						<div class="col-sm-3">
 							<label for="">Id</label>
@@ -48,6 +57,64 @@
 							</div>
 
 					</div>
+
+
+<!-- Otros datos de venta-->
+							<div class="form-group">
+								<div class="col-sm-6">
+									<label for="">Términos de negociación<small class="text-danger">(*)</small></label>
+									<input type="text" autocomplete="off" class="form-control input-sm" id="" placeholder="" name="terms" value="<?php if(isset($values['terms'])) echo $values['terms']?>">
+									<?php if(isset($values['errors']['terms']) and $values['errors']['terms']!=''):?>
+										<label class="alert alert-danger"><?php echo $values['errors']['terms']?></label>
+									<?php endif;?>
+								</div>
+								<div class="col-sm-6">
+									<label for="">Comisión comercial<small class="text-danger">(*)</small></label>
+									<input type="text" autocomplete="off" class="form-control input-sm" id="" placeholder="" name="comision" value="<?php if(isset($values['comision'])) echo $values['comision']?>">
+									<?php if(isset($values['errors']['comision']) and $values['errors']['comision']!=''):?>
+										<label class="alert alert-danger"><?php echo $values['errors']['comision']?></label>
+									<?php endif;?>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<label for="">Incoterm <small class="text-danger">(*)</small></label>
+										<select name="id_incoterm"  class="form-control input-sm">
+											<option value="">Seleccione...</option>
+										<?php if(count($list_incoterms)>0): ?>
+											<?php foreach($list_incoterms as $list): ?>
+
+													<option value="<?php echo $list['id_incoterm'];?>" <?php if($list['id_incoterm'] == @$values['id_incoterm']) echo "selected = 'selected'" ?>><?php echo $list['name'];?></option>
+
+											<?php endforeach; ?>
+										<?php endif; ?>
+										</select>
+								<?php if(isset($values['errors']['id_incoterm']) and $values['errors']['id_incoterm']!=''):?>
+									<label class="alert alert-danger"><?php echo $values['errors']['id_incoterm']?></label>
+								<?php endif;?>
+							</div>
+
+							<div class="col-sm-6">
+								<label for="">Broker <small class="text-danger">(*)</small></label>
+										<select name="id_broker"  class="form-control input-sm">
+											<option value="">Seleccione...</option>
+										<?php if(count($list_brokers)>0): ?>
+											<?php foreach($list_brokers as $list): ?>
+
+													<option value="<?php echo $list['id_broker'];?>" <?php if($list['id_broker'] == @$values['id_broker']) echo "selected = 'selected'" ?>><?php echo $list['name'];?></option>
+
+											<?php endforeach; ?>
+										<?php endif; ?>
+										</select>
+								<?php if(isset($values['errors']['id_broker']) and $values['errors']['id_broker']!=''):?>
+									<label class="alert alert-danger"><?php echo $values['errors']['id_broker']?></label>
+								<?php endif;?>
+							</div>
+
+<!--Fin otros datos de venta-->
+
+
+
+
 					<div class="form-group">
 						<div class="col-sm-4">
 						  <label class="label label-danger">

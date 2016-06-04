@@ -110,5 +110,14 @@
 			return $q;
 			
 		}
+		public function getListPorts($values = null){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->ports
+			->select("*")
+			->where("status=?",1)
+			->order('name');
+			return $q; 				
+			
+		}
 	}
 	
