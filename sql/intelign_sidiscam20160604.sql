@@ -557,14 +557,15 @@ CREATE TABLE `sales_farms_detail` (
   `date_updated` datetime NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 /*Data for the table `sales_farms_detail` */
 
 insert  into `sales_farms_detail`(`id`,`id_sale`,`id_farm`,`date_created`,`date_updated`,`status`) values 
 (5,19,2,'2016-06-03 22:24:49','2016-06-03 22:24:49',1),
 (6,19,1,'2016-06-03 22:24:51','2016-06-03 22:24:51',1),
-(7,19,1,'2016-06-04 10:33:37','2016-06-04 10:33:37',1);
+(7,19,1,'2016-06-04 10:33:37','2016-06-04 10:33:37',1),
+(8,19,2,'2016-06-04 11:53:30','2016-06-04 11:53:30',1);
 
 /*Table structure for table `sales_plants_detail` */
 
