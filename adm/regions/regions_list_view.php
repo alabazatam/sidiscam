@@ -6,23 +6,24 @@
 			<thead>
 				<tr>
 					<th>Id</th>
-					<th>Nombre</th>
+					<th>Región</th>
 					<th>Abreviatura</th>
-					<th>Status</th>
+					<th>Estatus</th>
 					<th>Acciones</th>
 				</tr>
 			</thead>
 			<tfoot>
 				<tr>
 					<th>Id</th>
-					<th>Nombre</th>
+					<th>Región</th>
 					<th>Abreviatura</th>
-					<th>Status</th>
+					<th>Estatus</th>
 					<th>Acciones</th>
 				</tr>
 			</tfoot>
 		</table>
 	<a class="btn btn-default"  href="<?php echo full_url."/adm/regions/index.php?action=new"?>"><i class="fa fa-file-o fa-pull-left fa-border"></i>Agregar</a>
+        <br><br><br>
 </div>
 	<?php include('../../view_footer.php')?>
 <script>

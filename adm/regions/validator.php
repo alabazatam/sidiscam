@@ -12,16 +12,16 @@
 			"minlength" => 3,
 			"maxlength" => 100,
 			"type" => "text",
-			"label" => "nombre",
+			"label" => "Nombre",
 			"required" => true
 		);
 		$validator_values['abr'] = array(
 			
-			"minlength" => 1,
-			"maxlength" => 10,
+			"minlength" => 3,
+			"maxlength" => 3,
 			"type" => "text",
 			"label" => "Abreviatura",
-			"required" => false
+			"required" => true
 		);
 		$validator_values['id_region'] = array(
 			

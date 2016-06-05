@@ -12,16 +12,16 @@
 			"minlength" => 3,
 			"maxlength" => 100,
 			"type" => "text",
-			"label" => "Nombre",
+			"label" => "Término de comercio",
 			"required" => true
 		);
 		$validator_values['abr'] = array(
 			
-			"minlength" => 1,
-			"maxlength" => 10,
+			"minlength" => 3,
+			"maxlength" => 3,
 			"type" => "text",
-			"label" => "Abreviatura",
-			"required" => false
+			"label" => "Código",
+			"required" => true
 		);
 		$validator_values['detail'] = array(
 			
@@ -29,7 +29,7 @@
 			"maxlength" => 250,
 			"type" => "text",
 			"label" => "Detalle",
-			"required" => true
+			"required" => false
 		);
 		$ValidateBase = new ValidateBase();
 		$errors = $ValidateBase->validate_base($validator_values, $values);

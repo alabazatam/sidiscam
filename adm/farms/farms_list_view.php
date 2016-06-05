@@ -6,23 +6,28 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Nombre</th>
-					<th>Abreviatura</th>
-                    <th>Status</th>
+                    <th>Granja</th>
+                    <th>Persona Contacto</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                    <th>Estatus</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
                     <th>Id</th>
-                    <th>Nombre</th>
-					<th>Abreviatura</th>
-                    <th>Status</th>
+                    <th>Granja</th>
+                    <th>Persona Contacto</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                    <th>Estatus</th>
                     <th>Acciones</th>
                 </tr>
             </tfoot>
         </table>
     <a class="btn btn-default"  href="<?php echo full_url."/adm/farms/index.php?action=new"?>"><i class="fa fa-file-o fa-pull-left fa-border"></i>Agregar</a>
+    <br><br><br>
 </div>
 <?php include('../../view_footer.php')?>
 <script>
@@ -38,7 +43,9 @@ $(document).ready(function() {
         "columns": [
             { "data": "id_farm" },
             { "data": "name" },
-			{ "data": "abr" },
+            { "data": "contact1" },
+            { "data": "phone_contact1" },
+            { "data": "email_contact1" },
             { "data": "status" },
             { "data": "actions" }
         ],

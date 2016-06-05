@@ -6,23 +6,24 @@
 			<thead>
 				<tr>
 					<th>Id</th>
-					<th>Nombre</th>
+					<th>Estado</th>
 					<th>País</th>
-					<th>Status</th>
+					<th>Estatus</th>
 					<th>Acciones</th>
 				</tr>
 			</thead>
 			<tfoot>
 				<tr>
 					<th>Id</th>
-					<th>Nombre</th>
+					<th>Estado</th>
 					<th>País</th>
-					<th>Status</th>
+					<th>Estatus</th>
 					<th>Acciones</th>
 				</tr>
 			</tfoot>
 		</table>
 	<a class="btn btn-default"  href="<?php echo full_url."/adm/states/index.php?action=new"?>"><i class="fa fa-file-o fa-pull-left fa-border"></i>Agregar</a>
+        <br><br><br>
 </div>
 	<?php include('../../view_footer.php')?>
 <script>
@@ -38,7 +39,7 @@ $(document).ready(function() {
         "columns": [
             { "data": "id_state" },
             { "data": "name" }, 
-			{ "data": "id_country" },			
+            { "data": "id_country" },			
             { "data": "status" },
             { "data": "actions" }
         ],

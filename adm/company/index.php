@@ -107,6 +107,9 @@ $values = $_REQUEST;
 					"id_company" => $id_company,
 					"description" => $company['description'],
 					"rif" => $company['rif'],
+					"contact1" => $company['contact1'],
+					"phone_contact1" => $company['phone_contact1'],
+					"email_contact1" => $company['email_contact1'],
 					"status" => $message_status,
 					"actions" => '<form method="POST" action ="'.full_url.'/adm/company/index.php"><input type="hidden" name="action" value="edit"><input type="hidden" name="id_company" value="'.$id_company.'"><button type="submit" class="btn btn-default"><i class="fa fa-edit fa-pull-left fa-border"></i></button><form>'
 
@@ -115,7 +118,7 @@ $values = $_REQUEST;
 		}else{
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
-			$array_json['data'][0] = array("id_company"=>null,"description"=>"","rif"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
+			$array_json['data'][0] = array("id_company"=>null,"description"=>"","rif"=>"","contact1"=>"","phone_contact1"=>"","email_contact1"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
 		}
 
 		echo json_encode($array_json);die;

@@ -7,8 +7,9 @@
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
-					<th>Abreviatura</th>
-                    <th>Status</th>
+                    <th>Código</th>
+                    <th>País</th>                 
+                    <th>Estatus</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -16,13 +17,15 @@
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
-					<th>Abreviatura</th>
-                    <th>Status</th>
+                    <th>Código</th>
+                    <th>País</th>                 
+                    <th>Estatus</th>
                     <th>Acciones</th>
                 </tr>
             </tfoot>
         </table>
     <a class="btn btn-default"  href="<?php echo full_url."/adm/ports/index.php?action=new"?>"><i class="fa fa-file-o fa-pull-left fa-border"></i>Agregar</a>
+    <br><br><br>
 </div>
 <?php include('../../view_footer.php')?>
 <script>
@@ -38,7 +41,8 @@ $(document).ready(function() {
         "columns": [
             { "data": "id_port" },
             { "data": "name" },
-			{ "data": "abr" },
+            { "data": "cod_port" },
+            { "data": "id_country" },
             { "data": "status" },
             { "data": "actions" }
         ],

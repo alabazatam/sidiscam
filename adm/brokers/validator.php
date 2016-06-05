@@ -15,14 +15,14 @@
 			"label" => "Nombre",
 			"required" => true
 		);
-		$validator_values['abr'] = array(
-			
-			"minlength" => 1,
-			"maxlength" => 10,
-			"type" => "text",
-			"label" => "Abreviatura",
-			"required" => false
-		);
+//		$validator_values['abr'] = array(
+//			
+//			"minlength" => 1,
+//			"maxlength" => 10,
+//			"type" => "text",
+//			"label" => "Abreviatura",
+//			"required" => false
+//		);
 		$validator_values['address'] = array(
 			
 			"minlength" => 5,
@@ -53,7 +53,7 @@
 			"maxlength" => 100,
 			"type" => "email",
 			"label" => "Correo electrónico principal",
-			"required" => false
+			"required" => true
 		);
 		$validator_values['email2'] = array(
 			

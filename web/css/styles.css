@@ -629,3 +629,13 @@ input[readonly="readonly"] {
    background-color: #ccc !important;
 
 }
+.sub-seccion {
+  padding: 8px 14px;
+  margin: 0 0 10px;
+  font-size: 14px;
+  background-color: #E0E6F8;
+  border-bottom: 1px solid #ebebeb;
+  border-radius: 5px 5px 5px 5px;
+  font-family: 'Open Sans',serif;
+  font-weight: 600;
+}

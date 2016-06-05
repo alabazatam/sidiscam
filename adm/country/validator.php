@@ -17,11 +17,11 @@
 		);
 		$validator_values['abr'] = array(
 			
-			"minlength" => 1,
-			"maxlength" => 10,
+			"minlength" => 2,
+			"maxlength" => 2,
 			"type" => "text",
 			"label" => "Abreviatura",
-			"required" => false
+			"required" => true
 		);
 		$validator_values['id_region'] = array(
 			

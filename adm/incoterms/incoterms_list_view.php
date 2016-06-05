@@ -6,23 +6,24 @@
 			<thead>
 				<tr>
 					<th>Id</th>
-					<th>Nombre</th>
-					<th>Abreviatura</th>
-					<th>Status</th>
+					<th>Término de comercio</th>
+                                        <th>Código</th>
+					<th>Estatus</th>
 					<th>Acciones</th>
 				</tr>
 			</thead>
 			<tfoot>
 				<tr>
 					<th>Id</th>
-					<th>Nombre</th>
-					<th>Abreviatura</th>
-					<th>Status</th>
+					<th>Término de comercio</th>
+                                        <th>Código</th>
+					<th>Estatus</th>
 					<th>Acciones</th>
 				</tr>
 			</tfoot>
 		</table>
 	<a class="btn btn-default"  href="<?php echo full_url."/adm/incoterms/index.php?action=new"?>"><i class="fa fa-file-o fa-pull-left fa-border"></i>Agregar</a>
+        <br><br><br>
 </div>
 	<?php include('../../view_footer.php')?>
 <script>
@@ -38,7 +39,7 @@ $(document).ready(function() {
         "columns": [
             { "data": "id_incoterm" },
             { "data": "name" }, 
-			{ "data": "abr" },			
+            { "data": "abr" },			
             { "data": "status" },
             { "data": "actions" }
         ],

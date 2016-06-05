@@ -12,7 +12,7 @@
 			"minlength" => 3,
 			"maxlength" => 100,
 			"type" => "text",
-			"label" => "nombre",
+			"label" => "Nombre",
 			"required" => true
 		);
 		$validator_values['rif'] = array(
@@ -21,7 +21,7 @@
 			"maxlength" => 20,
 			"type" => "text",
 			"label" => "Identificador fiscal",
-			"required" => false
+			"required" => true
 		);
 		$validator_values['id_country'] = array(
 			
@@ -42,7 +42,7 @@
 			"minlength" => 10,
 			"maxlength" => 11,
 			"type" => "number",
-			"label" => "Teléfono 1",
+			"label" => "Teléfono Principal",
 			"required" => true
 		);
 		$validator_values['phone2'] = array(
@@ -50,7 +50,7 @@
 			"minlength" => 10,
 			"maxlength" => 11,
 			"type" => "text",
-			"label" => "Teléfono 2",
+			"label" => "Teléfono Secundario",
 			"required" => false
 		);
 		$validator_values['email1'] = array(
@@ -75,7 +75,7 @@
 			"maxlength" => 100,
 			"type" => "text",
 			"label" => "Contacto principal",
-			"required" => false
+			"required" => true
 		);
 		$validator_values['phone_contact1'] = array(
 			
@@ -83,7 +83,7 @@
 			"maxlength" => 11,
 			"type" => "text",
 			"label" => "Teléfono del contacto principal",
-			"required" => false
+			"required" => true
 		);	
 		$validator_values['email_contact1'] = array(
 			
@@ -91,7 +91,7 @@
 			"maxlength" => 100,
 			"type" => "email",
 			"label" => "Correo electrónico del contacto principal",
-			"required" => false
+			"required" => true
 		);
 		$validator_values['contact2'] = array(
 			

@@ -7,8 +7,11 @@
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
-					<th>Identificador fiscal</th>
-                    <th>Status</th>
+                    <th>Identificador fiscal</th>
+                    <th>Persona Contacto</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                    <th>Estatus</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -16,8 +19,11 @@
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
-					<th>Identificador fiscal</th>
-                    <th>Status</th>
+                    <th>Identificador fiscal</th>
+                    <th>Persona Contacto</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                    <th>Estatus</th>
                     <th>Acciones</th>
                 </tr>
             </tfoot>
@@ -38,7 +44,10 @@ $(document).ready(function() {
         "columns": [
             { "data": "id_client" },
             { "data": "name" },
-			{ "data": "rif" },
+            { "data": "rif" },
+            { "data": "contact1" },
+            { "data": "phone_contact1" },
+            { "data": "email_contact1" },
             { "data": "status" },
             { "data": "actions" }
         ],

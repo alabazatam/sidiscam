@@ -107,6 +107,9 @@ $values = $_REQUEST;
 					"id_plant" => $id_plant,
 					"name" => $plant['name'],
 					"rif" => $plant['rif'],
+					"contact1" => $plant['contact1'],
+        				"phone_contact1" => $plant['phone_contact1'],
+    					"email_contact1" => $plant['email_contact1'],
 					"status" => $message_status,
 					"actions" => '<form method="POST" action ="'.full_url.'/adm/plants/index.php"><input type="hidden" name="action" value="edit"><input type="hidden" name="id_plant" value="'.$id_plant.'"><button type="submit" class="btn btn-default"><i class="fa fa-edit fa-pull-left fa-border"></i></button><form>'
 
@@ -115,7 +118,7 @@ $values = $_REQUEST;
 		}else{
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
-			$array_json['data'][0] = array("id_plant"=>null,"name"=>"","rif"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
+			$array_json['data'][0] = array("id_plant"=>null,"name"=>"","rif"=>"","contact1"=>"","phone_contact1"=>"","email_contact1"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
 		}
 
 		echo json_encode($array_json);die;

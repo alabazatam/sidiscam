@@ -102,11 +102,13 @@ $values = $_REQUEST;
 				{
 					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('farms','id_farm', '$id_farm','0')".'"'.">Activo</a></label>";
 				}
-				
+
 				$array_json['data'][] = array(
 					"id_farm" => $id_farm,
 					"name" => $farm['name'],
-					"abr" => $farm['abr'],
+					"contact1" => $farm['contact1'],
+        				"phone_contact1" => $farm['phone_contact1'],
+    					"email_contact1" => $farm['email_contact1'],
 					"status" => $message_status,
 					"actions" => '<form method="POST" action ="'.full_url.'/adm/farms/index.php"><input type="hidden" name="action" value="edit"><input type="hidden" name="id_farm" value="'.$id_farm.'"><button type="submit" class="btn btn-default"><i class="fa fa-edit fa-pull-left fa-border"></i></button><form>'
 
@@ -115,7 +117,7 @@ $values = $_REQUEST;
 		}else{
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
-			$array_json['data'][0] = array("id_farm"=>null,"name"=>"","abr"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
+			$array_json['data'][0] = array("id_farm"=>null,"name"=>"","contact1"=>"","phone_contact1"=>"","email_contact1"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
 		}
 
 		echo json_encode($array_json);die;

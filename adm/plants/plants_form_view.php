@@ -6,7 +6,7 @@
 
 ?>
 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
-<h1 class="text-center">Plantas procesadoras</h1>
+<h1 class="text-center">Plantas Procesadoras</h1>
     <form class="form-horizontal" action="index.php" method="POST">
             <input type="hidden" name='action' value='<?php if(isset($values['action']))echo $values['action'];?>'>
       <div class="form-group">
@@ -26,7 +26,7 @@
 		</div>
 
 		<div class="col-sm-6">
-		<label for="">Identificador fiscal</label>
+		<label for="">Identificador fiscal <small class="text-danger">(*)</small></label>
 		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="rif" value="<?php if(isset($values['rif'])) echo $values['rif']?>">
 		<?php if(isset($values['errors']['rif']) and $values['errors']['rif']!=''):?>
 			<label class="alert alert-danger"><?php echo $values['errors']['rif']?></label>
@@ -91,22 +91,23 @@
 		</div>
 	  </div>
 	  <div class="form-group">
+                <div class="sub-seccion">Datos de contacto</div>
 		<div class="col-sm-4">
-		<label for="">Contacto principal</label>
+		<label for="">Nombre <small class="text-danger">(*)</small></label>
 		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="contact1" value="<?php if(isset($values['contact1'])) echo $values['contact1']?>">
 		<?php if(isset($values['errors']['contact1']) and $values['errors']['contact1']!=''):?>
 			<label class="alert alert-danger"><?php echo $values['errors']['contact1']?></label>
 		<?php endif;?>
 		</div>
 		<div class="col-sm-4">
-		<label for="">Teléfono contacto</label>
+		<label for="">Teléfono <small class="text-danger">(*)</small></label>
 		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="phone_contact1" value="<?php if(isset($values['phone_contact1'])) echo $values['phone_contact1']?>">
 		<?php if(isset($values['errors']['phone_contact1']) and $values['errors']['phone_contact1']!=''):?>
 			<label class="alert alert-danger"><?php echo $values['errors']['phone_contact1']?></label>
 		<?php endif;?>
 		</div>
 		<div class="col-sm-4">
-		<label for="">Correo electrónico</label>
+		<label for="">Correo electrónico <small class="text-danger">(*)</small></label>
 		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="email_contact1" value="<?php if(isset($values['email_contact1'])) echo $values['email_contact1']?>">
 		<?php if(isset($values['errors']['email_contact1']) and $values['errors']['email_contact1']!=''):?>
 			<label class="alert alert-danger"><?php echo $values['errors']['email_contact1']?></label>
@@ -115,14 +116,14 @@
 	  </div>
 	  <div class="form-group">
 		<div class="col-sm-4">
-		<label for="">Contacto secundario</label>
+		<label for="">Nombre </label>
 		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="contact2" value="<?php if(isset($values['contact2'])) echo $values['contact2']?>">
 		<?php if(isset($values['errors']['contact2']) and $values['errors']['contact2']!=''):?>
 			<label class="alert alert-danger"><?php echo $values['errors']['contact2']?></label>
 		<?php endif;?>
 		</div>
 		<div class="col-sm-4">
-		<label for="">Teléfono contacto</label>
+		<label for="">Teléfono </label>
 		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="phone_contact2" value="<?php if(isset($values['phone_contact2'])) echo $values['phone_contact2']?>">
 		<?php if(isset($values['errors']['phone_contact2']) and $values['errors']['phone_contact2']!=''):?>
 			<label class="alert alert-danger"><?php echo $values['errors']['phone_contact2']?></label>
@@ -137,18 +138,19 @@
 		</div>
 	  </div>
             <div class="form-group">
-			<div class="col-sm-4">
-              <label class="label label-danger">
-                    <input type="radio" name="status" id="status" value="0" <?php if(isset($values['status']) and $values['status'] =='0' ) echo "checked=checked"?>>
-                    Desactivar
-              </label>
-			</div>
-			<div class="col-sm-4">
-              <label class="label label-success">
-                    <input type="radio" name="status" id="status" value="1" <?php if(isset($values['status']) and $values['status'] =='1' ) echo "checked=checked"?>>
-                    Activar
-              </label>
-			</div>
+                <div class="sub-seccion">Información del estatus de la planta procesadora</div>
+                <div class="col-sm-4">
+                        <label class="label label-danger">
+                            <input type="radio" name="status" id="status" value="0" <?php if(isset($values['status']) and $values['status'] =='0' ) echo "checked=checked"?>>
+                            Inactivo
+                        </label>
+                </div>
+                <div class="col-sm-4">
+                        <label class="label label-success">
+                            <input type="radio" name="status" id="status" value="1" <?php if(isset($values['status']) and $values['status'] =='1' ) echo "checked=checked"?>>
+                            Activo
+                        </label>
+                </div>
             </div>
       <div class="form-group">
 		<div class="col-sm-4">
@@ -166,13 +168,13 @@
 			
 		</div>
 	  </div>
-      <div class="form-group">
-		<div class="col-sm-6 col-sm-offset-4">
-            <a class="btn btn-default"  href="<?php echo full_url."/adm/plants/index.php"?>"><i class="fa fa-arrow-left  fa-pull-left fa-border"></i> Regresar</a>
-            <button type="submit" class="btn btn-default"><i class="fa fa-save fa-pull-left fa-border"></i> Guardar</button>
-			
-		</div>
-	  </div>
+        <div class="form-group">
+            <div class="col-sm-6 col-sm-offset-4">
+                <a class="btn btn-default"  href="<?php echo full_url."/adm/plants/index.php"?>"><i class="fa fa-arrow-left  fa-pull-left fa-border"></i> Regresar</a>
+                <button type="submit" class="btn btn-default"><i class="fa fa-save fa-pull-left fa-border"></i> Guardar</button>
+                <br><br><br>
+            </div>
+	</div>
     </form>
     <?php if(isset($values['msg']) and $values['msg']!=''):?>
         <div class="alert alert-success" role="alert"><?php echo $values['msg'];?></div>

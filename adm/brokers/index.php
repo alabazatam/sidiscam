@@ -106,7 +106,8 @@ $values = $_REQUEST;
 				$array_json['data'][] = array(
 					"id_broker" => $id_broker,
 					"name" => $brokers['name'],
-					"abr" => $brokers['abr'],
+					"phone1" => $brokers['phone1'],
+ 					"email1" => $brokers['email1'],                                   
 					"status" => $message_status,
 					"date_created" => $brokers['date_created'],
 					"date_updated" => $brokers['date_updated'],
@@ -122,7 +123,7 @@ $values = $_REQUEST;
 		}else{
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
-			$array_json['data'][0] = array("id_broker"=>null,"name"=>"","abr"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
+			$array_json['data'][0] = array("id_broker"=>null,"name"=>"","phone1"=>"","email1"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
 		}
 
 		echo json_encode($array_json);die;

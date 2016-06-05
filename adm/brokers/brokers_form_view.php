@@ -18,13 +18,13 @@
 				<label class="alert alert-danger"><?php echo $values['errors']['name']?></label>
 			<?php endif;?>
 		  </div>
-		  <div class="col-sm-6">
+<!--		  <div class="col-sm-6">
 			<label for="">Abreviatura</label>
-			<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="abr" value="<?php if(isset($values['abr'])) echo $values['abr']?>">
-			<?php if(isset($values['errors']['abr']) and $values['errors']['abr']!=''):?>
-				<label class="alert alert-danger"><?php echo $values['errors']['abr']?></label>
-			<?php endif;?>
-		  </div>
+			<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="abr" value="<?php // if(isset($values['abr'])) echo $values['abr']?>">
+			<?php // if(isset($values['errors']['abr']) and $values['errors']['abr']!=''):?>
+				<label class="alert alert-danger"><?php // echo $values['errors']['abr']?></label>
+			<?php // endif;?>
+		  </div>-->
 	  </div>	
 	  <div class="form-group">
 		  <div class="col-sm-12">
@@ -53,14 +53,14 @@
 	  </div>
 	  <div class="form-group">
 		  <div class="col-sm-6">
-			<label for="">Email principal</label>
+			<label for="">Correo electrónico <small class="text-danger">(*)</small></label>
 			<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="email1" value="<?php if(isset($values['email1'])) echo $values['email1']?>">
 			<?php if(isset($values['errors']['email1']) and $values['errors']['email1']!=''):?>
 				<label class="alert alert-danger"><?php echo $values['errors']['email1']?></label>
 			<?php endif;?>
 		  </div>
 		  <div class="col-sm-6">
-		<label for="">Email secundario</label>
+		<label for="">Correo electrónico alternativo</label>
 		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="email2" value="<?php if(isset($values['email2'])) echo $values['email2']?>">
 		<?php if(isset($values['errors']['email2']) and $values['errors']['email2']!=''):?>
 			<label class="alert alert-danger"><?php echo $values['errors']['email2']?></label>
@@ -69,21 +69,22 @@
 	  </div>
 	  
 		<div class="form-group">
-			<div class="col-sm-4">
+                    <div class="sub-seccion">Información del estatus del broker</div>
+			<div class="col-sm-6">
 		  <label class="label label-danger">
 			<input type="radio" name="status" id="status" value="0" <?php if(isset($values['status']) and $values['status'] =='0' ) echo "checked=checked"?>>
-			Desactivar
+			Inactivo
 		  </label>
 			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-6">
 		  <label class="label label-success">
 			<input type="radio" name="status" id="status" value="1" <?php if(isset($values['status']) and $values['status'] =='1' ) echo "checked=checked"?>>
-			Activar
+			Activo
 		  </label>
 			</div>
 		</div>	
 	  <div class="form-group">
-		  <div class="col-sm-4">
+		  <div class="col-sm-6">
 			<label autocomplete="off" for="">Fecha creado</label>
 			<input autocomplete="off"  type="text" readonly="readonly" class="form-control input-sm" id="" placeholder="" name="date_created" value="<?php if(isset($values['date_created'])) echo $values['date_created']?>">
 		  </div>
@@ -102,7 +103,8 @@
 		<div class="col-sm-6 col-sm-offset-4">		
 		<a class="btn btn-default"  href="<?php echo full_url."/adm/brokers/index.php"?>"><i class="fa fa-arrow-left  fa-pull-left fa-border"></i> Regresar</a>
 		<button type="submit" class="btn btn-default"><i class="fa fa-save fa-pull-left fa-border"></i> Guardar</button>
-		</div>
+		<br><br><br>
+                </div>
 	  </div>
 	<?php if(isset($values['msg']) and $values['msg']!=''):?>
         <div class="alert alert-success" role="alert"><?php echo $values['msg'];?></div>
