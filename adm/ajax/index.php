@@ -46,7 +46,10 @@ unset($values['PHPSESSID']);
 		case "delete_plant":
 			executeDeletePlant($values);	
 		break;
-
+		
+		case "select_ports":
+			executeSelectPorts($values);	
+		break;
 
 		case "farms_list":
 			executeFarmsList($values);	
@@ -225,7 +228,7 @@ function executeFarmsList($values = null)
 
 		/***********Containers*****/
 	
-function executeContainersList($values = null)
+	function executeContainersList($values = null)
 	{
 		
 		$Containers = new Containers();
@@ -260,4 +263,19 @@ function executeContainersList($values = null)
 		$SalesContainersDetail ->updateSalesContainersDetail($values);
 
 	}
+	
+	function executeSelectPorts($values = null)
+	{
 		
+		$Ports = new Ports();
+		$ports_list = $Ports ->getListPortsByCountry($values);
+		if(isset($values['id_sale']) and $values['id_sale']!='')
+		{
+			$selected_port = $Ports ->getListPortsBySale($values);
+			
+		}
+		
+
+		require('select_ports.php');
+
+	}		

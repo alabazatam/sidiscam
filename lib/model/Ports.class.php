@@ -119,5 +119,31 @@
 			return $q; 				
 			
 		}
+		public function getListPortsByCountry($values = null){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->ports
+			->select("*")
+			->where("ports.status=?",1)
+			->join("sales","LEFT JOIN sales on sales.id_port_in = ports.id_port")
+			->and('id_country=?',$values['id_country'])
+			->order('name');
+			
+			
+			return $q; 				
+			
+		}
+		public function getListPortsBySale($values = null){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->ports
+			->select("*,sales.id_port_in, sales.id_port_out")
+			->join("sales","INNER JOIN sales on sales.id_port_".$values['type']." = ports.id_port" )
+			->where("ports.status=?",1)
+			->and('id_country=?',$values['id_country'])
+			->and('id_sale=?',$values['id_sale'])
+			->order('name')
+			->fetch();
+			return $q; 				
+			
+		}
 	}
 	

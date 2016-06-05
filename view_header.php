@@ -10,8 +10,6 @@
     <link href="<?php echo full_url;?>/web/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo full_url;?>/web/font-awesome/css/font-awesome.min.css" rel="stylesheet">         
     <link href="<?php echo full_url;?>/web/css/datatables.css" rel="stylesheet">
-
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
 	<link href="<?php echo full_url;?>/web/css/styles.css" rel="stylesheet">
 	<link href="<?php echo full_url;?>/web/css/bootstrap-datepicker.min.css" rel="stylesheet">
 		

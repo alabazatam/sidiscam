@@ -10,13 +10,13 @@
 					<div class="form-group">
 						<div class="col-sm-3">
 							<label for="">Id</label>
-							<input autocomplete="off" readonly="readonly" type="text" class="form-control input-sm" id="" placeholder="" name="id_sale" value="<?php if(isset($values['id_sale'])) echo $values['id_sale']?>">
+							<input autocomplete="off" readonly="readonly" type="text" class="form-control input-sm" placeholder="" name="id_sale" id="id_sale" value="<?php if(isset($values['id_sale'])) echo $values['id_sale']?>">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-6">
 							<label for="">Fecha de venta<small class="text-danger">(*)</small></label>
-							<input type="date" autocomplete="off" class="form-control input-sm" id="" placeholder="" name="date_sale" value="<?php if(isset($values['date_sale'])) echo $values['date_sale']?>">
+							<input type="date" autocomplete="off" class="form-control input-sm"  placeholder="" name="date_sale" value="<?php if(isset($values['date_sale'])) echo $values['date_sale']?>">
 							<?php if(isset($values['errors']['date_sale']) and $values['errors']['date_sale']!=''):?>
 								<label class="alert alert-danger"><?php echo $values['errors']['date_sale']?></label>
 							<?php endif;?>
@@ -109,7 +109,15 @@
 									<label class="alert alert-danger"><?php echo $values['errors']['id_broker']?></label>
 								<?php endif;?>
 							</div>
-
+							<div class="form-group">
+								<div class="col-sm-12">
+									<label for="">Observación<small class="text-danger">(*)</small></label>
+									<textarea class="form-control input-sm" id="note_sale" placeholder="" name="note_sale"><?php if(isset($values['note_sale'])) echo $values['note_sale']?></textarea>
+									<?php if(isset($values['errors']['note_sale']) and $values['errors']['note_sale']!=''):?>
+										<label class="alert alert-danger"><?php echo $values['errors']['note_sale']?></label>
+									<?php endif;?>
+								</div>
+							</div>
 <!--Fin otros datos de venta-->
 
 

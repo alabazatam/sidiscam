@@ -102,7 +102,8 @@
 				$values['packing'],
 				$values['id_plant'],
 				$values['id_farm'],
-				$values['number']
+				$values['number'],
+				$values['note']
 				
 				);
 			$values['date_created'] = new NotORM_Literal("NOW()");
@@ -129,9 +130,11 @@
 				$values['id_plant'],
 				$values['id_farm'],
 				$values['id_container'],
-				$values['number']
+				$values['number'],
+				$values['note']
 				
-				);			$values['date_updated'] = new NotORM_Literal("NOW()");
+				);			
+			$values['date_updated'] = new NotORM_Literal("NOW()");
 			$id_sale = $values['id_sale'];
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->sales("id_sale", $id_sale)->update($values);

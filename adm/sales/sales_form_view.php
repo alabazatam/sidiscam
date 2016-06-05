@@ -79,3 +79,16 @@
 	</form>
 </div>
 <?php include('../../view_footer.php')?>
+
+<script>
+
+$(document).ready(function(){
+	//actualizar combo dependiente de puertos
+	<?php if(isset($values['id_sale']) and $values['id_sale']!=''):?>
+		selectPortsCountryOut();
+		selectPortsCountryIn();
+	<?php endif;?>
+	
+	
+});
+</script>

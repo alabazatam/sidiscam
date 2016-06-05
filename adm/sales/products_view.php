@@ -14,6 +14,7 @@
 							<th>Qty Kgs</th>
 							<th>Rate ($)</th>
 							<th>Amount ($)</th>
+							<th>Observación</th>
 							<th>Acciones</th>
 						</tr>
 						<?php if(count($values['sales_products_detail'])>0):?>
@@ -51,6 +52,7 @@
 							<td><input type='text' min="0" readonly="readonly" name='quantity[<?php echo $sales_products_details['id']?>]' id='quantity_<?php echo $sales_products_details['id']?>' size="6" autocomplete="off" value="<?php echo $sales_products_details['quantity']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'quantity_<?php echo $sales_products_details['id'];?>','quantity')"></td>
 							<td><input type='number' min="0" name='rate[<?php echo $sales_products_details['id']?>]' id='rate_<?php echo $sales_products_details['id']?>' size="6" autocomplete="off" value="<?php echo $sales_products_details['rate']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'rate_<?php echo $sales_products_details['id'];?>','rate')"></td>
 							<td><input type='text' min="0" readonly="readonly" name='amount[<?php echo $sales_products_details['id']?>]' id='amount_<?php echo $sales_products_details['id']?>' size="6" autocomplete="off" value="<?php echo $sales_products_details['amount']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'amount_<?php echo $sales_products_details['id'];?>','amount')"></td>
+							<td><input type='text' min="0" name='note[<?php echo $sales_products_details['id']?>]' id='note_<?php echo $sales_products_details['id']?>' size="20" autocomplete="off" value="<?php echo $sales_products_details['note']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'note_<?php echo $sales_products_details['id'];?>','note')"></td>
 							<td><a onclick="deleteProductDetail(<?php echo $sales_products_details['id']?>)"  class="btn btn-danger">Eliminar</a></td>
 						<tr>
 							<?php endforeach;?>
