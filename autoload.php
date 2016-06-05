@@ -63,6 +63,8 @@ include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/RegistroModel.clas
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/CarousselDetails.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/Mail.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Farms.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Containers.class.php");
+
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/ContentsHtml.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Message.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Users.class.php");
@@ -85,6 +87,9 @@ include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/States.class.php")
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/TypeDestiny.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Sales.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/SalesProductsDetail.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/SalesPlantsDetail.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/SalesFarmsDetail.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/SalesContainersDetail.class.php");
 
 
 

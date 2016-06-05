@@ -65,6 +65,16 @@ unset($values['PHPSESSID']);
 		
 		$SalesProductsDetail = new SalesProductsDetail();
 		$values['sales_products_detail'] = $SalesProductsDetail->getSalesListProductsDetailBySale($values['id_sale']);
+		
+		$SalesPlantsDetail = new SalesPlantsDetail();
+		$values['sales_plants_detail'] = $SalesPlantsDetail->getSalesListPlantsDetailBySale($values['id_sale']);
+		
+		$SalesFarmsDetail = new SalesFarmsDetail();
+		$values['sales_farms_detail'] = $SalesFarmsDetail->getSalesListFarmsDetailBySale($values['id_sale']);
+
+		$SalesContainersDetail = new SalesContainersDetail();
+		$values['sales_containers_detail'] = $SalesContainersDetail->getSalesListContainersDetailBySale($values['id_sale']);
+		
         $id_sale = $values['id_sale'];
         $values['action'] = 'update';
         $values['msg'] = $msg;

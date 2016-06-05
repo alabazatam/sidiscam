@@ -88,7 +88,24 @@
 			
 		}		
 		function saveSales($values){
-			unset($values['action']);
+			unset($values['action'],
+				$values['PHPSESSID'],
+				$values['id_product'],
+				$values['id_farms'],
+				$values['id_plants'],
+				$values['id_containers'],
+				$values['id_product_type'],
+				$values['cases'],
+				$values['amount'],
+				$values['rate'],
+				$values['quantity'],
+				$values['packing'],
+				$values['id_plant'],
+				$values['id_farm'],
+				$values['number'],
+				$values['note']
+				
+				);
 			$values['date_created'] = new NotORM_Literal("NOW()");
 			$values['date_updated'] = new NotORM_Literal("NOW()");
 			$ConnectionORM = new ConnectionORM();
@@ -98,7 +115,25 @@
 			
 		}
 		function updateSales($values){
-			unset($values['action'],$values['PHPSESSID'],$values['date_created']);
+			unset($values['action'],
+				$values['PHPSESSID'],
+				$values['id_product'],
+				$values['id_farms'],
+				$values['id_plants'],
+				$values['id_containers'],
+				$values['id_product_type'],
+				$values['cases'],
+				$values['amount'],
+				$values['rate'],
+				$values['quantity'],
+				$values['packing'],
+				$values['id_plant'],
+				$values['id_farm'],
+				$values['id_container'],
+				$values['number'],
+				$values['note']
+				
+				);			
 			$values['date_updated'] = new NotORM_Literal("NOW()");
 			$id_sale = $values['id_sale'];
 			$ConnectionORM = new ConnectionORM();

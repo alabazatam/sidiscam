@@ -111,5 +111,16 @@
 			return $q;
 			
 		}
+		
+		public function getListBrokers($values = null){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->brokers
+			->select("*")
+			->where("status=?",1)
+			->order('name');
+			return $q; 				
+			
+		}
+		
 	}
 	

@@ -112,5 +112,14 @@
 			return $q;
 			
 		}
+		public function getListShippingLines($values = null){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->shipping_lines
+			->select("*")
+			->where("status=?",1)
+			->order('name');
+			return $q; 				
+			
+		}
 	}
 	
