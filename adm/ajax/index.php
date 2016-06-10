@@ -72,6 +72,33 @@ unset($values['PHPSESSID']);
 		break;
 		case "update_container":
 			executeUpdateContainer($values);	
+		break;
+	
+	
+		case "banks_list":
+			executeBanksList($values);	
+		break;
+		case "add_bank":
+			executeAddBank($values);	
+		break;
+		case "delete_bank":
+			executeDeleteBank($values);	
+		break;
+		case "update_bank":
+			executeUpdateBank($values);	
+		break;		
+	
+		case "address_list":
+			executeAddressList($values);	
+		break;
+		case "add_address":
+			executeAddress($values);	
+		break;
+		case "delete_address":
+			executeDeleteAddress($values);	
+		break;
+		case "update_address":
+			executeUpdateAddress($values);	
 		break;		
 	
 	}
@@ -278,4 +305,59 @@ function executeFarmsList($values = null)
 
 		require('select_ports.php');
 
-	}		
+	}	
+
+		/***********Banks clients*****/
+	
+	function executeBanksList($values = null)
+	{
+		$ClientsBanksDetail = new ClientsBanksDetail();
+		$values_save['id_client'] = $values['id_client']; 
+		$values_save['status'] = 1; 
+		$values['id'] = $ClientsBanksDetail->saveClientsBanksDetail($values_save);		
+		
+
+		require('bank_list.php');
+
+	}
+	function executeDeleteBank($values = null)
+	{
+		
+		$ClientsBanksDetail = new ClientsBanksDetail();
+		$ClientsBanksDetail->deleteClientsBanksDetail($values['id']);
+
+	}
+		function executeUpdateBank($values = null)
+	{
+		$ClientsBanksDetail = new ClientsBanksDetail();
+		$ClientsBanksDetail ->updateClientsBanksDetail($values);
+
+	}
+
+		/***********Address clients*****/
+	
+	function executeAddressList($values = null)
+	{
+		$ClientsAddressDetail = new ClientsAddressDetail();
+		$values_save['id_client'] = $values['id_client']; 
+		$values_save['status'] = 1; 
+		$values['id'] = $ClientsAddressDetail->saveClientsAddressDetail($values_save);		
+		
+
+		require('address_list.php');
+
+	}
+	function executeDeleteAddress($values = null)
+	{
+		
+		$ClientsAddressDetail = new ClientsAddressDetail();
+		$ClientsAddressDetail->deleteClientsAddressDetail($values['id']);
+
+	}
+		function executeUpdateAddress($values = null)
+	{
+		$ClientsAddressDetail = new ClientsAddressDetail();
+		$ClientsAddressDetail ->updateClientsAddressDetail($values);
+
+	}
+		

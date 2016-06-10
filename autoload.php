@@ -90,6 +90,8 @@ include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/SalesProductsDetai
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/SalesPlantsDetail.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/SalesFarmsDetail.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/SalesContainersDetail.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/ClientsBanksDetail.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/ClientsAddressDetail.class.php");
 
 
 

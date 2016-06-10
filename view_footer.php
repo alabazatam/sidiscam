@@ -25,5 +25,22 @@
 <script type="text/javascript" src="<?php echo full_url;?>/web/bootstrap/js/moment/moment.js"></script>
 <script type="text/javascript" src="<?php echo full_url;?>/web/bootstrap/js/transition.js"></script>
 <script type="text/javascript" src="<?php echo full_url;?>/web/bootstrap/js/collapse.js"></script>
-<script type="text/javascript" src="<?php echo full_url;?>/web/bootstrap/dist/bootstrap.min.js"></script>
-<script type="text/javascript" src="/path/to/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="<?php echo full_url;?>/web/bootstrap/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="<?php echo full_url;?>/web/bootstrap/js/moment/locale/es.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		$('.datetimepicker1').datetimepicker({
+			 viewMode: 'days',
+			 locale: 'es',
+			 format: 'DD-MM-YYYY',
+			 useCurrent: true,
+			 showTodayButton: true,
+			 showClear: true,
+			 showClose: true
+			 
+        });
+		
+	});
+</script>
