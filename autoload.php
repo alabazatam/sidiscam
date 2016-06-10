@@ -59,6 +59,8 @@ include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/changer.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/ValidateBase.class.php");
 //include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Panels.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/SecurityBase.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/Utilitarios.class.php");
+
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/RegistroModel.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/CarousselDetails.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/Mail.class.php");

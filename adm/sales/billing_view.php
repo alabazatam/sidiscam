@@ -56,7 +56,7 @@
 							
 							<div class="col-sm-4">
 								<label for="">Fecha de salida <small class="text-danger">(*)</small></label>
-								<input type="date" autocomplete="off" class="form-control input-sm" id="" placeholder="" name="date_out" value="<?php if(isset($values['date_out'])) echo $values['date_out']?>">
+								<input type="date" autocomplete="off" class="form-control input-sm datetimepicker1" id="" placeholder="" name="date_out" value="<?php if(isset($values['date_out'])) echo $values['date_out']?>">
 								<?php if(isset($values['errors']['date_out']) and $values['errors']['date_out']!=''):?>
 									<label class="alert alert-danger"><?php echo $values['errors']['date_out']?></label>
 								<?php endif;?>
@@ -88,7 +88,7 @@
 							</div>
 							<div class="col-sm-4">
 								<label for="">Fecha estimada de arribo <small class="text-danger">(*)</small></label>
-								<input type="date" autocomplete="off" class="form-control input-sm" id="" placeholder="" name="date_estimate_in" value="<?php if(isset($values['date_estimate_in'])) echo $values['date_estimate_in']?>">
+								<input type="date" autocomplete="off" class="form-control input-sm datetimepicker1" id="" placeholder="" name="date_estimate_in" value="<?php if(isset($values['date_estimate_in'])) echo $values['date_estimate_in']?>">
 								<?php if(isset($values['errors']['date_estimate_in']) and $values['errors']['date_estimate_in']!=''):?>
 									<label class="alert alert-danger"><?php echo $values['errors']['date_estimate_in']?></label>
 								<?php endif;?>

@@ -75,7 +75,7 @@
 		public function getSalesById($values){
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->sales
-			->select("*, DATE_FORMAT(date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->select("*,DATE_FORMAT(date_estimate_in, '%d/%m/%Y') as date_estimate_in,DATE_FORMAT(date_out, '%d/%m/%Y') as date_out,DATE_FORMAT(date_sale, '%d/%m/%Y') as date_sale, DATE_FORMAT(date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
 			->where("id_sale=?",$values['id_sale'])->fetch();
 			return $q; 				
 			
@@ -106,8 +106,12 @@
 				$values['note']
 				
 				);
+			$Utilitarios = new Utilitarios();
+			$values['date_sale'] = $Utilitarios->formatFechaInput($values['date_sale']);
+			
 			$values['date_created'] = new NotORM_Literal("NOW()");
 			$values['date_updated'] = new NotORM_Literal("NOW()");
+			
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->sales()->insert($values);
 			$values['id_sale'] = $ConnectionORM->getConnect()->Sales()->insert_id();
@@ -117,6 +121,7 @@
 		function updateSales($values){
 			unset($values['action'],
 				$values['PHPSESSID'],
+				$values['date_created'],
 				$values['id_product'],
 				$values['id_farms'],
 				$values['id_plants'],
@@ -130,11 +135,19 @@
 				$values['id_plant'],
 				$values['id_farm'],
 				$values['id_container'],
-				$values['number'],
+				$values['number'],				
 				$values['note']
 				
-				);			
+				);	
+			//echo $values['date_sale'];die;
 			$values['date_updated'] = new NotORM_Literal("NOW()");
+			
+			$Utilitarios = new Utilitarios();
+			$values['date_sale'] = $Utilitarios->formatFechaInput($values['date_sale']);
+			$values['date_out'] = $Utilitarios->formatFechaInput($values['date_out']);	
+			$values['date_estimate_in'] = $Utilitarios->formatFechaInput($values['date_estimate_in']);	
+			
+			//echo $values['date_sale'];die;
 			$id_sale = $values['id_sale'];
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->sales("id_sale", $id_sale)->update($values);

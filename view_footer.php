@@ -34,8 +34,8 @@
 		$('.datetimepicker1').datetimepicker({
 			 viewMode: 'days',
 			 locale: 'es',
-			 format: 'DD-MM-YYYY',
-			 useCurrent: true,
+			 format: 'DD/MM/YYYY',
+			 //useCurrent: true,
 			 showTodayButton: true,
 			 showClear: true,
 			 showClose: true
