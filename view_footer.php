@@ -22,3 +22,8 @@
 <script src="<?php echo full_url;?>/web/js/jquery.js"></script>
 <script src="<?php echo full_url;?>/web/js/datatables.js"></script>
 <script src="<?php echo full_url;?>/web/js/utilitarios.js"></script>
+<script type="text/javascript" src="<?php echo full_url;?>/web/bootstrap/js/moment/moment.js"></script>
+<script type="text/javascript" src="<?php echo full_url;?>/web/bootstrap/js/transition.js"></script>
+<script type="text/javascript" src="<?php echo full_url;?>/web/bootstrap/js/collapse.js"></script>
+<script type="text/javascript" src="<?php echo full_url;?>/web/bootstrap/dist/bootstrap.min.js"></script>
+<script type="text/javascript" src="/path/to/bootstrap-datetimepicker.min.js"></script>
