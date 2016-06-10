@@ -40,9 +40,7 @@
 					<option value="">Seleccione...</option>
 				<?php if(count($list_country)>0): ?>
 					<?php foreach($list_country as $list): ?>
-
-							<option value="<?php echo $list['id_country'];?>" <?php if($list['id_country'] == $values['id_country']) echo "selected = 'selected'" ?>><?php echo $list['name'];?></option>
-						
+					<option value="<?php echo $list['id_country'];?>" <?php if($list['id_country'] == @$values['id_country']) echo "selected = 'selected'" ?>><?php echo $list['name'];?></option>
 					<?php endforeach; ?>
 				<?php endif; ?>
 				</select>
@@ -136,7 +134,7 @@
 			<label class="alert alert-danger"><?php echo $values['errors']['email_contact2']?></label>
 		<?php endif;?>
 		</div>
-	  </div>
+            </div>
             <div class="form-group">
                 <div class="sub-seccion">Información del estatus de la planta procesadora</div>
                 <div class="col-sm-4">
@@ -146,28 +144,27 @@
                         </label>
                 </div>
                 <div class="col-sm-4">
-                        <label class="label label-success">
-                            <input type="radio" name="status" id="status" value="1" <?php if(isset($values['status']) and $values['status'] =='1' ) echo "checked=checked"?>>
-                            Activo
-                        </label>
+                    <label class="label label-success">
+                        <input type="radio" name="status" id="status" value="1" <?php if(isset($values['status']) and $values['status'] =='1' ) echo "checked=checked"?>>
+                        Activo
+                    </label>
                 </div>
             </div>
-      <div class="form-group">
+            <div class="form-group">
 		<div class="col-sm-4">
-        <label for="">Fecha creado</label>
-        <input type="text" readonly="readonly" id="" class="form-control input-sm" name="date_created" value="<?php if(isset($values['date_created'])) echo $values['date_created']?>">
+                    <label for="">Fecha creado</label>
+                    <input type="text" readonly="readonly" id="" class="form-control input-sm" name="date_created" value="<?php if(isset($values['date_created'])) echo $values['date_created']?>">
 		</div>
 		<div class="col-sm-4">
-        <label for="">Fecha modificado</label>
-        <input type="text" readonly="readonly" id="" class="form-control input-sm" name="date_updated" value="<?php if(isset($values['date_updated'])) echo $values['date_updated']?>">
+                    <label for="">Fecha modificado</label>
+                    <input type="text" readonly="readonly" id="" class="form-control input-sm" name="date_updated" value="<?php if(isset($values['date_updated'])) echo $values['date_updated']?>">
 		</div>
-	   </div>
-      <div class="form-group">
+            </div>
+            <div class="form-group">
 		<div class="col-sm-6">
-			<label class="text-danger">Campos requeridos (*)</label>
-			
+			<label class="text-danger">Campos requeridos (*)</label>			
 		</div>
-	  </div>
+            </div>
         <div class="form-group">
             <div class="col-sm-6 col-sm-offset-4">
                 <a class="btn btn-default"  href="<?php echo full_url."/adm/plants/index.php"?>"><i class="fa fa-arrow-left  fa-pull-left fa-border"></i> Regresar</a>

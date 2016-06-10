@@ -12,7 +12,7 @@
 			"minlength" => 3,
 			"maxlength" => 100,
 			"type" => "text",
-			"label" => "nombre",
+			"label" => "Nombre",
 			"required" => true
 		);
 		$validator_values['description'] = array(
@@ -20,7 +20,7 @@
 			"minlength" => 3,
 			"maxlength" => 100,
 			"type" => "text",
-			"label" => "nombre",
+			"label" => "Descripción",
 			"required" => true
 		);
 		$ValidateBase = new ValidateBase();
