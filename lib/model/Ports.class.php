@@ -126,8 +126,7 @@
 			->where("ports.status=?",1)
 			->join("sales","LEFT JOIN sales on sales.id_port_in = ports.id_port")
 			->and('id_country=?',$values['id_country'])
-			->order('name');
-			
+			->order('name');			
 			
 			return $q; 				
 			
