@@ -3,7 +3,8 @@
 			<a onclick="openPlants();" class="btn btn-success">Agregar planta procesadora <i class="fa fa-plus-circle"></i></a>
 <br><br><br>
 			<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-				<table id="plants_details" class="table-responsive table-bordered" width='100%'>
+				<div class="table-responsive">
+				<table id="plants_details" class="table table-bordered" width='100%'>
 						<tr>
 							<th>Planta procesadora</th>
 							<th>Acciones</th>
@@ -27,6 +28,7 @@
 						<?php endif;?>
 					
 				</table>
+				</div>
 			</div>
 			
 <script>

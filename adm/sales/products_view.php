@@ -5,7 +5,8 @@
 			<a onclick="openProducts();" class="btn btn-success">Agregar producto <i class="fa fa-plus-circle"></i></a>
 <br><br><br>
 			<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-				<table id="products_details" class="table-responsive table-bordered" width='100%'>
+				<div class="table-responsive">
+				<table id="products_details" class="table table-bordered" width='100%'>
 						<tr>
 							<th>Producto</th>
 							<th>Tipo</th>
@@ -59,6 +60,7 @@
 						<?php endif;?>
 					
 				</table>
+				</div>
 			</div>
 			
 <script>

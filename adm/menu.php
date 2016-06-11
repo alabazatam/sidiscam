@@ -43,7 +43,7 @@
 			<?php endforeach;?>
 		<?php endif;?>
       <ul class="nav navbar-nav navbar-right">
-        <li><a class="facebook_font" href="<?php echo full_url;?>/adm/index.php?action=logout"><i class="fa fa-sign-out"></i> Cerrar sesión</a></li>
+        <li><a class="facebook_font text-right" href="<?php echo full_url;?>/adm/index.php?action=logout"><i class="fa fa-sign-out"></i> Cerrar sesión</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
 

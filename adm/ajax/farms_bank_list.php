@@ -23,8 +23,12 @@
 				</select>
 			</td>
 			<td>
+				<input type='text'  name='rif[<?php echo $values['id']?>]' id='rif_<?php echo $values['id']?>' size="20" autocomplete="off" onchange="updateFarmsBanksDetail(<?php echo $values['id'];?>,'rif_<?php echo $values['id'];?>','rif')">
+			</td>
+			<td>
 				<input type='text'  name='aba[<?php echo $values['id']?>]' id='aba_<?php echo $values['id']?>' size="20" autocomplete="off" onchange="updateFarmsBanksDetail(<?php echo $values['id'];?>,'aba_<?php echo $values['id'];?>','aba')">
 			</td>
+			
 			<td>
 				<input type='text'  name='swit[<?php echo $values['id']?>]' id='swit_<?php echo $values['id']?>' size="20" autocomplete="off" onchange="updateFarmsBanksDetail(<?php echo $values['id'];?>,'swit_<?php echo $values['id'];?>','swit')">
 			</td>

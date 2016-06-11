@@ -5,8 +5,7 @@
 	$list_country = $Country -> getListCountry();
 
 ?>
-<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
-<div>
+<div class="container">
 	<h1 class="text-center">Clientes</h1>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">

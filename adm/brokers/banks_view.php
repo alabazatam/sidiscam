@@ -6,11 +6,13 @@
 			<a onclick="openBrokersBanks();" class="btn btn-success">Agregar cuenta bancaria <i class="fa fa-plus-circle"></i></a>
 <br><br><br>
 			<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-				<table id="brokers_banks_details" class="table-responsive table-bordered" width='100%'>
+				<div class="table-responsive">
+				<table id="brokers_banks_details" class="table table-bordered" width='100%'>
 						<tr>
 							<th>Nombre del banco</th>
 							<th>Número de cuenta</th>
 							<th>País</th>
+							<th>RIF</th>
 							<th>ABA</th>
 							<th>SWIT</th>
 							<th>IBAN</th>
@@ -37,6 +39,9 @@
 								</select>
 							</td>
 							<td>
+								<input type='text' value="<?php echo $brokers_banks_detail['rif']?>" name='rif[<?php echo $brokers_banks_detail['id']?>]' id='rif_<?php echo $brokers_banks_detail['id']?>' size="20" autocomplete="off" onchange="updateBrokersBanksDetail(<?php echo $brokers_banks_detail['id'];?>,'rif_<?php echo $brokers_banks_detail['id'];?>','rif')">
+							</td>
+							<td>
 								<input type='text' value="<?php echo $brokers_banks_detail['aba']?>" name='aba[<?php echo $brokers_banks_detail['id']?>]' id='aba_<?php echo $brokers_banks_detail['id']?>' size="20" autocomplete="off" onchange="updateBrokersBanksDetail(<?php echo $brokers_banks_detail['id'];?>,'aba_<?php echo $brokers_banks_detail['id'];?>','aba')">
 							</td>
 							<td>
@@ -53,6 +58,7 @@
 						<?php endif;?>
 					
 				</table>
+				</div>
 			</div>
 			
 <script>

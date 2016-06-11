@@ -10,7 +10,7 @@
 	$list_states= $States -> getListStates();
 
 ?>
-<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
+<div class="container">
 <h1 class="text-center">Granjas</h1>
 
 

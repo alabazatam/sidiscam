@@ -6,7 +6,8 @@
 			<a onclick="openAddress();" class="btn btn-success">Agregar dirección <i class="fa fa-plus-circle"></i></a>
 <br><br><br>
 			<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-				<table id="address_details" class="table-responsive table-bordered" width='100%'>
+				<div class="table-responsive">
+				<table id="address_details" class="table table-bordered" width='100%'>
 						<tr>
 							<th>País</th>
 							<th>Dirección</th>
@@ -37,6 +38,7 @@
 						<?php endif;?>
 					
 				</table>
+				</div>
 			</div>
 			
 <script>

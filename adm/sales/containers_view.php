@@ -3,7 +3,8 @@
 			<a onclick="openContainers();" class="btn btn-success">Agregar container <i class="fa fa-plus-circle"></i></a>
 <br><br><br>
 			<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-				<table id="containers_details" class="table-responsive table-bordered" width='100%'>
+				<div class="table-responsive">
+				<table id="containers_details" class="table table-bordered" width='100%'>
 						<tr>
 							<th>Container</th>
 							<th>Precinto #</th>
@@ -29,6 +30,7 @@
 						<?php endif;?>
 					
 				</table>
+				</div>
 			</div>
 			
 <script>
