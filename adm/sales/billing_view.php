@@ -62,7 +62,7 @@
 								<?php endif;?>
 							</div>
 							<div class="col-sm-4">
-								<label for="">País de salida <small class="text-danger">(*)</small></label>
+								<label for="">País de entrada <small class="text-danger">(*)</small></label>
 										<select name="id_country_in" id="id_country_in" class="form-control input-sm" onchange="selectPortsCountryIn()">
 											<option value="">Seleccione...</option>
 										<?php if(count($list_country)>0): ?>
@@ -93,7 +93,15 @@
 									<label class="alert alert-danger"><?php echo $values['errors']['date_estimate_in']?></label>
 								<?php endif;?>
 							</div>
-							
+							<div class="col-sm-12">
+								<label for="">Lugar de entrega <small class="text-danger">(*)</small></label>
+										<select name="id_client_address" id="id_client_address" class="form-control input-sm">
+											<option value="">Seleccione...</option>
+										</select>
+								<?php if(isset($values['errors']['id_client_address']) and $values['errors']['id_client_address']!=''):?>
+									<label class="alert alert-danger"><?php echo $values['errors']['id_client_address']?></label>
+								<?php endif;?>
+							</div>							
 
 					</div>
 
@@ -136,4 +144,21 @@ function selectPortsCountryIn() {
 	});
 
 }
+	function selectClientAddress() {
+
+		var id_client = $('#id_client').val();
+		var id_sale = $('#id_sale').val();
+
+		$.ajax({
+			type: "GET",
+			url: '<?php echo full_url;?>/adm/ajax/index.php',
+			data: { action: "select_client_address", id_client: id_client , id_sale: id_sale },
+			success: function(html){
+				$('#id_client_address').html(html);
+				
+
+			}
+		});
+
+	}
 </script>

@@ -111,5 +111,15 @@
 			return $q;
 			
 		}
+		public function getListCompany($values = null){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->company
+			->select("*")
+			->where("status=?",1)
+			->order('description');
+			return $q; 	
+			
+			
+		}
 	}
 	

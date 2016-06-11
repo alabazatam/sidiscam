@@ -34,14 +34,6 @@
   </div>
 
 </div>
-
-
-
-
-
-    <?php if(isset($values['msg']) and $values['msg']!=''):?>
-        <div class="alert alert-success" role="alert"><?php echo $values['msg'];?></div>
-    <?php endif;?>
  </div>
 
 <?php include('../../view_footer.php')?>

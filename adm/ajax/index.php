@@ -156,7 +156,15 @@ unset($values['PHPSESSID']);
 		break;
 		case "update_farms_bank":
 			executeUpdateFarmsBank($values);	
-		break;		
+		break;
+	
+		case "select_company_bank":
+			executeSelectCompanyBank($values);	
+		break;	
+	
+		case "select_client_address":
+			executeSelectClientAddress($values);	
+		break;	
 	
 	}
 	function executeStatusChanger($values = null)
@@ -527,5 +535,36 @@ function executeFarmsList($values = null)
 		$FarmsBanksDetail = new FarmsBanksDetail();
 		$FarmsBanksDetail ->updateFarmsBanksDetail($values);
 
-	}			
+	}
+	
+	function executeSelectCompanyBank($values = null)
+	{
+		
+		$CompanyBanksDetail = new CompanyBanksDetail();
+		$company_banks_list = $CompanyBanksDetail ->getListPortsByCompany($values);
+		if(isset($values['id_sale']) and $values['id_sale']!='')
+		{
+			$selected_company_bank = $CompanyBanksDetail ->getListCompanyBankBySale($values);
+			
+		}
+		
+
+		require('select_company_bank.php');
+
+	}	
+	function executeSelectClientAddress($values = null)
+	{
+		
+		$ClientsAddressDetail = new ClientsAddressDetail();
+		$clients_address_list = $ClientsAddressDetail ->getListAddressByClient($values);
+		if(isset($values['id_sale']) and $values['id_sale']!='')
+		{
+			$selected_clients_address = $ClientsAddressDetail ->getListClientsAddressBySale($values);
+			
+		}
+		
+
+		require('select_clients_address.php');
+
+	}	
 	

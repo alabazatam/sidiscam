@@ -27,7 +27,7 @@
 								<input type='text' value="<?php echo $brokers_banks_detail['number']?>" name='number[<?php echo $brokers_banks_detail['id']?>]' id='number_<?php echo $brokers_banks_detail['id']?>' size="20" autocomplete="off" onchange="updateBrokersBanksDetail(<?php echo $brokers_banks_detail['id'];?>,'number_<?php echo $brokers_banks_detail['id'];?>','number')">
 							</td>
 							<td>
-								<select name='id_country[<?php echo $values['id']?>]' id='id_country_<?php echo $brokers_banks_detail['id']?>' onchange="updateBrokersBanksDetail(<?php echo $brokers_banks_detail['id'];?>,'id_country_<?php echo $brokers_banks_detail['id'];?>','id_country')">
+								<select name='id_country[<?php echo $brokers_banks_detail['id']?>]' id='id_country_<?php echo $brokers_banks_detail['id']?>' onchange="updateBrokersBanksDetail(<?php echo $brokers_banks_detail['id'];?>,'id_country_<?php echo $brokers_banks_detail['id'];?>','id_country')">
 									<option value=''>...</option>
 									<?php if(count($country_list)>0):?>
 										<?php foreach($country_list as $list):?>

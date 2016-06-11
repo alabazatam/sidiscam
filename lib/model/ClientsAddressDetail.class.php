@@ -70,5 +70,26 @@
 			return $q; 				
 			
 		}
+		public function getListAddressByClient($values = null){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->clients_address_detail
+			->select("*,country.name as country_name")
+			->join('country',"LEFT JOIN country ON country.id_country = clients_address_detail.id_country")
+			->where("clients_address_detail.status=?",1)
+			->and('id_client=?',$values['id_client'])
+			->order('id');			
+			
+			return $q; 				
+			
+		}
+		public function getListClientsAddressBySale($values = null){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->sales
+			->select("*,sales.id_client_address")
+			->where('id_sale=?',$values['id_sale'])
+			->fetch();
+			return $q; 				
+			
+		}
 	}
 	

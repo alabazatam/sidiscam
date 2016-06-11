@@ -89,9 +89,15 @@
     </form>
     <?php if(isset($values['msg']) and $values['msg']!=''):?>
 
-            <div class="col-sm-12">
-				<div class="alert alert-success" role="alert"><?php echo $values['msg'];?></div>
-            </div>
+        <script>
+			$(document).ready(function(){
+			$('.modal-body').html('<div class="alert alert-success" role="alert"><?php echo $values['msg'];?></div>');
+			$('.modal-title').html('');
+			$('#myModal').modal('show');	
+			});
+
+		
+		</script>
 
 
         

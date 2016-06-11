@@ -102,8 +102,15 @@
         </div>
     </form>
     <?php if(isset($values['msg']) and $values['msg']!=''):?>
-        <div class="alert alert-success" role="alert"><?php echo $values['msg'];?></div>
-    <?php endif;?>
+        <script>
+			$(document).ready(function(){
+			$('.modal-body').html('<div class="alert alert-success" role="alert"><?php echo $values['msg'];?></div>');
+			$('.modal-title').html('');
+			$('#myModal').modal('show');	
+			});
+
+		
+		</script>    <?php endif;?>
  </div>
 
 <?php include('../../view_footer.php')?>

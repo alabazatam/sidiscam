@@ -27,8 +27,15 @@
 		
 		<button type="submit" class="btn btn-default"><i class="fa fa-save fa-pull-left fa-border"></i> Guardar</button>
     <?php if(isset($values['msg']) and $values['msg']!=''):?>
-        <div class="alert alert-success" role="alert"><?php echo $values['msg'];?></div>
-    <?php endif;?>
+        <script>
+			$(document).ready(function(){
+			$('.modal-body').html('<div class="alert alert-success" role="alert"><?php echo $values['msg'];?></div>');
+			$('.modal-title').html('');
+			$('#myModal').modal('show');	
+			});
+
+		
+		</script>    <?php endif;?>
     <?php if(isset($values['error']) and $values['error']!=''):?>
         <div class="alert alert-danger" role="alert"><?php echo $values['error'];?></div>
     <?php endif;?>

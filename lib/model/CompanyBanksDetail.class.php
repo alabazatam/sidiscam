@@ -70,5 +70,27 @@
 			return $q; 				
 			
 		}
+		public function getListPortsByCompany($values = null){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->company_banks_detail
+			->select("*")
+			->where("status=?",1)
+			->and('id_company=?',$values['id_company'])
+			->order('bank_name');			
+			
+			return $q; 				
+			
+		}
+		public function getListCompanyBankBySale($values = null){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->sales
+			->select("*,sales.id_company_bank")
+			->where('id_sale=?',$values['id_sale'])
+			->fetch();
+			return $q; 				
+			
+		}		
+		
+		
 	}
 	

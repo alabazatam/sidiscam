@@ -26,7 +26,7 @@
 		$validator_values['detail'] = array(
 			
 			"minlength" => 3,
-			"maxlength" => 250,
+			"maxlength" => 400,
 			"type" => "text",
 			"label" => "Detalle",
 			"required" => false

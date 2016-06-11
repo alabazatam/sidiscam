@@ -17,7 +17,7 @@
 
 						<tr id='address_list_<?php echo $clients_address_detail['id'];?>'>
 							<td>
-								<select name='id_country[<?php echo $values['id']?>]' id='id_country_<?php echo $clients_address_detail['id']?>' onchange="updateClientsAddressDetail(<?php echo $clients_address_detail['id'];?>,'id_country_<?php echo $clients_address_detail['id'];?>','id_country')">
+								<select name='id_country[<?php echo $clients_address_detail['id']?>]' id='id_country_<?php echo $clients_address_detail['id']?>' onchange="updateClientsAddressDetail(<?php echo $clients_address_detail['id'];?>,'id_country_<?php echo $clients_address_detail['id'];?>','id_country')">
 									<option value=''>...</option>
 									<?php if(count($country_list)>0):?>
 										<?php foreach($country_list as $list):?>
@@ -30,7 +30,7 @@
 								<input type='text' value="<?php echo $clients_address_detail['address']?>" name='address[<?php echo $clients_address_detail['id']?>]' id='address_<?php echo $clients_address_detail['id']?>' size="20" autocomplete="off" onchange="updateClientsAddressDetail(<?php echo $clients_address_detail['id'];?>,'address_<?php echo $clients_address_detail['id'];?>','address')">
 							</td>
 							<td>
-								<a onclick="deleteBankDetail(<?php echo $clients_address_detail['id']?>)"  class="btn btn-danger">Eliminar</a>
+								<a onclick="deleteAddressDetail(<?php echo $clients_address_detail['id']?>)"  class="btn btn-danger">Eliminar</a>
 							</td>
 						</tr>
 							<?php endforeach;?>
@@ -53,7 +53,7 @@ function openAddress() {
 
 }
 
-function deleteBankDetail(id) {
+function deleteAddressDetail(id) {
 	
 	if(confirm("¿Está seguro(a) de eliminar el registro?")){
 
