@@ -60,6 +60,11 @@ $values = $_REQUEST;
 	{
 		$Brokers = new Brokers();
 		$values = $Brokers->getBrokersById($values);
+		
+		$BrokersBanksDetail = new BrokersBanksDetail();
+		$values['brokers_banks_detail'] = $BrokersBanksDetail->getBrokersListBanksDetailByBrokers($values['id_broker']);	
+		
+		
                 $id_broker = $values['id_broker'];
                 $values['action'] = 'update';
                 $values['msg'] = $msg;

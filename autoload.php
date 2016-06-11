@@ -94,6 +94,10 @@ include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/SalesFarmsDetail.c
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/SalesContainersDetail.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/ClientsBanksDetail.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/ClientsAddressDetail.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/CompanyBanksDetail.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/PlantsBanksDetail.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/BrokersBanksDetail.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/FarmsBanksDetail.class.php");
 
 
 

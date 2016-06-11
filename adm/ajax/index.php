@@ -99,6 +99,63 @@ unset($values['PHPSESSID']);
 		break;
 		case "update_address":
 			executeUpdateAddress($values);	
+		break;	
+
+
+		case "company_banks_list":
+			executeCompanyBanksList($values);	
+		break;
+		case "add_company_bank":
+			executeAddCompanyBank($values);	
+		break;
+		case "delete_company_bank":
+			executeDeleteCompanyBank($values);	
+		break;
+		case "update_company_bank":
+			executeUpdateCompanyBank($values);	
+		break;	
+	
+	
+		case "plants_banks_list":
+			executePlantsBanksList($values);	
+		break;
+		case "add_plants_bank":
+			executeAddPlantsBank($values);	
+		break;
+		case "delete_plants_bank":
+			executeDeletePlantsBank($values);	
+		break;
+		case "update_plants_bank":
+			executeUpdatePlantsBank($values);	
+		break;		
+	
+	
+	
+		case "brokers_banks_list":
+			executeBrokersBanksList($values);	
+		break;
+		case "add_brokers_bank":
+			executeAddBrokersBank($values);	
+		break;
+		case "delete_brokers_bank":
+			executeDeleteBrokersBank($values);	
+		break;
+		case "update_brokers_bank":
+			executeUpdateBrokersBank($values);	
+		break;
+	
+	
+		case "farms_banks_list":
+			executeFarmsBanksList($values);	
+		break;
+		case "add_farms_bank":
+			executeAddFarmsBank($values);	
+		break;
+		case "delete_farms_bank":
+			executeDeleteFarmsBank($values);	
+		break;
+		case "update_farms_bank":
+			executeUpdateFarmsBank($values);	
 		break;		
 	
 	}
@@ -360,4 +417,115 @@ function executeFarmsList($values = null)
 		$ClientsAddressDetail ->updateClientsAddressDetail($values);
 
 	}
+
+		/***********Banks company*****/
+	
+	function executeCompanyBanksList($values = null)
+	{
+		$CompanyBanksDetail = new CompanyBanksDetail();
+		$values_save['id_company'] = $values['id_company']; 
+		$values_save['status'] = 1; 
+		$values['id'] = $CompanyBanksDetail->saveCompanyBanksDetail($values_save);		
 		
+
+		require('company_bank_list.php');
+
+	}
+	function executeDeleteCompanyBank($values = null)
+	{
+		
+		$CompanyBanksDetail = new CompanyBanksDetail();
+		$CompanyBanksDetail->deleteCompanyBanksDetail($values['id']);
+
+	}
+		function executeUpdateCompanyBank($values = null)
+	{
+		$CompanyBanksDetail = new CompanyBanksDetail();
+		$CompanyBanksDetail ->updateCompanyBanksDetail($values);
+
+	}
+
+
+		/***********Banks plants*****/
+	
+	function executePlantsBanksList($values = null)
+	{
+		$PlantsBanksDetail = new PlantsBanksDetail();
+		$values_save['id_plant'] = $values['id_plant']; 
+		$values_save['status'] = 1; 
+		$values['id'] = $PlantsBanksDetail->savePlantsBanksDetail($values_save);		
+		
+
+		require('plants_bank_list.php');
+
+	}
+	function executeDeletePlantsBank($values = null)
+	{
+		
+		$PlantsBanksDetail = new PlantsBanksDetail();
+		$PlantsBanksDetail->deletePlantsBanksDetail($values['id']);
+
+	}
+		function executeUpdatePlantsBank($values = null)
+	{
+		$PlantsBanksDetail = new PlantsBanksDetail();
+		$PlantsBanksDetail ->updatePlantsBanksDetail($values);
+
+	}
+	
+	
+		/***********Banks brokers*****/
+	
+	function executeBrokersBanksList($values = null)
+	{
+		$BrokersBanksDetail = new BrokersBanksDetail();
+		$values_save['id_broker'] = $values['id_broker']; 
+		$values_save['status'] = 1; 
+		$values['id'] = $BrokersBanksDetail->saveBrokersBanksDetail($values_save);		
+		
+
+		require('brokers_bank_list.php');
+
+	}
+	function executeDeleteBrokersBank($values = null)
+	{
+		
+		$BrokersBanksDetail = new BrokersBanksDetail();
+		$BrokersBanksDetail->deleteBrokersBanksDetail($values['id']);
+
+	}
+		function executeUpdateBrokersBank($values = null)
+	{
+		$BrokersBanksDetail = new BrokersBanksDetail();
+		$BrokersBanksDetail ->updateBrokersBanksDetail($values);
+
+	}
+	
+	
+		/***********Banks Farms*****/
+	
+	function executeFarmsBanksList($values = null)
+	{
+		$FarmsBanksDetail = new FarmsBanksDetail();
+		$values_save['id_farm'] = $values['id_farm']; 
+		$values_save['status'] = 1; 
+		$values['id'] = $FarmsBanksDetail->saveFarmsBanksDetail($values_save);		
+		
+
+		require('farms_bank_list.php');
+
+	}
+	function executeDeleteFarmsBank($values = null)
+	{
+		
+		$FarmsBanksDetail = new FarmsBanksDetail();
+		$FarmsBanksDetail->deleteFarmsBanksDetail($values['id']);
+
+	}
+		function executeUpdateFarmsBank($values = null)
+	{
+		$FarmsBanksDetail = new FarmsBanksDetail();
+		$FarmsBanksDetail ->updateFarmsBanksDetail($values);
+
+	}			
+	

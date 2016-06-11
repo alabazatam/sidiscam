@@ -30,7 +30,9 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle facebook_font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-book"></i> Maestros <span class="caret"></span></a>
           <ul class="dropdown-menu" class="facebook_font">
-			 <li><a href="<?php echo full_url;?>/adm/clients/index.php">Clientes</a></li>
+			<li><a href="<?php echo full_url;?>/adm/company/index.php">Compañias</a></li>
+			<li><a href="<?php echo full_url;?>/adm/clients/index.php">Clientes</a></li>
+			 
             <li><a href="<?php echo full_url;?>/adm/farms/index.php">Granjas</a></li>
 			<li><a href="<?php echo full_url;?>/adm/plants/index.php">Plantas procesadoras</a></li>
 			
@@ -45,7 +47,7 @@
 			<li><a href="<?php echo full_url;?>/adm/bank/index.php">Cuentas bancarias</a></li>
 			<li><a href="<?php echo full_url;?>/adm/incoterms/index.php">Incoterms</a></li>
 			<li><a href="<?php echo full_url;?>/adm/brokers/index.php">Brokers</a></li>
-			<li><a href="<?php echo full_url;?>/adm/company/index.php">Compañias empacadoras</a></li>
+			
 			<li><a href="<?php echo full_url;?>/adm/type_destiny/index.php">Tipos de venta</a></li>
 
 
