@@ -1,6 +1,6 @@
 /*
-SQLyog Community v12.15 (64 bit)
-MySQL - 5.5.49-0ubuntu0.14.04.1 : Database - intelign_sidiscam
+SQLyog Community v12.2.1 (64 bit)
+MySQL - 5.6.17 : Database - intelign_sidiscam
 *********************************************************************
 */
 
@@ -13,6 +13,8 @@ MySQL - 5.5.49-0ubuntu0.14.04.1 : Database - intelign_sidiscam
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`intelign_sidiscam` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+USE `intelign_sidiscam`;
 
 /*Table structure for table `bank` */
 
@@ -45,7 +47,7 @@ CREATE TABLE `bank` (
 /*Data for the table `bank` */
 
 insert  into `bank`(`id_bank`,`name`,`id_table`,`id_country`,`address`,`phone1`,`phone2`,`email1`,`email2`,`account_number`,`aba`,`swif`,`iban`,`status`,`date_created`,`date_updated`) values 
-(1,'MERCANTIL',2,1,'','1234567890','1234512345','deandrademarcos@gmail.com','deandrademarcos@gmail.com','12345678901234567890','0102222','25556655','6667744588',1,'2016-04-14 23:04:02','2016-05-15 12:53:41'),
+(1,'MERCANTIL',2,1,'','1234567890','1234512345','deandrademarcos@gmail.com','deandrademarcos@gmail.com','12345678901234567890','0102222','25556655','6667744588',1,'2016-04-14 23:04:02','2016-06-11 12:27:37'),
 (3,'BOD',2,1,'','02128601223','','deandrademarcos@gmail.com','','12345678901234567890','','','',1,'2016-04-15 13:01:18','2016-05-15 12:58:55'),
 (4,'BANESCO',2,1,'','1234567890','','deandrademarcos@gmail.com','','12345678901234567890','','','',1,'2016-04-15 13:02:17','2016-05-15 12:58:56');
 
@@ -116,7 +118,7 @@ CREATE TABLE `brokers` (
 /*Data for the table `brokers` */
 
 insert  into `brokers`(`id_broker`,`name`,`abr`,`status`,`address`,`phone1`,`phone2`,`email1`,`email2`,`date_created`,`date_updated`) values 
-(1,'Broker1','br1',1,'direccion de prueba','4268141850','','deandrademarcos@gmail.com','','2016-04-30 12:56:04','2016-04-30 13:10:47'),
+(1,'Broker1','br1',1,'direccion de prueba','4268141850','','deandrademarcos@gmail.com','','2016-04-30 12:56:04','2016-06-11 12:30:04'),
 (2,'broker2','br2',1,'direccion de prueba','02128601223','','','','2016-04-30 13:02:36','2016-04-30 13:02:36');
 
 /*Table structure for table `brokers_banks_detail` */
@@ -185,7 +187,7 @@ CREATE TABLE `clients` (
 /*Data for the table `clients` */
 
 insert  into `clients`(`id_client`,`name`,`rif`,`status`,`id_country`,`address`,`phone1`,`phone2`,`email1`,`email2`,`contact1`,`phone_contact1`,`email_contact1`,`contact2`,`phone_contact2`,`email_contact2`,`date_created`,`date_updated`) values 
-(1,'CLIENTE 1','V-18020594-9',1,2,'DIRECCION DE PRUEBA','02128601223','04268141850','DEANDRADEMARCOS@GMAIL.COM','','NOMBRE','04268141850','DEANDRADEMARCOS@GMAIL.COM','','','','2016-04-28 20:45:40','2016-06-10 22:58:03'),
+(1,'CLIENTE 1','V-18020594-9',1,1,'DIRECCION DE PRUEBA','02128601223','04268141850','DEANDRADEMARCOS@GMAIL.COM','','NOMBRE','04268141850','DEANDRADEMARCOS@GMAIL.COM','','','','2016-04-28 20:45:40','2016-06-11 12:11:48'),
 (2,'CLIENTE2','ddddddddd',1,1,'DIRECCIÓN DE PRUEBA','04268141850','','','','NOMBRE1','04168141850','DEANDRADEMARCOS@GMAI','','','','2016-05-08 17:34:18','2016-06-10 22:53:56');
 
 /*Table structure for table `clients_address_detail` */
@@ -201,16 +203,16 @@ CREATE TABLE `clients_address_detail` (
   `date_created` datetime NOT NULL,
   `date_updated` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 /*Data for the table `clients_address_detail` */
 
 insert  into `clients_address_detail`(`id`,`id_client`,`id_country`,`address`,`status`,`date_created`,`date_updated`) values 
-(1,1,1,'direccion1',1,'2016-06-09 23:13:59','2016-06-09 23:13:59'),
-(2,1,1,'direccion2',1,'2016-06-09 23:14:57','2016-06-09 23:14:57'),
-(3,1,2,'direccion3',1,'2016-06-09 23:15:32','2016-06-09 23:15:32'),
-(4,1,1,'direccion4',1,'2016-06-09 23:21:11','2016-06-09 23:21:11'),
-(5,1,2,'fgfgfgf',1,'2016-06-09 23:22:07','2016-06-09 23:22:07');
+(1,1,65,'direccion1',1,'2016-06-09 23:13:59','2016-06-09 23:13:59'),
+(2,1,65,'direccion2',1,'2016-06-09 23:14:57','2016-06-09 23:14:57'),
+(3,1,65,'direccion3',1,'2016-06-09 23:15:32','2016-06-09 23:15:32'),
+(4,1,65,'direccion4',1,'2016-06-09 23:21:11','2016-06-09 23:21:11'),
+(6,2,71,'France avenue',1,'2016-06-11 11:55:26','2016-06-11 11:55:26');
 
 /*Table structure for table `clients_banks_detail` */
 
@@ -229,14 +231,13 @@ CREATE TABLE `clients_banks_detail` (
   `date_created` datetime NOT NULL,
   `date_updated` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 /*Data for the table `clients_banks_detail` */
 
 insert  into `clients_banks_detail`(`id`,`id_client`,`bank_name`,`number`,`id_country`,`aba`,`swit`,`iban`,`status`,`date_created`,`date_updated`) values 
 (6,1,'MERCANTIL','12345678901234567890',1,'ABA1','SWIT','IBAN',1,'2016-06-09 22:21:42','2016-06-09 22:21:42'),
-(29,2,'notobank','54545454554',1,'1','1','1',1,'2016-06-09 22:32:58','2016-06-09 22:32:58'),
-(36,2,'','',2,'','','',1,'2016-06-09 22:55:36','2016-06-09 22:55:36');
+(29,2,'notobank','54545454554',1,'1','1','1',1,'2016-06-09 22:32:58','2016-06-09 22:32:58');
 
 /*Table structure for table `coins` */
 
@@ -281,9 +282,9 @@ CREATE TABLE `company` (
 /*Data for the table `company` */
 
 insert  into `company`(`id_company`,`rif`,`description`,`owner`,`ci_owner`,`id_country`,`address`,`phone1`,`phone2`,`email1`,`email2`,`contact1`,`phone_contact1`,`email_contact1`,`contact2`,`phone_contact2`,`email_contact2`,`status`,`date_created`,`date_updated`) values 
-(1,'V-20303709-7','COSEINCA1','MARCOS DE ANDRADE','V-18020594',1,'aaaaaaaaaaaaaaaaa','04268141850','04261234567','deandrademarcos@gmail.com','deandrademarcos@gmail.com','MARCOS','04141234567','marcos@g.com','ARLINDO','04261412374','arlindo@gmail.com',1,'2016-04-02 21:28:41','2016-06-10 21:11:31'),
-(2,'V-18020594-9','marcos','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'2016-04-03 17:44:48','2016-05-08 11:47:02'),
-(3,'V-20303709-7','jean','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'2016-04-03 20:38:36','2016-05-08 11:47:03');
+(1,'V-20303709-7','COSEINCA1','MARCOS DE ANDRADE','V-18020594',1,'aaaaaaaaaaaaaaaaa','04268141850','04261234567','deandrademarcos@gmail.com','deandrademarcos@gmail.com','MARCOS','04141234567','marcos@g.com','ARLINDO','04261412374','arlindo@gmail.com',1,'2016-04-02 21:28:41','2016-06-11 12:12:59'),
+(2,'V-18020594-9','COSEINCA2','MARCOS','18020594',1,'DIRECCION','04268141850','','','','CONTACTO1','04268141850','DEANDRADEMARCOS@GMAIL.COM','','','',1,'2016-04-03 17:44:48','2016-06-11 10:43:48'),
+(3,'V-20303709-7','COSEINCA3','RESPONSABLE1','20303709',1,'DIRECCION','04268141850','','','','MARCOS','04268141850','DEANDRADEMARCOS@GMAIL.COM','','','',1,'2016-04-03 20:38:36','2016-06-11 10:56:40');
 
 /*Table structure for table `company_banks_detail` */
 
@@ -302,12 +303,13 @@ CREATE TABLE `company_banks_detail` (
   `date_created` datetime NOT NULL,
   `date_updated` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 /*Data for the table `company_banks_detail` */
 
 insert  into `company_banks_detail`(`id`,`id_company`,`bank_name`,`number`,`id_country`,`aba`,`swit`,`iban`,`status`,`date_created`,`date_updated`) values 
-(8,1,'BANCO2','CUENTA2',4,'ABA2','SWIT2','IBAN2',1,'2016-06-10 21:09:24','2016-06-10 21:09:24');
+(8,1,'BANCO1','01222223',1,'ABA2','SWIT2','IBAN2',1,'2016-06-10 21:09:24','2016-06-10 21:09:24'),
+(9,1,'BANCO2','111111111111111111111111',65,'ABA2','SWIT','IBAN',1,'2016-06-11 11:20:51','2016-06-11 11:20:51');
 
 /*Table structure for table `containers` */
 
@@ -347,7 +349,7 @@ CREATE TABLE `country` (
 /*Data for the table `country` */
 
 insert  into `country`(`id_country`,`id_region`,`name`,`abr`,`status`,`date_created`,`date_updated`) values 
-(1,5,'VENEZUELA','VE',1,'2016-06-08 00:00:00','2016-06-08 00:00:00'),
+(1,5,'VENEZUELA','VE',1,'2016-06-08 00:00:00','2016-06-11 12:24:54'),
 (2,2,'AFGANISTÁN','AF',0,'2016-06-08 00:00:00','2016-06-08 00:00:00'),
 (3,3,'ALBANIA','AL',0,'2016-06-08 00:00:00','2016-06-08 00:00:00'),
 (4,3,'ALEMANIA','DE',0,'2016-06-08 00:00:00','2016-06-08 00:00:00'),
@@ -620,7 +622,7 @@ CREATE TABLE `farms` (
 /*Data for the table `farms` */
 
 insert  into `farms`(`id_farm`,`name`,`id_country`,`id_state`,`abr`,`capacity`,`address`,`phone1`,`phone2`,`email1`,`email2`,`contact1`,`phone_contact1`,`email_contact1`,`contact2`,`phone_contact2`,`email_contact2`,`status`,`date_created`,`date_updated`) values 
-(1,'Granja',2,1,'G00',0,'Dirección','02121234567','02121234567','email1@h.com','','contact1','02121234567','daaaa@h.com','email1@h.com','02121234567','',1,'2016-04-15 10:20:20','2016-06-10 22:13:37'),
+(1,'Granja',1,1,'G00',0,'Dirección','02121234567','02121234567','email1@h.com','','contact1','02121234567','daaaa@h.com','email1@h.com','02121234567','',1,'2016-04-15 10:20:20','2016-06-11 12:16:08'),
 (2,'GRANJA2',1,1,'GR2',0,'Hello how are youy','1234567890','','','','nombre1','0426814150','deandrademarcos@gmail.com','','','',1,'2016-04-15 15:22:59','2016-06-10 23:10:41');
 
 /*Table structure for table `farms_banks_detail` */
@@ -645,7 +647,7 @@ CREATE TABLE `farms_banks_detail` (
 /*Data for the table `farms_banks_detail` */
 
 insert  into `farms_banks_detail`(`id`,`id_farm`,`bank_name`,`number`,`id_country`,`aba`,`swit`,`iban`,`status`,`date_created`,`date_updated`) values 
-(2,1,'1','1',2,'1','1','1',1,'2016-06-10 22:12:01','2016-06-10 22:12:01');
+(2,1,'1','1',1,'1','1','1',1,'2016-06-10 22:12:01','2016-06-10 22:12:01');
 
 /*Table structure for table `incoterms` */
 
@@ -653,7 +655,7 @@ DROP TABLE IF EXISTS `incoterms`;
 
 CREATE TABLE `incoterms` (
   `id_incoterm` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) NOT NULL,
+  `name` text NOT NULL,
   `abr` varchar(10) NOT NULL,
   `detail` text,
   `status` int(1) NOT NULL DEFAULT '1',
@@ -665,7 +667,7 @@ CREATE TABLE `incoterms` (
 /*Data for the table `incoterms` */
 
 insert  into `incoterms`(`id_incoterm`,`name`,`abr`,`detail`,`status`,`date_created`,`date_updated`) values 
-(1,'Cost and FReight','CFR','Costo y Flete. El vendedor se hace cargo de todos los costos y el transporte principal, hasta que la mercancía llegue al puerto de destino. El riesgo se transfiere al comprador en el momento que la mercancía se encuentra cargada en el buque, en el país de origen',1,'2016-04-30 12:39:20','2016-05-08 12:13:32'),
+(1,'Cost and FReight','CFR','Costo y Flete. El vendedor se hace cargo de todos los costos y el transporte principal, hasta que la mercancía llegue al puerto de destino. El riesgo se transfiere al comprador en el momento que la mercancía se encuentra cargada en el buque, en el país de origen',1,'2016-04-30 12:39:20','2016-06-11 12:29:05'),
 (2,'Cost Insurance and Freight','CIF','Costo Seguro y Flete. El vendedor se hace cargo de todos los costos, incluidos el transporte principal y el seguro, hasta que la mercancía llegue al puerto de destino. Aunque el seguro lo ha contratado el vendedor, el beneficiario del seguro es el comprador',1,'2016-04-30 12:39:20','2016-05-08 12:13:32'),
 (3,'Carriage and Insurance Paid to','CIP','Porte y Seguro Pagado Hasta. El vendedor se hace cargo de todos los costos hasta que la mercancía llegue al punto convenido en el país de destino. El riesgo se transfiere al comprador en el momento de la entrega de la mercancía al transportista dentro del país de origen',1,'2016-04-30 12:39:20','2016-05-08 12:13:32'),
 (4,'Carriage Paid To','CPT','Porte Pagado Hasta. El vendedor asume todos los costos, incluido el transporte principal, hasta que la mercancía llegue al punto convenido en el país de destino. Sin embargo, el riesgo se transfiere al comprador en el momento de la entrega de la mercancía al transportista dentro del país de origen',1,'2016-04-30 12:39:20','2016-05-08 12:13:32'),
@@ -676,6 +678,51 @@ insert  into `incoterms`(`id_incoterm`,`name`,`abr`,`detail`,`status`,`date_crea
 (9,'Free Alongside Ship','FAS','\"Libre a un Costado del Buque. El vendedor entrega la mercancía en el muelle pactado del puerto de carga convenido; esto es, al lado del barco. El vendedor es responsable de la gestión y costo de la aduana de exportación \"',1,'2016-04-30 12:39:20','2016-05-08 12:13:32'),
 (10,'Free CArrier','FCA','Libre transportista. El vendedor se compromete a entregar la mercancía en un punto acordado dentro del país de origen, se hace cargo de los costos hasta que la mercancía está situada en ese punto convenido',1,'2016-04-30 12:39:20','2016-05-08 12:13:32'),
 (11,'Free On Board','FOB','Libre a Bordo. El vendedor entrega la mercancía sobre el buque. El vendedor contrata el transporte a través de un transitario o un consignatario, pero el coste del transporte lo asume el comprador',1,'2016-04-30 12:39:20','2016-05-08 12:13:32');
+
+/*Table structure for table `menu` */
+
+DROP TABLE IF EXISTS `menu`;
+
+CREATE TABLE `menu` (
+  `id_menu` int(11) NOT NULL AUTO_INCREMENT,
+  `id_menu_padre` int(11) NOT NULL DEFAULT '0',
+  `description` varchar(100) NOT NULL,
+  `link` varchar(200) NOT NULL,
+  `icon_class` varchar(200) NOT NULL,
+  `orden` int(11) NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '1',
+  `date_created` datetime NOT NULL,
+  `date_updated` datetime NOT NULL,
+  PRIMARY KEY (`id_menu`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+
+/*Data for the table `menu` */
+
+insert  into `menu`(`id_menu`,`id_menu_padre`,`description`,`link`,`icon_class`,`orden`,`status`,`date_created`,`date_updated`) values 
+(1,0,'Ventas','#','fa fa-dollar',1,1,'2016-06-11 12:35:57','2016-06-11 12:36:01'),
+(2,1,'Ventas','/adm/sales/index.php','',0,1,'2016-06-11 12:36:46','2016-06-11 12:36:48'),
+(3,0,'Maestros','#','fa fa-book',2,1,'2016-06-11 12:37:18','2016-06-11 12:37:20'),
+(4,3,'Compañias','/adm/company/index.php','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58'),
+(5,3,'Clientes','/adm/clients/index.php','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58'),
+(6,3,'Granjas','/adm/farms/index.php','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58'),
+(7,3,'Plantas procesadoras','/adm/plants/index.php','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58'),
+(8,3,'Regiones','/adm/regions/index.php','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58'),
+(9,3,'Paises','/adm/country/index.php','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58'),
+(10,3,'Estados','/adm/states/index.php','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58'),
+(11,3,'Lineas navieras','/adm/shipping_lines/index.php','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58'),
+(12,3,'Puertos','/adm/ports/index.php','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58'),
+(13,3,'Productos','/adm/products/index.php','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58'),
+(14,3,'Tipo de productos','/adm/products_type/index.php','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58'),
+(15,3,'Cuentas bancarias','/adm/bank/index.php','',0,0,'2016-06-11 12:37:55','2016-06-11 12:37:58'),
+(16,3,'Incoterms','/adm/incoterms/index.php','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58'),
+(17,3,'Brokers','/adm/brokers/index.php','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58'),
+(18,3,'Tipos de destinos','/adm/type_destiny/index.php','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58'),
+(19,0,'Informes','#','fa fa-file-text-o',3,1,'2016-06-11 12:35:57','2016-06-11 12:36:01'),
+(20,0,'Reportes','#','fa fa-line-chart',4,1,'2016-06-11 12:35:57','2016-06-11 12:36:01'),
+(21,0,'Administración de usuarios','#','fa fa-users',5,1,'2016-06-11 12:35:57','2016-06-11 12:36:01'),
+(22,0,'Usuario','#','fa fa-user',6,1,'2016-06-11 12:35:57','2016-06-11 12:36:01'),
+(23,21,'Usuarios','/adm/users/index.php','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58'),
+(24,22,'Cambio de clave','/adm/users/index.php?action=change_pass_view','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58');
 
 /*Table structure for table `plants` */
 
@@ -694,7 +741,7 @@ CREATE TABLE `plants` (
   `email2` varchar(100) DEFAULT NULL,
   `contact1` varchar(100) DEFAULT NULL,
   `phone_contact1` varchar(20) DEFAULT NULL,
-  `email_contact1` varchar(20) DEFAULT NULL,
+  `email_contact1` varchar(100) DEFAULT NULL,
   `contact2` varchar(100) DEFAULT NULL,
   `phone_contact2` varchar(20) DEFAULT NULL,
   `email_contact2` varchar(100) DEFAULT NULL,
@@ -706,7 +753,7 @@ CREATE TABLE `plants` (
 /*Data for the table `plants` */
 
 insert  into `plants`(`id_plant`,`name`,`rif`,`status`,`id_country`,`address`,`phone1`,`phone2`,`email1`,`email2`,`contact1`,`phone_contact1`,`email_contact1`,`contact2`,`phone_contact2`,`email_contact2`,`date_created`,`date_updated`) values 
-(1,'planta 1','V-18020594-9',1,1,'DIRECCION DE PRUEBA','02128601223','04268141850','DEANDRADEMARCOS@GMAIL.COM','','Nombre','04268141850','deandrademarcos@gmai','','','','2016-04-28 20:45:40','2016-06-10 23:11:24'),
+(1,'planta 1','V-18020594-9',1,1,'DIRECCION DE PRUEBA','02128601223','04268141850','DEANDRADEMARCOS@GMAIL.COM','','Nombre','04268141850','deandrademarcos@gmail.com','','','','2016-04-28 20:45:40','2016-06-11 12:24:10'),
 (2,'PLANTA 2','V-12341563-9',1,1,'DIRECCION DE PRUEBA','02128601223','','','','','','','','','','2016-04-28 21:47:46','2016-04-28 21:47:46');
 
 /*Table structure for table `plants_banks_detail` */
@@ -754,7 +801,7 @@ CREATE TABLE `ports` (
 /*Data for the table `ports` */
 
 insert  into `ports`(`id_port`,`name`,`description`,`cod_port`,`id_country`,`status`,`date_created`,`date_updated`) values 
-(1,'CARACAS','','CCS',1,1,'2016-06-06 00:00:00','2016-06-06 00:00:00'),
+(1,'CARACAS','','CCS',1,1,'2016-06-06 00:00:00','2016-06-11 12:26:19'),
 (2,'EL GUAMACHE','','EGU',1,1,'2016-06-06 00:00:00','2016-06-06 00:00:00'),
 (3,'GUANTA','','GUT',1,1,'2016-06-06 00:00:00','2016-06-06 00:00:00'),
 (4,'PUERTO DE GUARANAO','','GUB',1,1,'2016-06-06 00:00:00','2016-06-06 00:00:00'),
@@ -1521,7 +1568,7 @@ CREATE TABLE `products` (
 /*Data for the table `products` */
 
 insert  into `products`(`id_product`,`name`,`description`,`status`,`date_created`,`date_updated`) values 
-(1,'camaron','camaron',1,'2016-04-12 17:54:03','2016-05-29 12:50:02');
+(1,'camaron','camaron',1,'2016-04-12 17:54:03','2016-06-11 12:26:45');
 
 /*Table structure for table `products_type` */
 
@@ -1542,7 +1589,7 @@ CREATE TABLE `products_type` (
 /*Data for the table `products_type` */
 
 insert  into `products_type`(`id_product_type`,`id_product`,`name`,`description`,`abr`,`status`,`date_created`,`date_updated`) values 
-(8,1,'50/50','50/50','40/50',1,'2016-05-29 12:58:01','2016-06-10 23:10:13'),
+(8,1,'50/50','50/50','40/50',1,'2016-05-29 12:58:01','2016-06-11 12:27:14'),
 (9,1,'40/40','40/40','40/40',1,'2016-05-29 13:07:49','2016-05-29 13:07:49'),
 (10,1,'30/30','30/30','',1,'2016-06-10 23:07:38','2016-06-10 23:09:54');
 
@@ -1575,7 +1622,7 @@ CREATE TABLE `regions` (
 /*Data for the table `regions` */
 
 insert  into `regions`(`id_region`,`name`,`abr`,`status`,`date_created`,`date_updated`) values 
-(1,'NORTE AMERICA','NAM',1,'2016-04-14 22:33:45','2016-04-30 13:38:29'),
+(1,'NORTE AMERICA','NAM',1,'2016-04-14 22:33:45','2016-06-11 12:24:32'),
 (2,'ASIA','ASI',1,'2016-04-14 22:33:45','2016-04-16 11:02:57'),
 (3,'EUROPA','EUR',1,'2016-04-14 22:33:45','2016-04-18 16:58:05'),
 (4,'OCEANIA','OCE',1,'2016-04-14 22:33:45','2016-04-18 15:55:27'),
@@ -1592,15 +1639,18 @@ DROP TABLE IF EXISTS `sales`;
 CREATE TABLE `sales` (
   `id_sale` int(11) NOT NULL AUTO_INCREMENT,
   `id_type_destiny` int(11) NOT NULL,
-  `date_sale` date NOT NULL,
+  `id_company` int(11) NOT NULL,
   `id_client` int(11) NOT NULL,
   `id_shipping_lines` int(11) NOT NULL,
+  `id_company_bank` int(11) NOT NULL,
+  `date_sale` date NOT NULL,
   `id_country_out` int(11) NOT NULL,
   `id_port_out` int(11) NOT NULL,
   `id_country_in` int(11) NOT NULL,
   `id_port_in` int(11) NOT NULL,
   `date_out` date NOT NULL,
   `date_estimate_in` date NOT NULL,
+  `id_client_address` int(11) NOT NULL,
   `terms` text NOT NULL,
   `id_broker` int(11) NOT NULL,
   `comision` varchar(20) NOT NULL,
@@ -1615,9 +1665,9 @@ CREATE TABLE `sales` (
 
 /*Data for the table `sales` */
 
-insert  into `sales`(`id_sale`,`id_type_destiny`,`date_sale`,`id_client`,`id_shipping_lines`,`id_country_out`,`id_port_out`,`id_country_in`,`id_port_in`,`date_out`,`date_estimate_in`,`terms`,`id_broker`,`comision`,`id_bank_in`,`id_incoterm`,`note_sale`,`status`,`date_created`,`date_updated`) values 
-(1,2,'2016-06-10',1,2,1,1,1,1,'2016-06-10','2016-06-30','terminos de negociacion',1,'50%',0,8,'Observación de prueba',0,'2016-06-10 10:12:51','2016-06-10 23:04:23'),
-(2,1,'2016-06-10',2,0,0,0,0,0,'0000-00-00','0000-00-00','terminos',1,'comision',0,2,'aaaaaaaaaaaaaaaaaaaaaaaaaaa',1,'2016-06-10 22:53:00','2016-06-10 22:53:00');
+insert  into `sales`(`id_sale`,`id_type_destiny`,`id_company`,`id_client`,`id_shipping_lines`,`id_company_bank`,`date_sale`,`id_country_out`,`id_port_out`,`id_country_in`,`id_port_in`,`date_out`,`date_estimate_in`,`id_client_address`,`terms`,`id_broker`,`comision`,`id_bank_in`,`id_incoterm`,`note_sale`,`status`,`date_created`,`date_updated`) values 
+(1,2,1,1,2,9,'2016-06-11',1,1,65,131,'2016-06-11','2016-06-11',2,'TERMINOS DE NEGOCIACION DE PRUEBA',1,'50',0,1,'observacion de la venta',1,'2016-06-10 10:12:51','2016-06-11 11:54:44'),
+(2,2,0,2,0,0,'2016-06-10',0,0,0,0,'0000-00-00','0000-00-00',0,'terminos',1,'comision',0,2,'aaaaaaaaaaaaaaaaaaaaaaaaaaa',1,'2016-06-10 22:53:00','2016-06-11 11:55:14');
 
 /*Table structure for table `sales_containers_detail` */
 
@@ -1728,7 +1778,7 @@ CREATE TABLE `shipping_lines` (
 /*Data for the table `shipping_lines` */
 
 insert  into `shipping_lines`(`id_shipping_lines`,`name`,`status`,`date_created`,`date_updated`,`abr`,`address`,`phone1`,`phone2`,`email1`,`email2`,`contact1`,`phone_contact1`,`email_contact1`,`contact2`,`phone_contact2`,`email_contact2`) values 
-(1,'LINEA NAVIERA 1',1,'2016-04-05 20:56:01','2016-06-10 23:12:24','l','dirección','1234567890','','','','hola','04268141850','deandrademarcos@gmail.com','contact2','1234567890','deandrademarcos@gmail.com'),
+(1,'LINEA NAVIERA 1',1,'2016-04-05 20:56:01','2016-06-11 12:25:54','l','dirección','1234567890','','','','hola','04268141850','deandrademarcos@gmail.com','contact2','1234567890','deandrademarcos@gmail.com'),
 (2,'LINEA NAVIERA 2',1,'2016-04-05 20:56:19','2016-06-10 23:12:49','l2','direccion','02128601223','','','','aaaa','04268141850','dddd@h.com','','',''),
 (3,'LINEA NAVIERA 3',1,'2016-04-15 16:39:38','2016-06-10 23:13:06','aaa','aaaaaaaaaaaa','1234567890','','','','sssss','04268141850','dddd@h.com','','','');
 
@@ -1749,7 +1799,7 @@ CREATE TABLE `states` (
 /*Data for the table `states` */
 
 insert  into `states`(`id_state`,`id_country`,`name`,`status`,`date_created`,`date_updated`) values 
-(1,1,'AMAZONAS',1,'2016-05-15 13:33:47','2016-05-15 13:33:47'),
+(1,1,'AMAZONAS',1,'2016-05-15 13:33:47','2016-06-11 12:25:34'),
 (2,1,'ANZOÁTEGUI',1,'2016-05-15 13:33:47','2016-05-15 13:33:47'),
 (3,1,'APURE',1,'2016-05-15 13:33:47','2016-05-15 13:33:47'),
 (4,1,'ARAGUA',1,'2016-05-15 13:33:47','2016-05-15 13:33:47'),
@@ -1834,7 +1884,7 @@ CREATE TABLE `type_destiny` (
 /*Data for the table `type_destiny` */
 
 insert  into `type_destiny`(`id_type_destiny`,`name`,`abr`,`status`,`date_created`,`date_updated`) values 
-(1,'NACIONAL','NAC',0,'2016-05-19 13:49:35','2016-06-10 22:59:28'),
+(1,'NACIONAL','NAC',0,'2016-05-19 13:49:35','2016-06-11 12:30:47'),
 (2,'INTERNACIONAL','INT',1,'2016-05-19 13:49:35','2016-05-19 14:45:17');
 
 /*Table structure for table `users` */
@@ -1858,7 +1908,7 @@ CREATE TABLE `users` (
 
 insert  into `users`(`id_user`,`login`,`password`,`status`,`date_created`,`date_updated`,`mail`,`mail_alternative`) values 
 (1,'mdeandrade','18bfddf1020067bbd33fad652bc8f1a59b2427ff8c7ebfd62bbfef6c2dddff49',1,'2016-04-02 20:55:08','2016-04-28 19:42:46','',NULL),
-(7,'admin','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92',1,'2016-05-08 11:51:43','2016-05-08 11:51:43','',NULL);
+(7,'admin','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92',1,'2016-05-08 11:51:43','2016-06-11 19:34:00','',NULL);
 
 /*Table structure for table `users_company` */
 
