@@ -106,7 +106,7 @@ unset($values['PHPSESSID']);
 				$array_json['data'][] = array(
 					"id_state" => $id_state,
 					"name" => $states['name'],
-					"id_country" => $states['id_country'],
+					"id_country" => $states['country_name'],
 					"status" => $message_status,
 					"date_created" => $states['date_created'],
 					"date_updated" => $states['date_updated'],

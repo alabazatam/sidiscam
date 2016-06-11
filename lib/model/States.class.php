@@ -21,11 +21,11 @@
 		{	
 			$columns = array();
 			$columns[0] = 'id_state';
-			$columns[1] = 'name';
-			$columns[2] = 'id_country';
-			$columns[3] = 'status';
-			$columns[4] = 'date_created';
-			$columns[5] = 'date_updated';
+			$columns[1] = 'states.name';
+			$columns[2] = 'states.name';
+			$columns[3] = 'states.status';
+			$columns[4] = 'states.date_created';
+			$columns[5] = 'states.date_updated';
 			$column_order = $columns[0];
 			$where = '1 = 1';
 			$order = 'asc';
@@ -37,6 +37,7 @@
 				$where = ""
                                         . "upper(status.name) like upper('%$str%') "
                                         . "or upper(states.name) like upper('%$str%')"
+										. "or upper(country.name) like upper('%$str%')"
                                         . "or cast(id_state as char(100)) =  '$str' ";
 			}
 			if(isset($values['order'][0]['column']) and $values['order'][0]['column']!='0')
@@ -50,8 +51,9 @@
 			//echo $column_order;die;
                         $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->states()
-			->select("states.*,DATE_FORMAT(states.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(states.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->select("states.*,country.name country_name,DATE_FORMAT(states.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(states.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
 			->join("status","LEFT JOIN status on status.id_status = states.status")
+			->join("country","LEFT JOIN country on country.id_country = states.id_country")
                         ->where("$where")
                         ->order("$column_order $order")
 			->limit($limit,$offset);
@@ -66,12 +68,14 @@
 				$where = ""
                                         . "upper(status.name) like upper('%$str%') "
                                         . "or upper(states.name) like upper('%$str%')"
+										. "or upper(country.name) like upper('%$str%')"
                                         . "or cast(id_state as char(100)) =  '$str' ";
 			}
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->states
 			->select("count(*) as cuenta")
 			->join("status","LEFT JOIN status on status.id_status = states.status")
+			->join("country","LEFT JOIN country on country.id_country = states.id_country")
 			->where("$where")->fetch();
 			return $q['cuenta']; 			
 		}
