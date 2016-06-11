@@ -116,7 +116,7 @@
 			$q = $ConnectionORM->getConnect()->country
 			->select("*")
 			->where("status=?",1)
-			->order('name');
+			->order('id_country');
 			return $q; 				
 			
 		}

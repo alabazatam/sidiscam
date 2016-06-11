@@ -84,7 +84,7 @@
 										<?php if(count($list_incoterms)>0): ?>
 											<?php foreach($list_incoterms as $list): ?>
 
-													<option value="<?php echo $list['id_incoterm'];?>" <?php if($list['id_incoterm'] == @$values['id_incoterm']) echo "selected = 'selected'" ?>><?php echo $list['name'];?></option>
+													<option value="<?php echo $list['id_incoterm'];?>" <?php if($list['id_incoterm'] == @$values['id_incoterm']) echo "selected = 'selected'" ?>><?php echo $list['abr'];?> - <?php echo $list['name'];?></option>
 
 											<?php endforeach; ?>
 										<?php endif; ?>
@@ -128,7 +128,7 @@
 						<div class="col-sm-4">
 						  <label class="label label-danger">
 							<input type="radio" name="status" id="status" value="0" <?php if(isset($values['status']) and $values['status'] =='0' ) echo "checked=checked"?>>
-							Completar venta
+							Venta completada
 						  </label>
 						</div>
 						<div class="col-sm-4">

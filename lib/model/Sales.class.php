@@ -21,11 +21,12 @@
 		{	
 			$columns = array();
 			$columns[0] = 'id_sale';
-			$columns[1] = 'id_type_destiny';
-			$columns[2] = 'date_sale';
-			$columns[3] = 'status';
-			$columns[4] = 'date_created';
-			$columns[5] = 'date_updated';
+			$columns[1] = 'type_destiny.name';
+			$columns[2] = 'clients.name';
+			$columns[3] = 'sales.date_sale';
+			$columns[4] = 'sales.status';
+			$columns[5] = 'sales.date_created';
+			$columns[6] = 'sales.date_updated';
 			$column_order = $columns[0];
 			$where = '1 = 1';
 			$order = 'asc';
@@ -35,7 +36,9 @@
 			{	
 				$str = $values['search']['value'];
 				$where = ""
-                                        . "upper(status.name) like upper('%$str%') ";
+                                        . "upper(status.name) like upper('%$str%') "
+										. " or upper(clients.name) like upper('%$str%') "
+										. " or upper(type_destiny.name) like upper('%$str%') ";
 			}
 			if(isset($values['order'][0]['column']) and $values['order'][0]['column']!='0')
 			{
@@ -48,8 +51,10 @@
 			//echo $column_order;die;
                         $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->sales()
-			->select("sales.*,DATE_FORMAT(sales.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(sales.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->select("sales.*,clients.name as client_name,type_destiny.name as type_destiny_name,DATE_FORMAT(sales.date_sale, '%d/%m/%Y') as date_sale,DATE_FORMAT(sales.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(sales.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
 			->join("status","LEFT JOIN status on status.id_status = sales.status")
+			->join("clients","LEFT JOIN clients on clients.id_client = sales.id_client")
+			->join("type_destiny","LEFT JOIN type_destiny on type_destiny.id_type_destiny = sales.id_type_destiny")	
                         ->where("$where")
                         ->order("$column_order $order")
 			->limit($limit,$offset);
@@ -62,13 +67,17 @@
 			{	
 				$str = $values['search']['value'];
 				$where = ""
-                                        . "upper(status.name) like upper('%$str%') ";
+                                        . "upper(status.name) like upper('%$str%') "
+										. " or upper(clients.name) like upper('%$str%') "
+										. " or upper(type_destiny.name) like upper('%$str%') ";
 										
 			}
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->sales
 			->select("count(*) as cuenta")
 			->join("status","LEFT JOIN status on status.id_status = sales.status")
+			->join("clients","LEFT JOIN clients on clients.id_client = sales.id_client")
+			->join("type_destiny","LEFT JOIN type_destiny on type_destiny.id_type_destiny = sales.id_type_destiny")
 			->where("$where")->fetch();
 			return $q['cuenta']; 			
 		}

@@ -6,9 +6,10 @@
 			<thead>
 				<tr>
 					<th>Id</th>
-					<th>type_destiny</th>
-					<th>Fecha venta</th>
-					<th>Status</th>
+					<th>Tipo de destino</th>
+					<th>Cliente</th>
+					<th>Fecha de venta</th>
+					<th>Estatus</th>					
 					<th>Fecha creación</th>
 					<th>Fecha actualización</th>
 					<th>Acciones</th>
@@ -17,9 +18,10 @@
 			<tfoot>
 				<tr>
 					<th>Id</th>
-					<th>type_destiny</th>
-					<th>Fecha venta</th>
-					<th>Status</th>
+					<th>Tipo de destino</th>
+					<th>Cliente</th>
+					<th>Fecha de venta</th>
+					<th>Estatus</th>					
 					<th>Fecha creación</th>
 					<th>Fecha actualización</th>
 					<th>Acciones</th>
@@ -42,6 +44,7 @@ $(document).ready(function() {
         "columns": [
             { "data": "id_sale" },
             { "data": "id_type_destiny" },
+			{ "data": "client_name" },
 			{ "data": "date_sale" },
 			{ "data": "status" },
             { "data": "date_created" }, 
@@ -49,7 +52,7 @@ $(document).ready(function() {
             { "data": "actions" }
         ],
       "aoColumnDefs": [
-          { 'bSortable': false, 'aTargets': [ 6 ] }
+          { 'bSortable': false, 'aTargets': [ 7 ] }
        ]				
     });
 } );

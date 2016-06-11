@@ -111,16 +111,17 @@ unset($values['PHPSESSID']);
 				$status = $sales['status'];
 				if($status == 0)
 				{
-					$message_status = "<label class='label label-danger'><a href='#' onclick = ".'"'."status_changer('sales','$id_sale', '$id_sale','1')".'"'.">Desactivado</a></label>";
+					$message_status = "<label class='label label-danger'><a href='#' onclick = ".'"'."status_changer('sales','$id_sale', '$id_sale','1')".'"'.">Venta completada</a></label>";
 				}
 				if($status == 1)
 				{
-					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('sales','id_sale', '$id_sale','0')".'"'.">Activo</a></label>";
+					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('sales','id_sale', '$id_sale','0')".'"'.">En transcripción</a></label>";
 				}
 				
 				$array_json['data'][] = array(
 					"id_sale" => $id_sale,
-					"id_type_destiny" => $sales['id_type_destiny'],
+					"id_type_destiny" => $sales['type_destiny_name'],
+					"client_name" => $sales['client_name'],
 					"date_sale" => $sales['date_sale'],
 					"status" => $message_status,
 					"date_created" => $sales['date_created'],
