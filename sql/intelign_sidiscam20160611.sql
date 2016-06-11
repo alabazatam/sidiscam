@@ -131,6 +131,7 @@ CREATE TABLE `brokers_banks_detail` (
   `bank_name` varchar(50) NOT NULL,
   `number` varchar(50) NOT NULL,
   `id_country` int(11) NOT NULL,
+  `rif` varchar(50) NOT NULL,
   `aba` varchar(50) NOT NULL,
   `swit` varchar(50) NOT NULL,
   `iban` varchar(50) NOT NULL,
@@ -138,12 +139,12 @@ CREATE TABLE `brokers_banks_detail` (
   `date_created` datetime NOT NULL,
   `date_updated` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `brokers_banks_detail` */
 
-insert  into `brokers_banks_detail`(`id`,`id_broker`,`bank_name`,`number`,`id_country`,`aba`,`swit`,`iban`,`status`,`date_created`,`date_updated`) values 
-(2,1,'1','2',2,'4','5','6',1,'2016-06-10 21:59:25','2016-06-10 21:59:25');
+insert  into `brokers_banks_detail`(`id`,`id_broker`,`bank_name`,`number`,`id_country`,`rif`,`aba`,`swit`,`iban`,`status`,`date_created`,`date_updated`) values 
+(2,1,'1','2',1,'ssssss','4','5','6',1,'2016-06-10 21:59:25','2016-06-10 21:59:25');
 
 /*Table structure for table `cities` */
 
@@ -187,7 +188,7 @@ CREATE TABLE `clients` (
 /*Data for the table `clients` */
 
 insert  into `clients`(`id_client`,`name`,`rif`,`status`,`id_country`,`address`,`phone1`,`phone2`,`email1`,`email2`,`contact1`,`phone_contact1`,`email_contact1`,`contact2`,`phone_contact2`,`email_contact2`,`date_created`,`date_updated`) values 
-(1,'CLIENTE 1','V-18020594-9',1,1,'DIRECCION DE PRUEBA','02128601223','04268141850','DEANDRADEMARCOS@GMAIL.COM','','NOMBRE','04268141850','DEANDRADEMARCOS@GMAIL.COM','','','','2016-04-28 20:45:40','2016-06-11 12:11:48'),
+(1,'CLIENTE 1','V-18020594-9',1,1,'DIRECCION DE PRUEBA','02128601223','04268141850','DEANDRADEMARCOS@GMAIL.COM','','NOMBRE','04268141850','DEANDRADEMARCOS@GMAIL.COM','','','','2016-04-28 20:45:40','2016-06-11 13:58:14'),
 (2,'CLIENTE2','ddddddddd',1,1,'DIRECCIÓN DE PRUEBA','04268141850','','','','NOMBRE1','04168141850','DEANDRADEMARCOS@GMAI','','','','2016-05-08 17:34:18','2016-06-10 22:53:56');
 
 /*Table structure for table `clients_address_detail` */
@@ -224,6 +225,7 @@ CREATE TABLE `clients_banks_detail` (
   `bank_name` varchar(50) NOT NULL,
   `number` varchar(50) NOT NULL,
   `id_country` int(11) NOT NULL,
+  `rif` varchar(50) NOT NULL,
   `aba` varchar(50) NOT NULL,
   `swit` varchar(50) NOT NULL,
   `iban` varchar(50) NOT NULL,
@@ -231,13 +233,13 @@ CREATE TABLE `clients_banks_detail` (
   `date_created` datetime NOT NULL,
   `date_updated` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 
 /*Data for the table `clients_banks_detail` */
 
-insert  into `clients_banks_detail`(`id`,`id_client`,`bank_name`,`number`,`id_country`,`aba`,`swit`,`iban`,`status`,`date_created`,`date_updated`) values 
-(6,1,'MERCANTIL','12345678901234567890',1,'ABA1','SWIT','IBAN',1,'2016-06-09 22:21:42','2016-06-09 22:21:42'),
-(29,2,'notobank','54545454554',1,'1','1','1',1,'2016-06-09 22:32:58','2016-06-09 22:32:58');
+insert  into `clients_banks_detail`(`id`,`id_client`,`bank_name`,`number`,`id_country`,`rif`,`aba`,`swit`,`iban`,`status`,`date_created`,`date_updated`) values 
+(6,1,'MERCANTIL','12345678901234567890',1,'J-1122366-9','ABA1','SWIT','IBAN',1,'2016-06-09 22:21:42','2016-06-09 22:21:42'),
+(29,2,'notobank','54545454554',1,'','1','1','1',1,'2016-06-09 22:32:58','2016-06-09 22:32:58');
 
 /*Table structure for table `coins` */
 
@@ -296,6 +298,7 @@ CREATE TABLE `company_banks_detail` (
   `bank_name` varchar(50) NOT NULL,
   `number` varchar(50) NOT NULL,
   `id_country` int(11) NOT NULL,
+  `rif` varchar(50) NOT NULL,
   `aba` varchar(50) NOT NULL,
   `swit` varchar(50) NOT NULL,
   `iban` varchar(50) NOT NULL,
@@ -303,13 +306,12 @@ CREATE TABLE `company_banks_detail` (
   `date_created` datetime NOT NULL,
   `date_updated` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 /*Data for the table `company_banks_detail` */
 
-insert  into `company_banks_detail`(`id`,`id_company`,`bank_name`,`number`,`id_country`,`aba`,`swit`,`iban`,`status`,`date_created`,`date_updated`) values 
-(8,1,'BANCO1','01222223',1,'ABA2','SWIT2','IBAN2',1,'2016-06-10 21:09:24','2016-06-10 21:09:24'),
-(9,1,'BANCO2','111111111111111111111111',65,'ABA2','SWIT','IBAN',1,'2016-06-11 11:20:51','2016-06-11 11:20:51');
+insert  into `company_banks_detail`(`id`,`id_company`,`bank_name`,`number`,`id_country`,`rif`,`aba`,`swit`,`iban`,`status`,`date_created`,`date_updated`) values 
+(12,1,'','',1,'','','','',1,'2016-06-11 13:55:46','2016-06-11 13:55:46');
 
 /*Table structure for table `containers` */
 
@@ -635,6 +637,7 @@ CREATE TABLE `farms_banks_detail` (
   `bank_name` varchar(50) NOT NULL,
   `number` varchar(50) NOT NULL,
   `id_country` int(11) NOT NULL,
+  `rif` varchar(50) NOT NULL,
   `aba` varchar(50) NOT NULL,
   `swit` varchar(50) NOT NULL,
   `iban` varchar(50) NOT NULL,
@@ -642,12 +645,12 @@ CREATE TABLE `farms_banks_detail` (
   `date_created` datetime NOT NULL,
   `date_updated` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `farms_banks_detail` */
 
-insert  into `farms_banks_detail`(`id`,`id_farm`,`bank_name`,`number`,`id_country`,`aba`,`swit`,`iban`,`status`,`date_created`,`date_updated`) values 
-(2,1,'1','1',1,'1','1','1',1,'2016-06-10 22:12:01','2016-06-10 22:12:01');
+insert  into `farms_banks_detail`(`id`,`id_farm`,`bank_name`,`number`,`id_country`,`rif`,`aba`,`swit`,`iban`,`status`,`date_created`,`date_updated`) values 
+(2,1,'1','1',1,'rigffff','abafarm','1','1',1,'2016-06-10 22:12:01','2016-06-10 22:12:01');
 
 /*Table structure for table `incoterms` */
 
@@ -753,7 +756,7 @@ CREATE TABLE `plants` (
 /*Data for the table `plants` */
 
 insert  into `plants`(`id_plant`,`name`,`rif`,`status`,`id_country`,`address`,`phone1`,`phone2`,`email1`,`email2`,`contact1`,`phone_contact1`,`email_contact1`,`contact2`,`phone_contact2`,`email_contact2`,`date_created`,`date_updated`) values 
-(1,'planta 1','V-18020594-9',1,1,'DIRECCION DE PRUEBA','02128601223','04268141850','DEANDRADEMARCOS@GMAIL.COM','','Nombre','04268141850','deandrademarcos@gmail.com','','','','2016-04-28 20:45:40','2016-06-11 12:24:10'),
+(1,'planta 1','V-18020594-9',1,1,'DIRECCION DE PRUEBA','02128601223','04268141850','DEANDRADEMARCOS@GMAIL.COM','','Nombre','04268141850','deandrademarcos@gmail.com','','','','2016-04-28 20:45:40','2016-06-11 14:00:40'),
 (2,'PLANTA 2','V-12341563-9',1,1,'DIRECCION DE PRUEBA','02128601223','','','','','','','','','','2016-04-28 21:47:46','2016-04-28 21:47:46');
 
 /*Table structure for table `plants_banks_detail` */
@@ -766,6 +769,7 @@ CREATE TABLE `plants_banks_detail` (
   `bank_name` varchar(50) NOT NULL,
   `number` varchar(50) NOT NULL,
   `id_country` int(11) NOT NULL,
+  `rif` varchar(50) NOT NULL,
   `aba` varchar(50) NOT NULL,
   `swit` varchar(50) NOT NULL,
   `iban` varchar(50) NOT NULL,
@@ -773,12 +777,12 @@ CREATE TABLE `plants_banks_detail` (
   `date_created` datetime NOT NULL,
   `date_updated` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 /*Data for the table `plants_banks_detail` */
 
-insert  into `plants_banks_detail`(`id`,`id_plant`,`bank_name`,`number`,`id_country`,`aba`,`swit`,`iban`,`status`,`date_created`,`date_updated`) values 
-(9,1,'MERCANTIL','0501121411111111',1,'ABA1','SWIT1','IBAN1',1,'2016-06-10 21:42:49','2016-06-10 21:42:49');
+insert  into `plants_banks_detail`(`id`,`id_plant`,`bank_name`,`number`,`id_country`,`rif`,`aba`,`swit`,`iban`,`status`,`date_created`,`date_updated`) values 
+(9,1,'MERCANTIL','0501121411111111',1,'rif1','ABA1','SWIT1','IBAN1',1,'2016-06-10 21:42:49','2016-06-10 21:42:49');
 
 /*Table structure for table `ports` */
 
