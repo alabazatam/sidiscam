@@ -2,10 +2,6 @@
 <?php include('../menu.php')?>
 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
 	<h1 class="text-center">Lineas Navieras</h1>
-        
-            <?php if(isset($values['msg']) and $values['msg']!=''):?>
-            <div class="alert alert-success" role="alert"><?php echo $values['msg'];?></div>
-            <?php endif;?>
             
 	<form class="form-horizontal" action="index.php" method="POST">
 		<input type="hidden" name='action' value='<?php if(isset($values['action']))echo $values['action'];?>'>

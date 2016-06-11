@@ -66,28 +66,35 @@
                 </div>
             </div>
             <div class="form-group">
-		<div class="col-sm-6">
-                    <label for="">Fecha creado</label>
-                    <input type="text" readonly="readonly" id="" class="form-control input-sm" name="date_created" value="<?php if(isset($values['date_created'])) echo $values['date_created']?>">
-		</div>
-		<div class="col-sm-6">
-                    <label for="">Fecha modificado</label>
-                    <input type="text" readonly="readonly" id="" class="form-control input-sm" name="date_updated" value="<?php if(isset($values['date_updated'])) echo $values['date_updated']?>">
-		</div>
+				<div class="col-sm-6">
+							<label for="">Fecha creado</label>
+							<input type="text" readonly="readonly" id="" class="form-control input-sm" name="date_created" value="<?php if(isset($values['date_created'])) echo $values['date_created']?>">
+				</div>
+				<div class="col-sm-6">
+							<label for="">Fecha modificado</label>
+							<input type="text" readonly="readonly" id="" class="form-control input-sm" name="date_updated" value="<?php if(isset($values['date_updated'])) echo $values['date_updated']?>">
+				</div>
             </div>
             <div class="form-group">
-		<div class="col-sm-6">
-			<label class="text-danger">Campos requeridos (*)</label>			
-		</div>
+				<div class="col-sm-6">
+					<label class="text-danger">Campos requeridos (*)</label>			
+				</div>
             </div>
             <div class="col-sm-6 col-sm-offset-4">
                 <a class="btn btn-default"  href="<?php echo full_url."/adm/products_type/index.php"?>"><i class="fa fa-arrow-left  fa-pull-left fa-border"></i> Regresar</a>
                 <button type="submit" class="btn btn-default"><i class="fa fa-save fa-pull-left fa-border"></i> Guardar</button>
                 <br><br><br>
             </div>
+
     </form>
     <?php if(isset($values['msg']) and $values['msg']!=''):?>
-        <div class="alert alert-success" role="alert"><?php echo $values['msg'];?></div>
+
+            <div class="col-sm-12">
+				<div class="alert alert-success" role="alert"><?php echo $values['msg'];?></div>
+            </div>
+
+
+        
     <?php endif;?>
  </div>
 

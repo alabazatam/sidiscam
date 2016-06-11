@@ -49,7 +49,7 @@
 			//echo $column_order;die;
             $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->ports
-			->select("*,ports.name as name, country.name as country_name,  DATE_FORMAT(ports.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(ports.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->select("*,ports.name as name, country.name as country_name, ports.status, DATE_FORMAT(ports.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(ports.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
 			->order("$column_order $order")
 			->join("status","LEFT JOIN status on status.id_status = ports.status")
 			->join("country","LEFT JOIN country on ports.id_country = country.id_country")

@@ -104,7 +104,7 @@ $values = $_REQUEST;
 				
 				$array_json['data'][] = array(
 					"id_product_type" => $id_product_type,
-					"id_product" => $products_type['id_product'],
+					"id_product" => $products_type['product_name'],
 					"name" => $products_type['name'],
 					"status" => $message_status,
 					"date_created" => $products_type['date_created'],
