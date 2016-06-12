@@ -62,8 +62,7 @@ $values = $_REQUEST;
 		$Plants = new Plants();
         $values = $Plants->getPlantsById($values);
 		
-		$PlantsBanksDetail = new PlantsBanksDetail();
-		$values['plants_banks_detail'] = $PlantsBanksDetail->getPlantsListBanksDetailByPlants($values['id_plant']);	
+
 		
 		$values['action'] = 'update';
         $values['msg'] = $msg;

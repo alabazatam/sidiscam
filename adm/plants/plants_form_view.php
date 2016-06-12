@@ -5,6 +5,14 @@
 	$list_country = $Country -> getListCountry();
 
 ?>
+<?php	
+		if(isset($values['id_plant']) and $values['id_plant']!=''):
+		$PlantsBanksDetail = new PlantsBanksDetail();
+		$values['plants_banks_detail'] = $PlantsBanksDetail->getPlantsListBanksDetailByPlants($values['id_plant']);	
+		endif;
+	
+	
+?>
 <div class="container">
 <h1 class="text-center">Plantas Procesadoras</h1>
 

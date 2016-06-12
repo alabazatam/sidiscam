@@ -1,5 +1,12 @@
 <?php include('../../view_header.php')?>
 <?php include('../menu.php')?>
+<?php 
+	if(isset($values['id_broker']) and $values['id_broker']!=''):
+		$BrokersBanksDetail = new BrokersBanksDetail();
+		$values['brokers_banks_detail'] = $BrokersBanksDetail->getBrokersListBanksDetailByBrokers($values['id_broker']);	
+	endif;
+?>
+
 <div class="container">
 	<h1 class="text-center">Brokers</h1>
 	

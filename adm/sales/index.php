@@ -62,18 +62,7 @@ unset($values['PHPSESSID']);
 		
 		$Sales= new Sales();
 		$values = $Sales->getSalesById($values);
-		
-		$SalesProductsDetail = new SalesProductsDetail();
-		$values['sales_products_detail'] = $SalesProductsDetail->getSalesListProductsDetailBySale($values['id_sale']);
-		
-		$SalesPlantsDetail = new SalesPlantsDetail();
-		$values['sales_plants_detail'] = $SalesPlantsDetail->getSalesListPlantsDetailBySale($values['id_sale']);
-		
-		$SalesFarmsDetail = new SalesFarmsDetail();
-		$values['sales_farms_detail'] = $SalesFarmsDetail->getSalesListFarmsDetailBySale($values['id_sale']);
 
-		$SalesContainersDetail = new SalesContainersDetail();
-		$values['sales_containers_detail'] = $SalesContainersDetail->getSalesListContainersDetailBySale($values['id_sale']);
 		
         $id_sale = $values['id_sale'];
         $values['action'] = 'update';
@@ -111,21 +100,22 @@ unset($values['PHPSESSID']);
 				$status = $sales['status'];
 				if($status == 0)
 				{
-					$message_status = "<label class='label label-danger'><a href='#' onclick = ".'"'."status_changer('sales','$id_sale', '$id_sale','1')".'"'.">Venta completada</a></label>";
+					$message_status = "<label class='label label-danger'>Venta completada</label>";
 				}
 				if($status == 1)
 				{
-					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('sales','id_sale', '$id_sale','0')".'"'.">En transcripción</a></label>";
+					$message_status = "<label class='label label-success'>En transcripción</label>";
 				}
 				
 				$array_json['data'][] = array(
 					"id_sale" => $id_sale,
-					"id_type_destiny" => $sales['type_destiny_name'],
 					"client_name" => $sales['client_name'],
 					"date_sale" => $sales['date_sale'],
+					"country_name" => $sales['country_name'],
+					"port_name" => $sales['port_name'],
+					"name_shipping_lines" => $sales['name_shipping_lines'],
+					
 					"status" => $message_status,
-					"date_created" => $sales['date_created'],
-					"date_updated" => $sales['date_updated'],
 					"actions" => 
                                        
                                        '<form method="POST" action = "'.full_url.'/adm/sales/index.php" >'
@@ -138,7 +128,7 @@ unset($values['PHPSESSID']);
 		}else{
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
-			$array_json['data'][0] = array("id_sale"=>null,"name"=>"","aba"=>"","swif"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
+			$array_json['data'][0] = array("id_sale"=>null,"client_name"=>"","date_sale"=>"","country_name"=>"","port_name"=>"","name_shipping_lines"=>"","status"=>"","actions"=>"");
 		}
 
 		echo json_encode($array_json);die;

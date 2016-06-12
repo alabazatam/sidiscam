@@ -6,7 +6,7 @@
 				<div class="modal-content">
 				  <div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="myModalLabel">Cuentas bancarias</h4>
+					<h4 class="modal-title" id="myModalLabel"></h4>
 				  </div>
 				  <div class="modal-body">
 				  </div>
@@ -37,7 +37,23 @@
 			 //useCurrent: true,
 			 showTodayButton: true,
 			 showClear: true,
-			 showClose: true
+			 showClose: true,
+			tooltips: {
+				today: 'Ir a hoy',
+				clear: 'Limpiar selección',
+				close: 'Cerrar el calendario',
+				selectMonth: 'Seleccionar mes',
+				prevMonth: 'Mes anterior',
+				nextMonth: 'Próximo mes',
+				selectYear: 'Seleccionar año',
+				prevYear: 'Previous Year',
+				nextYear: 'Próximo año',
+				selectDecade: 'Select Decade',
+				prevDecade: 'Previous Decade',
+				nextDecade: 'Next Decade',
+				prevCentury: 'Previous Century',
+				nextCentury: 'Next Century'
+			}
 			 
         });
 		

@@ -6,24 +6,24 @@
 			<thead>
 				<tr>
 					<th>Id</th>
-					<th>Tipo de destino</th>
 					<th>Cliente</th>
 					<th>Fecha de venta</th>
+					<th>País de entrada</th>
+					<th>Puerto de entrada</th>
+					<th>Linea naviera</th>
 					<th>Estatus</th>					
-					<th>Fecha creación</th>
-					<th>Fecha actualización</th>
 					<th>Acciones</th>
 				</tr>
 			</thead>
 			<tfoot>
 				<tr>
 					<th>Id</th>
-					<th>Tipo de destino</th>
 					<th>Cliente</th>
 					<th>Fecha de venta</th>
+					<th>País de entrada</th>
+					<th>Puerto de entrada</th>
+					<th>Linea naviera</th>
 					<th>Estatus</th>					
-					<th>Fecha creación</th>
-					<th>Fecha actualización</th>
 					<th>Acciones</th>
 				</tr>
 			</tfoot>
@@ -43,12 +43,12 @@ $(document).ready(function() {
         },
         "columns": [
             { "data": "id_sale" },
-            { "data": "id_type_destiny" },
 			{ "data": "client_name" },
 			{ "data": "date_sale" },
+			{ "data": "country_name" },
+			{ "data": "port_name" },
+			{ "data": "name_shipping_lines" },
 			{ "data": "status" },
-            { "data": "date_created" }, 
-			{ "data": "date_updated" },
             { "data": "actions" }
         ],
       "aoColumnDefs": [

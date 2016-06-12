@@ -98,6 +98,20 @@
 		
 		</script>    
 	<?php endif;?>
+	<?php if(isset($values['errors']) and count($values['errors'])>0):?>
+		<?php $errors_concat = "";foreach($values['errors'] as $errors): ?>
+			<?php $errors_concat.='<i class="fa fa-arrow-circle-right"></i> '.$errors."<br>";?>
+		<?php endforeach;?>
+		<script>
+			$(document).ready(function(){
+			$('.modal-body').html('<div class="alert alert-danger" role="alert"><?php echo $errors_concat;?></div>');
+			$('.modal-title').html('<i class="fa fa-warning alert alert-warning"> Revise la información cargada</i>');
+			$('#myModal').modal('show');	
+			});
+
+		
+		</script> 
+    <?php endif;?>
 	</form>
 </div>
 <?php include('../../view_footer.php')?>

@@ -62,8 +62,7 @@ $values = $_REQUEST;
 		$Company = new Company();
         $values = $Company->getCompanyById($values);
 		
-		$CompanyBanksDetail = new CompanyBanksDetail();
-		$values['company_banks_detail'] = $CompanyBanksDetail->getCompanyListBanksDetailByCompany($values['id_company']);	
+	
 		
 		$values['action'] = 'update';
         $values['msg'] = $msg;

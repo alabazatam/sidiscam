@@ -55,7 +55,14 @@ class ValidateBase
 					}
 					if($key['type'] == "number")
 					{
-						$error = $this->number_validate($values[$name],$key['label']);
+						if(!empty($values[$name]))
+						{
+							$error = $this->number_validate($values[$name],$key['label']);
+						}else
+						{
+							$error = "Debe seleccionar un registro en ".$key['label'];
+						}
+						
 						if($error != '')
 						{
 							$errors[$name] = $error;

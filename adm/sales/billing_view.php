@@ -120,7 +120,7 @@ function selectPortsCountryOut() {
 		data: { action: "select_ports", id_country: id_country_out , id_sale: id_sale,type: type },
 		success: function(html){
 			$('#id_port_out').html(html);
-			$('.modal-title').html('Puertos');
+			
 			
 		}
 	});
@@ -138,7 +138,6 @@ function selectPortsCountryIn() {
 		data: { action: "select_ports", id_country: id_country_in , id_sale: id_sale,type: type },
 		success: function(html){
 			$('#id_port_in').html(html);
-			$('.modal-title').html('Puertos');
 			
 		}
 	});

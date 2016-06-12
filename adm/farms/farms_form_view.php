@@ -10,6 +10,15 @@
 	$list_states= $States -> getListStates();
 
 ?>
+<?php
+		if(isset($values['id_farm']) and $values['id_farm']!=''):
+		$FarmsBanksDetail = new FarmsBanksDetail();
+		$values['farms_banks_detail'] = $FarmsBanksDetail->getFarmsListBanksDetailByFarms($values['id_farm']);
+		endif;	
+	
+	
+	
+?>
 <div class="container">
 <h1 class="text-center">Granjas</h1>
 

@@ -62,13 +62,7 @@ $values = $_REQUEST;
 		$Clients = new Clients();
         $values = $Clients->getClientsById($values);
 		
-		
-		$ClientsBanksDetail = new ClientsBanksDetail();
-		$values['clients_banks_detail'] = $ClientsBanksDetail->getClientsListBanksDetailByClient($values['id_client']);	
-		
-		$ClientsAddressDetail = new ClientsAddressDetail();
-		$values['clients_address_detail'] = $ClientsAddressDetail->getClientsListAddressDetailByClient($values['id_client']);	
-				
+
 		
 		$values['action'] = 'update';
         $values['msg'] = $msg;

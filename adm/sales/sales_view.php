@@ -37,8 +37,8 @@
 												<?php endforeach; ?>
 											<?php endif; ?>
 										</select>
-								<?php if(isset($values['errors']['id_type_destiny']) and $values['errors']['id_type_destiny']!=''):?>
-									<label class="alert alert-danger"><?php echo $values['errors']['id_type_destiny']?></label>
+								<?php if(isset($values['errors']['id_company']) and $values['errors']['id_company']!=''):?>
+									<label class="alert alert-danger"><?php echo $values['errors']['id_company']?></label>
 								<?php endif;?>
 							</div>
 							<div class="col-sm-4">
@@ -53,8 +53,8 @@
 											<?php endforeach; ?>
 										<?php endif; ?>
 										</select>
-								<?php if(isset($values['errors']['id_type_destiny']) and $values['errors']['id_type_destiny']!=''):?>
-									<label class="alert alert-danger"><?php echo $values['errors']['id_type_destiny']?></label>
+								<?php if(isset($values['errors']['id_client']) and $values['errors']['id_client']!=''):?>
+									<label class="alert alert-danger"><?php echo $values['errors']['id_client']?></label>
 								<?php endif;?>
 							</div>
 					</div>
@@ -131,7 +131,7 @@
 								<?php endif;?>
 							</div>
 								<div class="col-sm-4">
-									<label for="">Observación<small class="text-danger">(*)</small></label>
+									<label for="">Observación</label>
 									<textarea class="form-control input-sm" id="note_sale" placeholder="" name="note_sale"><?php if(isset($values['note_sale'])) echo $values['note_sale']?></textarea>
 									<?php if(isset($values['errors']['note_sale']) and $values['errors']['note_sale']!=''):?>
 										<label class="alert alert-danger"><?php echo $values['errors']['note_sale']?></label>

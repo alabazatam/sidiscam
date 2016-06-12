@@ -51,9 +51,9 @@
 							<td><input type='number' min="0" name='cases[<?php echo $sales_products_details['id']?>]' id='cases_<?php echo $sales_products_details['id']?>' size="6" autocomplete="off" value="<?php echo $sales_products_details['cases']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'cases_<?php echo $sales_products_details['id'];?>','cases')"></td>
 							<td><input type='number' min="0" name='packing[<?php echo $sales_products_details['id']?>]' id='packing_<?php echo $sales_products_details['id']?>' size="6" autocomplete="off" value="<?php echo $sales_products_details['packing']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'packing_<?php echo $sales_products_details['id'];?>','packing')"></td>
 							<td><input type='text' min="0" readonly="readonly" name='quantity[<?php echo $sales_products_details['id']?>]' id='quantity_<?php echo $sales_products_details['id']?>' size="6" autocomplete="off" value="<?php echo $sales_products_details['quantity']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'quantity_<?php echo $sales_products_details['id'];?>','quantity')"></td>
-							<td><input type='number' min="0" name='rate[<?php echo $sales_products_details['id']?>]' id='rate_<?php echo $sales_products_details['id']?>' size="6" autocomplete="off" value="<?php echo $sales_products_details['rate']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'rate_<?php echo $sales_products_details['id'];?>','rate')"></td>
-							<td><input type='text' min="0" readonly="readonly" name='amount[<?php echo $sales_products_details['id']?>]' id='amount_<?php echo $sales_products_details['id']?>' size="6" autocomplete="off" value="<?php echo $sales_products_details['amount']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'amount_<?php echo $sales_products_details['id'];?>','amount')"></td>
-							<td><input type='text' min="0" name='note[<?php echo $sales_products_details['id']?>]' id='note_<?php echo $sales_products_details['id']?>' size="20" autocomplete="off" value="<?php echo $sales_products_details['note']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'note_<?php echo $sales_products_details['id'];?>','note')"></td>
+							<td><input type='number' step="0.01" min="0.00" name='rate[<?php echo $sales_products_details['id']?>]' id='rate_<?php echo $sales_products_details['id']?>' size="6" autocomplete="off" value="<?php echo $sales_products_details['rate']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'rate_<?php echo $sales_products_details['id'];?>','rate')"></td>
+							<td><input type='text' min="0"  step="0.01" readonly="readonly" name='amount[<?php echo $sales_products_details['id']?>]' id='amount_<?php echo $sales_products_details['id']?>' size="6" autocomplete="off" value="<?php echo $sales_products_details['amount']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'amount_<?php echo $sales_products_details['id'];?>','amount')"></td>
+							<td><input type='text' min="0"  name='note[<?php echo $sales_products_details['id']?>]' id='note_<?php echo $sales_products_details['id']?>' size="20" autocomplete="off" value="<?php echo $sales_products_details['note']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'note_<?php echo $sales_products_details['id'];?>','note')"></td>
 							<td><a onclick="deleteProductDetail(<?php echo $sales_products_details['id']?>)"  class="btn btn-danger">Eliminar</a></td>
 						<tr>
 							<?php endforeach;?>
@@ -121,9 +121,9 @@ function deleteProductDetail(id) {
 		var amount = $("#amount_" + id).val();
 		
 		
-		quantity = parseFloat(cases) * parseFloat(packing);
-		amount = parseFloat(quantity) * parseFloat(rate);
-
+		quantity = parseFloat(cases).toFixed(2) * (parseFloat(packing).toFixed(2) * 1.8);
+		amount = parseFloat(quantity).toFixed(2) * parseFloat(rate).toFixed(2);
+		amount = parseFloat(amount).toFixed(2);
 		$("#quantity_" + id).val(quantity);
 		$("#amount_" + id).val(amount);
 		

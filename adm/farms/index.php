@@ -61,10 +61,7 @@ $values = $_REQUEST;
 		
 		$Farms = new Farms();
         $values = $Farms->getFarmsById($values);
-		
-		$FarmsBanksDetail = new FarmsBanksDetail();
-		$values['farms_banks_detail'] = $FarmsBanksDetail->getFarmsListBanksDetailByFarms($values['id_farm']);
-		
+
 		
 		$values['action'] = 'update';
         $values['msg'] = $msg;

@@ -4,6 +4,16 @@
 	$Country = new Country();
 	$list_country = $Country -> getListCountry();
 
+	
+		if(isset($values['id_client']) and $values['id_client']!=''):
+		$ClientsBanksDetail = new ClientsBanksDetail();
+		$values['clients_banks_detail'] = $ClientsBanksDetail->getClientsListBanksDetailByClient($values['id_client']);	
+		
+		$ClientsAddressDetail = new ClientsAddressDetail();
+		$values['clients_address_detail'] = $ClientsAddressDetail->getClientsListAddressDetailByClient($values['id_client']);	
+					
+		endif;
+	
 ?>
 <div class="container">
 	<h1 class="text-center">Clientes</h1>

@@ -21,12 +21,12 @@
 		{	
 			$columns = array();
 			$columns[0] = 'id_sale';
-			$columns[1] = 'type_destiny.name';
-			$columns[2] = 'clients.name';
-			$columns[3] = 'sales.date_sale';
-			$columns[4] = 'sales.status';
-			$columns[5] = 'sales.date_created';
-			$columns[6] = 'sales.date_updated';
+			$columns[1] = 'clients.name';
+			$columns[2] = 'sales.date_sale';
+			$columns[3] = 'country.name';
+			$columns[4] = 'ports.name';
+			$columns[5] = 'shipping_lines.name';
+			$columns[6] = 'sales.status';
 			$column_order = $columns[0];
 			$where = '1 = 1';
 			$order = 'asc';
@@ -38,7 +38,12 @@
 				$where = ""
                                         . "upper(status.name) like upper('%$str%') "
 										. " or upper(clients.name) like upper('%$str%') "
-										. " or upper(type_destiny.name) like upper('%$str%') ";
+										. "or cast(id_sale as char(100)) =  '$str' "
+										. "or upper(ports.name) like upper('%$str%')"
+										. "or upper(country.name) like upper('%$str%')"
+										. "or upper(shipping_lines.name) like upper('%$str%')"
+										. " or date_format(date_sale,'%d/%m/%Y') = '".$str."'"	;			
+					;
 			}
 			if(isset($values['order'][0]['column']) and $values['order'][0]['column']!='0')
 			{
@@ -51,9 +56,12 @@
 			//echo $column_order;die;
                         $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->sales()
-			->select("sales.*,clients.name as client_name,type_destiny.name as type_destiny_name,DATE_FORMAT(sales.date_sale, '%d/%m/%Y') as date_sale,DATE_FORMAT(sales.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(sales.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->select("sales.*,shipping_lines.name as name_shipping_lines,country.name as country_name,ports.name as port_name,clients.name as client_name,type_destiny.name as type_destiny_name,DATE_FORMAT(sales.date_sale, '%d/%m/%Y') as date_sale,DATE_FORMAT(sales.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(sales.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
 			->join("status","LEFT JOIN status on status.id_status = sales.status")
 			->join("clients","LEFT JOIN clients on clients.id_client = sales.id_client")
+			->join("ports","LEFT JOIN ports on ports.id_port = sales.id_port_in")
+			->join("country","LEFT JOIN country on country.id_country = sales.id_country_in")
+			->join("shipping_lines","LEFT JOIN shipping_lines on shipping_lines.id_shipping_lines = sales.id_shipping_lines")
 			->join("type_destiny","LEFT JOIN type_destiny on type_destiny.id_type_destiny = sales.id_type_destiny")	
                         ->where("$where")
                         ->order("$column_order $order")
@@ -69,7 +77,11 @@
 				$where = ""
                                         . "upper(status.name) like upper('%$str%') "
 										. " or upper(clients.name) like upper('%$str%') "
-										. " or upper(type_destiny.name) like upper('%$str%') ";
+										. "or upper(ports.name) like upper('%$str%')"
+										. "or upper(country.name) like upper('%$str%')"
+										. "or upper(shipping_lines.name) like upper('%$str%')"
+										. "or cast(id_sale as char(100)) =  '$str' "
+										. " or date_format(date_sale,'%d/%m/%Y') = '".$str."'"	;
 										
 			}
 			$ConnectionORM = new ConnectionORM();
@@ -77,7 +89,10 @@
 			->select("count(*) as cuenta")
 			->join("status","LEFT JOIN status on status.id_status = sales.status")
 			->join("clients","LEFT JOIN clients on clients.id_client = sales.id_client")
+			->join("ports","LEFT JOIN ports on ports.id_port = sales.id_port_in")
+			->join("country","LEFT JOIN country on country.id_country = sales.id_country_in")	
 			->join("type_destiny","LEFT JOIN type_destiny on type_destiny.id_type_destiny = sales.id_type_destiny")
+			->join("shipping_lines","LEFT JOIN shipping_lines on shipping_lines.id_shipping_lines = sales.id_shipping_lines")
 			->where("$where")->fetch();
 			return $q['cuenta']; 			
 		}

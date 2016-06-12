@@ -3,7 +3,12 @@
 <?php 
 	$Country = new Country();
 	$list_country = $Country -> getListCountry();
-
+	
+	
+		if(isset($values['id_company']) and $values['id_company']!=''):	
+		$CompanyBanksDetail = new CompanyBanksDetail();
+		$values['company_banks_detail'] = $CompanyBanksDetail->getCompanyListBanksDetailByCompany($values['id_company']);
+		endif;
 ?>
 <div class="container">
 <h1 class="text-center">Compañias</h1>

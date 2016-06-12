@@ -1,10 +1,27 @@
 <?php include('../../view_header.php')?>
 <?php include('../menu.php')?>
+
 <?php 
 	$TypeDestiny = new TypeDestiny();
 	$list_destiny = $TypeDestiny -> getListTypeDestiny();
 	$Clients = new Clients();
 	$list_clients = $Clients -> getListClients();
+	
+	
+		if(isset($values['id_sale']) and $values['id_sale']!=''):
+		$SalesProductsDetail = new SalesProductsDetail();
+		$values['sales_products_detail'] = $SalesProductsDetail->getSalesListProductsDetailBySale($values['id_sale']);
+		
+		$SalesPlantsDetail = new SalesPlantsDetail();
+		$values['sales_plants_detail'] = $SalesPlantsDetail->getSalesListPlantsDetailBySale($values['id_sale']);
+		
+		$SalesFarmsDetail = new SalesFarmsDetail();
+		$values['sales_farms_detail'] = $SalesFarmsDetail->getSalesListFarmsDetailBySale($values['id_sale']);
+
+		$SalesContainersDetail = new SalesContainersDetail();
+		$values['sales_containers_detail'] = $SalesContainersDetail->getSalesListContainersDetailBySale($values['id_sale']);
+		endif;
+	
 ?>
 <div class="container">
 	<h1 class="text-center">Ventas</h1>
@@ -74,7 +91,30 @@
 	  
 	  
 	<?php if(isset($values['msg']) and $values['msg']!=''):?>
-        <div class="alert alert-success" role="alert"><?php echo $values['msg'];?></div>
+        <script>
+			$(document).ready(function(){
+			$('.modal-body').html('<div class="alert alert-success" role="alert"><?php echo $values['msg'];?></div>');
+			$('.modal-title').html('');
+			$('#myModal').modal('show');	
+			});
+
+		
+		</script>   
+    <?php endif;?>
+		
+	<?php if(isset($values['errors']) and count($values['errors'])>0):?>
+		<?php $errors_concat = "";foreach($values['errors'] as $errors): ?>
+			<?php $errors_concat.='<i class="fa fa-arrow-circle-right"></i> '.$errors."<br>";?>
+		<?php endforeach;?>
+		<script>
+			$(document).ready(function(){
+			$('.modal-body').html('<div class="alert alert-danger" role="alert"><?php echo $errors_concat;?></div>');
+			$('.modal-title').html('<i class="fa fa-warning alert alert-warning"> Revise la información cargada</i>');
+			$('#myModal').modal('show');	
+			});
+
+		
+		</script> 
     <?php endif;?>
 	</form>
 </div>
