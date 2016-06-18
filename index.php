@@ -7,3 +7,4 @@
 		$(location).attr('href', '<?php echo full_url?>/adm/index.php')
 	});
 </script>
+hola

@@ -107,23 +107,48 @@ unset($values['PHPSESSID']);
 					$message_status = "<label class='label label-success'>En transcripción</label>";
 				}
 				
-				$array_json['data'][] = array(
-					"id_sale" => $id_sale,
-					"client_name" => $sales['client_name'],
-					"date_sale" => $sales['date_sale'],
-					"country_name" => $sales['country_name'],
-					"port_name" => $sales['port_name'],
-					"name_shipping_lines" => $sales['name_shipping_lines'],
-					
-					"status" => $message_status,
-					"actions" => 
-                                       
-                                       '<form method="POST" action = "'.full_url.'/adm/sales/index.php" >'
-                                       .'<input type="hidden" name="action" value="edit">  '
-                                       .'<input type="hidden" name="id_sale" value="'.$id_sale.'">  '
-                                       .'<button class="btn btn-default btn-sm" type="submit"><i class="fa fa-edit  fa-pull-left fa-border"></i></button>'
-                                       .'</form>'
-					);	
+
+                                         if($status == 1)
+                                        {
+                                        $array_json['data'][] = array(
+                                                "id_sale" => $id_sale,
+                                                "client_name" => $sales['client_name'],
+                                                "date_sale" => $sales['date_sale'],
+                                                "country_name" => $sales['country_name'],
+                                                "port_name" => $sales['port_name'],
+                                                "name_shipping_lines" => $sales['name_shipping_lines'],
+
+                                                "status" => $message_status,
+                                                "actions" => 
+
+                                               '<form method="POST" action = "'.full_url.'/adm/sales/index.php" >'
+                                               .'<input type="hidden" name="action" value="edit">  '
+                                               .'<input type="hidden" name="id_sale" value="'.$id_sale.'">  '
+                                               .'<button class="btn btn-default btn-sm" type="submit"><i class="fa fa-edit  fa-pull-left fa-border"></i></button>'
+                                               .'</form>'
+                                                ); 
+                                                }
+                                        if($status == 0)
+                                        {
+                                        $array_json['data'][] = array(
+                                                "id_sale" => $id_sale,
+                                                "client_name" => $sales['client_name'],
+                                                "date_sale" => $sales['date_sale'],
+                                                "country_name" => $sales['country_name'],
+                                                "port_name" => $sales['port_name'],
+                                                "name_shipping_lines" => $sales['name_shipping_lines'],
+
+                                                "status" => $message_status,
+                                                "actions" => 
+
+                                               '<form method="POST" action = "'.full_url.'/adm/sales/index.php" >'
+                                               .'<input type="hidden" name="action" value="edit">  '
+                                               .'<input type="hidden" name="id_sale" value="'.$id_sale.'">  '
+                                               .'<a target="_blank" class="btn btn-default btn-sm" title="Ver factura" href="'.full_url.'/adm/invoices/index.php?action=generate1"><i class="fa fa-book  fa-pull-left fa-border"></i></a>  '
+                                               .'<button class="btn btn-default btn-sm" type="submit"><i class="fa fa-edit  fa-pull-left fa-border"></i></button>'
+                                               .'</form>'
+                                            );  
+                                        }
 			}	
 		}else{
 			$array_json['recordsTotal'] = 0;
