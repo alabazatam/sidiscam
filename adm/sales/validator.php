@@ -62,34 +62,57 @@
 			"label" => "Cuenta bancaria",
 			"required" => true
 		);
-		$validator_values['id_shipping_lines'] = array(
-			
-			"type" => "number",
-			"label" => "Línea naviera",
-			"required" => true
-		);		
-		$validator_values['id_country_out'] = array(
-			
-			"type" => "number",
-			"label" => "País de salida",
-			"required" => true
-		);			
-		$validator_values['id_port_out'] = array(
-			
-			"type" => "number",
-			"label" => "Puerto de salida",
-			"required" => true
-		);
-		$validator_values['date_out'] = array(
-			
-			"type" => "text",
-			"label" => "Fecha de salida",
-			"required" => true
-		);		
+		
 		
 
 		
-		
+                if(isset($values['id_sale']) and $values['id_sale']!='')
+                {
+                    $validator_values['id_shipping_lines'] = array(
+
+                            "type" => "number",
+                            "label" => "Línea naviera",
+                            "required" => true
+                    );		
+                    $validator_values['id_country_out'] = array(
+
+                            "type" => "number",
+                            "label" => "País de salida",
+                            "required" => true
+                    );			
+                    $validator_values['id_port_out'] = array(
+
+                            "type" => "number",
+                            "label" => "Puerto de salida",
+                            "required" => true
+                    );
+                    $validator_values['date_out'] = array(
+
+                            "type" => "text",
+                            "label" => "Fecha de salida",
+                            "required" => true
+                    ); 
+                    
+                    
+                    $validator_values['id_country_in'] = array(
+
+                            "type" => "number",
+                            "label" => "País de entrada",
+                            "required" => true
+                    );			
+                    $validator_values['id_port_in'] = array(
+
+                            "type" => "number",
+                            "label" => "Puerto de entrada",
+                            "required" => true
+                    );
+                    $validator_values['date_estimate_in'] = array(
+
+                            "type" => "text",
+                            "label" => "Fecha de arribo",
+                            "required" => true
+                    ); 
+                }
 		
 		
 		

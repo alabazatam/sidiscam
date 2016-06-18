@@ -114,6 +114,8 @@
 		function saveSales($values){
 			unset($values['action'],
 				$values['PHPSESSID'],
+                                $values['id_sale'],
+                                $values['id_shipping_lines'],
 				$values['id_product'],
 				$values['id_farms'],
 				$values['id_plants'],

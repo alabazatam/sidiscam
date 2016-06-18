@@ -93,7 +93,7 @@
 			
 		}		
 		function saveTypeDestiny($values){
-			unset($values['action']);
+			unset($values['action'],$values['id_type_destiny']);
 			$values['date_created'] = new NotORM_Literal("NOW()");
 			$values['date_updated'] = new NotORM_Literal("NOW()");
 			$ConnectionORM = new ConnectionORM();

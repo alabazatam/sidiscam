@@ -92,7 +92,7 @@
 			
 		}		
 		function saveClients($values){
-			unset($values['action'],$values['PHPSESSID'],$values['errors']);
+			unset($values['action'],$values['PHPSESSID'],$values['errors'],$values['id_client']);
                         $values['date_created'] = new NotORM_Literal("NOW()");
                         $values['date_updated'] = new NotORM_Literal("NOW()");
 			$ConnectionORM = new ConnectionORM();

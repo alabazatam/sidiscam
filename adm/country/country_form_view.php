@@ -23,7 +23,7 @@
 				<?php if(count($list_regions)>0): ?>
 					<?php foreach($list_regions as $list): ?>
 
-                                    <option value="<?php echo $list['id_region'];?>" <?php if($list['id_region'] == $values['id_region']) echo "selected = 'selected'" ?>><?php echo $list['name'];?></option>
+                                    <option value="<?php echo $list['id_region'];?>" <?php if($list['id_region'] == @$values['id_region']) echo "selected = 'selected'" ?>><?php echo $list['name'];?></option>
 						
 					<?php endforeach; ?>
 				<?php endif; ?>

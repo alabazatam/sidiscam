@@ -10,7 +10,7 @@
 	?>				
 							
 						<div class="form-group">
-							<div class="col-sm-12">
+							<div class="col-sm-12  col-md-4">
 								<label for="">Linea naviera <small class="text-danger">(*)</small></label>
 										<select name="id_shipping_lines"  class="form-control input-sm">
 											<option value="">Seleccione...</option>
@@ -26,7 +26,7 @@
 									<label class="alert alert-danger"><?php echo $values['errors']['id_shipping_lines']?></label>
 								<?php endif;?>
 							</div>
-							<div class="col-sm-4">
+							<div class="col-sm-4 col-md-4">
 								<label for="">País de salida <small class="text-danger">(*)</small></label>
 								<select name="id_country_out" id="id_country_out" class="form-control input-sm" onchange="selectPortsCountryOut()">
 											<option value="">Seleccione...</option>
@@ -42,7 +42,7 @@
 									<label class="alert alert-danger"><?php echo $values['errors']['id_country_out']?></label>
 								<?php endif;?>
 							</div>
-							<div class="col-sm-4">
+							<div class="col-sm-4  col-md-4">
 								<label for="">Puerto de salida <small class="text-danger">(*)</small></label>
 										<select name="id_port_out" id="id_port_out" class="form-control input-sm">
 											<option value="">Seleccione...</option>
@@ -54,14 +54,14 @@
 							</div>
 						
 							
-							<div class="col-sm-4">
+							<div class="col-sm-4  col-md-4">
 								<label for="">Fecha de salida <small class="text-danger">(*)</small></label>
 								<input type="date" autocomplete="off" class="form-control input-sm datetimepicker1" id="" placeholder="" name="date_out" value="<?php if(isset($values['date_out'])) echo $values['date_out']?>">
 								<?php if(isset($values['errors']['date_out']) and $values['errors']['date_out']!=''):?>
 									<label class="alert alert-danger"><?php echo $values['errors']['date_out']?></label>
 								<?php endif;?>
 							</div>
-							<div class="col-sm-4">
+							<div class="col-sm-4  col-md-4">
 								<label for="">País de entrada <small class="text-danger">(*)</small></label>
 										<select name="id_country_in" id="id_country_in" class="form-control input-sm" onchange="selectPortsCountryIn()">
 											<option value="">Seleccione...</option>
@@ -77,7 +77,7 @@
 									<label class="alert alert-danger"><?php echo $values['errors']['id_country_in']?></label>
 								<?php endif;?>
 							</div>
-							<div class="col-sm-4">
+							<div class="col-sm-4  col-md-4">
 								<label for="">Puerto de entrada <small class="text-danger">(*)</small></label>
 										<select name="id_port_in" id="id_port_in" class="form-control input-sm">
 											<option value="">Seleccione...</option>
@@ -86,14 +86,14 @@
 									<label class="alert alert-danger"><?php echo $values['errors']['id_port_in']?></label>
 								<?php endif;?>
 							</div>
-							<div class="col-sm-4">
+							<div class="col-sm-4  col-md-4">
 								<label for="">Fecha estimada de arribo <small class="text-danger">(*)</small></label>
 								<input type="date" autocomplete="off" class="form-control input-sm datetimepicker1" id="" placeholder="" name="date_estimate_in" value="<?php if(isset($values['date_estimate_in'])) echo $values['date_estimate_in']?>">
 								<?php if(isset($values['errors']['date_estimate_in']) and $values['errors']['date_estimate_in']!=''):?>
 									<label class="alert alert-danger"><?php echo $values['errors']['date_estimate_in']?></label>
 								<?php endif;?>
 							</div>
-							<div class="col-sm-12">
+							<div class="col-sm-12   col-md-12">
 								<label for="">Lugar de entrega <small class="text-danger">(*)</small></label>
 										<select name="id_client_address" id="id_client_address" class="form-control input-sm">
 											<option value="">Seleccione...</option>

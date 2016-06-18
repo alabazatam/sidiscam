@@ -94,7 +94,7 @@
 			
 		}		
 		function saveShippingLines($values){
-			unset($values['action'],$values['PHPSESSID']);
+			unset($values['action'],$values['PHPSESSID'],$values['id_shipping_lines']);
 			$values['date_created'] = new NotORM_Literal("NOW()");
 			$values['date_updated'] = new NotORM_Literal("NOW()");
 			$ConnectionORM = new ConnectionORM();

@@ -18,7 +18,7 @@ class ValidateBase
 			if($required == true or $values[$name] !='')
 			{
 				//chequeo requerido
-				$error = $this->required_validate($required, $values[$name],$key['label']);
+				$error = $this->required_validate($required, @$values[$name],@$key['label']);
 				if($error != '')
 				{
 					$errors[$name] = $error;

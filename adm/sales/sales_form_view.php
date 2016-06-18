@@ -127,10 +127,10 @@ $(document).ready(function(){
 	<?php if(isset($values['id_sale']) and $values['id_sale']!=''):?>
 		selectPortsCountryOut();
 		selectPortsCountryIn();
-		selectCompanyBank();
+		
 		selectClientAddress();
 	<?php endif;?>
-	
+	selectCompanyBank();
 	
 });
 </script>

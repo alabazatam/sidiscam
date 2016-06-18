@@ -93,7 +93,7 @@
 			
 		}		
 		function saveBrokers($values){
-			unset($values['action']);
+			unset($values['action'],$values['id_broker']);
 			$values['date_created'] = new NotORM_Literal("NOW()");
 			$values['date_updated'] = new NotORM_Literal("NOW()");
 			$ConnectionORM = new ConnectionORM();

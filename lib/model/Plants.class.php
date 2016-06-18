@@ -92,7 +92,7 @@
 			
 		}		
 		function savePlants($values){
-			unset($values['action'],$values['PHPSESSID'],$values['errors']);
+			unset($values['action'],$values['PHPSESSID'],$values['errors'],$values['id_plant']);
                         $values['date_created'] = new NotORM_Literal("NOW()");
                         $values['date_updated'] = new NotORM_Literal("NOW()");
 			$ConnectionORM = new ConnectionORM();
