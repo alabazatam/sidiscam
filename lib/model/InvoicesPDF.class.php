@@ -5,6 +5,22 @@
         
         function generate1($values)
         {
+            $id_sale = $values['id_sale'];
+            //echo $id_sale;die;
+            $Sales = new Sales();
+            $sale_data = $Sales ->getSalesInvoiceById($values);
+            $sale_date =  $sale_data['date_sale'];
+            $id_country_out = $sale_data['id_country_out'];
+            $id_port_out = $sale_data['id_port_out'];
+            $date_out = $sale_data['date_out'];
+            $id_country_in = $sale_data['id_country_in'];
+            $id_port_in = $sale_data['id_port_in'];
+            $date_estimate_in = $sale_data['date_estimate_in'];
+            $Plants = new Plants();
+            $SalesPlantsDetail = new SalesPlantsDetail();
+            $list_plants = $SalesPlantsDetail->getSalesListPlantsDetailBySale($id_sale);
+            $client_name = $sale_data['client_name'];
+            
             ob_clean();
             // create new PDF document
             $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -37,7 +53,7 @@
             // ---------------------------------------------------------
 
             // set font
-            $pdf->SetFont('dejavusans', '', 8);
+            $pdf->SetFont('freeserif', '', 8);
 
             // add a page
             $pdf->AddPage();
@@ -46,54 +62,59 @@
             // writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true)
 
             // create some HTML content
-			$class_td = "border-bottom: 0px #ffffff !important;border-top: 0px !important; border-right: 0px; border-left: 0px";
-$html = <<<EOF
-<table border="0" width="100%">
-    <tr>
-        <td style="width:50%"></td>
-        <td>
-            <table border="1">
+            $class_td = "border-bottom: 0px #ffffff !important;border-top: 0px !important; border-right: 0px; border-left: 0px";
+            $html ='
+            <table border="0" width="100%">
                 <tr>
-                    <td style="background-color: #cccccc; font-size: 12px; text-align:center;font-weight: bolder;">Invoice Date</td>
-                    <td style="background-color: #cccccc; font-size: 12px; text-align:center;font-weight: bolder;">Proforma Invoice #</td>
+                    <td style="width:50%"></td>
+                    <td>
+                        <table border="1">
+                            <tr>
+                                <td style="background-color: #cccccc; font-size: 12px; text-align:center;font-weight: bolder;">Invoice Date</td>
+                                <td style="background-color: #cccccc; font-size: 12px; text-align:center;font-weight: bolder;">Proforma Invoice #</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">'.$sale_date.'</td>
+                                <td style="text-align:center;">'.$id_sale.'</td>
+                            </tr>
+                        </table>
+
+                    </td>
                 </tr>
+            </table>
+            <div></div>
+            <table width="100%" border="0">
                 <tr>
-                    <td style="text-align:center;">24/12/2015</td>
-                    <td style="text-align:center;">2</td>
+                    <td style="width:40%">
+                        <table border="1" width="100%">
+                            <tr>
+                                <td style="background-color: #cccccc; font-size: 12px; text-align:center;font-weight: bolder;">Bill To</td>
+                            </tr>
+                            <tr>
+                                <td>'.$client_name.'</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="width:20%"></td>
+                    <td style="width:40%">
+                        <table border="1" width="100%">
+                            <tr>
+                                <td style="background-color: #cccccc; font-size: 12px; text-align:center;font-weight: bolder;">Processing Plant</td>
+                            </tr>';
+            foreach ($list_plants as $plants) {
+                $html.='
+                            <tr>
+                                <td>'.strtoupper($plants['name']).'</td>
+                            </tr>';
+            }
+
+        $html.='
+                        </table>
+                    </td>
                 </tr>
             </table>
 
-        </td>
-    </tr>
-</table>
-<div></div>
-<table width="100%" border="0">
-    <tr>
-        <td style="width:40%">
-            <table border="1" width="100%">
-                <tr>
-                    <td style="background-color: #cccccc; font-size: 12px; text-align:center;font-weight: bolder;">Bill To</td>
-                </tr>
-                <tr>
-                    <td>Bill To</td>
-                </tr>
-            </table>
-        </td>
-        <td style="width:20%"></td>
-        <td style="width:40%">
-            <table border="1" width="100%">
-                <tr>
-                    <td style="background-color: #cccccc; font-size: 12px; text-align:center;font-weight: bolder;">Processing Plant</td>
-                </tr>
-                <tr>
-                    <td>Processing Plant</td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
-
-EOF;
+            ';
 
             // output the HTML content
             $pdf->writeHTML($html, true, false, true, false, '');
@@ -103,7 +124,7 @@ EOF;
             // ---------------------------------------------------------
 
             //Close and output PDF document
-            $pdf->Output('example_006.pdf', 'I');
+            $pdf->Output('factura.pdf', 'I');
 
             
             return $pdf;

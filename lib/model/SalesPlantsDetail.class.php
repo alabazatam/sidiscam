@@ -20,8 +20,9 @@
 		public function getSalesListPlantsDetailBySale($id_sale){
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->sales_plants_detail
-			->select("*, DATE_FORMAT(date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
-			->where("id_sale=?",$id_sale);
+			->select("*, DATE_FORMAT(sales_plants_detail.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(sales_plants_detail.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->join("plants","LEFT JOIN plants on plants.id_plant = sales_plants_detail.id_plant")
+                        ->where("id_sale=?",$id_sale);
 			return $q; 				
 			
 		}		

@@ -144,7 +144,7 @@ unset($values['PHPSESSID']);
                                                '<form method="POST" action = "'.full_url.'/adm/sales/index.php" >'
                                                .'<input type="hidden" name="action" value="edit">  '
                                                .'<input type="hidden" name="id_sale" value="'.$id_sale.'">  '
-                                               .'<a target="_blank" class="btn btn-default btn-sm" title="Ver factura" href="'.full_url.'/adm/invoices/index.php?action=generate1"><i class="fa fa-book  fa-pull-left fa-border"></i></a>  '
+                                               .'<a target="_blank" class="btn btn-default btn-sm" title="Ver factura" href="'.full_url.'/adm/invoices/index.php?action=generate1&id_sale='.$id_sale.'"><i class="fa fa-book  fa-pull-left fa-border"></i></a>  '
                                                .'<button class="btn btn-default btn-sm" type="submit"><i class="fa fa-edit  fa-pull-left fa-border"></i></button>'
                                                .'</form>'
                                             );  

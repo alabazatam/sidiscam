@@ -189,5 +189,15 @@
 			return $q; 				
 			
 		}
+		public function getSalesInvoiceById($values){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->sales
+			->select("*,clients.name client_name,DATE_FORMAT(sales.date_estimate_in, '%d/%m/%Y') as date_estimate_in,DATE_FORMAT(sales.date_out, '%d/%m/%Y') as date_out,DATE_FORMAT(date_sale, '%d/%m/%Y') as date_sale, DATE_FORMAT(sales.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(sales.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+                        ->join("clients","LEFT JOIN clients on clients.id_client = sales.id_client")
+                        ->where("id_sale=?",$values['id_sale'])->fetch();
+                        return $q; 
+                        
+			
+		}
 	}
 	
