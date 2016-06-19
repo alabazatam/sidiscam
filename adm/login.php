@@ -1,8 +1,8 @@
 <?php include("../view_header.php");?>
-        	<div class="col-md-4 col-lg-4">
+        	<div class="col-sm-4 col-md-4 col-lg-4">
         	</div>
         	
-            <div class="col-md-4 col-lg-4">
+            <div class="col-sm-4 col-md-4 col-lg-4">
 				 <div class="panel panel-info ">
 				  <div class="panel-heading ">
 				    <h3 class="panel-title">
@@ -73,7 +73,7 @@
                                         <div class="well well-sm">Desarrollado por: <?php echo development_by;?> - <?php echo version;?></div>
                                 </div><!--fin footer-->                
             </div>
-        	<div class="col-md-4 col-lg-4">
+        	<div class="col-sm-4 col-md-4 col-lg-4">
         	</div>
 
 <?php include("../view_footer.php");?>		
