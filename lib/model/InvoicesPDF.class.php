@@ -37,7 +37,7 @@
             // ---------------------------------------------------------
 
             // set font
-            $pdf->SetFont('dejavusans', '', 10);
+            $pdf->SetFont('dejavusans', '', 8);
 
             // add a page
             $pdf->AddPage();
@@ -46,7 +46,54 @@
             // writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true)
 
             // create some HTML content
-            $html = 'hola';
+			$class_td = "border-bottom: 0px #ffffff !important;border-top: 0px !important; border-right: 0px; border-left: 0px";
+$html = <<<EOF
+<table border="0" width="100%">
+    <tr>
+        <td style="width:50%"></td>
+        <td>
+            <table border="1">
+                <tr>
+                    <td style="background-color: #cccccc; font-size: 12px; text-align:center;font-weight: bolder;">Invoice Date</td>
+                    <td style="background-color: #cccccc; font-size: 12px; text-align:center;font-weight: bolder;">Proforma Invoice #</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;">24/12/2015</td>
+                    <td style="text-align:center;">2</td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+</table>
+<div></div>
+<table width="100%" border="0">
+    <tr>
+        <td style="width:40%">
+            <table border="1" width="100%">
+                <tr>
+                    <td style="background-color: #cccccc; font-size: 12px; text-align:center;font-weight: bolder;">Bill To</td>
+                </tr>
+                <tr>
+                    <td>Bill To</td>
+                </tr>
+            </table>
+        </td>
+        <td style="width:20%"></td>
+        <td style="width:40%">
+            <table border="1" width="100%">
+                <tr>
+                    <td style="background-color: #cccccc; font-size: 12px; text-align:center;font-weight: bolder;">Processing Plant</td>
+                </tr>
+                <tr>
+                    <td>Processing Plant</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+EOF;
 
             // output the HTML content
             $pdf->writeHTML($html, true, false, true, false, '');
