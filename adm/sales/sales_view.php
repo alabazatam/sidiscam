@@ -157,13 +157,13 @@
 
 					<div class="form-group">
 						<div class="col-sm-4">
-						  <label class="label label-danger">
+						  <label class="label label-success">
 							<input type="radio" name="status" id="status" value="0" <?php if(isset($values['status']) and $values['status'] =='0' ) echo "checked=checked"?>>
 							Venta completada
 						  </label>
 						</div>
 						<div class="col-sm-4">
-						  <label class="label label-success">
+						  <label class="label label-warning">
 							<input type="radio" name="status" id="status" value="1" <?php if(isset($values['status']) and $values['status'] =='1' ) echo "checked=checked"?>>
 							En transcripción
 						  </label>

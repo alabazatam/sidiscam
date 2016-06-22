@@ -100,11 +100,11 @@ unset($values['PHPSESSID']);
 				$status = $sales['status'];
 				if($status == 0)
 				{
-					$message_status = "<label class='label label-danger'>Venta completada</label>";
+					$message_status = "<label class='label label-success'>Venta completada</label>";
 				}
 				if($status == 1)
 				{
-					$message_status = "<label class='label label-success'>En transcripción</label>";
+					$message_status = "<label class='label label-warning'>En transcripción</label>";
 				}
 				
 
