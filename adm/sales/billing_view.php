@@ -62,7 +62,7 @@
 								<?php endif;?>
 							</div>
 							<div class="col-sm-4  col-md-4">
-								<label for="">País de entrada <small class="text-danger">(*)</small></label>
+								<label for="">País de destino <small class="text-danger">(*)</small></label>
 										<select name="id_country_in" id="id_country_in" class="form-control input-sm" onchange="selectPortsCountryIn()">
 											<option value="">Seleccione...</option>
 										<?php if(count($list_country)>0): ?>
@@ -78,7 +78,7 @@
 								<?php endif;?>
 							</div>
 							<div class="col-sm-4  col-md-4">
-								<label for="">Puerto de entrada <small class="text-danger">(*)</small></label>
+								<label for="">Puerto de destino <small class="text-danger">(*)</small></label>
 										<select name="id_port_in" id="id_port_in" class="form-control input-sm">
 											<option value="">Seleccione...</option>
 										</select>

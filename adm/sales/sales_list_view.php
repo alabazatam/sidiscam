@@ -8,8 +8,8 @@
 					<th>Id</th>
 					<th>Cliente</th>
 					<th>Fecha de venta</th>
-					<th>País de entrada</th>
-					<th>Puerto de entrada</th>
+					<th>País de destino</th>
+					<th>Puerto de destino</th>
 					<th>Linea naviera</th>
 					<th>Estatus</th>					
 					<th>Acciones</th>
@@ -20,8 +20,8 @@
 					<th>Id</th>
 					<th>Cliente</th>
 					<th>Fecha de venta</th>
-					<th>País de entrada</th>
-					<th>Puerto de entrada</th>
+					<th>País de destino</th>
+					<th>Puerto de destino</th>
 					<th>Linea naviera</th>
 					<th>Estatus</th>					
 					<th>Acciones</th>

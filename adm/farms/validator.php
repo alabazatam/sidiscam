@@ -46,7 +46,7 @@
 		$validator_values['phone1'] = array(
 			
 			"minlength" => 10,
-			"maxlength" => 11,
+			"maxlength" => 15,
 			"type" => "number",
 			"label" => "Teléfono Principal",
 			"required" => true
@@ -54,7 +54,7 @@
 		$validator_values['phone2'] = array(
 			
 			"minlength" => 10,
-			"maxlength" => 11,
+			"maxlength" => 15,
 			"type" => "text",
 			"label" => "Teléfono Secundario",
 			"required" => false
