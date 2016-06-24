@@ -1,25 +1,7 @@
 <?php include('../../view_header.php')?>
 <?php include('../menu.php')?>
 <style>
-    
-.nav-tabs >li > a{
-  background-color:#6A85EE;
-  color:#fff;
-}
-.tab-content{
-    background-color:#fff;
-    padding:5px
-}
-.nav-tabs > li > a{
-    
-  border: none;
-}
-.nav-tabs > li > a:hover{
-    background-color: #5CB85C !important;
-    border: medium none;
-    border-radius: 0;
-    color:#000;
-}    
+  
 </style>
 <?php 
 	$TypeDestiny = new TypeDestiny();

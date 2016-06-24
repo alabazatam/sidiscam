@@ -10,7 +10,6 @@
                     <th>Identificador fiscal</th>
                     <th>Persona Contacto</th>
                     <th>Teléfono</th>
-                    <th>Correo</th>
                     <th>Estatus</th>
                     <th>Acciones</th>
                 </tr>
@@ -22,7 +21,6 @@
                     <th>Identificador fiscal</th>
                     <th>Persona Contacto</th>
                     <th>Teléfono</th>
-                    <th>Correo</th>
                     <th>Estatus</th>
                     <th>Acciones</th>
                 </tr>
@@ -46,13 +44,12 @@ $(document).ready(function() {
             { "data": "name" },
             { "data": "rif" },
             { "data": "contact1" },
-            { "data": "phone_contact1" },
-            { "data": "email_contact1" },
+            { "data": "phone1" },
             { "data": "status" },
             { "data": "actions" }
         ],
       "aoColumnDefs": [
-          { 'bSortable': false, 'aTargets': [ 4 ] }
+          { 'bSortable': false, 'aTargets': [ 6 ] }
        ]				
     });
 } );

@@ -111,8 +111,7 @@ $values = $_REQUEST;
                                         "name" => "<p title='".$client['name']."'>".substr($client['name'],0,max_list_text)."</p>",
 					"rif" => $client['rif'],
 					"contact1" => $client['contact1'],
-        				"phone_contact1" => $client['phone_contact1'],
-    					"email_contact1" => $client['email_contact1'],
+        				"phone1" => $client['phone1'],
 					"status" => $message_status,
 					"actions" => '<form method="POST" action ="'.full_url.'/adm/clients/index.php"><input type="hidden" name="action" value="edit"><input type="hidden" name="id_client" value="'.$id_client.'"><button type="submit" class="btn btn-default"><i class="fa fa-edit fa-pull-left fa-border"></i></button><form>'
 
@@ -121,7 +120,7 @@ $values = $_REQUEST;
 		}else{
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
-			$array_json['data'][0] = array("id_client"=>null,"name"=>"","rif"=>"","contact1"=>"","phone_contact1"=>"","email_contact1"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
+			$array_json['data'][0] = array("id_client"=>null,"name"=>"","rif"=>"","contact1"=>"","phone_contact1"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
 		}
 
 		echo json_encode($array_json);die;
