@@ -1672,6 +1672,7 @@ CREATE TABLE `sales` (
   `date_estimate_in` date DEFAULT NULL,
   `date_in_real` date DEFAULT NULL,
   `date_out_real` date DEFAULT NULL,
+  `observacion_seguimiento` text,
   `id_client_address` int(11) DEFAULT NULL,
   `terms` text,
   `comision` varchar(20) DEFAULT NULL,
@@ -1684,16 +1685,19 @@ CREATE TABLE `sales` (
   PRIMARY KEY (`id_sale`),
   KEY `id_shipping_lines` (`id_shipping_lines`),
   CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`id_shipping_lines`) REFERENCES `shipping_lines` (`id_shipping_lines`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 /*Data for the table `sales` */
 
-insert  into `sales`(`id_sale`,`id_type_destiny`,`id_company`,`id_client`,`id_shipping_lines`,`id_company_bank`,`date_sale`,`id_country_out`,`id_port_out`,`id_country_in`,`id_port_in`,`date_out`,`date_estimate_in`,`date_in_real`,`date_out_real`,`id_client_address`,`terms`,`comision`,`id_bank_in`,`id_incoterm`,`note_sale`,`status`,`date_created`,`date_updated`) values 
-(1,2,1,1,2,12,'2016-06-11',1,1,65,131,'2016-06-11','2016-06-11','2016-06-24','2016-06-24',2,'TERMINOS DE NEGOCIACION DE PRUEBA','50',0,3,'observacion de la venta',0,'2016-06-10 10:12:51','2016-06-24 16:13:39'),
-(2,2,1,2,1,12,'2016-11-25',1,1,1,1,'2016-06-22','2016-06-02',NULL,NULL,6,'terminos','comision',0,2,'aaaaaaaaaaaaaaaaaaaaaaaaaaa',0,'2016-06-10 22:53:00','2016-06-18 13:59:37'),
-(3,2,1,2,1,12,'2016-06-04',1,1,1,1,'2016-06-11','2016-06-11',NULL,NULL,6,'hola','5%',0,11,'observacion',1,'2016-06-11 23:42:48','2016-06-11 23:43:15'),
-(4,2,1,1,2,12,'2016-06-18',1,1,65,34,'2016-06-18','2016-06-18',NULL,NULL,2,'qqqqqqqqqqq','qqq',NULL,3,'qqqqqqq',0,'2016-06-18 16:41:07','2016-06-18 16:59:56'),
-(5,2,1,3,NULL,12,'2016-06-18',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'ddddddd','dddddddd',NULL,3,'sssssssss',1,'2016-06-18 17:30:56','2016-06-18 17:30:56');
+insert  into `sales`(`id_sale`,`id_type_destiny`,`id_company`,`id_client`,`id_shipping_lines`,`id_company_bank`,`date_sale`,`id_country_out`,`id_port_out`,`id_country_in`,`id_port_in`,`date_out`,`date_estimate_in`,`date_in_real`,`date_out_real`,`observacion_seguimiento`,`id_client_address`,`terms`,`comision`,`id_bank_in`,`id_incoterm`,`note_sale`,`status`,`date_created`,`date_updated`) values 
+(1,2,1,1,2,12,'2016-06-11',1,1,65,131,'2016-06-11','2016-06-11','2016-06-24','2016-06-24','observacion de seguimiento',2,'TERMINOS DE NEGOCIACION DE PRUEBA','50',0,3,'observacion de la venta',0,'2016-06-10 10:12:51','2016-06-24 17:45:22'),
+(2,2,1,2,1,12,'2016-11-25',1,1,1,1,'2016-06-22','2016-06-02',NULL,NULL,NULL,6,'terminos','comision',0,2,'aaaaaaaaaaaaaaaaaaaaaaaaaaa',0,'2016-06-10 22:53:00','2016-06-18 13:59:37'),
+(3,2,1,2,1,12,'2016-06-04',1,1,1,1,'2016-06-11','2016-06-11',NULL,NULL,NULL,6,'hola','5%',0,11,'observacion',1,'2016-06-11 23:42:48','2016-06-24 17:43:08'),
+(4,2,1,1,2,12,'2016-06-18',1,1,65,34,'2016-06-18','2016-06-18',NULL,NULL,NULL,2,'qqqqqqqqqqq','qqq',NULL,3,'qqqqqqq',0,'2016-06-18 16:41:07','2016-06-18 16:59:56'),
+(5,2,1,3,NULL,12,'2016-06-18',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'ddddddd','dddddddd',NULL,3,'sssssssss',1,'2016-06-18 17:30:56','2016-06-18 17:30:56'),
+(6,2,1,4,NULL,12,'2016-06-24',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'terminos de la negociacion',NULL,NULL,4,'observacion',1,'2016-06-24 16:16:40','2016-06-24 16:16:40'),
+(7,2,1,4,2,12,'2016-06-25',1,1,1,1,'2016-06-24','2016-06-25','2016-06-24','2016-06-24',NULL,9,'terminos de la negociacion',NULL,NULL,3,'observacion',0,'2016-06-24 16:21:28','2016-06-24 16:27:26'),
+(8,2,1,4,2,12,'2016-06-24',1,1,1,1,'2016-06-25','2016-06-30',NULL,NULL,NULL,9,'terminos de la negociacion',NULL,NULL,4,'observacion de la venta',1,'2016-06-24 17:44:09','2016-06-24 17:44:25');
 
 /*Table structure for table `sales_containers_detail` */
 
@@ -1784,7 +1788,7 @@ CREATE TABLE `sales_products_detail` (
   `date_updated` datetime NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 /*Data for the table `sales_products_detail` */
 
@@ -1792,8 +1796,9 @@ insert  into `sales_products_detail`(`id`,`id_sale`,`id_product`,`id_product_typ
 (3,2,1,8,1,1,2,'0.01','0.02','ddddd',NULL,NULL,NULL,NULL,NULL,NULL,'2016-06-12 00:24:01','2016-06-12 00:24:01',1),
 (4,4,1,8,1,1,2,'0.01','0.02','hola',NULL,NULL,NULL,NULL,NULL,NULL,'2016-06-18 16:42:09','2016-06-18 16:42:09',1),
 (9,5,2,11,NULL,NULL,0,NULL,'0.00',NULL,1,1,NULL,NULL,NULL,NULL,'2016-06-24 14:43:44','2016-06-24 14:43:44',1),
-(11,1,1,8,1,1,2,'0.01','0.02',NULL,1,1,4,'precinto1','555','50.00','2016-06-24 14:49:18','2016-06-24 14:49:18',1),
-(12,1,2,11,1,1,2,'0.01','0.02',NULL,2,2,2,'precinto','123','20.00','2016-06-24 14:50:24','2016-06-24 14:50:24',1);
+(11,1,1,8,1,1,2,'0.01','0.02',NULL,1,1,4,'precinto1','555','201110.10','2016-06-24 14:49:18','2016-06-24 14:49:18',1),
+(12,1,2,11,1,1,2,'0.01','0.02',NULL,2,2,2,'precinto','123','20.00','2016-06-24 14:50:24','2016-06-24 14:50:24',1),
+(13,7,1,8,1,1,2,'0.01','0.02','obsercacion',1,1,4,'444','444444','50.00','2016-06-24 16:26:33','2016-06-24 16:26:33',1);
 
 /*Table structure for table `shipping_lines` */
 
