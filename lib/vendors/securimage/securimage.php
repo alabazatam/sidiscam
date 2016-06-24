@@ -1446,12 +1446,13 @@ class Securimage
             $input_attrs['type'] = 'text';
             $input_attrs['name'] = $input_name;
             $input_attrs['id']   = $input_id;
+            $input_attrs['autocomplete']   = "off";
 
             foreach($input_attrs as $name => $val) {
                 $input_attr .= sprintf('%s="%s" ', $name, htmlspecialchars($val));
             }
 
-            $html .= sprintf('<input %s/>', $input_attr);
+            $html .= sprintf('<input %s class="form-control text-center"/>', $input_attr);
         }
 
         return $html;

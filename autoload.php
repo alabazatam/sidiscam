@@ -15,7 +15,7 @@ if($development_env == true)
 }
 
 define("main_folder",$project_folder);//Project name and directory name//prueba 2
-define("title","SIDISCAM");
+define("title","SISTEMA DE GESTIÓN COMERCIAL - SIGECOM");
 define("Author","Marcos De Andrade");
 define("Company","Compañia de Desarrollo");
 define("version","V1.0");

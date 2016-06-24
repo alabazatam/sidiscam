@@ -5,11 +5,11 @@
             <div class="col-sm-4 col-md-4 col-lg-4">
 				 <div class="panel panel-info ">
 				  <div class="panel-heading ">
-				    <h3 class="panel-title">
+				    <label class="panel-title">
 				    <?php echo title; ?> <small> <?php echo version; ?></small>
 				    <!--<img width='100' class="img-responsive img-hover img-thumbnail img-rounded" src="<?php echo full_url?>/web/images/fedcom1.png"/>-->
 				    
-				    </h3>
+				    </label>
 				  </div>
 				  <div class="panel-body">
                                       <div align='center' class="visible-lg visible-md">
