@@ -99,7 +99,7 @@
 		public function getSalesById($values){
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->sales
-			->select("*,DATE_FORMAT(date_estimate_in, '%d/%m/%Y') as date_estimate_in,DATE_FORMAT(date_out, '%d/%m/%Y') as date_out,DATE_FORMAT(date_sale, '%d/%m/%Y') as date_sale, DATE_FORMAT(date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
+			->select("*,DATE_FORMAT(date_estimate_in, '%d/%m/%Y') as date_estimate_in,DATE_FORMAT(date_out, '%d/%m/%Y') as date_out,DATE_FORMAT(date_sale, '%d/%m/%Y') as date_sale, DATE_FORMAT(date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(date_updated, '%d/%m/%Y %H:%i:%s') as date_updated,DATE_FORMAT(date_in_real, '%d/%m/%Y') as date_in_real,DATE_FORMAT(date_out_real, '%d/%m/%Y') as date_out_real")
 			->where("id_sale=?",$values['id_sale'])->fetch();
 			return $q; 				
 			
@@ -128,12 +128,54 @@
 				$values['packing'],
 				$values['id_plant'],
 				$values['id_farm'],
+                                $values['id_broker'],
 				$values['number'],
-				$values['note']
+				$values['note'],
+                                $values['precinto'],
+                                $values['comision']
 				
 				);
 			$Utilitarios = new Utilitarios();
-			$values['date_sale'] = $Utilitarios->formatFechaInput($values['date_sale']);
+                        if(isset($values['date_sale']) and $values['date_sale']!='')
+                        {
+                        $values['date_sale'] = $Utilitarios->formatFechaInput($values['date_sale']);
+
+                        }else
+                        {
+                            $values['date_sale']=null;
+                        }
+                        if(isset($values['date_out']) and $values['date_out']!='')
+                        {
+                        $values['date_out'] = $Utilitarios->formatFechaInput($values['date_out']);
+
+                        }else
+                        {
+                            $values['date_out']=null;
+                        }
+                        if(isset($values['date_estimate_in']) and $values['date_estimate_in']!='')
+                        {
+                        $values['date_estimate_in'] = $Utilitarios->formatFechaInput($values['date_estimate_in']);
+
+                        }else
+                        {
+                           $values['date_estimate_in']=null;
+                        }			
+                        if(isset($values['date_in_real']) and $values['date_in_real']!='')
+                        {
+                        $values['date_in_real'] = $Utilitarios->formatFechaInput($values['date_in_real']);
+
+                        }else
+                        {
+                            $values['date_in_real']=null;
+                        }
+                        if(isset($values['date_out_real']) and $values['date_out_real']!='')
+                        {
+                        $values['date_out_real'] = $Utilitarios->formatFechaInput($values['date_out_real']);
+
+                        }else
+                        {
+                           $values['date_out_real']=null;
+                        }		
 			
 			$values['date_created'] = new NotORM_Literal("NOW()");
 			$values['date_updated'] = new NotORM_Literal("NOW()");
@@ -162,17 +204,57 @@
 				$values['id_farm'],
 				$values['id_container'],
 				$values['number'],				
-				$values['note']
+				$values['note'],
+                                $values['id_broker'],
+                                $values['precinto'],
+                                $values['comision']
 				
 				);	
 			//echo $values['date_sale'];die;
 			$values['date_updated'] = new NotORM_Literal("NOW()");
 			
 			$Utilitarios = new Utilitarios();
-			$values['date_sale'] = $Utilitarios->formatFechaInput($values['date_sale']);
-			$values['date_out'] = $Utilitarios->formatFechaInput($values['date_out']);	
-			$values['date_estimate_in'] = $Utilitarios->formatFechaInput($values['date_estimate_in']);	
-			
+                        if(isset($values['date_sale']) and $values['date_sale']!='')
+                        {
+                        $values['date_sale'] = $Utilitarios->formatFechaInput($values['date_sale']);
+
+                        }else
+                        {
+                            $values['date_sale']=null;
+                        }
+                        if(isset($values['date_out']) and $values['date_out']!='')
+                        {
+                        $values['date_out'] = $Utilitarios->formatFechaInput($values['date_out']);
+
+                        }else
+                        {
+                            $values['date_out']=null;
+                        }
+                        if(isset($values['date_estimate_in']) and $values['date_estimate_in']!='')
+                        {
+                        $values['date_estimate_in'] = $Utilitarios->formatFechaInput($values['date_estimate_in']);
+
+                        }else
+                        {
+                           $values['date_estimate_in']=null;
+                        }			
+                        if(isset($values['date_in_real']) and $values['date_in_real']!='')
+                        {
+                        $values['date_in_real'] = $Utilitarios->formatFechaInput($values['date_in_real']);
+
+                        }else
+                        {
+                            $values['date_in_real']=null;
+                        }
+                        if(isset($values['date_out_real']) and $values['date_out_real']!='')
+                        {
+                        $values['date_out_real'] = $Utilitarios->formatFechaInput($values['date_out_real']);
+
+                        }else
+                        {
+                           $values['date_out_real']=null;
+                        }		
+	
 			//echo $values['date_sale'];die;
 			$id_sale = $values['id_sale'];
 			$ConnectionORM = new ConnectionORM();

@@ -38,12 +38,6 @@
 			"label" => "Cliente",
 			"required" => true
 		);
-		$validator_values['id_broker'] = array(
-			
-			"type" => "number",
-			"label" => "Broker",
-			"required" => true
-		);
 		$validator_values['id_incoterm'] = array(
 			
 			"type" => "number",
@@ -131,7 +125,30 @@
 			{
 				foreach ($values['id_product'] as $key => $value) 
 				{
-					
+					if($values['id_plant'][$key] == '')
+					{
+						$errors['id_plant'] = 'Debe seleccionar la planta procesadora';
+					}
+					if($values['id_farm'][$key] == '')
+					{
+						$errors['id_farm'] = 'Debe seleccionar la granja';
+					}
+					if($values['id_broker'][$key] == '')
+					{
+						$errors['id_broker'] = 'Debe seleccionar el broker';
+					}
+                                        if($values['comision'][$key] == '')
+					{
+						$errors['comision'] = 'Debe colocar la comisión ';
+					}
+                                        if($values['precinto'][$key] == '')
+					{
+						$errors['precinto'] = 'Debe colocar el precinto ';
+					}
+					if($values['number'][$key] == '')
+					{
+						$errors['number'] = 'Debe colocar el número del container ';
+					}
 					if($values['id_product_type'][$key] == '')
 					{
 						$errors['id_product_type'] = 'Debe seleccionar el tipo de producto';
@@ -158,40 +175,7 @@
 					}
 				}
 			}//fin validación productos
-			
-			//valido las plantas procesadoras
-			
-			if(!isset($values['id_plant']))
-			{
-				$errors['plant'] = 'Debe seleccionar por lo menos una planta procesadora';
-			}//fin validación plantas procesadoras		
-		
-			//valido las granjas
-			
-			if(!isset($values['id_farm']))
-			{
-				$errors['farm'] = 'Debe seleccionar por lo menos una granja';
-			}//fin validación granjas
-					
-			//valido los containers
-			
-			if(!isset($values['id_container']))
-			{
-				$errors['farm'] = 'Debe seleccionar por lo menos un container';
-			}else
-			{		
-				foreach ($values['id_container'] as $key => $value)
-				{
-					
-					if(@$values['number'][$key]=='')
-					{
-						$errors['number'] = 'Debe llenar el campo precinto #';
-					}					
-				}
-
-			}//fin validación granjas
-							
-		
+	
 		}//fin status 0		
 		
 		

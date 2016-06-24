@@ -1,5 +1,11 @@
 <?php
 		$ProductsType = new ProductsType();
+ 		$Plants = new Plants();
+		$plants_list = $Plants->getPlantsListSelect(); 
+ 		$Farms = new Farms();
+		$farms_list = $Farms->getFarmsListSelect(); 
+                $Brokers = new Brokers();
+                $brokers_list = $Brokers->getListBrokers(); 
 ?>			
 <br>
 			<a onclick="openProducts();" class="btn btn-success">Agregar producto <i class="fa fa-plus-circle"></i></a>
@@ -8,7 +14,13 @@
 				<div class="table-responsive">
 				<table id="products_details" class="table table-bordered" width='100%'>
 						<tr>
-							<th>Producto</th>
+                                                        <th>Producto</th>
+                                                        <th>Planta</th>
+                                                        <th>Granja</th>
+                                                        <th>Broker</th>
+                                                        <th>Comisión</th>
+                                                        <th>Precinto container</th>
+                                                        <th>Número containar</th>
 							<th>Tipo</th>
 							<th>Cases</th>
 							<th>Packing</th>
@@ -30,6 +42,46 @@
 							<input type='hidden' name='id_product[<?php echo $sales_products_details['id'];?>]' value='<?php echo $sales_products_details['id_product']?>'>
 							<?php echo strtoupper($products_data['name']);?>
 							</td>
+                                                        <td>
+                                                            <select name='id_plant[<?php echo $sales_products_details['id']?>]' id='id_plant_<?php echo $sales_products_details['id']?>' onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'id_plant_<?php echo $sales_products_details['id'];?>','id_plant')">
+                                                                <option value="">...</option>
+                                                                <?php if(count($plants_list)>0):?>
+                                                                    <?php foreach($plants_list as $list):?>
+                                                                <option value="<?php echo $list['id_plant'];?>" <?php if($list['id_plant'] == @$sales_products_details['id_plant']) echo "selected='selected'"?>><?php echo $list['name'];?></option>
+                                                                    <?php endforeach;?>
+                                                                <?php endif;?>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <select name='id_farm[<?php echo $sales_products_details['id']?>]' id='id_farm_<?php echo $sales_products_details['id']?>' onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'id_farm_<?php echo $sales_products_details['id'];?>','id_farm')">
+                                                                <option value="">...</option>
+                                                                <?php if(count($farms_list)>0):?>
+                                                                    <?php foreach($farms_list as $list):?>
+                                                                <option value="<?php echo $list['id_farm'];?>" <?php if($list['id_farm'] == @$sales_products_details['id_farm']) echo "selected='selected'"?>><?php echo $list['name'];?></option>
+                                                                    <?php endforeach;?>
+                                                                <?php endif;?>
+                                                            </select>
+                                                        </td>
+                                                    <td>
+                                                            <select name='id_broker[<?php echo $sales_products_details['id']?>]' id='id_broker_<?php echo $sales_products_details['id']?>' onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'id_broker_<?php echo $sales_products_details['id'];?>','id_broker')">
+                                                                <option value="">...</option>
+                                                                <?php if(count($brokers_list)>0):?>
+                                                                    <?php foreach($brokers_list as $list):?>
+                                                                <option value="<?php echo $list['id_broker'];?>" <?php if($list['id_broker'] == @$sales_products_details['id_broker']) echo "selected='selected'"?>><?php echo $list['name'];?></option>
+                                                                    <?php endforeach;?>
+                                                                <?php endif;?>
+                                                            </select>
+                                                        </td>
+							<td>
+                                                            <input type='text' name='comision[<?php echo $sales_products_details['id']?>]' id='comision_<?php echo $sales_products_details['id']?>' size="4" autocomplete="off" value="<?php echo $sales_products_details['comision']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'comision_<?php echo $sales_products_details['id'];?>','comision')">
+                                                        </td>
+							<td>
+                                                            <input type='text' name='precinto[<?php echo $sales_products_details['id']?>]' id='precinto_<?php echo $sales_products_details['id']?>' size="4" autocomplete="off" value="<?php echo $sales_products_details['precinto']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'precinto_<?php echo $sales_products_details['id'];?>','precinto')">
+                                                        </td>
+							<td>
+                                                            <input type='text' name='number[<?php echo $sales_products_details['id']?>]' id='number_<?php echo $sales_products_details['id']?>' size="4" autocomplete="off" value="<?php echo $sales_products_details['number']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'number_<?php echo $sales_products_details['id'];?>','number')">
+                                                        </td>
+
 							<td>
 							<?php
 									$ProductsType = new ProductsType();

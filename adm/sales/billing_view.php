@@ -101,9 +101,24 @@
 								<?php if(isset($values['errors']['id_client_address']) and $values['errors']['id_client_address']!=''):?>
 									<label class="alert alert-danger"><?php echo $values['errors']['id_client_address']?></label>
 								<?php endif;?>
-							</div>							
+							</div>	
+							<div class="col-sm-6  col-md-6">
+								<label for="">Fecha efectiva de envío <small class="text-danger">(*)</small></label>
+								<input type="date" autocomplete="off" class="form-control input-sm datetimepicker1" id="" placeholder="" name="date_in_real" value="<?php if(isset($values['date_in_real'])) echo $values['date_in_real']?>">
+								<?php if(isset($values['errors']['date_in_real']) and $values['errors']['date_in_real']!=''):?>
+									<label class="alert alert-danger"><?php echo $values['errors']['date_in_real']?></label>
+								<?php endif;?>
+							</div>
+							<div class="col-sm-6  col-md-6">
+								<label for="">Fecha efectiva de arribo <small class="text-danger">(*)</small></label>
+								<input type="date" autocomplete="off" class="form-control input-sm datetimepicker1" id="" placeholder="" name="date_out_real" value="<?php if(isset($values['date_out_real'])) echo $values['date_out_real']?>">
+								<?php if(isset($values['errors']['date_out_real']) and $values['errors']['date_out_real']!=''):?>
+									<label class="alert alert-danger"><?php echo $values['errors']['date_out_real']?></label>
+								<?php endif;?>
+							</div>
 
 					</div>
+
 
 
 <script>

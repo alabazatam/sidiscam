@@ -1,6 +1,26 @@
 <?php include('../../view_header.php')?>
 <?php include('../menu.php')?>
-
+<style>
+    
+.nav-tabs >li > a{
+  background-color:#6A85EE;
+  color:#fff;
+}
+.tab-content{
+    background-color:#fff;
+    padding:5px
+}
+.nav-tabs > li > a{
+    
+  border: none;
+}
+.nav-tabs > li > a:hover{
+    background-color: #5CB85C !important;
+    border: medium none;
+    border-radius: 0;
+    color:#000;
+}    
+</style>
 <?php 
 	$TypeDestiny = new TypeDestiny();
 	$list_destiny = $TypeDestiny -> getListTypeDestiny();
@@ -23,7 +43,7 @@
 		endif;
 	
 ?>
-<div class="container">
+<div class="col-sm-12 col-md-12 col-lg-12">
 	<h1 class="text-center">Ventas</h1>
 	<form class="form-horizontal" action="index.php" method="POST">
 	<input type="hidden" name='action' value='<?php if(isset($values['action']))echo $values['action'];?>'>
@@ -38,10 +58,6 @@
 		<li role="presentation" class="active"><a href="#venta" aria-controls="venta" role="tab" data-toggle="tab">Detalle de venta</a></li>
 		<?php if(isset($values['id_sale']) and $values['id_sale']!=''):?>
 		<li role="presentation"><a href="#productos" aria-controls="productos" role="tab" data-toggle="tab">Productos</a></li>
-		<li role="presentation"><a href="#plantas" aria-controls="plantas" role="tab" data-toggle="tab">Plantas procesadoras</a></li>
-		<li role="presentation"><a href="#granjas" aria-controls="granjas" role="tab" data-toggle="tab">Granjas</a></li>
-		<li role="presentation"><a href="#containers" aria-controls="containers" role="tab" data-toggle="tab">Containers</a></li>
-
 		<li role="presentation"><a href="#direcciones" aria-controls="direcciones" role="tab" data-toggle="tab">Datos de envio y recepción</a></li>
 		<?php endif;?>
 	</ul>
@@ -56,15 +72,6 @@
 		<div role="tabpanel" class="tab-pane" id="productos"><!--segundo panel-->
 			<?php include('products_view.php');?>	
 		</div><!--Fin segundo panel-->
-		<div role="tabpanel" class="tab-pane" id="plantas"><!--tercer panel-->
-			<?php include('plants_view.php');?>
-		</div><!--Fin tercer panel-->
-		<div role="tabpanel" class="tab-pane" id="granjas"><!--tercer panel-->
-			<?php include('farms_view.php');?>
-		</div><!--Fin tercer panel-->
-		<div role="tabpanel" class="tab-pane" id="containers"><!--tercer panel-->
-			<?php include('containers_view.php');?>
-		</div><!--Fin tercer panel-->
 		<div role="tabpanel" class="tab-pane" id="direcciones"><!--tercer panel-->
 			<?php include('billing_view.php');?>
 		</div><!--Fin tercer panel-->

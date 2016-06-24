@@ -108,7 +108,7 @@ $values = $_REQUEST;
 				
 				$array_json['data'][] = array(
 					"id_client" => $id_client,
-					"name" => $client['name'],
+                                        "name" => "<p title='".$client['name']."'>".substr($client['name'],0,max_list_text)."</p>",
 					"rif" => $client['rif'],
 					"contact1" => $client['contact1'],
         				"phone_contact1" => $client['phone_contact1'],

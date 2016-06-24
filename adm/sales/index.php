@@ -112,7 +112,7 @@ unset($values['PHPSESSID']);
                                         {
                                         $array_json['data'][] = array(
                                                 "id_sale" => $id_sale,
-                                                "client_name" => $sales['client_name'],
+                                                "client_name" => "<p title='".$sales['client_name']."'>".substr($sales['client_name'],0,max_list_text)."</p>",
                                                 "date_sale" => $sales['date_sale'],
                                                 "country_name" => $sales['country_name'],
                                                 "port_name" => $sales['port_name'],
@@ -132,7 +132,7 @@ unset($values['PHPSESSID']);
                                         {
                                         $array_json['data'][] = array(
                                                 "id_sale" => $id_sale,
-                                                "client_name" => $sales['client_name'],
+                                                "client_name" => "<p title='".$sales['client_name']."'>".substr($sales['client_name'],0,max_list_text)."</p>",
                                                 "date_sale" => $sales['date_sale'],
                                                 "country_name" => $sales['country_name'],
                                                 "port_name" => $sales['port_name'],
