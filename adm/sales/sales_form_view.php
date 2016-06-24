@@ -59,7 +59,10 @@
 		<?php if(isset($values['id_sale']) and $values['id_sale']!=''):?>
 		<li role="presentation"><a href="#productos" aria-controls="productos" role="tab" data-toggle="tab">Productos</a></li>
 		<li role="presentation"><a href="#direcciones" aria-controls="direcciones" role="tab" data-toggle="tab">Datos de envio y recepción</a></li>
-		<?php endif;?>
+                    <?php if(isset($values['status']) and $values['status']==0):?>
+                    <li role="presentation"><a href="#seguimiento" aria-controls="seguimiento" role="tab" data-toggle="tab">Seguimiento</a></li>
+                    <?php endif;?>
+                <?php endif;?>
 	</ul>
 
   <!-- Tab panes -->
@@ -75,6 +78,11 @@
 		<div role="tabpanel" class="tab-pane" id="direcciones"><!--tercer panel-->
 			<?php include('billing_view.php');?>
 		</div><!--Fin tercer panel-->
+                    <?php if(isset($values['status']) and $values['status']==0):?>
+                    <div role="tabpanel" class="tab-pane" id="seguimiento"><!--cuarto panel-->
+                            <?php include('seguimiento_view.php');?>
+                    </div><!--Fin cuarto panel-->
+                    <?php endif;?>
 		<?php endif;?>
 	</div>
 

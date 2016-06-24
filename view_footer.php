@@ -30,13 +30,14 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		
-		$('.datetimepicker1').datetimepicker({
+        $('#datetimepicker1,#datetimepicker2,#datetimepicker3,#datetimepicker4,#datetimepicker5').datetimepicker({
 			 viewMode: 'days',
 			 locale: 'es',
 			 format: 'DD/MM/YYYY',
 			 //useCurrent: true,
 			 showTodayButton: true,
 			 showClear: true,
+                         inline: false,
 			 showClose: true,
 			tooltips: {
 				today: 'Ir a hoy',
@@ -55,7 +56,6 @@
 				nextCentury: 'Next Century'
 			}
 			 
-        });
-		
+        });		
 	});
 </script>

@@ -56,7 +56,7 @@
 							
 							<div class="col-sm-4  col-md-4">
 								<label for="">Fecha de salida <small class="text-danger">(*)</small></label>
-								<input type="date" autocomplete="off" class="form-control input-sm datetimepicker1" id="" placeholder="" name="date_out" value="<?php if(isset($values['date_out'])) echo $values['date_out']?>">
+								<input id = "datetimepicker2" type="date" autocomplete="off" class="form-control input-sm datetimepicker1" id="" placeholder="" name="date_out" value="<?php if(isset($values['date_out'])) echo $values['date_out']?>">
 								<?php if(isset($values['errors']['date_out']) and $values['errors']['date_out']!=''):?>
 									<label class="alert alert-danger"><?php echo $values['errors']['date_out']?></label>
 								<?php endif;?>
@@ -88,7 +88,7 @@
 							</div>
 							<div class="col-sm-4  col-md-4">
 								<label for="">Fecha estimada de arribo <small class="text-danger">(*)</small></label>
-								<input type="date" autocomplete="off" class="form-control input-sm datetimepicker1" id="" placeholder="" name="date_estimate_in" value="<?php if(isset($values['date_estimate_in'])) echo $values['date_estimate_in']?>">
+								<input id = "datetimepicker3" type="date" autocomplete="off" class="form-control input-sm datetimepicker1" id="" placeholder="" name="date_estimate_in" value="<?php if(isset($values['date_estimate_in'])) echo $values['date_estimate_in']?>">
 								<?php if(isset($values['errors']['date_estimate_in']) and $values['errors']['date_estimate_in']!=''):?>
 									<label class="alert alert-danger"><?php echo $values['errors']['date_estimate_in']?></label>
 								<?php endif;?>
@@ -102,21 +102,6 @@
 									<label class="alert alert-danger"><?php echo $values['errors']['id_client_address']?></label>
 								<?php endif;?>
 							</div>	
-							<div class="col-sm-6  col-md-6">
-								<label for="">Fecha efectiva de envío <small class="text-danger">(*)</small></label>
-								<input type="date" autocomplete="off" class="form-control input-sm datetimepicker1" id="" placeholder="" name="date_in_real" value="<?php if(isset($values['date_in_real'])) echo $values['date_in_real']?>">
-								<?php if(isset($values['errors']['date_in_real']) and $values['errors']['date_in_real']!=''):?>
-									<label class="alert alert-danger"><?php echo $values['errors']['date_in_real']?></label>
-								<?php endif;?>
-							</div>
-							<div class="col-sm-6  col-md-6">
-								<label for="">Fecha efectiva de arribo <small class="text-danger">(*)</small></label>
-								<input type="date" autocomplete="off" class="form-control input-sm datetimepicker1" id="" placeholder="" name="date_out_real" value="<?php if(isset($values['date_out_real'])) echo $values['date_out_real']?>">
-								<?php if(isset($values['errors']['date_out_real']) and $values['errors']['date_out_real']!=''):?>
-									<label class="alert alert-danger"><?php echo $values['errors']['date_out_real']?></label>
-								<?php endif;?>
-							</div>
-
 					</div>
 
 
