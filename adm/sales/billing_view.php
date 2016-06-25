@@ -10,7 +10,7 @@
 	?>				
 							
 						<div class="form-group">
-							<div class="col-sm-12  col-md-4">
+							<div class="col-sm-12  col-md-12 col-lg-12">
 								<label for="">Linea naviera <small class="text-danger">(*)</small></label>
 										<select name="id_shipping_lines"  class="form-control input-sm">
 											<option value="">Seleccione...</option>
