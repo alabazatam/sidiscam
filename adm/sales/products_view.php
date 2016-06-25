@@ -15,13 +15,14 @@
 				<table id="products_details" class="table table-bordered" width='100%'>
 						<tr>
                                                         <th>Producto</th>
+														<th>Tipo</th>
                                                         <th>Planta</th>
                                                         <th>Granja</th>
                                                         <th>Broker</th>
                                                         <th>Comisión</th>
                                                         <th>Precinto container</th>
                                                         <th>Número containar</th>
-							<th>Tipo</th>
+							
 							<th>Cases</th>
 							<th>Packing</th>
 							<th>Qty Kgs</th>
@@ -41,6 +42,24 @@
 							<td>
 							<input type='hidden' name='id_product[<?php echo $sales_products_details['id'];?>]' value='<?php echo $sales_products_details['id_product']?>'>
 							<?php echo strtoupper($products_data['name']);?>
+							</td>
+							<td>
+							<?php
+									$ProductsType = new ProductsType();
+									$products_type_list = $ProductsType ->getListProductsTypeByIdProduct($sales_products_details['id_product']);
+
+
+							?>	
+								<select name='id_product_type[<?php echo $sales_products_details['id']?>]' id='id_product_type_<?php echo $sales_products_details['id']?>' onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'id_product_type_<?php echo $sales_products_details['id'];?>','id_product_type')">
+									<option value=''>...</option>
+									<?php if(count($products_type_list)>0):?>
+										<?php foreach($products_type_list as $list):?>
+										<option value='<?php echo $list['id_product_type']?>' <?php if($list['id_product_type'] == @$sales_products_details['id_product_type']) echo "selected='selected'";?>><?php echo $list['name']?></option>
+										<?php endforeach;?>
+									<?php endif;?>
+								</select>
+
+
 							</td>
                                                         <td>
                                                             <select name='id_plant[<?php echo $sales_products_details['id']?>]' id='id_plant_<?php echo $sales_products_details['id']?>' onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'id_plant_<?php echo $sales_products_details['id'];?>','id_plant')">
@@ -82,24 +101,7 @@
                                                             <input type='text' name='number[<?php echo $sales_products_details['id']?>]' id='number_<?php echo $sales_products_details['id']?>' size="4" autocomplete="off" value="<?php echo $sales_products_details['number']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'number_<?php echo $sales_products_details['id'];?>','number')">
                                                         </td>
 
-							<td>
-							<?php
-									$ProductsType = new ProductsType();
-									$products_type_list = $ProductsType ->getListProductsTypeByIdProduct($sales_products_details['id_product']);
 
-
-							?>	
-								<select name='id_product_type[<?php echo $sales_products_details['id']?>]' id='id_product_type_<?php echo $sales_products_details['id']?>' onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'id_product_type_<?php echo $sales_products_details['id'];?>','id_product_type')">
-									<option value=''>...</option>
-									<?php if(count($products_type_list)>0):?>
-										<?php foreach($products_type_list as $list):?>
-										<option value='<?php echo $list['id_product_type']?>' <?php if($list['id_product_type'] == @$sales_products_details['id_product_type']) echo "selected='selected'";?>><?php echo $list['name']?></option>
-										<?php endforeach;?>
-									<?php endif;?>
-								</select>
-
-
-							</td>
 							<td><input type='number' min="0" name='cases[<?php echo $sales_products_details['id']?>]' id='cases_<?php echo $sales_products_details['id']?>' size="4" autocomplete="off" value="<?php echo $sales_products_details['cases']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'cases_<?php echo $sales_products_details['id'];?>','cases')"></td>
 							<td><input type='number' min="0" name='packing[<?php echo $sales_products_details['id']?>]' id='packing_<?php echo $sales_products_details['id']?>' size="4" autocomplete="off" value="<?php echo $sales_products_details['packing']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'packing_<?php echo $sales_products_details['id'];?>','packing')"></td>
 							<td><input type='text' min="0" readonly="readonly" name='quantity[<?php echo $sales_products_details['id']?>]' id='quantity_<?php echo $sales_products_details['id']?>' size="4" autocomplete="off" value="<?php echo $sales_products_details['quantity']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'quantity_<?php echo $sales_products_details['id'];?>','quantity')"></td>

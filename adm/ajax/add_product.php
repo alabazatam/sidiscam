@@ -11,6 +11,19 @@ $brokers_list = $Brokers->getListBrokers();
 	<input type='hidden' name='id_product[<?php echo $values['id']?>]' value='<?php echo $products_data['id_product']?>'>
 	<?php echo strtoupper($products_data['name']);?>
 	</td>
+	<td>
+		
+		<select name='id_product_type[<?php echo $values['id']?>]' id='id_product_type_<?php echo $values['id']?>' onchange="updateSalesProductsDetail(<?php echo $values['id'];?>,'id_product_type_<?php echo $values['id'];?>','id_product_type')">
+			<option value=''>...</option>
+			<?php if(count($products_type_list)>0):?>
+				<?php foreach($products_type_list as $list):?>
+				<option value='<?php echo $list['id_product_type']?>'><?php echo $list['name']?></option>
+				<?php endforeach;?>
+			<?php endif;?>
+		</select>
+	
+	
+	</td>
         <td>
 		<select name='id_plant[<?php echo $values['id']?>]' id='id_plant_<?php echo $values['id']?>' onchange="updateSalesProductsDetail(<?php echo $values['id'];?>,'id_plant_<?php echo $values['id'];?>','id_plant')">
 			<option value=''>...</option>
@@ -50,19 +63,7 @@ $brokers_list = $Brokers->getListBrokers();
         <td>
             <input type='text'  name='comision[<?php echo $values['id']?>]' id='comision_<?php echo $values['id']?>' size="4" autocomplete="off" onchange="updateSalesProductsDetail(<?php echo $values['id'];?>,'comision_<?php echo $values['id'];?>','comision')">
         </td>
-	<td>
-		
-		<select name='id_product_type[<?php echo $values['id']?>]' id='id_product_type_<?php echo $values['id']?>' onchange="updateSalesProductsDetail(<?php echo $values['id'];?>,'id_product_type_<?php echo $values['id'];?>','id_product_type')">
-			<option value=''>...</option>
-			<?php if(count($products_type_list)>0):?>
-				<?php foreach($products_type_list as $list):?>
-				<option value='<?php echo $list['id_product_type']?>'><?php echo $list['name']?></option>
-				<?php endforeach;?>
-			<?php endif;?>
-		</select>
-	
-	
-	</td>
+
         <td><input type='number' min="0" value="0" name='cases[<?php echo $values['id']?>]' id='cases_<?php echo $values['id']?>' size="4" autocomplete="off" onchange="updateSalesProductsDetail(<?php echo $values['id'];?>,'cases_<?php echo $values['id'];?>','cases')"></td>
 	<td><input type='number' min="0" value="0" name='packing[<?php echo $values['id']?>]' id='packing_<?php echo $values['id']?>' size="4" autocomplete="off" onchange="updateSalesProductsDetail(<?php echo $values['id'];?>,'packing_<?php echo $values['id'];?>','packing')"></td>
 	<td><input type='text' min="0" value="0" readonly="readonly" name='quantity[<?php echo $values['id']?>]' id='quantity_<?php echo $values['id']?>' size="4" autocomplete="off" onchange="updateSalesProductsDetail(<?php echo $values['id'];?>,'quantity_<?php echo $values['id'];?>','quantity')"></td>

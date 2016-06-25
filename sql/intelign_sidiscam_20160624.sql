@@ -1,6 +1,6 @@
 /*
-SQLyog Community v12.2.1 (64 bit)
-MySQL - 5.7.12-0ubuntu1 : Database - intelign_sidiscam
+SQLyog Community v12.15 (64 bit)
+MySQL - 5.5.49-0ubuntu0.14.04.1 : Database - intelign_sidiscam
 *********************************************************************
 */
 
@@ -13,8 +13,6 @@ MySQL - 5.7.12-0ubuntu1 : Database - intelign_sidiscam
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`intelign_sidiscam` /*!40100 DEFAULT CHARACTER SET utf8 */;
-
-USE `intelign_sidiscam`;
 
 /*Table structure for table `bank` */
 
@@ -709,7 +707,7 @@ CREATE TABLE `menu` (
   `date_created` datetime NOT NULL,
   `date_updated` datetime NOT NULL,
   PRIMARY KEY (`id_menu`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 /*Data for the table `menu` */
 
@@ -737,7 +735,8 @@ insert  into `menu`(`id_menu`,`id_menu_padre`,`description`,`link`,`icon_class`,
 (21,0,'Administración de usuarios','#','fa fa-users',5,1,'2016-06-11 12:35:57','2016-06-11 12:36:01'),
 (22,0,'Usuario','#','fa fa-user',6,1,'2016-06-11 12:35:57','2016-06-11 12:36:01'),
 (23,21,'Usuarios','/adm/users/index.php','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58'),
-(24,22,'Cambio de clave','/adm/users/index.php?action=change_pass_view','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58');
+(24,22,'Cambio de clave','/adm/users/index.php?action=change_pass_view','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58'),
+(25,20,'Reporte1','/adm/reporte1/index.php','',1,1,'2016-06-11 12:36:46','2016-06-11 12:36:48');
 
 /*Table structure for table `plants` */
 
@@ -1586,8 +1585,8 @@ CREATE TABLE `products` (
 /*Data for the table `products` */
 
 insert  into `products`(`id_product`,`name`,`description`,`status`,`date_created`,`date_updated`) values 
-(1,'camaron','camaron',1,'2016-04-12 17:54:03','2016-06-11 12:26:45'),
-(2,'trucha','trucha',1,'2016-06-18 17:24:45','2016-06-18 17:24:45');
+(1,'CAMARON ENTERO - HEAD ON','CAMARON CON CABEZA',1,'2016-04-12 17:54:03','2016-06-12 18:49:16'),
+(2,'CAMARON COLA - SHELL ON','CAMARON COLA SIN CABEZA (SHELL ON SHRIMP) O COLAS DE CAMARON',1,'2016-06-12 18:50:50','2016-06-12 19:16:15');
 
 /*Table structure for table `products_type` */
 
@@ -1603,15 +1602,27 @@ CREATE TABLE `products_type` (
   `date_created` datetime NOT NULL,
   `date_updated` datetime NOT NULL,
   PRIMARY KEY (`id_product_type`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 /*Data for the table `products_type` */
 
 insert  into `products_type`(`id_product_type`,`id_product`,`name`,`description`,`abr`,`status`,`date_created`,`date_updated`) values 
-(8,1,'50/50','50/50','40/50',1,'2016-05-29 12:58:01','2016-06-11 12:27:14'),
-(9,1,'40/40','40/40','40/40',1,'2016-05-29 13:07:49','2016-05-29 13:07:49'),
-(10,1,'30/30','30/30','',1,'2016-06-10 23:07:38','2016-06-10 23:09:54'),
-(11,2,'completa','descripción',NULL,1,'2016-06-18 17:29:09','2016-06-18 17:29:09');
+(1,1,'30-40','30-40',NULL,1,'2016-05-29 12:58:01','2016-06-24 19:47:28'),
+(2,1,'40-50','40-50',NULL,1,'2016-05-29 13:07:49','2016-06-12 19:18:22'),
+(3,1,'50-60','50-60',NULL,1,'2016-06-10 23:07:38','2016-06-12 19:20:12'),
+(4,1,'60-70','60-70',NULL,1,'2016-06-12 19:20:37','2016-06-12 19:20:37'),
+(5,1,'70-80','70-80',NULL,1,'2016-06-12 19:21:03','2016-06-12 19:21:03'),
+(6,1,'80-100','80-100',NULL,1,'2016-06-12 19:21:27','2016-06-12 19:21:27'),
+(7,1,'100-120','100-120',NULL,1,'2016-06-12 19:21:49','2016-06-12 19:21:49'),
+(8,2,'21-25','21-25',NULL,1,'2016-06-12 19:23:06','2016-06-12 19:23:06'),
+(9,2,'26-30','26-30',NULL,1,'2016-06-12 19:23:27','2016-06-12 19:23:27'),
+(10,2,'31-35','31-35',NULL,1,'2016-06-12 19:23:53','2016-06-12 19:23:53'),
+(11,2,'36-40','36-40',NULL,1,'2016-06-12 19:24:16','2016-06-12 19:24:16'),
+(12,2,'41-50','41-50',NULL,1,'2016-06-12 19:24:38','2016-06-12 19:24:38'),
+(13,2,'51-60','51-60',NULL,1,'2016-06-12 19:25:00','2016-06-12 19:25:00'),
+(14,2,'61-70','61-70',NULL,1,'2016-06-12 19:25:21','2016-06-12 19:25:21'),
+(15,2,'71-90','71-90',NULL,1,'2016-06-12 19:25:44','2016-06-12 19:25:44'),
+(16,2,'91-110','91-110',NULL,1,'2016-06-12 19:26:07','2016-06-12 19:26:07');
 
 /*Table structure for table `providers` */
 
@@ -1690,12 +1701,12 @@ CREATE TABLE `sales` (
 /*Data for the table `sales` */
 
 insert  into `sales`(`id_sale`,`id_type_destiny`,`id_company`,`id_client`,`id_shipping_lines`,`id_company_bank`,`date_sale`,`id_country_out`,`id_port_out`,`id_country_in`,`id_port_in`,`date_out`,`date_estimate_in`,`date_in_real`,`date_out_real`,`observacion_seguimiento`,`id_client_address`,`terms`,`comision`,`id_bank_in`,`id_incoterm`,`note_sale`,`status`,`date_created`,`date_updated`) values 
-(1,2,1,1,2,12,'2016-06-11',1,1,65,131,'2016-06-11','2016-06-11','2016-06-24','2016-06-24','observacion de seguimiento',2,'TERMINOS DE NEGOCIACION DE PRUEBA','50',0,3,'observacion de la venta',0,'2016-06-10 10:12:51','2016-06-24 17:45:22'),
+(1,2,1,1,2,12,'2016-06-11',1,1,65,131,'2016-06-11','2016-06-11','2016-06-24','2016-06-24','observacion de seguimiento',2,'TERMINOS DE NEGOCIACION DE PRUEBA','50',0,3,'observacion de la venta',0,'2016-06-10 10:12:51','2016-06-24 19:52:26'),
 (2,2,1,2,1,12,'2016-11-25',1,1,1,1,'2016-06-22','2016-06-02',NULL,NULL,NULL,6,'terminos','comision',0,2,'aaaaaaaaaaaaaaaaaaaaaaaaaaa',0,'2016-06-10 22:53:00','2016-06-18 13:59:37'),
 (3,2,1,2,1,12,'2016-06-04',1,1,1,1,'2016-06-11','2016-06-11',NULL,NULL,NULL,6,'hola','5%',0,11,'observacion',1,'2016-06-11 23:42:48','2016-06-24 17:43:08'),
 (4,2,1,1,2,12,'2016-06-18',1,1,65,34,'2016-06-18','2016-06-18',NULL,NULL,NULL,2,'qqqqqqqqqqq','qqq',NULL,3,'qqqqqqq',0,'2016-06-18 16:41:07','2016-06-18 16:59:56'),
-(5,2,1,3,NULL,12,'2016-06-18',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'ddddddd','dddddddd',NULL,3,'sssssssss',1,'2016-06-18 17:30:56','2016-06-18 17:30:56'),
-(6,2,1,4,NULL,12,'2016-06-24',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'terminos de la negociacion',NULL,NULL,4,'observacion',1,'2016-06-24 16:16:40','2016-06-24 16:16:40'),
+(5,2,1,4,2,12,'2016-06-18',1,1,1,1,'2016-06-24','2016-06-24',NULL,NULL,NULL,9,'ddddddd','dddddddd',NULL,3,'sssssssss',1,'2016-06-18 17:30:56','2016-06-24 19:43:07'),
+(6,2,1,4,2,12,'2016-06-24',1,1,1,1,'2016-06-24','2016-06-24',NULL,NULL,NULL,9,'terminos de la negociacion',NULL,NULL,4,'observacion',1,'2016-06-24 16:16:40','2016-06-24 19:43:42'),
 (7,2,1,4,2,12,'2016-06-25',1,1,1,1,'2016-06-24','2016-06-25','2016-06-24','2016-06-24',NULL,9,'terminos de la negociacion',NULL,NULL,3,'observacion',0,'2016-06-24 16:21:28','2016-06-24 16:27:26'),
 (8,2,1,4,2,12,'2016-06-24',1,1,1,1,'2016-06-25','2016-06-30',NULL,NULL,NULL,9,'terminos de la negociacion',NULL,NULL,4,'observacion de la venta',1,'2016-06-24 17:44:09','2016-06-24 17:44:25');
 
@@ -1788,7 +1799,7 @@ CREATE TABLE `sales_products_detail` (
   `date_updated` datetime NOT NULL,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 /*Data for the table `sales_products_detail` */
 
@@ -1796,9 +1807,10 @@ insert  into `sales_products_detail`(`id`,`id_sale`,`id_product`,`id_product_typ
 (3,2,1,8,1,1,2,'0.01','0.02','ddddd',NULL,NULL,NULL,NULL,NULL,NULL,'2016-06-12 00:24:01','2016-06-12 00:24:01',1),
 (4,4,1,8,1,1,2,'0.01','0.02','hola',NULL,NULL,NULL,NULL,NULL,NULL,'2016-06-18 16:42:09','2016-06-18 16:42:09',1),
 (9,5,2,11,NULL,NULL,0,NULL,'0.00',NULL,1,1,NULL,NULL,NULL,NULL,'2016-06-24 14:43:44','2016-06-24 14:43:44',1),
-(11,1,1,8,1,1,2,'0.01','0.02',NULL,1,1,4,'precinto1','555','201110.10','2016-06-24 14:49:18','2016-06-24 14:49:18',1),
-(12,1,2,11,1,1,2,'0.01','0.02',NULL,2,2,2,'precinto','123','20.00','2016-06-24 14:50:24','2016-06-24 14:50:24',1),
-(13,7,1,8,1,1,2,'0.01','0.02','obsercacion',1,1,4,'444','444444','50.00','2016-06-24 16:26:33','2016-06-24 16:26:33',1);
+(11,1,1,7,1,1,2,'0.01','0.02',NULL,1,1,4,'precinto1','555','201110.10','2016-06-24 14:49:18','2016-06-24 14:49:18',1),
+(12,1,2,16,1,1,2,'0.01','0.02',NULL,2,2,2,'precinto','123','20.00','2016-06-24 14:50:24','2016-06-24 14:50:24',1),
+(13,7,1,8,1,1,2,'0.01','0.02','obsercacion',1,1,4,'444','444444','50.00','2016-06-24 16:26:33','2016-06-24 16:26:33',1),
+(14,1,2,11,2,2,7,'0.02','0.14',NULL,2,1,4,'20','kkk','252.00','2016-06-24 19:49:54','2016-06-24 19:49:54',1);
 
 /*Table structure for table `shipping_lines` */
 
