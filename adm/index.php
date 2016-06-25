@@ -56,12 +56,17 @@ $values = $_REQUEST;
 				require('login.php');die;
 			}
 			else
-			{	
+			{	$ConnectionsHistory = new ConnectionsHistory();
+                                $Utilitarios = new Utilitarios();
 				$id_user =  $user_data['id_user'];
 				$values['id_user'] = $id_user;
 				$user_data = $Users->getUserById($values);
 				$_SESSION['login'] = $user_data['login'];
 				$_SESSION['id_user'] = $user_data['id_user'];
+                                //print_r($values);die;
+                                unset($values['password'],$values['ct_captcha']);
+                                $values['ip'] = $Utilitarios ->getRealIP();
+                                $ConnectionsHistory->saveConnectionsHistory($values);
 				require('bienvenida.php');die;
 			}
 			

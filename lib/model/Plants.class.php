@@ -23,9 +23,8 @@
 			$columns[0] = 'id_plant';
 			$columns[1] = 'plants.name';
 			$columns[2] = 'rif';
-			$columns[3] = 'status.name';
-			$columns[4] = 'date_created';
-			$columns[5] = 'date_updated';
+                        $columns[3] = 'contact1';
+			$columns[4] = 'status.name';
 			$column_order = $columns[0];
 			$where = '1 = 1';
 			$order = 'asc';

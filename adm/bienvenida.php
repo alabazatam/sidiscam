@@ -13,7 +13,6 @@
 		<div class="panel panel-default">
 		  <div class="panel-body">
                     <ul class="list-group">
-                        <li class="list-group-item">Empresa: <small>Distribuidora 1</small></li>
                         <li class="list-group-item">Usuario: <small><?php echo $_SESSION['login'];?></small></li>
                         <li class="list-group-item">Ultima Conexion: <small> <?php echo date('d-m-Y h:i:s')?></small></li>
                         
