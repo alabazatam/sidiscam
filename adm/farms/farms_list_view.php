@@ -8,8 +8,6 @@
                     <th>Id</th>
                     <th>Granja</th>
                     <th>Persona Contacto</th>
-                    <th>Teléfono</th>
-                    <th>Correo</th>
                     <th>Estatus</th>
                     <th>Acciones</th>
                 </tr>
@@ -19,8 +17,6 @@
                     <th>Id</th>
                     <th>Granja</th>
                     <th>Persona Contacto</th>
-                    <th>Teléfono</th>
-                    <th>Correo</th>
                     <th>Estatus</th>
                     <th>Acciones</th>
                 </tr>
@@ -44,8 +40,6 @@ $(document).ready(function() {
             { "data": "id_farm" },
             { "data": "name" },
             { "data": "contact1" },
-            { "data": "phone_contact1" },
-            { "data": "email_contact1" },
             { "data": "status" },
             { "data": "actions" }
         ],

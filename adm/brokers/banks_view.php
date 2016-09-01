@@ -14,7 +14,7 @@
 							<th>País</th>
 							<th>RIF</th>
 							<th>ABA</th>
-							<th>SWIT</th>
+							<th>SWIFT</th>
 							<th>IBAN</th>
 							<th>Acciones</th>
 						</tr>

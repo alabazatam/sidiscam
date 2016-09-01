@@ -16,7 +16,7 @@
 				</select>
 			</td>
 			<td>
-				<input type='text'  name='address[<?php echo $values['id']?>]' id='address_<?php echo $values['id']?>' size="20" autocomplete="off" onchange="updateClientsAddressDetail(<?php echo $values['id'];?>,'address_<?php echo $values['id'];?>','address')">
+				<textarea  name='address[<?php echo $values['id']?>]' id='address_<?php echo $values['id']?>' onchange="updateClientsAddressDetail(<?php echo $values['id'];?>,'address_<?php echo $values['id'];?>','address')"></textarea>
 			</td>
 			<td>
 				<a onclick="deleteAddressDetail(<?php echo $values['id']?>)" class="btn btn-danger">Eliminar</a>

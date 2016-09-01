@@ -119,7 +119,7 @@ $values = $_REQUEST;
 		}else{
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
-			$array_json['data'][0] = array("id_farm"=>null,"name"=>"","contact1"=>"","phone_contact1"=>"","email_contact1"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
+			$array_json['data'][0] = array("id_farm"=>null,"name"=>"","contact1"=>"","status"=>"","actions"=>"");
 		}
 
 		echo json_encode($array_json);die;
