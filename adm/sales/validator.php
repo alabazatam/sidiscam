@@ -56,6 +56,12 @@
 			"label" => "Cuenta bancaria",
 			"required" => true
 		);
+		$validator_values['id_plant_fact'] = array(
+			
+			"type" => "number",
+			"label" => "Planta procesadora en factura",
+			"required" => true
+		);
 		
 		
 

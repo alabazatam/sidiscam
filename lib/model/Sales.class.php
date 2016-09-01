@@ -209,7 +209,7 @@
                                 $values['precinto'],
                                 $values['comision']
 				
-				);	
+				);
 			//echo $values['date_sale'];die;
 			$values['date_updated'] = new NotORM_Literal("NOW()");
 			$Utilitarios = new Utilitarios();

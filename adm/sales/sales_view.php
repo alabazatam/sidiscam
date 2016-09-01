@@ -5,6 +5,10 @@
 	
 	$Company = new Company();
 	$list_company = $Company->getListCompany();
+	
+	$Plants = new Plants();
+	$list_plants = $Plants->getPlantsListSelect();
+	
 	?>					
 
 
@@ -114,7 +118,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-							<div class="col-sm-4">
+							<div class="col-sm-6">
 								<label for="">Cuenta bancaria <small class="text-danger">(*)</small></label>
 										<select name="id_company_bank" id="id_company_bank" class="form-control input-sm">
 											<option value="">Seleccione...</option>
@@ -122,6 +126,22 @@
 										</select>
 								<?php if(isset($values['errors']['id_company_bank']) and $values['errors']['id_company_bank']!=''):?>
 									<label class="alert alert-danger"><?php echo $values['errors']['id_company_bank']?></label>
+								<?php endif;?>
+							</div>
+							<div class="col-sm-6">
+								<label for="">Planta procesadora en factura <small class="text-danger">(*)</small></label>
+										<select name="id_plant_fact"  class="form-control input-sm">
+											<option value="">Seleccione...</option>
+										<?php if(count($list_plants)>0): ?>
+											<?php foreach($list_plants as $list): ?>
+
+													<option value="<?php echo $list['id_plant'];?>" <?php if($list['id_plant'] == @$values['id_plant_fact']) echo "selected = 'selected'" ?>><?php echo $list['name'];?></option>
+
+											<?php endforeach; ?>
+										<?php endif; ?>
+										</select>
+								<?php if(isset($values['errors']['id_plant_fact']) and $values['errors']['id_plant_fact']!=''):?>
+									<label class="alert alert-danger"><?php echo $values['errors']['id_plant_fact']?></label>
 								<?php endif;?>
 							</div>
 							</div>
