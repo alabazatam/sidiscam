@@ -16,10 +16,13 @@
             $id_country_in = $sale_data['id_country_in'];
             $id_port_in = $sale_data['id_port_in'];
             $date_estimate_in = $sale_data['date_estimate_in'];
-            $Plants = new Plants();
-            $SalesPlantsDetail = new SalesPlantsDetail();
-            $list_plants = $SalesPlantsDetail->getSalesListPlantsDetailBySale($id_sale);
             $client_name = $sale_data['client_name'];
+			$client_address = $sale_data['client_address'];
+			$plant_name =  $sale_data['plant_name'];
+			$plant_rif =  $sale_data['plant_rif'];
+			$plant_address =  $sale_data['plant_address'];
+			$plant_country =  $sale_data['plant_country'];
+			$products_detail = $Sales->getSalesProductsDetail($values);
             
             ob_clean();
             // create new PDF document
@@ -91,7 +94,11 @@
                                 <td style="background-color: #cccccc; font-size: 12px; text-align:center;font-weight: bolder;">Bill To</td>
                             </tr>
                             <tr>
-                                <td>'.$client_name.'</td>
+                                <td>
+									<strong>'.strtoupper($client_name).'</strong><br>
+									<strong>'.strtoupper($client_address).'</strong>
+								
+								</td>
                             </tr>
                         </table>
                     </td>
@@ -101,23 +108,200 @@
                             <tr>
                                 <td style="background-color: #cccccc; font-size: 12px; text-align:center;font-weight: bolder;">Processing Plant</td>
                             </tr>';
-            foreach ($list_plants as $plants) {
+            
                 $html.='
                             <tr>
-                                <td>'.strtoupper($plants['name']).'</td>
+                                <td>'.strtoupper($plant_name).'</td>
                             </tr>';
-            }
-
+                $html.='
+                            <tr>
+                                <td>'.strtoupper($plant_rif).'</td>
+                            </tr>'; 
+                $html.='
+                            <tr>
+                                <td>'.strtoupper($plant_address).'</td>
+                            </tr>'; 
+                $html.='
+                            <tr>
+                                <td>'.strtoupper($plant_country).'</td>
+                            </tr>';
         $html.='
                         </table>
                     </td>
                 </tr>
             </table>
-
+			<br>
             ';
+		//lista de productos
+		$pdf->writeHTML($html, true, false, true, false, '');
+		$pdf->ln();
+		$total_amount = 0;
+		$total_quantity = 0;
+		$total_cases = 0;
+		$html ='<table width="100%" border="1">'
+			. '<tr style="background-color: #CCC;">'
+				. '<th style="text-align: center;" width="10%"><strong>Container #</strong></th>'
+				. '<th style="text-align: center;" width="40%"><strong>Item</strong></th>'
+				. '<th style="text-align: center;" width="10%"><strong>Cases</strong></th>'
+				. '<th style="text-align: center;" width="10%"><strong>Packing</strong></th>'
+				. '<th style="text-align: center;" width="10%"><strong>Qty Kgs</strong></th>'
+				. '<th style="text-align: center;" width="10%"><strong>Rate ($)</strong></th>'
+				. '<th style="text-align: center;" width="10%"><strong>Amount ($)</strong></th>'
+			. '</tr>';
+		
+		foreach($products_detail as $products)
+		{
+		$total_amount+= $products['amount'];
+		$total_cases+= $products['cases'];
+		$total_quantity+= $products['quantity'];
+		$html.='<tr>'
+				. '<td>'.$products['number'].'</td>'
+				. '<td>'.$products['product_name']." ".$products['product_type_name'].'</td>'
+				. '<td style="text-align: right;">'.$products['cases'].'</td>'
+				. '<td style="text-align: center;">'.$products['packing'].'</td>'
+				. '<td style="text-align: right;">'.$products['quantity'].'</td>'
+				. '<td style="text-align: right;">$&nbsp;&nbsp;&nbsp;'.$products['rate'].'</td>'
+				. '<td style="text-align: right;">$&nbsp;&nbsp;&nbsp;'.$products['amount'].'</td>'
+			. '</tr>';			
+		}
+		$html.='<tr>'
+				. '<td>&nbsp;</td>'
+				. '<td><strong>Feltrina 01-2015 <br> SNT 497</strong></td>'
+				. '<td style="text-align: right;"><strong>'.$total_cases.'</strong></td>'
+				. '<td>&nbsp;</td>'
+				. '<td style="text-align: center;"><strong>Kgr. <br>'.$total_quantity.'</strong></td>'
+				. '<td style="text-align: center;"><strong>INCOTERMS <br> CFR</strong></td>'
+				. '<td style="text-align: right;"><strong>$&nbsp;&nbsp;&nbsp;'.$total_amount.'</strong></td>'
+			. '</tr>';					
+		
+		$html.= '</table>';
+		$pdf->ln();
+		$pdf->writeHTML($html, true, false, true, false, '');
+		//fin lista de productos
+		//cuentas bancarios y otros
+		$html = '<table border="0" width="100%">'
+			. '<tr>'
+			. '<td><strong>Carga #5</strong></td>'
+			. '<td>&nbsp;</td>'
+			. '<td>&nbsp;</td>'
+			. '<td style="text-align: right;"><strong>Make All Checks payable to:</strong></td>'
+			. '</tr>'
+			. '<tr>'
+			. '<td>&nbsp;</td>'
+			. '<td>&nbsp;</td>'
+			. '<td style="text-align: right;"><strong>Beneficiary:</strong></td>'
+			. '<td style="text-align: left;"><strong>Coseinca Trading Corp.</strong></td>'
+			. '</tr>'
+			. '<tr>'
+			. '<td style="text-align: left;"><strong>Destination:</strong></td>'
+			. '<td style="text-align: left;"><strong>Haiphong Viet Nam:</strong></td>'
+			. '<td style="text-align: right;"><strong>Address:</strong></td>'
+			. '<td style="text-align: left;">9955 NW, 116th Way, Suite 8, Miami FL 33178</td>'
+			. '</tr>'
+			. '<tr>'
+			. '<td style="text-align: left;" colspan="2"><strong>Product Packed in Venezuela</strong></td>'
+			. '<td style="text-align: right;" colspan="2">&nbsp;</td>'
+			. '</tr>'
+			. '<tr>'
+			. '<td style="text-align: left;" colspan=""><strong>Container No:</strong></td>'
+			. '<td style="text-align: left;" colspan=""><strong>SUDU-813 053-0</strong></td>'
+			. '<td style="text-align: right;" colspan="2">&nbsp;</td>'
+			. '</tr>'
+			. '<tr>'
+			. '<td style="text-align: left;" colspan=""><strong>Shipping Line:</strong></td>'
+			. '<td style="text-align: left;" colspan=""><strong>Linea naviera</strong></td>'
+			. '<td style="text-align: right;" colspan="2">&nbsp;</td>'
+			. '</tr>'
+			. '<tr>'
+			. '<td style="text-align: left;" colspan=""><strong>Precinto#:</strong></td>'
+			. '<td style="text-align: left;" colspan=""><strong>Precinto</strong></td>'
+			. '<td style="text-align: right;"><strong>Bank:</strong></td>'
+			. '<td style="text-align: left;">Bank of America</td>'
+			. '</tr>'
+			. '<tr>'
+			. '<td style="text-align: left;"><strong>ETD:</strong></td>'
+			. '<td style="text-align: left;"><strong>06/01/2016</strong></td>'
+			. '<td style="text-align: right;"><strong>ABA#:</strong></td>'
+			. '<td style="text-align: left;">026009593</td>'
+			. '</tr>'
+			. '<tr>'
+			. '<td style="text-align: left;"><strong>ETA:</strong></td>'
+			. '<td style="text-align: left;"><strong>06/03/2016</strong></td>'
+			. '<td style="text-align: right;"><strong>Account#:</strong></td>'
+			. '<td style="text-align: left;">8980.7348.2252</td>'
+			. '</tr>'
+			. '<tr>'
+			. '<td style="text-align: left;" colspan="2"></td>'
+			. '<td style="text-align: right;"><strong>Swift#:</strong></td>'
+			. '<td style="text-align: left;">BOFAUS3N</td>'
+			. '</tr>'
+			. '</table>';
+			$pdf->ln();
+			$pdf->writeHTML($html, true, false, true, false, '');
+			
+			//terminos de negociacion
+			$html = '<table width="50%" style="background-color: #ccc; border: 1 1 1 1;">'
+				. '<tr>'
+				. '<td style="text-align: left;"><strong>Payment:</strong></td>'
+				. '<td style="text-align: left;"><strong>40 000 usd anticipated against proforma Sold 10 days before arrival to destination port</strong></td>'
+				. '</tr>'
+				. '</table>';
+			
+			$pdf->ln();
+			$pdf->writeHTML($html, true, false, true, false, '');			
+			
+			//fin terminos de negociacion
+			
+			//otros datos
+			$html = '<table width="100%" border="0" >'
+				. '<tr>'
+				. '<th style="text-align: center; background-color: #ccc;"><strong>Phone#</strong></th>'
+				. '<th style="text-align: center; background-color: #ccc; "><strong>Fax#</strong></th>'
+				. '<th style="text-align: center; background-color: #ccc;"><strong>E-mail</strong></th>'
+				. '<th style="text-align: center;"></th>'
+				. '<th style="text-align: center;"></th>'								
+				. '</tr>'
+				. '<tr>'
+				. '<td style="text-align: left;"><strong></strong></td>'
+				. '<td style="text-align: left;"><strong></strong></td>'
+				. '<td style="text-align: left;"><strong></strong></td>'
+				. '<td style="text-align: left;"></td>'
+				. '<td style="text-align: right; background-color: #ccc;"><strong>Balance due $ &nbsp;&nbsp;&nbsp;&nbsp;'.$total_amount.'</strong></td>'								
+				. '</tr>'
+				. '</table>';
+			
+			$pdf->ln();
+			$pdf->ln();
+			$pdf->writeHTML($html, true, false, true, false, '');			
+			
+			//fin otros datos	
 
+			
+			//BL data
+			$html = '<table width="80%" >'
+				. '<tr>'
+				. '<td style="text-align: left;"><strong>BL datas:</strong></td>'
+				. '<td style="text-align: left;"><strong></strong></td>'
+				. '<td style="text-align: left;"><strong></strong></td>'
+				. '</tr>'
+				. '<tr>'
+				. '<td style="text-align: left;"><strong></strong></td>'
+				. '<td style="text-align: left;"><strong>CONSIGNEE:</strong></td>'
+				. '<td style="text-align: left;"><strong>GOLDEN STAR TRADING AND SHIPPING INVESTMENT JOINT STOCK COMPANY</strong></td>'
+				. '</tr>'
+				. '<tr>'
+				. '<td style="text-align: left;"><strong></strong></td>'
+				. '<td style="text-align: left;"><strong>NOTIFY:</strong></td>'
+				. '<td style="text-align: left;"><strong>GOLDEN STAR TRADING AND SHIPPING INVESTMENT JOINT STOCK COMPANY</strong></td>'
+				. '</tr>'
+				. '</table>';
+			
+			$pdf->ln();
+			$pdf->writeHTML($html, true, false, true, false, '');			
+			
+			//fin otros datos	
             // output the HTML content
-            $pdf->writeHTML($html, true, false, true, false, '');
+            //$pdf->writeHTML($html, true, false, true, false, '');
             // reset pointer to the last page
             $pdf->lastPage();
             
