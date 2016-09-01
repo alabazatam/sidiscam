@@ -118,6 +118,24 @@
 			->where("status=?",1);
             return $q; 				
 			
+		}
+		public function getExistRif($values){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->plants
+			->select("count(*) as cuenta")
+			->where("rif=?",$values['rif'])->fetch();
+            return $q['cuenta']; 				
+			
+		}
+		public function getExistRifUpdate($values){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->plants
+			->select("count(*) as cuenta")
+			->where("rif=?",$values['rif'])
+			->and('id_plant<>?',$values['id_plant'])
+			->fetch();
+            return $q['cuenta']; 				
+			
 		}		
 	}
 	

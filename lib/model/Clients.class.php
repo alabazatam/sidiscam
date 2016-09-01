@@ -121,5 +121,23 @@
 			return $q; 				
 			
 		}
+		public function getExistRif($values){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->clients
+			->select("count(*) as cuenta")
+			->where("rif=?",$values['rif'])->fetch();
+                        return $q['cuenta']; 				
+			
+		}
+		public function getExistRifUpdate($values){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->clients
+			->select("count(*) as cuenta")
+			->where("rif=?",$values['rif'])
+			->and('id_client<>?',$values['id_client'])
+			->fetch();
+            return $q['cuenta']; 				
+			
+		}
 	}
 	

@@ -77,7 +77,7 @@
 		);
 		$validator_values['contact1'] = array(
 			
-			"minlength" => 4,
+			"minlength" => 3,
 			"maxlength" => 100,
 			"type" => "text",
 			"label" => "Contacto Principal",
@@ -101,7 +101,7 @@
 		);
 		$validator_values['contact2'] = array(
 			
-			"minlength" => 4,
+			"minlength" => 3,
 			"maxlength" => 100,
 			"type" => "text",
 			"label" => "Contacto secundario",

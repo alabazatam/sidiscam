@@ -99,7 +99,7 @@
 		public function getSalesById($values){
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->sales
-			->select("*,DATE_FORMAT(date_estimate_in, '%d/%m/%Y') as date_estimate_in,DATE_FORMAT(date_out, '%d/%m/%Y') as date_out,DATE_FORMAT(date_sale, '%d/%m/%Y') as date_sale, DATE_FORMAT(date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(date_updated, '%d/%m/%Y %H:%i:%s') as date_updated,DATE_FORMAT(date_in_real, '%d/%m/%Y') as date_in_real,DATE_FORMAT(date_out_real, '%d/%m/%Y') as date_out_real")
+			->select("*,DATE_FORMAT(date_estimate_in, '%d/%m/%Y') as date_estimate_in,DATE_FORMAT(date_out, '%d/%m/%Y') as date_out,DATE_FORMAT(date_sale, '%d/%m/%Y') as date_sale, DATE_FORMAT(date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(date_updated, '%d/%m/%Y %H:%i:%s') as date_updated,DATE_FORMAT(date_in_real, '%d/%m/%Y') as date_in_real,DATE_FORMAT(date_out_real, '%d/%m/%Y') as date_out_real,DATE_FORMAT(follow_update, '%d/%m/%Y') as follow_update")
 			->where("id_sale=?",$values['id_sale'])->fetch();
 			return $q; 				
 			
@@ -212,7 +212,6 @@
 				);	
 			//echo $values['date_sale'];die;
 			$values['date_updated'] = new NotORM_Literal("NOW()");
-			
 			$Utilitarios = new Utilitarios();
                         if(isset($values['date_sale']) and $values['date_sale']!='')
                         {
@@ -253,8 +252,15 @@
                         }else
                         {
                            $values['date_out_real']=null;
-                        }		
-	
+                        }
+                        if(isset($values['follow_update']) and $values['follow_update']!='')
+                        {
+                        $values['follow_update'] = $Utilitarios->formatFechaInput($values['follow_update']);
+						
+                        }else
+                        {
+                            $values['follow_update']=null;
+                        }
 			//echo $values['date_sale'];die;
 			$id_sale = $values['id_sale'];
 			$ConnectionORM = new ConnectionORM();

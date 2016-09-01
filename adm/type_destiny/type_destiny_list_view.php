@@ -1,7 +1,7 @@
 <?php include('../../view_header.php')?>
 <?php include('../menu.php')?>
 <div class="container">
-	<h1 class="text-center">Tipos de venta</h1>
+	<h1 class="text-center">Tipos de destinos</h1>
 	<table id="example" class="table table-striped table-bordered table-responsive" width="100%" cellspacing="0">
 			<thead>
 				<tr>

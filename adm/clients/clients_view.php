@@ -17,7 +17,7 @@
 		</div>
 
 		<div class="col-sm-6">
-		<label for="">Identificador fiscal</label>
+		<label for="">Identificador fiscal <small class="text-danger">(*)</small></label>
 		<input autocomplete="off" type="text" class="form-control input-sm" id="" placeholder="" name="rif" value="<?php if(isset($values['rif'])) echo $values['rif']?>">
 		<?php if(isset($values['errors']['rif']) and $values['errors']['rif']!=''):?>
 			<label class="alert alert-danger"><?php echo $values['errors']['rif']?></label>

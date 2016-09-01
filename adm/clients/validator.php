@@ -21,7 +21,7 @@
 			"maxlength" => 20,
 			"type" => "text",
 			"label" => "Identificador fiscal",
-			"required" => false
+			"required" => true
 		);
 		$validator_values['id_country'] = array(
 			
@@ -71,7 +71,7 @@
 		);
 		$validator_values['contact1'] = array(
 			
-			"minlength" => 4,
+			"minlength" => 3,
 			"maxlength" => 100,
 			"type" => "text",
 			"label" => "Contacto principal",
@@ -95,7 +95,7 @@
 		);
 		$validator_values['contact2'] = array(
 			
-			"minlength" => 4,
+			"minlength" => 3,
 			"maxlength" => 100,
 			"type" => "text",
 			"label" => "Contacto secundario",
@@ -118,7 +118,40 @@
 			"required" => false
 		);
 		$ValidateBase = new ValidateBase();
+		
+		
+
+		
 		$errors = $ValidateBase->validate_base($validator_values, $values);
+		
+		if($values['action'] == 'add')
+		{
+			
+			if(isset($values['rif']) and $values['rif'] !='')
+			{
+				$Clients = new Clients();
+				$existe = $Clients ->getExistRif($values);
+				if($existe > 0)
+				{
+					$errors['rif'] = "Ya se encuentra un identificador fiscal registrado con este valor";
+				}
+			}
+			
+		}
+		if($values['action'] == 'update')
+		{
+			
+			if(isset($values['rif']) and $values['rif'] !='')
+			{
+				$Clients = new Clients();
+				$existe = $Clients ->getExistRifUpdate($values);
+				if($existe > 0)
+				{
+					$errors['rif'] = "Ya se encuentra un identificador fiscal registrado con este valor";
+				}
+			}
+			
+		}		
 		return $errors;
 		
 		
