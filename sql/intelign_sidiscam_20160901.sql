@@ -203,22 +203,27 @@ CREATE TABLE `clients_address_detail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_client` int(11) NOT NULL,
   `id_country` int(11) DEFAULT NULL,
+  `state` varchar(100) DEFAULT NULL,
   `address` text,
+  `code` tinytext,
+  `tel` tinytext,
+  `fax` tinytext,
+  `email` text,
   `status` int(11) DEFAULT '1',
   `date_created` datetime NOT NULL,
   `date_updated` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 /*Data for the table `clients_address_detail` */
 
-insert  into `clients_address_detail`(`id`,`id_client`,`id_country`,`address`,`status`,`date_created`,`date_updated`) values 
-(1,1,65,'direccion de prueba',1,'2016-06-09 23:13:59','2016-06-09 23:13:59'),
-(2,1,65,'direccion2 a',1,'2016-06-09 23:14:57','2016-06-09 23:14:57'),
-(3,1,65,'direccion3',1,'2016-06-09 23:15:32','2016-06-09 23:15:32'),
-(4,1,65,'direccion4',1,'2016-06-09 23:21:11','2016-06-09 23:21:11'),
-(6,2,71,'France avenue',1,'2016-06-11 11:55:26','2016-06-11 11:55:26'),
-(9,4,236,'N°83 MAY TO, LAC VIEN WARD, NGO QUYEN DISTRICT HAIPHONG CITY - VIET NAM',1,'2016-06-23 11:57:58','2016-06-23 11:57:58');
+insert  into `clients_address_detail`(`id`,`id_client`,`id_country`,`state`,`address`,`code`,`tel`,`fax`,`email`,`status`,`date_created`,`date_updated`) values 
+(1,1,65,'HAIPHONG CITY','direccion de pruebadd','31/BCT(MS-TPDL)','84 313 652 520','84-31 3652521','deandrademarcos@gmail.com',1,'2016-06-09 23:13:59','2016-06-09 23:13:59'),
+(2,1,65,'HAIPHONG CITY','direccion2 a','31/BCT(MS-TPDL)','84 313 652 520','84-31 3652521','deandrademarcos@gmail.com',1,'2016-06-09 23:14:57','2016-06-09 23:14:57'),
+(3,1,65,'HAIPHONG CITY','direccion3','31/BCT(MS-TPDL)','84 313 652 520','84-31 3652521','deandrademarcos@gmail.com',1,'2016-06-09 23:15:32','2016-06-09 23:15:32'),
+(4,1,236,'HAIPHONG CITY','direccion4','31/BCT(MS-TPDL)','84 313 652 520','84-31 3652521','deandrademarcos@gmail.com',1,'2016-06-09 23:21:11','2016-06-09 23:21:11'),
+(6,2,71,NULL,'France avenue',NULL,NULL,NULL,NULL,1,'2016-06-11 11:55:26','2016-06-11 11:55:26'),
+(9,4,236,NULL,'N°83 MAY TO, LAC VIEN WARD, NGO QUYEN DISTRICT HAIPHONG CITY - VIET NAM',NULL,NULL,NULL,NULL,1,'2016-06-23 11:57:58','2016-06-23 11:57:58');
 
 /*Table structure for table `clients_banks_detail` */
 
@@ -1696,7 +1701,6 @@ CREATE TABLE `sales` (
   `id_shipping_lines` int(11) DEFAULT NULL,
   `id_company_bank` int(11) NOT NULL,
   `id_plant_fact` int(11) DEFAULT NULL,
-  `notify_address` text,
   `date_sale` date NOT NULL,
   `id_country_out` int(11) DEFAULT NULL,
   `id_port_out` int(11) DEFAULT NULL,
@@ -1711,6 +1715,7 @@ CREATE TABLE `sales` (
   `follow_update` date DEFAULT NULL,
   `follow_status` varchar(200) DEFAULT NULL,
   `id_client_address` int(11) DEFAULT NULL,
+  `id_client_address2` int(11) DEFAULT NULL,
   `terms` text,
   `comision` varchar(20) DEFAULT NULL,
   `id_bank_in` int(11) DEFAULT NULL,
@@ -1726,15 +1731,15 @@ CREATE TABLE `sales` (
 
 /*Data for the table `sales` */
 
-insert  into `sales`(`id_sale`,`id_type_destiny`,`id_company`,`id_client`,`id_shipping_lines`,`id_company_bank`,`id_plant_fact`,`notify_address`,`date_sale`,`id_country_out`,`id_port_out`,`id_country_in`,`id_port_in`,`date_out`,`date_estimate_in`,`date_in_real`,`date_out_real`,`observacion_seguimiento`,`follow_amount`,`follow_update`,`follow_status`,`id_client_address`,`terms`,`comision`,`id_bank_in`,`id_incoterm`,`note_sale`,`status`,`date_created`,`date_updated`) values 
-(1,2,1,1,2,12,3,'fsfsdfsdfsdfsdfsdfsdfsd','2016-06-11',1,1,65,131,'2016-06-01','2016-06-11','2016-06-24','2016-09-08','observacion de seguimiento','5000.00','2016-09-01','Factura Pagada',2,'TERMINOS DE NEGOCIACION DE PRUEBA','50',0,3,'observacion de la venta',0,'2016-06-10 10:12:51','2016-09-01 20:33:42'),
-(2,2,1,2,1,12,NULL,NULL,'2016-11-25',1,1,1,1,'2016-06-22','2016-06-02',NULL,NULL,NULL,NULL,NULL,NULL,6,'terminos','comision',0,2,'aaaaaaaaaaaaaaaaaaaaaaaaaaa',0,'2016-06-10 22:53:00','2016-06-18 13:59:37'),
-(3,2,1,2,1,12,1,NULL,'2016-06-04',1,1,1,1,'2016-06-11','2016-06-11',NULL,NULL,NULL,NULL,NULL,NULL,6,'hola','5%',0,11,'observacion',1,'2016-06-11 23:42:48','2016-09-01 12:14:24'),
-(4,2,1,1,2,12,NULL,NULL,'2016-06-18',1,1,65,34,'2016-06-18','2016-06-18',NULL,NULL,NULL,NULL,NULL,NULL,2,'qqqqqqqqqqq','qqq',NULL,3,'qqqqqqq',0,'2016-06-18 16:41:07','2016-06-18 16:59:56'),
-(5,2,1,4,2,12,NULL,NULL,'2016-06-18',1,1,1,1,'2016-06-24','2016-06-24',NULL,NULL,NULL,NULL,NULL,NULL,9,'ddddddd','dddddddd',NULL,3,'sssssssss',1,'2016-06-18 17:30:56','2016-06-24 19:43:07'),
-(6,2,1,4,2,12,NULL,NULL,'2016-06-24',1,1,1,1,'2016-06-24','2016-06-24',NULL,NULL,NULL,NULL,NULL,NULL,9,'terminos de la negociacion',NULL,NULL,4,'observacion',1,'2016-06-24 16:16:40','2016-06-24 19:43:42'),
-(7,2,1,4,2,12,NULL,NULL,'2016-06-25',1,1,1,1,'2016-06-24','2016-06-25','2016-06-24','2016-06-24',NULL,NULL,NULL,NULL,9,'terminos de la negociacion',NULL,NULL,3,'observacion',0,'2016-06-24 16:21:28','2016-06-24 16:27:26'),
-(8,2,1,4,2,12,NULL,NULL,'2016-06-24',1,1,1,1,'2016-06-25','2016-06-30',NULL,NULL,NULL,NULL,NULL,NULL,9,'terminos de la negociacion',NULL,NULL,4,'observacion de la venta',1,'2016-06-24 17:44:09','2016-06-24 17:44:25');
+insert  into `sales`(`id_sale`,`id_type_destiny`,`id_company`,`id_client`,`id_shipping_lines`,`id_company_bank`,`id_plant_fact`,`date_sale`,`id_country_out`,`id_port_out`,`id_country_in`,`id_port_in`,`date_out`,`date_estimate_in`,`date_in_real`,`date_out_real`,`observacion_seguimiento`,`follow_amount`,`follow_update`,`follow_status`,`id_client_address`,`id_client_address2`,`terms`,`comision`,`id_bank_in`,`id_incoterm`,`note_sale`,`status`,`date_created`,`date_updated`) values 
+(1,2,1,1,2,12,3,'2016-06-11',1,1,65,131,'2016-06-01','2016-06-11','2016-06-24','2016-09-08','observacion de seguimiento','5000.00','2016-09-01','Factura Pagada',3,4,'TERMINOS DE NEGOCIACION DE PRUEBA','50',0,3,'observacion de la venta',0,'2016-06-10 10:12:51','2016-09-01 21:00:52'),
+(2,2,1,2,1,12,NULL,'2016-11-25',1,1,1,1,'2016-06-22','2016-06-02',NULL,NULL,NULL,NULL,NULL,NULL,6,NULL,'terminos','comision',0,2,'aaaaaaaaaaaaaaaaaaaaaaaaaaa',0,'2016-06-10 22:53:00','2016-06-18 13:59:37'),
+(3,2,1,2,1,12,1,'2016-06-04',1,1,1,1,'2016-06-11','2016-06-11',NULL,NULL,NULL,NULL,NULL,NULL,6,NULL,'hola','5%',0,11,'observacion',1,'2016-06-11 23:42:48','2016-09-01 12:14:24'),
+(4,2,1,1,2,12,NULL,'2016-06-18',1,1,65,34,'2016-06-18','2016-06-18',NULL,NULL,NULL,NULL,NULL,NULL,2,NULL,'qqqqqqqqqqq','qqq',NULL,3,'qqqqqqq',0,'2016-06-18 16:41:07','2016-06-18 16:59:56'),
+(5,2,1,4,2,12,NULL,'2016-06-18',1,1,1,1,'2016-06-24','2016-06-24',NULL,NULL,NULL,NULL,NULL,NULL,9,NULL,'ddddddd','dddddddd',NULL,3,'sssssssss',1,'2016-06-18 17:30:56','2016-06-24 19:43:07'),
+(6,2,1,4,2,12,NULL,'2016-06-24',1,1,1,1,'2016-06-24','2016-06-24',NULL,NULL,NULL,NULL,NULL,NULL,9,NULL,'terminos de la negociacion',NULL,NULL,4,'observacion',1,'2016-06-24 16:16:40','2016-06-24 19:43:42'),
+(7,2,1,4,2,12,NULL,'2016-06-25',1,1,1,1,'2016-06-24','2016-06-25','2016-06-24','2016-06-24',NULL,NULL,NULL,NULL,9,NULL,'terminos de la negociacion',NULL,NULL,3,'observacion',0,'2016-06-24 16:21:28','2016-06-24 16:27:26'),
+(8,2,1,4,2,12,NULL,'2016-06-24',1,1,1,1,'2016-06-25','2016-06-30',NULL,NULL,NULL,NULL,NULL,NULL,9,NULL,'terminos de la negociacion',NULL,NULL,4,'observacion de la venta',1,'2016-06-24 17:44:09','2016-06-24 17:44:25');
 
 /*Table structure for table `sales_containers_detail` */
 
