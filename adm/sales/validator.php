@@ -62,6 +62,12 @@
 			"label" => "Planta procesadora en factura",
 			"required" => true
 		);
+		$validator_values['notify_address'] = array(
+			
+			"type" => "text",
+			"label" => "Dirección de notificación",
+			"required" => true
+		);
 		
 		
 

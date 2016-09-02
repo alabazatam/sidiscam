@@ -87,7 +87,7 @@
 								<?php endif;?>
 							</div>
 							<div class="col-sm-4  col-md-4">
-								<label for="">Fecha estimada de salida <small class="text-danger">(*)</small></label>
+								<label for="">Fecha estimada de arribo <small class="text-danger">(*)</small></label>
 								<input id = "datetimepicker3" type="date" autocomplete="off" class="form-control input-sm datetimepicker1" id="" placeholder="" name="date_estimate_in" value="<?php if(isset($values['date_estimate_in'])) echo $values['date_estimate_in']?>">
 								<?php if(isset($values['errors']['date_estimate_in']) and $values['errors']['date_estimate_in']!=''):?>
 									<label class="alert alert-danger"><?php echo $values['errors']['date_estimate_in']?></label>

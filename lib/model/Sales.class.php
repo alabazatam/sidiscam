@@ -280,11 +280,13 @@
 		public function getSalesInvoiceById($values){
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->sales
-			->select("*,plants.name as plant_name, plants.rif as plant_rif,plants.address as plant_address,country.name as plant_country, clients.address as client_address, "
+			->select("*,plants.name as plant_name, plants.rif as plant_rif,plants.address as plant_address,country.name as plant_country, "
+				. "clients.address as client_address, company_banks_detail.bank_name, company_banks_detail.aba, company_banks_detail.swit, company_banks_detail.iban,company_banks_detail.number as account,  "
 				. "clients.name client_name,DATE_FORMAT(sales.date_estimate_in, '%d/%m/%Y') as date_estimate_in,DATE_FORMAT(sales.date_out, '%d/%m/%Y') as date_out,DATE_FORMAT(date_sale, '%d/%m/%Y') as date_sale, DATE_FORMAT(sales.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(sales.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
             ->join("clients","LEFT JOIN clients on clients.id_client = sales.id_client")
 			->join("plants","LEFT JOIN plants on plants.id_plant = sales.id_plant_fact")
 			->join("country","LEFT JOIN country on country.id_country = plants.id_country")
+			->join("company_banks_detail","LEFT JOIN company_banks_detail on company_banks_detail.id = sales.id_company_bank")
             
 			->where("id_sale=?",$values['id_sale'])
 			->fetch();
@@ -298,6 +300,7 @@
 			->select("*, products.name as product_name, products_type.name as product_type_name")
 			->join("products","LEFT JOIN products on products.id_product = sales_products_detail.id_product")
 			->join("products_type","LEFT JOIN products_type on products_type.id_product_type = sales_products_detail.id_product_type")
+			
 			->where("id_sale=?",$values['id_sale']);
             return $q; 
                         

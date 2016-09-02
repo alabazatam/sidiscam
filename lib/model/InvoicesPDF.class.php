@@ -8,6 +8,7 @@
             $id_sale = $values['id_sale'];
             //echo $id_sale;die;
             $Sales = new Sales();
+			$Utilitarios = new Utilitarios();
             $sale_data = $Sales ->getSalesInvoiceById($values);
             $sale_date =  $sale_data['date_sale'];
             $id_country_out = $sale_data['id_country_out'];
@@ -16,6 +17,7 @@
             $id_country_in = $sale_data['id_country_in'];
             $id_port_in = $sale_data['id_port_in'];
             $date_estimate_in = $sale_data['date_estimate_in'];
+			$date_out = $sale_data['date_out'];
             $client_name = $sale_data['client_name'];
 			$client_address = $sale_data['client_address'];
 			$plant_name =  $sale_data['plant_name'];
@@ -23,6 +25,10 @@
 			$plant_address =  $sale_data['plant_address'];
 			$plant_country =  $sale_data['plant_country'];
 			$products_detail = $Sales->getSalesProductsDetail($values);
+			$bank_name = $sale_data['bank_name'];
+			$aba = $sale_data['aba'];
+			$swit = $sale_data['swit'];
+			$account = $sale_data['account'];
             
             ob_clean();
             // create new PDF document
@@ -216,24 +222,24 @@
 			. '<td style="text-align: left;" colspan=""><strong>Precinto#:</strong></td>'
 			. '<td style="text-align: left;" colspan=""><strong>Precinto</strong></td>'
 			. '<td style="text-align: right;"><strong>Bank:</strong></td>'
-			. '<td style="text-align: left;">Bank of America</td>'
+			. '<td style="text-align: left;">'.$bank_name.'</td>'
 			. '</tr>'
 			. '<tr>'
 			. '<td style="text-align: left;"><strong>ETD:</strong></td>'
-			. '<td style="text-align: left;"><strong>06/01/2016</strong></td>'
+			. '<td style="text-align: left;"><strong>'.$date_out.'</strong></td>'
 			. '<td style="text-align: right;"><strong>ABA#:</strong></td>'
-			. '<td style="text-align: left;">026009593</td>'
+			. '<td style="text-align: left;">'.$aba.'</td>'
 			. '</tr>'
 			. '<tr>'
 			. '<td style="text-align: left;"><strong>ETA:</strong></td>'
-			. '<td style="text-align: left;"><strong>06/03/2016</strong></td>'
+			. '<td style="text-align: left;"><strong>'.$date_estimate_in.'</strong></td>'
 			. '<td style="text-align: right;"><strong>Account#:</strong></td>'
-			. '<td style="text-align: left;">8980.7348.2252</td>'
+			. '<td style="text-align: left;">'.$account.'</td>'
 			. '</tr>'
 			. '<tr>'
 			. '<td style="text-align: left;" colspan="2"></td>'
 			. '<td style="text-align: right;"><strong>Swift#:</strong></td>'
-			. '<td style="text-align: left;">BOFAUS3N</td>'
+			. '<td style="text-align: left;">'.$swit.'</td>'
 			. '</tr>'
 			. '</table>';
 			$pdf->ln();
