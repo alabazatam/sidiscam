@@ -165,7 +165,9 @@ unset($values['PHPSESSID']);
 		case "select_client_address":
 			executeSelectClientAddress($values);	
 		break;	
-	
+		case "select_client_address2":
+			executeSelectClientAddress2($values);	
+		break;		
 	}
 	function executeStatusChanger($values = null)
 	{
@@ -566,5 +568,20 @@ function executeFarmsList($values = null)
 
 		require('select_clients_address.php');
 
-	}	
+	}
+	function executeSelectClientAddress2($values = null)
+	{
+		
+		$ClientsAddressDetail = new ClientsAddressDetail();
+		$clients_address_list = $ClientsAddressDetail ->getListAddressByClient($values);
+		if(isset($values['id_sale']) and $values['id_sale']!='')
+		{
+			$selected_clients_address = $ClientsAddressDetail ->getListClientsAddressBySale2($values);
+			
+		}
+		
+
+		require('select_clients_address2.php');
+
+	}		
 	

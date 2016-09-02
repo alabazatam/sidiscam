@@ -125,7 +125,7 @@ $(document).ready(function(){
 		selectPortsCountryOut();
 		selectPortsCountryIn();
 		
-		selectClientAddress();
+	refreshClientAddress();
 	<?php endif;?>
 	selectCompanyBank();
 	

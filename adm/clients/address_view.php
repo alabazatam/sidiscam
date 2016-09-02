@@ -10,7 +10,12 @@
 				<table id="address_details" class="table table-bordered" width='100%'>
 						<tr>
 							<th>País</th>
+							<th>Estado</th>
 							<th>Dirección</th>
+							<th>Código</th>
+							<th>Teléfono</th>
+							<th>Fax</th>
+							<th>Email</th>
 							<th>Acciones</th>
 						</tr>
 						<?php if(count($values['clients_address_detail'])>0):?>
@@ -18,7 +23,7 @@
 
 						<tr id='address_list_<?php echo $clients_address_detail['id'];?>'>
 							<td>
-								<select name='id_country[<?php echo $clients_address_detail['id']?>]' id='id_country_<?php echo $clients_address_detail['id']?>' onchange="updateClientsAddressDetail(<?php echo $clients_address_detail['id'];?>,'id_country_<?php echo $clients_address_detail['id'];?>','id_country')">
+								<select name='id_country[<?php echo $clients_address_detail['id']?>]' id='id_country_<?php echo $clients_address_detail['id']?>' onchange="updateClientsAddressDetail(<?php echo $clients_address_detail['id'];?>,'id_country_<?php echo $clients_address_detail['id'];?>','id_country')" class="form-control input-sm">
 									<option value=''>...</option>
 									<?php if(count($country_list)>0):?>
 										<?php foreach($country_list as $list):?>
@@ -28,12 +33,29 @@
 								</select>
 							</td>
 							<td>
-								<textarea name='address[<?php echo $clients_address_detail['id']?>]' id='address_<?php echo $clients_address_detail['id']?>' onchange="updateClientsAddressDetail(<?php echo $clients_address_detail['id'];?>,'address_<?php echo $clients_address_detail['id'];?>','address')"><?php echo $clients_address_detail['address']?></textarea>
+								<input type='text' value="<?php echo $clients_address_detail['state']?>" name='state[<?php echo $clients_address_detail['id']?>]' id='state_<?php echo $clients_address_detail['id']?>' size="20" autocomplete="off" onchange="updateClientsAddressDetail(<?php echo $clients_address_detail['id'];?>,'state_<?php echo $clients_address_detail['id'];?>','state')" class="form-control input-sm">
+							</td>
+							<td>
+								<textarea name='address[<?php echo $clients_address_detail['id']?>]' id='address_<?php echo $clients_address_detail['id']?>' onchange="updateClientsAddressDetail(<?php echo $clients_address_detail['id'];?>,'address_<?php echo $clients_address_detail['id'];?>','address')" class="form-control input-sm"><?php echo $clients_address_detail['address']?></textarea>
 								<!--<input type='text' value="<?php echo $clients_address_detail['address']?>" name='address[<?php echo $clients_address_detail['id']?>]' id='address_<?php echo $clients_address_detail['id']?>' size="80" autocomplete="off" onchange="updateClientsAddressDetail(<?php echo $clients_address_detail['id'];?>,'address_<?php echo $clients_address_detail['id'];?>','address')">-->
 							</td>
 							<td>
+								<input type='text' value="<?php echo $clients_address_detail['code']?>" name='code[<?php echo $clients_address_detail['id']?>]' id='code_<?php echo $clients_address_detail['id']?>' size="20" autocomplete="off" onchange="updateClientsAddressDetail(<?php echo $clients_address_detail['id'];?>,'code_<?php echo $clients_address_detail['id'];?>','code')" class="form-control input-sm">
+							</td>
+							<td>
+								<input type='text' value="<?php echo $clients_address_detail['tel']?>" name='tel[<?php echo $clients_address_detail['id']?>]' id='tel_<?php echo $clients_address_detail['id']?>' size="20" autocomplete="off" onchange="updateClientsAddressDetail(<?php echo $clients_address_detail['id'];?>,'tel_<?php echo $clients_address_detail['id'];?>','tel')" class="form-control input-sm">
+							</td>
+							<td>
+								<input type='text' value="<?php echo $clients_address_detail['fax']?>" name='fax[<?php echo $clients_address_detail['id']?>]' id='fax_<?php echo $clients_address_detail['id']?>' size="20" autocomplete="off" onchange="updateClientsAddressDetail(<?php echo $clients_address_detail['id'];?>,'fax_<?php echo $clients_address_detail['id'];?>','fax')" class="form-control input-sm">
+							</td>
+							<td>
+								<input type='text' value="<?php echo $clients_address_detail['email']?>" name='email[<?php echo $clients_address_detail['id']?>]' id='email_<?php echo $clients_address_detail['id']?>' size="30" autocomplete="off" onchange="updateClientsAddressDetail(<?php echo $clients_address_detail['id'];?>,'email_<?php echo $clients_address_detail['id'];?>','email')" class="form-control input-sm">
+							</td>
+							
+							<td>
 								<a onclick="deleteAddressDetail(<?php echo $clients_address_detail['id']?>)"  class="btn btn-danger">Eliminar</a>
 							</td>
+
 						</tr>
 							<?php endforeach;?>
 						<?php endif;?>

@@ -45,7 +45,7 @@
 							</div>
 							<div class="col-sm-4">
 								<label for="">Cliente <small class="text-danger">(*)</small></label>
-										<select name="id_client" id="id_client" class="form-control input-sm" onchange="selectClientAddress()">
+										<select name="id_client" id="id_client" class="form-control input-sm" onchange="refreshClientAddress()">
 											<option value="">Seleccione...</option>
 										<?php if(count($list_clients)>0): ?>
 											<?php foreach($list_clients as $list): ?>
@@ -145,15 +145,6 @@
 								<?php endif;?>
 							</div>
 							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
-									<label for="">Dirección de notificación</label>
-									<textarea class="form-control input-sm" id="notify_address" placeholder="" name="notify_address"><?php if(isset($values['notify_address'])) echo $values['notify_address']?></textarea>
-									<?php if(isset($values['errors']['notify_address']) and $values['errors']['notify_address']!=''):?>
-										<label class="alert alert-danger"><?php echo $values['errors']['notify_address']?></label>
-									<?php endif;?>
-								</div>
-							</div>
 <!--Fin otros datos de venta-->
 
 
@@ -202,6 +193,11 @@
 			}
 		});
 
+	}
+	function refreshClientAddress()
+	{
+		selectClientAddress();
+		selectClientAddress2();
 	}
 
 

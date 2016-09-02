@@ -101,7 +101,16 @@
 								<?php if(isset($values['errors']['id_client_address']) and $values['errors']['id_client_address']!=''):?>
 									<label class="alert alert-danger"><?php echo $values['errors']['id_client_address']?></label>
 								<?php endif;?>
-							</div>	
+							</div>
+							<div class="col-sm-12   col-md-12">
+								<label for="">Lugar de notificación <small class="text-danger">(*)</small></label>
+										<select name="id_client_address2" id="id_client_address2" class="form-control input-sm">
+											<option value="">Seleccione...</option>
+										</select>
+								<?php if(isset($values['errors']['id_client_address2']) and $values['errors']['id_client_address2']!=''):?>
+									<label class="alert alert-danger"><?php echo $values['errors']['id_client_address2']?></label>
+								<?php endif;?>
+							</div>
 					</div>
 
 
@@ -154,6 +163,23 @@ function selectPortsCountryIn() {
 			data: { action: "select_client_address", id_client: id_client , id_sale: id_sale },
 			success: function(html){
 				$('#id_client_address').html(html);
+				
+
+			}
+		});
+
+	}
+	function selectClientAddress2() {
+
+		var id_client = $('#id_client').val();
+		var id_sale = $('#id_sale').val();
+
+		$.ajax({
+			type: "GET",
+			url: '<?php echo full_url;?>/adm/ajax/index.php',
+			data: { action: "select_client_address2", id_client: id_client , id_sale: id_sale },
+			success: function(html){
+				$('#id_client_address2').html(html);
 				
 
 			}

@@ -23,13 +23,13 @@
 
 						<tr id='banks_list_<?php echo $clients_banks_details['id'];?>'>
 							<td>
-								<input type='text' value="<?php echo $clients_banks_details['bank_name']?>" name='bank_name[<?php echo $clients_banks_details['id']?>]' id='bank_name_<?php echo $clients_banks_details['id']?>' size="20" autocomplete="off" onchange="updateClientsBanksDetail(<?php echo $clients_banks_details['id'];?>,'bank_name_<?php echo $clients_banks_details['id'];?>','bank_name')">
+								<input type='text' value="<?php echo $clients_banks_details['bank_name']?>" name='bank_name[<?php echo $clients_banks_details['id']?>]' id='bank_name_<?php echo $clients_banks_details['id']?>' size="20" autocomplete="off" onchange="updateClientsBanksDetail(<?php echo $clients_banks_details['id'];?>,'bank_name_<?php echo $clients_banks_details['id'];?>','bank_name')" class="form-control input-sm">
 							</td>
 							<td>
-								<input type='text' value="<?php echo $clients_banks_details['number']?>" name='number[<?php echo $clients_banks_details['id']?>]' id='number_<?php echo $clients_banks_details['id']?>' size="20" autocomplete="off" onchange="updateClientsBanksDetail(<?php echo $clients_banks_details['id'];?>,'number_<?php echo $clients_banks_details['id'];?>','number')">
+								<input type='text' value="<?php echo $clients_banks_details['number']?>" name='number[<?php echo $clients_banks_details['id']?>]' id='number_<?php echo $clients_banks_details['id']?>' size="20" autocomplete="off" onchange="updateClientsBanksDetail(<?php echo $clients_banks_details['id'];?>,'number_<?php echo $clients_banks_details['id'];?>','number')" class="form-control input-sm">
 							</td>
 							<td>
-								<select name='id_country[<?php echo $clients_banks_details['id']?>]' id='id_country_<?php echo $clients_banks_details['id']?>' onchange="updateClientsBanksDetail(<?php echo $clients_banks_details['id'];?>,'id_country_<?php echo $clients_banks_details['id'];?>','id_country')">
+								<select name='id_country[<?php echo $clients_banks_details['id']?>]' id='id_country_<?php echo $clients_banks_details['id']?>' onchange="updateClientsBanksDetail(<?php echo $clients_banks_details['id'];?>,'id_country_<?php echo $clients_banks_details['id'];?>','id_country')" class="form-control input-sm">
 									<option value=''>...</option>
 									<?php if(count($country_list)>0):?>
 										<?php foreach($country_list as $list):?>
@@ -39,16 +39,16 @@
 								</select>
 							</td>
 							<td>
-								<input type='text' value="<?php echo $clients_banks_details['rif']?>" name='rif[<?php echo $clients_banks_details['id']?>]' id='rif_<?php echo $clients_banks_details['id']?>' size="20" autocomplete="off" onchange="updateClientsBanksDetail(<?php echo $clients_banks_details['id'];?>,'rif_<?php echo $clients_banks_details['id'];?>','rif')">
+								<input type='text' value="<?php echo $clients_banks_details['rif']?>" name='rif[<?php echo $clients_banks_details['id']?>]' id='rif_<?php echo $clients_banks_details['id']?>' size="20" autocomplete="off" onchange="updateClientsBanksDetail(<?php echo $clients_banks_details['id'];?>,'rif_<?php echo $clients_banks_details['id'];?>','rif')" class="form-control input-sm">
 							</td>
 							<td>
-								<input type='text' value="<?php echo $clients_banks_details['aba']?>" name='aba[<?php echo $clients_banks_details['id']?>]' id='aba_<?php echo $clients_banks_details['id']?>' size="20" autocomplete="off" onchange="updateClientsBanksDetail(<?php echo $clients_banks_details['id'];?>,'aba_<?php echo $clients_banks_details['id'];?>','aba')">
+								<input type='text' value="<?php echo $clients_banks_details['aba']?>" name='aba[<?php echo $clients_banks_details['id']?>]' id='aba_<?php echo $clients_banks_details['id']?>' size="20" autocomplete="off" onchange="updateClientsBanksDetail(<?php echo $clients_banks_details['id'];?>,'aba_<?php echo $clients_banks_details['id'];?>','aba')" class="form-control input-sm">
 							</td>
 							<td>
-								<input type='text' value="<?php echo $clients_banks_details['swit']?>" name='swit[<?php echo $clients_banks_details['id']?>]' id='swit_<?php echo $clients_banks_details['id']?>' size="20" autocomplete="off" onchange="updateClientsBanksDetail(<?php echo $clients_banks_details['id'];?>,'swit_<?php echo $clients_banks_details['id'];?>','swit')">
+								<input type='text' value="<?php echo $clients_banks_details['swit']?>" name='swit[<?php echo $clients_banks_details['id']?>]' id='swit_<?php echo $clients_banks_details['id']?>' size="20" autocomplete="off" onchange="updateClientsBanksDetail(<?php echo $clients_banks_details['id'];?>,'swit_<?php echo $clients_banks_details['id'];?>','swit')" class="form-control input-sm">
 							</td>
 							<td>
-								<input type='text' value="<?php echo $clients_banks_details['iban']?>" name='iban[<?php echo $clients_banks_details['id']?>]' id='iban_<?php echo $clients_banks_details['id']?>' size="20" autocomplete="off" onchange="updateClientsBanksDetail(<?php echo $clients_banks_details['id'];?>,'iban_<?php echo $clients_banks_details['id'];?>','iban')">
+								<input type='text' value="<?php echo $clients_banks_details['iban']?>" name='iban[<?php echo $clients_banks_details['id']?>]' id='iban_<?php echo $clients_banks_details['id']?>' size="20" autocomplete="off" onchange="updateClientsBanksDetail(<?php echo $clients_banks_details['id'];?>,'iban_<?php echo $clients_banks_details['id'];?>','iban')" class="form-control input-sm">
 							</td>
 							<td>
 								<a onclick="deleteBankDetail(<?php echo $clients_banks_details['id']?>)"  class="btn btn-danger">Eliminar</a>
