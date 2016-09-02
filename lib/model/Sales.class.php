@@ -281,10 +281,13 @@
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->sales
 			->select("*,plants.name as plant_name, plants.rif as plant_rif,plants.address as plant_address,country.name as plant_country, "
-				. "clients.address as client_address, company_banks_detail.bank_name, company_banks_detail.aba, company_banks_detail.swit, company_banks_detail.iban,company_banks_detail.number as account,  "
+				. "clients.address as client_address, company_banks_detail.bank_name, company_banks_detail.aba, company_banks_detail.swit, company_banks_detail.iban,company_banks_detail.number as account, "
+				. "shipping_lines.name as shipping_line_name, "
 				. "clients.name client_name,DATE_FORMAT(sales.date_estimate_in, '%d/%m/%Y') as date_estimate_in,DATE_FORMAT(sales.date_out, '%d/%m/%Y') as date_out,DATE_FORMAT(date_sale, '%d/%m/%Y') as date_sale, DATE_FORMAT(sales.date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(sales.date_updated, '%d/%m/%Y %H:%i:%s') as date_updated")
             ->join("clients","LEFT JOIN clients on clients.id_client = sales.id_client")
+			->join("shipping_lines","LEFT JOIN shipping_lines on shipping_lines.id_shipping_lines = sales.id_shipping_lines")
 			->join("plants","LEFT JOIN plants on plants.id_plant = sales.id_plant_fact")
+
 			->join("country","LEFT JOIN country on country.id_country = plants.id_country")
 			->join("company_banks_detail","LEFT JOIN company_banks_detail on company_banks_detail.id = sales.id_company_bank")
             

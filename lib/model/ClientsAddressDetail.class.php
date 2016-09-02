@@ -91,5 +91,24 @@
 			return $q; 				
 			
 		}
+		public function getListClientsAddressBySale2($values = null){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->sales
+			->select("*,sales.id_client_address2")
+			->where('id_sale=?',$values['id_sale'])
+			->fetch();
+			return $q; 				
+			
+		}
+		public function getAddressBySale($id_client_address2){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->clients_address_detail
+			->select("*,country.name as country_name")
+			->join('country',"LEFT JOIN country ON country.id_country = clients_address_detail.id_country")
+			->where("clients_address_detail.id=?",$id_client_address2)
+			->fetch();	
+			return $q; 				
+			
+		}
 	}
 	

@@ -9,6 +9,8 @@
             //echo $id_sale;die;
             $Sales = new Sales();
 			$Utilitarios = new Utilitarios();
+			$Clients = new Clients();
+			$ClientsAddressDetail = new ClientsAddressDetail();
             $sale_data = $Sales ->getSalesInvoiceById($values);
             $sale_date =  $sale_data['date_sale'];
             $id_country_out = $sale_data['id_country_out'];
@@ -18,18 +20,36 @@
             $id_port_in = $sale_data['id_port_in'];
             $date_estimate_in = $sale_data['date_estimate_in'];
 			$date_out = $sale_data['date_out'];
-            $client_name = $sale_data['client_name'];
+            $client_name = strtoupper($sale_data['client_name']);
 			$client_address = $sale_data['client_address'];
 			$plant_name =  $sale_data['plant_name'];
 			$plant_rif =  $sale_data['plant_rif'];
 			$plant_address =  $sale_data['plant_address'];
 			$plant_country =  $sale_data['plant_country'];
+			$shipping_line_name = $sale_data['shipping_line_name'];
 			$products_detail = $Sales->getSalesProductsDetail($values);
 			$bank_name = $sale_data['bank_name'];
 			$aba = $sale_data['aba'];
 			$swit = $sale_data['swit'];
 			$account = $sale_data['account'];
-            
+			$address1 = $ClientsAddressDetail->getAddressBySale($sale_data['id_client_address2']);
+			$notify_address1 = $address1['address'];
+			$country_address1 = $address1['country_name'];
+			$state_address1 = $address1['state'];
+			$code_address1 = $address1['code'];
+			$tel_address1 = $address1['tel'];
+			$email_address1 = $address1['email'];
+			$fax_address1 = $address1['fax'];
+
+            $address2 = $ClientsAddressDetail->getAddressBySale($sale_data['id_client_address2']);
+			$notify_address2 = $address2['address'];
+			$country_address2 = $address2['country_name'];
+			$state_address2 = $address2['state'];
+			$code_address2 = $address2['code'];
+			$tel_address2 = $address2['tel'];
+			$email_address2 = $address2['email'];
+			$fax_address2 = $address2['fax'];
+			//echo $notify_address;die;
             ob_clean();
             // create new PDF document
             $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -200,9 +220,9 @@
 			. '</tr>'
 			. '<tr>'
 			. '<td style="text-align: left;"><strong>Destination:</strong></td>'
-			. '<td style="text-align: left;"><strong>Haiphong Viet Nam:</strong></td>'
+			. '<td style="text-align: left;"><strong>'.$state_address1.' '.$country_address1.':</strong></td>'
 			. '<td style="text-align: right;"><strong>Address:</strong></td>'
-			. '<td style="text-align: left;">9955 NW, 116th Way, Suite 8, Miami FL 33178</td>'
+			. '<td style="text-align: left;">'.$notify_address1.'</td>'
 			. '</tr>'
 			. '<tr>'
 			. '<td style="text-align: left;" colspan="2"><strong>Product Packed in Venezuela</strong></td>'
@@ -215,7 +235,7 @@
 			. '</tr>'
 			. '<tr>'
 			. '<td style="text-align: left;" colspan=""><strong>Shipping Line:</strong></td>'
-			. '<td style="text-align: left;" colspan=""><strong>Linea naviera</strong></td>'
+			. '<td style="text-align: left;" colspan=""><strong>'.$shipping_line_name.'</strong></td>'
 			. '<td style="text-align: right;" colspan="2">&nbsp;</td>'
 			. '</tr>'
 			. '<tr>'
@@ -286,19 +306,19 @@
 			//BL data
 			$html = '<table width="80%" >'
 				. '<tr>'
-				. '<td style="text-align: left;"><strong>BL datas:</strong></td>'
-				. '<td style="text-align: left;"><strong></strong></td>'
-				. '<td style="text-align: left;"><strong></strong></td>'
+				. '<td style="text-align: left;" width="10%"><strong>BL datas:</strong></td>'
+				. '<td style="text-align: left;" width="20%"><strong></strong></td>'
+				. '<td style="text-align: left;" width="70%"><strong></strong></td>'
 				. '</tr>'
 				. '<tr>'
 				. '<td style="text-align: left;"><strong></strong></td>'
 				. '<td style="text-align: left;"><strong>CONSIGNEE:</strong></td>'
-				. '<td style="text-align: left;"><strong>GOLDEN STAR TRADING AND SHIPPING INVESTMENT JOINT STOCK COMPANY</strong></td>'
+				. '<td style="text-align: left;"><strong>'.$client_name."<br>".$notify_address1."<br>".$state_address1."<br>".$country_address1.'<br><label style="color: red;">CODE: '.$code_address1."</label><br>Tel: +".$tel_address1."&nbsp;&nbsp;"."Fax: +".$fax_address1."<br>"."Email: ".$email_address1.'</strong></td>'
 				. '</tr>'
 				. '<tr>'
 				. '<td style="text-align: left;"><strong></strong></td>'
 				. '<td style="text-align: left;"><strong>NOTIFY:</strong></td>'
-				. '<td style="text-align: left;"><strong>GOLDEN STAR TRADING AND SHIPPING INVESTMENT JOINT STOCK COMPANY</strong></td>'
+				. '<td style="text-align: left;"><strong>'.$client_name."<br>".$notify_address2."<br>".$state_address2."<br>".$country_address2.'<br><label style="color: red;">CODE: '.$code_address2."</label><br>Tel: +".$tel_address2."&nbsp;&nbsp;"."Fax: +".$fax_address2."<br>"."Email: ".$email_address2.'</strong></td>'
 				. '</tr>'
 				. '</table>';
 			
