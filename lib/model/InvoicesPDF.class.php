@@ -5,8 +5,8 @@
         
         function generate1($values)
         {
+            ob_start();
             $id_sale = $values['id_sale'];
-            //echo $id_sale;die;
             $Sales = new Sales();
 			$Utilitarios = new Utilitarios();
 			$Clients = new Clients();
@@ -21,6 +21,7 @@
             $date_estimate_in = $sale_data['date_estimate_in'];
 			$date_out = $sale_data['date_out'];
 			$company_name = $sale_data['company_name'];
+                        $company_billing = $sale_data['company_billing'];
             $client_name = strtoupper($sale_data['client_name']);
 			$client_address = $sale_data['client_address'];
 			$plant_name =  $sale_data['plant_name'];
@@ -30,8 +31,8 @@
 			$plant_address =  $sale_data['plant_address'];
 			$plant_country =  $sale_data['plant_country'];
 			$shipping_line_name = $sale_data['shipping_line_name'];
-			$precinto_number = $sale_data['precinto_number'];
-			$container_number = $sale_data['container_number'];
+			$precinto_number = "";
+			$container_number = "";
 			$products_detail = $Sales->getSalesProductsDetail($values);
 			$bank_name = $sale_data['bank_name'];
 			$aba = $sale_data['aba'];
@@ -54,8 +55,8 @@
 			$tel_address2 = $address2['tel'];
 			$email_address2 = $address2['email'];
 			$fax_address2 = $address2['fax'];
-			//echo $notify_address;die;
-            ob_clean();
+			//echo $company_billing;die;
+            //ob_clean();
             // create new PDF document
             $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
             // set document information
@@ -180,20 +181,33 @@
 				. '<th style="text-align: center;" width="14%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px"><strong>Amount ($)</strong></th>'
 			. '</tr>';
 		
+                $i = 0;
 		foreach($products_detail as $products)
 		{
+                    
+                if($i == 0)
+                {
+                    $precinto_number = $precinto_number."".$products['precinto'];
+                    $container_number = $container_number."".$products['number'];
+                }else
+                {
+                    $precinto_number = $precinto_number.",".$products['precinto'];
+                    $container_number = $container_number.",".$products['number'];
+                }
+                
 		$total_amount+= $products['amount'];
 		$total_cases+= $products['cases'];
 		$total_quantity+= $products['quantity'];
 		$html.='<tr>'
-				. '<td style="border-right-width: 1px;">'.$products['number'].'</td>'
+				. '<td style="border-right-width: 1px;"></td>'
 				. '<td style="border-right-width: 1px;">'.$products['product_name']." ".$products['product_type_name'].'</td>'
 				. '<td style="text-align: right;border-right-width: 1px;">'.$products['cases'].'</td>'
 				. '<td style="text-align: center;border-right-width: 1px;">'.$products['packing'].'</td>'
 				. '<td style="text-align: center;border-right-width: 1px;">'.$products['quantity'].' x '.$products['pack'].' Kg</td>'
 				. '<td style="text-align: right;border-right-width: 1px;">$&nbsp;&nbsp;&nbsp;'.$products['rate'].'</td>'
 				. '<td style="text-align: right;border-right-width: 1px;">$&nbsp;&nbsp;&nbsp;'.$products['amount'].'</td>'
-			. '</tr>';			
+			. '</tr>';
+                $i++;
 		}
 		$html.='<tr>'
 				. '<td style="border-right-width: 1px;">&nbsp;</td>'
@@ -227,7 +241,7 @@
 			. '<td style="text-align: left;"><strong>Destination:</strong></td>'
 			. '<td style="text-align: left;"><strong> '.$state_address1.' '.$country_address1.'</strong></td>'
 			. '<td style="text-align: right;"><strong>Address: </strong></td>'
-			. '<td style="text-align: left;"> '.$notify_address1.'</td>'
+			. '<td style="text-align: left;"> '.$company_billing.'</td>'
 			. '</tr>'
 			. '<tr>'
 			. '<td style="text-align: left;" colspan="2"><strong>Product Packed in Venezuela</strong></td>'
@@ -235,19 +249,25 @@
 			. '</tr>'
 			. '<tr>'
 			. '<td style="text-align: left;" colspan=""><strong>Container No: </strong></td>'
-			. '<td style="text-align: left;" colspan=""><strong>'.$container_number.'</strong></td>'
-			. '<td style="text-align: right;" colspan="2">&nbsp;</td>'
+			. '<td style="text-align: left;" colspan="2"><strong>'.$container_number.'</strong></td>'
+			. '<td style="text-align: left;" colspan=""></td>'
+			. '</tr>'
+			. '<tr>'
+			. '<td style="text-align: left;" colspan=""><strong>Precinto#: </strong></td>'
+			. '<td style="text-align: left;" colspan="2"><strong>'.$precinto_number.'</strong></td>'
+			. '<td style="text-align: left;" colspan=""></td>'
+
+                        . '</tr>'
+			. '<tr>'
+			. '<td style="text-align: left;" colspan=""></td>'
+			. '<td style="text-align: left;" colspan=""></td>'
+			. '<td style="text-align: right;"><strong>Bank: </strong></td>'
+			. '<td style="text-align: left;"> '.$bank_name.'</td>'
 			. '</tr>'
 			. '<tr>'
 			. '<td style="text-align: left;" colspan=""><strong>Shipping Line: </strong></td>'
 			. '<td style="text-align: left;" colspan=""><strong> '.$shipping_line_name.'</strong></td>'
 			. '<td style="text-align: right;" colspan="2">&nbsp;</td>'
-			. '</tr>'
-			. '<tr>'
-			. '<td style="text-align: left;" colspan=""><strong>Precinto#: </strong></td>'
-			. '<td style="text-align: left;" colspan=""><strong>'.$precinto_number.'</strong></td>'
-			. '<td style="text-align: right;"><strong>Bank: </strong></td>'
-			. '<td style="text-align: left;"> '.$bank_name.'</td>'
 			. '</tr>'
 			. '<tr>'
 			. '<td style="text-align: left;"><strong>ETD:</strong></td>'

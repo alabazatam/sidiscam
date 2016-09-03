@@ -1,5 +1,6 @@
 <?php include("../../autoload.php");?>	
 <?php include("../security/security.php");?>
+<?php error_reporting(1);?>
 
 <?php $action = "";
 if(isset($_REQUEST["action"]) and $_REQUEST["action"]!=""){

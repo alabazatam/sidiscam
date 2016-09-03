@@ -1,6 +1,6 @@
 /*
-SQLyog Community v12.15 (64 bit)
-MySQL - 5.5.49-0ubuntu0.14.04.1 : Database - intelign_sidiscam
+SQLyog Community v12.2.1 (64 bit)
+MySQL - 5.7.13-0ubuntu0.16.04.2 : Database - intelign_sidiscam
 *********************************************************************
 */
 
@@ -13,6 +13,8 @@ MySQL - 5.5.49-0ubuntu0.14.04.1 : Database - intelign_sidiscam
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`intelign_sidiscam` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+USE `intelign_sidiscam`;
 
 /*Table structure for table `bank` */
 
@@ -223,7 +225,7 @@ insert  into `clients_address_detail`(`id`,`id_client`,`id_country`,`state`,`add
 (3,1,65,'HAIPHONG CITY','direccion3','31/BCT(MS-TPDL)','84 313 652 520','84-31 3652521','deandrademarcos@gmail.com',1,'2016-06-09 23:15:32','2016-06-09 23:15:32'),
 (4,1,236,'HAIPHONG CITY','direccion4','31/BCT(MS-TPDL)','84 313 652 520','84-31 3652521','deandrademarcos@gmail.com',1,'2016-06-09 23:21:11','2016-06-09 23:21:11'),
 (6,2,71,NULL,'France avenue',NULL,NULL,NULL,NULL,1,'2016-06-11 11:55:26','2016-06-11 11:55:26'),
-(9,4,236,NULL,'N°83 MAY TO, LAC VIEN WARD, NGO QUYEN DISTRICT HAIPHONG CITY - VIET NAM',NULL,NULL,NULL,NULL,1,'2016-06-23 11:57:58','2016-06-23 11:57:58');
+(9,4,236,'HAIPHONG CITY','N°83 MAY TO, LAC VIEN WARD, NGO QUYEN DISTRICT HAIPHONG CITY - VIET NAM',NULL,NULL,NULL,NULL,1,'2016-06-23 11:57:58','2016-06-23 11:57:58');
 
 /*Table structure for table `clients_banks_detail` */
 
@@ -731,7 +733,7 @@ CREATE TABLE `incoterms` (
 /*Data for the table `incoterms` */
 
 insert  into `incoterms`(`id_incoterm`,`name`,`abr`,`detail`,`status`,`date_created`,`date_updated`) values 
-(1,'Cost and FReight','CFR','Costo y Flete. El vendedor se hace cargo de todos los costos y el transporte principal, hasta que la mercancía llegue al puerto de destino. El riesgo se transfiere al comprador en el momento que la mercancía se encuentra cargada en el buque, en el país de origen',1,'2016-04-30 12:39:20','2016-09-02 22:43:16'),
+(1,'Cost and Freight','CFR','Costo y Flete. El vendedor se hace cargo de todos los costos y el transporte principal, hasta que la mercancía llegue al puerto de destino. El riesgo se transfiere al comprador en el momento que la mercancía se encuentra cargada en el buque, en el país de origen',1,'2016-04-30 12:39:20','2016-09-03 11:39:44'),
 (2,'Cost Insurance and Freight','CIF','Costo Seguro y Flete. El vendedor se hace cargo de todos los costos, incluidos el transporte principal y el seguro, hasta que la mercancía llegue al puerto de destino. Aunque el seguro lo ha contratado el vendedor, el beneficiario del seguro es el comprador',1,'2016-04-30 12:39:20','2016-09-02 22:43:24'),
 (3,'Carriage and Insurance Paid to','CIP','Porte y Seguro Pagado Hasta. El vendedor se hace cargo de todos los costos hasta que la mercancía llegue al punto convenido en el país de destino. El riesgo se transfiere al comprador en el momento de la entrega de la mercancía al transportista dentro del país de origen',1,'2016-04-30 12:39:20','2016-05-08 12:13:32'),
 (4,'Carriage Paid To','CPT','Porte Pagado Hasta. El vendedor asume todos los costos, incluido el transporte principal, hasta que la mercancía llegue al punto convenido en el país de destino. Sin embargo, el riesgo se transfiere al comprador en el momento de la entrega de la mercancía al transportista dentro del país de origen',1,'2016-04-30 12:39:20','2016-05-08 12:13:32'),
@@ -1761,7 +1763,7 @@ CREATE TABLE `sales` (
 /*Data for the table `sales` */
 
 insert  into `sales`(`id_sale`,`id_type_destiny`,`id_company`,`id_client`,`id_shipping_lines`,`id_company_bank`,`id_plant_fact`,`id_farm_fact`,`date_sale`,`id_country_out`,`id_port_out`,`id_country_in`,`id_port_in`,`date_out`,`date_estimate_in`,`date_in_real`,`date_out_real`,`observacion_seguimiento`,`follow_amount`,`follow_update`,`follow_status`,`id_company_address`,`id_client_address`,`id_client_address2`,`terms`,`comision`,`id_bank_in`,`id_incoterm`,`note_sale`,`status`,`date_created`,`date_updated`) values 
-(1,2,1,1,2,12,3,1,'2016-06-11',1,1,65,131,'2016-06-01','2016-06-11','2016-06-24','2016-09-08','observacion de seguimiento','5000.00','2016-09-01','Factura Pagada',NULL,3,4,'40 000 usd anticipated against proforma Sold 10 days before arrival to destination port','50',0,1,'observacion de la venta',0,'2016-06-10 10:12:51','2016-09-03 08:54:01'),
+(1,2,1,4,2,12,3,1,'2016-06-11',1,1,65,131,'2016-06-01','2016-06-11','2016-06-24','2016-09-08','observacion de seguimiento','5000.00','2016-09-01','Factura Pagada',2,9,9,'40 000 usd anticipated against proforma Sold 10 days before arrival to destination port','50',0,1,'observacion de la venta',0,'2016-06-10 10:12:51','2016-09-03 11:40:17'),
 (2,2,1,2,1,12,NULL,NULL,'2016-11-25',1,1,1,1,'2016-06-22','2016-06-02',NULL,NULL,NULL,NULL,NULL,NULL,NULL,6,NULL,'terminos','comision',0,2,'aaaaaaaaaaaaaaaaaaaaaaaaaaa',0,'2016-06-10 22:53:00','2016-06-18 13:59:37'),
 (3,2,1,2,1,12,1,NULL,'2016-06-04',1,1,1,1,'2016-06-11','2016-06-11',NULL,NULL,NULL,NULL,NULL,NULL,NULL,6,NULL,'hola','5%',0,11,'observacion',1,'2016-06-11 23:42:48','2016-09-01 12:14:24'),
 (4,2,1,1,2,12,NULL,NULL,'2016-06-18',1,1,65,34,'2016-06-18','2016-06-18',NULL,NULL,NULL,NULL,NULL,NULL,NULL,2,NULL,'qqqqqqqqqqq','qqq',NULL,3,'qqqqqqq',0,'2016-06-18 16:41:07','2016-06-18 16:59:56'),
