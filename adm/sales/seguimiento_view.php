@@ -1,17 +1,30 @@
 						<div class="form-group">
 							<div class="col-sm-6  col-md-6">
 								<label for="">Fecha efectiva de salida <small class="text-danger">(*)</small></label>
+								<input id = "datetimepicker5" type="date" autocomplete="off" class="form-control input-sm datetimepicker1" id="" placeholder="" name="date_out_real" value="<?php if(isset($values['date_out_real'])) echo $values['date_out_real']?>">
+								<?php if(isset($values['errors']['date_out_real']) and $values['errors']['date_out_real']!=''):?>
+									<label class="alert alert-danger"><?php echo $values['errors']['date_out_real']?></label>
+								<?php endif;?>
+							</div>
+							<div class="col-sm-6  col-md-6">
+								<label for="">Fecha efectiva de llegada <small class="text-danger">(*)</small></label>
 								<input id = "datetimepicker4" type="date" autocomplete="off" class="form-control input-sm datetimepicker1" id="" placeholder="" name="date_in_real" value="<?php if(isset($values['date_in_real'])) echo $values['date_in_real']?>">
 								<?php if(isset($values['errors']['date_in_real']) and $values['errors']['date_in_real']!=''):?>
 									<label class="alert alert-danger"><?php echo $values['errors']['date_in_real']?></label>
 								<?php endif;?>
 							</div>
-							<div class="col-sm-6  col-md-6">
-								<label for="">Fecha efectiva de llegada <small class="text-danger">(*)</small></label>
-								<input id = "datetimepicker5" type="date" autocomplete="off" class="form-control input-sm datetimepicker1" id="" placeholder="" name="date_out_real" value="<?php if(isset($values['date_out_real'])) echo $values['date_out_real']?>">
-								<?php if(isset($values['errors']['date_out_real']) and $values['errors']['date_out_real']!=''):?>
-									<label class="alert alert-danger"><?php echo $values['errors']['date_out_real']?></label>
-								<?php endif;?>
+
+							<div class="col-sm-4  col-md-4">
+								<label for="">Días de retraso en salida</label>
+								<div class="alert alert-info"><?php if(isset($values['retraso_salida']) and $values['retraso_salida']>0) $retraso_salida= $values['retraso_salida']; else $retraso_salida = "0"; echo $retraso_salida;?></div>
+							</div>
+							<div class="col-sm-4 col-md-4">
+								<label for="">Días de retraso en llegada</label>
+								<div class="alert alert-info"><?php if(isset($values['retraso_llegada']) and $values['retraso_llegada']>0) $retraso_llegada = $values['retraso_llegada']; else $retraso_llegada = "0"; echo $retraso_llegada;?></div>
+							</div>
+							<div class="col-sm-4 col-md-4">
+								<label for="">Total días de retraso</label>
+								<div class="alert alert-info"><?php echo $retraso_llegada + $retraso_salida;?></div>
 							</div>
 							<div class="col-sm-12  col-md-12">
 								<label for="">Observación <small class="text-danger">(*)</small></label>
@@ -40,7 +53,7 @@
 									<label class="alert alert-danger"><?php echo $values['errors']['follow_amount']?></label>
 								<?php endif;?>
 							</div>
-							<div class="col-sm-6  col-md-6">
+							<div class="col-sm-  col-md-6">
 								<label for="">Fecha de actualización de monto </label>
 								<input id = "datetimepicker6" type="date" autocomplete="off" class="form-control input-sm datetimepicker1" id="" placeholder="" name="follow_update" value="<?php if(isset($values['follow_update'])) echo $values['follow_update']?>">
 								<?php if(isset($values['errors']['follow_update']) and $values['errors']['follow_update']!=''):?>

@@ -99,8 +99,14 @@
 		public function getSalesById($values){
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->sales
-			->select("*,DATE_FORMAT(date_estimate_in, '%d/%m/%Y') as date_estimate_in,DATE_FORMAT(date_out, '%d/%m/%Y') as date_out,DATE_FORMAT(date_sale, '%d/%m/%Y') as date_sale, DATE_FORMAT(date_created, '%d/%m/%Y %H:%i:%s') as date_created,DATE_FORMAT(date_updated, '%d/%m/%Y %H:%i:%s') as date_updated,DATE_FORMAT(date_in_real, '%d/%m/%Y') as date_in_real,DATE_FORMAT(date_out_real, '%d/%m/%Y') as date_out_real,DATE_FORMAT(follow_update, '%d/%m/%Y') as follow_update")
-			->where("id_sale=?",$values['id_sale'])->fetch();
+			->select("*,DATE_FORMAT(date_estimate_in, '%d/%m/%Y') as date_estimate_in,DATE_FORMAT(date_out, '%d/%m/%Y') as date_out,"
+				. "DATE_FORMAT(date_sale, '%d/%m/%Y') as date_sale, DATE_FORMAT(date_created, '%d/%m/%Y %H:%i:%s') as date_created,"
+				. "DATE_FORMAT(date_updated, '%d/%m/%Y %H:%i:%s') as date_updated,DATE_FORMAT(date_in_real, '%d/%m/%Y') as date_in_real,"
+				. "DATE_FORMAT(date_out_real, '%d/%m/%Y') as date_out_real,DATE_FORMAT(follow_update, '%d/%m/%Y') as follow_update,"
+				. "DATEDIFF(date_out_real,date_out) as retraso_salida, DATEDIFF(date_in_real,date_estimate_in) as retraso_llegada")
+			->where("id_sale=?",$values['id_sale'])
+			->fetch();
+			//echo $q;die;
 			return $q; 				
 			
 		}

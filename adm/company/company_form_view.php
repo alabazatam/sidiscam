@@ -8,7 +8,11 @@
 		if(isset($values['id_company']) and $values['id_company']!=''):	
 		$CompanyBanksDetail = new CompanyBanksDetail();
 		$values['company_banks_detail'] = $CompanyBanksDetail->getCompanyListBanksDetailByCompany($values['id_company']);
+
+		$CompanyAddressDetail = new CompanyAddressDetail();
+		$values['company_address_detail'] = $CompanyAddressDetail->getCompanyListAddressDetailByCompany($values['id_company']);	
 		endif;
+
 ?>
 <div class="container">
 <h1 class="text-center">Compañias</h1>
@@ -21,6 +25,7 @@
     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Detalle</a></li>
     <?php if(isset($values['id_company']) and $values['id_company']!=''):?>
 	<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Cuentas bancarias</a></li>
+	<li role="presentation"><a href="#address" aria-controls="address" role="tab" data-toggle="tab">Direcciones</a></li>
 	<?php endif;?>
 	
 	
@@ -34,6 +39,9 @@
 	<?php if(isset($values['id_company']) and $values['id_company']!=''):?>
 	  <div role="tabpanel" class="tab-pane" id="profile">
 		  <?php include('banks_view.php');?>
+	  </div>
+	  <div role="tabpanel" class="tab-pane" id="address">
+		  <?php include('address_view.php');?>
 	  </div>
 	<?php endif;?>
   </div>

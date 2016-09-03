@@ -87,7 +87,7 @@ unset($values['PHPSESSID']);
 		case "update_bank":
 			executeUpdateBank($values);	
 		break;		
-	
+		//clients
 		case "address_list":
 			executeAddressList($values);	
 		break;
@@ -100,7 +100,20 @@ unset($values['PHPSESSID']);
 		case "update_address":
 			executeUpdateAddress($values);	
 		break;	
+		//comopany
 
+		case "address_list_company":
+			executeAddressListCompany($values);	
+		break;
+		case "add_address_company":
+			executeAddressCompany($values);	
+		break;
+		case "delete_address_company":
+			executeDeleteAddressCompany($values);	
+		break;
+		case "update_address_company":
+			executeUpdateAddressCompany($values);	
+		break;
 
 		case "company_banks_list":
 			executeCompanyBanksList($values);	
@@ -167,7 +180,10 @@ unset($values['PHPSESSID']);
 		break;	
 		case "select_client_address2":
 			executeSelectClientAddress2($values);	
-		break;		
+		break;
+		case "select_company_address":
+			executeSelectCompanyAddress($values);	
+		break;
 	}
 	function executeStatusChanger($values = null)
 	{
@@ -427,6 +443,33 @@ function executeFarmsList($values = null)
 		$ClientsAddressDetail ->updateClientsAddressDetail($values);
 
 	}
+		/***********Address company*****/
+	
+	function executeAddressListCompany($values = null)
+	{
+		$CompanyAddressDetail = new CompanyAddressDetail();
+		$values_save['id_company'] = $values['id_company']; 
+		$values_save['status'] = 1; 
+		$values['id'] = $CompanyAddressDetail->saveCompanyAddressDetail($values_save);		
+		
+
+		require('address_list_company.php');
+
+	}
+	function executeDeleteAddressCompany($values = null)
+	{
+		
+		$CompanyAddressDetail = new CompanyAddressDetail();
+		$CompanyAddressDetail->deleteCompanyAddressDetail($values['id']);
+
+	}
+		function executeUpdateAddressCompany($values = null)
+	{
+		$CompanyAddressDetail = new CompanyAddressDetail();
+		$CompanyAddressDetail ->updateCompanyAddressDetail($values);
+
+	}
+
 
 		/***********Banks company*****/
 	
@@ -583,5 +626,20 @@ function executeFarmsList($values = null)
 
 		require('select_clients_address2.php');
 
-	}		
+	}
+	function executeSelectCompanyAddress($values = null)
+	{
+		
+		$CompanyAddressDetail = new CompanyAddressDetail();
+		$company_address_list = $CompanyAddressDetail ->getListAddressByCompany($values);
+		if(isset($values['id_sale']) and $values['id_sale']!='')
+		{
+			$selected_company_address = $CompanyAddressDetail ->getListCompanyAddressBySale($values);
+			
+		}
+		
+
+		require('select_company_address.php');
+
+	}
 	

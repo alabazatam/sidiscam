@@ -111,6 +111,15 @@
 									<label class="alert alert-danger"><?php echo $values['errors']['id_client_address2']?></label>
 								<?php endif;?>
 							</div>
+							<div class="col-sm-12   col-md-12">
+								<label for="">Dirección de facturación <small class="text-danger">(*)</small></label>
+										<select name="id_company_address" id="id_company_address" class="form-control input-sm">
+											<option value="">Seleccione...</option>
+										</select>
+								<?php if(isset($values['errors']['id_company_address']) and $values['errors']['id_company_address']!=''):?>
+									<label class="alert alert-danger"><?php echo $values['errors']['id_company_address']?></label>
+								<?php endif;?>
+							</div>
 					</div>
 
 
@@ -180,6 +189,23 @@ function selectPortsCountryIn() {
 			data: { action: "select_client_address2", id_client: id_client , id_sale: id_sale },
 			success: function(html){
 				$('#id_client_address2').html(html);
+				
+
+			}
+		});
+
+	}
+	function selectCompanyAddress() {
+
+		var id_company = $('#id_company').val();
+		var id_sale = $('#id_sale').val();
+
+		$.ajax({
+			type: "GET",
+			url: '<?php echo full_url;?>/adm/ajax/index.php',
+			data: { action: "select_company_address", id_company: id_company , id_sale: id_sale },
+			success: function(html){
+				$('#id_company_address').html(html);
 				
 
 			}

@@ -20,6 +20,7 @@
             $id_port_in = $sale_data['id_port_in'];
             $date_estimate_in = $sale_data['date_estimate_in'];
 			$date_out = $sale_data['date_out'];
+			$company_name = $sale_data['company_name'];
             $client_name = strtoupper($sale_data['client_name']);
 			$client_address = $sale_data['client_address'];
 			$plant_name =  $sale_data['plant_name'];
@@ -211,7 +212,7 @@
 		//cuentas bancarios y otros
 		$html = '<table border="0" width="100%">'
 			. '<tr>'
-			. '<td><strong>Carga #5</strong></td>'
+			. '<td>&nbsp;</td>'
 			. '<td>&nbsp;</td>'
 			. '<td>&nbsp;</td>'
 			. '<td style="text-align: right;"><strong>Make All Checks payable to:</strong></td>'
@@ -220,11 +221,11 @@
 			. '<td>&nbsp;</td>'
 			. '<td>&nbsp;</td>'
 			. '<td style="text-align: right;"><strong>Beneficiary:</strong></td>'
-			. '<td style="text-align: left;"><strong>Coseinca Trading Corp.</strong></td>'
+			. '<td style="text-align: left;"><strong> '.$company_name.'</strong></td>'
 			. '</tr>'
 			. '<tr>'
 			. '<td style="text-align: left;"><strong>Destination:</strong></td>'
-			. '<td style="text-align: left;"><strong>'.$state_address1.' '.$country_address1.'</strong></td>'
+			. '<td style="text-align: left;"><strong> '.$state_address1.' '.$country_address1.'</strong></td>'
 			. '<td style="text-align: right;"><strong>Address: </strong></td>'
 			. '<td style="text-align: left;"> '.$notify_address1.'</td>'
 			. '</tr>'

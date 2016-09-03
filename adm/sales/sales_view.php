@@ -165,22 +165,6 @@
 								<?php endif;?>
 							</div>
 							</div>
-							<div class="form-group">
-							<div class="col-sm-6">
-								<label for="">Precinto# <small class="text-danger">(*)</small></label>
-								<input type="text" maxlength="30"  class="form-control input-sm" name="precinto_number" value="<?php if(isset($values['precinto_number'])) echo $values['precinto_number']?>">
-								<?php if(isset($values['errors']['precinto_number']) and $values['errors']['precinto_number']!=''):?>
-									<label class="alert alert-danger"><?php echo $values['errors']['precinto_number']?></label>
-								<?php endif;?>
-							</div>
-							<div class="col-sm-6">
-								<label for="">Container# <small class="text-danger">(*)</small></label>
-								<input type="text" maxlength="30" class="form-control input-sm" name="container_number" value="<?php if(isset($values['container_number'])) echo $values['container_number']?>">
-								<?php if(isset($values['errors']['container_number']) and $values['errors']['container_number']!=''):?>
-									<label class="alert alert-danger"><?php echo $values['errors']['container_number']?></label>
-								<?php endif;?>
-							</div>
-							</div>
 <!--Fin otros datos de venta-->
 
 
@@ -217,7 +201,6 @@
 
 		var id_company = $('#id_company').val();
 		var id_sale = $('#id_sale').val();
-
 		$.ajax({
 			type: "GET",
 			url: '<?php echo full_url;?>/adm/ajax/index.php',
@@ -228,12 +211,14 @@
 
 			}
 		});
+		selectCompanyAddress();
 
 	}
 	function refreshClientAddress()
 	{
 		selectClientAddress();
 		selectClientAddress2();
+		selectCompanyAddress();
 	}
 
 
