@@ -30,8 +30,10 @@
                                                                 <th>Tipo</th>
                                                                 <th>Cases</th>
                                                                 <th>Packing</th>
+																<th>Value</th>
+																<th>Rate</th>
                                                                 <th>Qty Kgs</th>
-                                                                <th>Rate</th>
+                                                                
                                                                 <th>Amount</th>
                                                                 <th>Acciones</th>
                                                             </tr>
@@ -63,7 +65,11 @@
 
                                                                 </td>
                                                                 <td>
-                                                                    <input type='number' min="0" name='packing[<?php echo $sales_products_details['id']?>]' id='packing_<?php echo $sales_products_details['id']?>' size="4" autocomplete="off" value="<?php echo $sales_products_details['packing']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'packing_<?php echo $sales_products_details['id'];?>','packing')"> 
+                                                                    <input type='number' min="0" name='packing[<?php echo $sales_products_details['id']?>]' id='packing_<?php echo $sales_products_details['id']?>' size="4" autocomplete="off" value="<?php if(isset($sales_products_details['packing'] ) and $sales_products_details['packing']!="")echo $sales_products_details['packing'];else echo "10";?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'packing_<?php echo $sales_products_details['id'];?>','packing')"> 
+
+                                                                </td>
+                                                                <td>
+																	<input type='text' min="0" name='pack[<?php echo $sales_products_details['id']?>]' id='pack_<?php echo $sales_products_details['id']?>' size="4" autocomplete="off" value="<?php if(isset($sales_products_details['pack'] ) and $sales_products_details['pack']!="")echo $sales_products_details['pack'];else echo "1.8";?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'pack_<?php echo $sales_products_details['id'];?>','pack')"> 
 
                                                                 </td>
                                                                 <td>
@@ -89,7 +95,7 @@
                                                                 <th colspan="2">Número container</th>
                                                                 
                                                                 <th>Broker</th>
-                                                                <th>Comisión</th>
+                                                                <th colspan="2">Comisión</th>
                                                             </tr>
                                                        <tr>
 
@@ -135,7 +141,7 @@
                                                             </select>
    
                                                            </td>
-                                                           <td>
+                                                           <td colspan="2">
                                                             <input type='text' name='comision[<?php echo $sales_products_details['id']?>]' id='comision_<?php echo $sales_products_details['id']?>' size="4" autocomplete="off" value="<?php echo $sales_products_details['comision']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'comision_<?php echo $sales_products_details['id'];?>','comision')">
    
                                                            </td>
@@ -204,12 +210,12 @@ function deleteProductDetail(id) {
 		var id_product_type = $("#id_product_type_" + id).val();
 		var cases = $("#cases_" + id).val();
 		var packing = $("#packing_" + id).val();
+		var pack = $("#pack_" + id).val();
 		var quantity = $("#quantity_" + id).val();
 		var rate = $("#rate_" + id).val();
 		var amount = $("#amount_" + id).val();
 		
-		
-		quantity = parseFloat(cases).toFixed(2) * (parseFloat(packing).toFixed(2) * 1.8);
+		quantity = parseFloat(cases).toFixed(2) * (parseFloat(packing).toFixed(2) * pack);
 		amount = parseFloat(quantity).toFixed(2) * parseFloat(rate).toFixed(2);
 		amount = parseFloat(amount).toFixed(2);
 		$("#quantity_" + id).val(quantity);

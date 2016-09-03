@@ -24,9 +24,13 @@
 			$client_address = $sale_data['client_address'];
 			$plant_name =  $sale_data['plant_name'];
 			$plant_rif =  $sale_data['plant_rif'];
+			$terms = $sale_data['terms'];
+			$farm_name =  $sale_data['farm_name'];
 			$plant_address =  $sale_data['plant_address'];
 			$plant_country =  $sale_data['plant_country'];
 			$shipping_line_name = $sale_data['shipping_line_name'];
+			$precinto_number = $sale_data['precinto_number'];
+			$container_number = $sale_data['container_number'];
 			$products_detail = $Sales->getSalesProductsDetail($values);
 			$bank_name = $sale_data['bank_name'];
 			$aba = $sale_data['aba'];
@@ -166,13 +170,13 @@
 		$total_cases = 0;
 		$html ='<table width="100%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px">'
 			. '<tr style="background-color: #CCC;">'
-				. '<th style="text-align: center;" width="10%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px"><strong>Container #</strong></th>'
-				. '<th style="text-align: center;" width="40%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px"><strong>Item</strong></th>'
-				. '<th style="text-align: center;" width="10%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px"><strong>Cases</strong></th>'
-				. '<th style="text-align: center;" width="10%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px"><strong>Packing</strong></th>'
-				. '<th style="text-align: center;" width="8%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px"><strong>Qty Kgs</strong></th>'
+				. '<th style="text-align: center;" width="14%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px"><strong>Container #</strong></th>'
+				. '<th style="text-align: center;" width="30%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px"><strong>Item</strong></th>'
+				. '<th style="text-align: center;" width="8%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px"><strong>Cases</strong></th>'
+				. '<th style="text-align: center;" width="8%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px"><strong>Packing</strong></th>'
+				. '<th style="text-align: center;" width="14%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px"><strong>Qty Kgs</strong></th>'
 				. '<th style="text-align: center;" width="14%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px"><strong>Rate ($)</strong></th>'
-				. '<th style="text-align: center;" width="8%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px"><strong>Amount ($)</strong></th>'
+				. '<th style="text-align: center;" width="14%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px"><strong>Amount ($)</strong></th>'
 			. '</tr>';
 		
 		foreach($products_detail as $products)
@@ -185,14 +189,14 @@
 				. '<td style="border-right-width: 1px;">'.$products['product_name']." ".$products['product_type_name'].'</td>'
 				. '<td style="text-align: right;border-right-width: 1px;">'.$products['cases'].'</td>'
 				. '<td style="text-align: center;border-right-width: 1px;">'.$products['packing'].'</td>'
-				. '<td style="text-align: right;border-right-width: 1px;">'.$products['quantity'].'</td>'
+				. '<td style="text-align: center;border-right-width: 1px;">'.$products['quantity'].' x '.$products['pack'].' Kg</td>'
 				. '<td style="text-align: right;border-right-width: 1px;">$&nbsp;&nbsp;&nbsp;'.$products['rate'].'</td>'
 				. '<td style="text-align: right;border-right-width: 1px;">$&nbsp;&nbsp;&nbsp;'.$products['amount'].'</td>'
 			. '</tr>';			
 		}
 		$html.='<tr>'
 				. '<td style="border-right-width: 1px;">&nbsp;</td>'
-				. '<td style="border-right-width: 1px;"><strong>Feltrina 01-2015 <br> SNT 497</strong></td>'
+				. '<td style="border-right-width: 1px;"><strong>'.$farm_name.'</strong></td>'
 				. '<td style="text-align: right;border-right-width: 1px;"><strong>'.$total_cases.'</strong></td>'
 				. '<td style="border-right-width: 1px;">&nbsp;</td>'
 				. '<td style="text-align: center;border-right-width: 1px;"><strong>Kgr. <br>'.$total_quantity.'</strong></td>'
@@ -220,46 +224,46 @@
 			. '</tr>'
 			. '<tr>'
 			. '<td style="text-align: left;"><strong>Destination:</strong></td>'
-			. '<td style="text-align: left;"><strong>'.$state_address1.' '.$country_address1.':</strong></td>'
-			. '<td style="text-align: right;"><strong>Address:</strong></td>'
-			. '<td style="text-align: left;">'.$notify_address1.'</td>'
+			. '<td style="text-align: left;"><strong>'.$state_address1.' '.$country_address1.'</strong></td>'
+			. '<td style="text-align: right;"><strong>Address: </strong></td>'
+			. '<td style="text-align: left;"> '.$notify_address1.'</td>'
 			. '</tr>'
 			. '<tr>'
 			. '<td style="text-align: left;" colspan="2"><strong>Product Packed in Venezuela</strong></td>'
 			. '<td style="text-align: right;" colspan="2">&nbsp;</td>'
 			. '</tr>'
 			. '<tr>'
-			. '<td style="text-align: left;" colspan=""><strong>Container No:</strong></td>'
-			. '<td style="text-align: left;" colspan=""><strong>SUDU-813 053-0</strong></td>'
+			. '<td style="text-align: left;" colspan=""><strong>Container No: </strong></td>'
+			. '<td style="text-align: left;" colspan=""><strong>'.$container_number.'</strong></td>'
 			. '<td style="text-align: right;" colspan="2">&nbsp;</td>'
 			. '</tr>'
 			. '<tr>'
-			. '<td style="text-align: left;" colspan=""><strong>Shipping Line:</strong></td>'
-			. '<td style="text-align: left;" colspan=""><strong>'.$shipping_line_name.'</strong></td>'
+			. '<td style="text-align: left;" colspan=""><strong>Shipping Line: </strong></td>'
+			. '<td style="text-align: left;" colspan=""><strong> '.$shipping_line_name.'</strong></td>'
 			. '<td style="text-align: right;" colspan="2">&nbsp;</td>'
 			. '</tr>'
 			. '<tr>'
-			. '<td style="text-align: left;" colspan=""><strong>Precinto#:</strong></td>'
-			. '<td style="text-align: left;" colspan=""><strong>Precinto</strong></td>'
-			. '<td style="text-align: right;"><strong>Bank:</strong></td>'
-			. '<td style="text-align: left;">'.$bank_name.'</td>'
+			. '<td style="text-align: left;" colspan=""><strong>Precinto#: </strong></td>'
+			. '<td style="text-align: left;" colspan=""><strong>'.$precinto_number.'</strong></td>'
+			. '<td style="text-align: right;"><strong>Bank: </strong></td>'
+			. '<td style="text-align: left;"> '.$bank_name.'</td>'
 			. '</tr>'
 			. '<tr>'
 			. '<td style="text-align: left;"><strong>ETD:</strong></td>'
 			. '<td style="text-align: left;"><strong>'.$date_out.'</strong></td>'
-			. '<td style="text-align: right;"><strong>ABA#:</strong></td>'
-			. '<td style="text-align: left;">'.$aba.'</td>'
+			. '<td style="text-align: right;"><strong>ABA#: </strong></td>'
+			. '<td style="text-align: left;"> '.$aba.'</td>'
 			. '</tr>'
 			. '<tr>'
-			. '<td style="text-align: left;"><strong>ETA:</strong></td>'
+			. '<td style="text-align: left;"><strong>ETA: </strong></td>'
 			. '<td style="text-align: left;"><strong>'.$date_estimate_in.'</strong></td>'
-			. '<td style="text-align: right;"><strong>Account#:</strong></td>'
-			. '<td style="text-align: left;">'.$account.'</td>'
+			. '<td style="text-align: right;"><strong>Account#: </strong></td>'
+			. '<td style="text-align: left;"> '.$account.'</td>'
 			. '</tr>'
 			. '<tr>'
 			. '<td style="text-align: left;" colspan="2"></td>'
-			. '<td style="text-align: right;"><strong>Swift#:</strong></td>'
-			. '<td style="text-align: left;">'.$swit.'</td>'
+			. '<td style="text-align: right;"><strong>Swift#: </strong></td>'
+			. '<td style="text-align: left;"> '.$swit.'</td>'
 			. '</tr>'
 			. '</table>';
 			$pdf->ln();
@@ -269,7 +273,7 @@
 			$html = '<table width="50%" border="0" cellspacing="0" cellpadding="0" style="background-color: #ccc;border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px" >'
 				. '<tr>'
 				. '<td style="text-align: left;"><strong>Payment:</strong></td>'
-				. '<td style="text-align: left;"><strong>40 000 usd anticipated against proforma Sold 10 days before arrival to destination port</strong></td>'
+				. '<td style="text-align: left;"><strong>'.$terms.'</strong></td>'
 				. '</tr>'
 				. '</table>';
 			

@@ -8,7 +8,9 @@
 	
 	$Plants = new Plants();
 	$list_plants = $Plants->getPlantsListSelect();
-	
+
+	$Farms= new Farms();
+	$list_farms = $Farms->getFarmsListSelect();	
 	?>					
 
 
@@ -128,6 +130,8 @@
 									<label class="alert alert-danger"><?php echo $values['errors']['id_company_bank']?></label>
 								<?php endif;?>
 							</div>
+							</div>
+							<div class="form-group">
 							<div class="col-sm-6">
 								<label for="">Planta procesadora en factura <small class="text-danger">(*)</small></label>
 										<select name="id_plant_fact"  class="form-control input-sm">
@@ -142,6 +146,38 @@
 										</select>
 								<?php if(isset($values['errors']['id_plant_fact']) and $values['errors']['id_plant_fact']!=''):?>
 									<label class="alert alert-danger"><?php echo $values['errors']['id_plant_fact']?></label>
+								<?php endif;?>
+							</div>
+							<div class="col-sm-6">
+								<label for="">Granja en factura <small class="text-danger">(*)</small></label>
+										<select name="id_farm_fact"  class="form-control input-sm">
+											<option value="">Seleccione...</option>
+										<?php if(count($list_farms)>0): ?>
+											<?php foreach($list_farms as $list): ?>
+
+													<option value="<?php echo $list['id_farm'];?>" <?php if($list['id_farm'] == @$values['id_farm_fact']) echo "selected = 'selected'" ?>><?php echo $list['name'];?></option>
+
+											<?php endforeach; ?>
+										<?php endif; ?>
+										</select>
+								<?php if(isset($values['errors']['id_farm_fact']) and $values['errors']['id_farm_fact']!=''):?>
+									<label class="alert alert-danger"><?php echo $values['errors']['id_farm_fact']?></label>
+								<?php endif;?>
+							</div>
+							</div>
+							<div class="form-group">
+							<div class="col-sm-6">
+								<label for="">Precinto# <small class="text-danger">(*)</small></label>
+								<input type="text" maxlength="30"  class="form-control input-sm" name="precinto_number" value="<?php if(isset($values['precinto_number'])) echo $values['precinto_number']?>">
+								<?php if(isset($values['errors']['precinto_number']) and $values['errors']['precinto_number']!=''):?>
+									<label class="alert alert-danger"><?php echo $values['errors']['precinto_number']?></label>
+								<?php endif;?>
+							</div>
+							<div class="col-sm-6">
+								<label for="">Container# <small class="text-danger">(*)</small></label>
+								<input type="text" maxlength="30" class="form-control input-sm" name="container_number" value="<?php if(isset($values['container_number'])) echo $values['container_number']?>">
+								<?php if(isset($values['errors']['container_number']) and $values['errors']['container_number']!=''):?>
+									<label class="alert alert-danger"><?php echo $values['errors']['container_number']?></label>
 								<?php endif;?>
 							</div>
 							</div>

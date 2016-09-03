@@ -62,9 +62,24 @@
 			"label" => "Planta procesadora en factura",
 			"required" => true
 		);
-
-		
-		
+		$validator_values['id_farm_fact'] = array(
+			
+			"type" => "number",
+			"label" => "Granja en factura",
+			"required" => true
+		);
+		$validator_values['precinto_number'] = array(
+			
+			"type" => "text",
+			"label" => "Precinto#",
+			"required" => true
+		);		
+		$validator_values['container_number'] = array(
+			
+			"type" => "text",
+			"label" => "Container#",
+			"required" => true
+		);			
 
 		
                 if(isset($values['id_sale']) and $values['id_sale']!='')
