@@ -130,14 +130,14 @@
                     </td>
                     <td style="width:20%"></td>
                     <td style="width:40%">
-                        <table border="1" width="100%">
+                        <table  width="100%" border="0" cellspacing="0" cellpadding="0" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px">
                             <tr>
                                 <td style="background-color: #cccccc; font-size: 12px; text-align:center;font-weight: bolder;">Processing Plant</td>
                             </tr>';
             
                 $html.='
                             <tr>
-                                <td>'.strtoupper($plant_name).'</td>
+                                <td><strong>'.strtoupper($plant_name).'</strong></td>
                             </tr>';
                 $html.='
                             <tr>
@@ -164,15 +164,15 @@
 		$total_amount = 0;
 		$total_quantity = 0;
 		$total_cases = 0;
-		$html ='<table width="100%" border="1">'
+		$html ='<table width="100%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px">'
 			. '<tr style="background-color: #CCC;">'
-				. '<th style="text-align: center;" width="10%"><strong>Container #</strong></th>'
-				. '<th style="text-align: center;" width="40%"><strong>Item</strong></th>'
-				. '<th style="text-align: center;" width="10%"><strong>Cases</strong></th>'
-				. '<th style="text-align: center;" width="10%"><strong>Packing</strong></th>'
-				. '<th style="text-align: center;" width="10%"><strong>Qty Kgs</strong></th>'
-				. '<th style="text-align: center;" width="10%"><strong>Rate ($)</strong></th>'
-				. '<th style="text-align: center;" width="10%"><strong>Amount ($)</strong></th>'
+				. '<th style="text-align: center;" width="10%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px"><strong>Container #</strong></th>'
+				. '<th style="text-align: center;" width="40%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px"><strong>Item</strong></th>'
+				. '<th style="text-align: center;" width="10%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px"><strong>Cases</strong></th>'
+				. '<th style="text-align: center;" width="10%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px"><strong>Packing</strong></th>'
+				. '<th style="text-align: center;" width="8%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px"><strong>Qty Kgs</strong></th>'
+				. '<th style="text-align: center;" width="14%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px"><strong>Rate ($)</strong></th>'
+				. '<th style="text-align: center;" width="8%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px"><strong>Amount ($)</strong></th>'
 			. '</tr>';
 		
 		foreach($products_detail as $products)
@@ -181,23 +181,23 @@
 		$total_cases+= $products['cases'];
 		$total_quantity+= $products['quantity'];
 		$html.='<tr>'
-				. '<td>'.$products['number'].'</td>'
-				. '<td>'.$products['product_name']." ".$products['product_type_name'].'</td>'
-				. '<td style="text-align: right;">'.$products['cases'].'</td>'
-				. '<td style="text-align: center;">'.$products['packing'].'</td>'
-				. '<td style="text-align: right;">'.$products['quantity'].'</td>'
-				. '<td style="text-align: right;">$&nbsp;&nbsp;&nbsp;'.$products['rate'].'</td>'
-				. '<td style="text-align: right;">$&nbsp;&nbsp;&nbsp;'.$products['amount'].'</td>'
+				. '<td style="border-right-width: 1px;">'.$products['number'].'</td>'
+				. '<td style="border-right-width: 1px;">'.$products['product_name']." ".$products['product_type_name'].'</td>'
+				. '<td style="text-align: right;border-right-width: 1px;">'.$products['cases'].'</td>'
+				. '<td style="text-align: center;border-right-width: 1px;">'.$products['packing'].'</td>'
+				. '<td style="text-align: right;border-right-width: 1px;">'.$products['quantity'].'</td>'
+				. '<td style="text-align: right;border-right-width: 1px;">$&nbsp;&nbsp;&nbsp;'.$products['rate'].'</td>'
+				. '<td style="text-align: right;border-right-width: 1px;">$&nbsp;&nbsp;&nbsp;'.$products['amount'].'</td>'
 			. '</tr>';			
 		}
 		$html.='<tr>'
-				. '<td>&nbsp;</td>'
-				. '<td><strong>Feltrina 01-2015 <br> SNT 497</strong></td>'
-				. '<td style="text-align: right;"><strong>'.$total_cases.'</strong></td>'
-				. '<td>&nbsp;</td>'
-				. '<td style="text-align: center;"><strong>Kgr. <br>'.$total_quantity.'</strong></td>'
-				. '<td style="text-align: center;"><strong>INCOTERMS <br> CFR</strong></td>'
-				. '<td style="text-align: right;"><strong>$&nbsp;&nbsp;&nbsp;'.$total_amount.'</strong></td>'
+				. '<td style="border-right-width: 1px;">&nbsp;</td>'
+				. '<td style="border-right-width: 1px;"><strong>Feltrina 01-2015 <br> SNT 497</strong></td>'
+				. '<td style="text-align: right;border-right-width: 1px;"><strong>'.$total_cases.'</strong></td>'
+				. '<td style="border-right-width: 1px;">&nbsp;</td>'
+				. '<td style="text-align: center;border-right-width: 1px;"><strong>Kgr. <br>'.$total_quantity.'</strong></td>'
+				. '<td style="text-align: center;border-right-width: 1px;"><strong>INCOMTERMS <br> CFR</strong></td>'
+				. '<td style="text-align: right;"border-right-width: 1px;><strong>$&nbsp;&nbsp;&nbsp;'.$total_amount.'</strong></td>'
 			. '</tr>';					
 		
 		$html.= '</table>';
@@ -266,7 +266,7 @@
 			$pdf->writeHTML($html, true, false, true, false, '');
 			
 			//terminos de negociacion
-			$html = '<table width="50%" style="background-color: #ccc; border: 1 1 1 1;">'
+			$html = '<table width="50%" border="0" cellspacing="0" cellpadding="0" style="background-color: #ccc;border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px" >'
 				. '<tr>'
 				. '<td style="text-align: left;"><strong>Payment:</strong></td>'
 				. '<td style="text-align: left;"><strong>40 000 usd anticipated against proforma Sold 10 days before arrival to destination port</strong></td>'
@@ -281,18 +281,18 @@
 			//otros datos
 			$html = '<table width="100%" border="0" >'
 				. '<tr>'
-				. '<th style="text-align: center; background-color: #ccc;"><strong>Phone#</strong></th>'
-				. '<th style="text-align: center; background-color: #ccc; "><strong>Fax#</strong></th>'
-				. '<th style="text-align: center; background-color: #ccc;"><strong>E-mail</strong></th>'
+				. '<th style="text-align: center; background-color: #ccc;border-top-width: 1px;border-bottom-width: 1px;border-left-width: 1px;border-right-width: 1px;"><strong>Phone#</strong></th>'
+				. '<th style="text-align: center; background-color: #ccc;border-top-width: 1px;border-bottom-width: 1px;border-left-width: 1px;border-right-width: 1px; "><strong>Fax#</strong></th>'
+				. '<th style="text-align: center; background-color: #ccc;border-top-width: 1px;border-bottom-width: 1px;border-left-width: 1px;border-right-width: 1px;"><strong>E-mail</strong></th>'
 				. '<th style="text-align: center;"></th>'
 				. '<th style="text-align: center;"></th>'								
 				. '</tr>'
 				. '<tr>'
-				. '<td style="text-align: left;"><strong></strong></td>'
-				. '<td style="text-align: left;"><strong></strong></td>'
-				. '<td style="text-align: left;"><strong></strong></td>'
+				. '<td style="text-align: left;border-top-width: 1px;border-bottom-width: 1px;border-left-width: 1px;border-right-width: 1px;"><strong></strong></td>'
+				. '<td style="text-align: left;border-top-width: 1px;border-bottom-width: 1px;border-left-width: 1px;border-right-width: 1px;"><strong></strong></td>'
+				. '<td style="text-align: left;border-top-width: 1px;border-bottom-width: 1px;border-left-width: 1px;border-right-width: 1px;"><strong></strong></td>'
 				. '<td style="text-align: left;"></td>'
-				. '<td style="text-align: right; background-color: #ccc;"><strong>Balance due $ &nbsp;&nbsp;&nbsp;&nbsp;'.$total_amount.'</strong></td>'								
+				. '<td style="text-align: right; background-color: #ccc; border-top-width: 1px;border-bottom-width: 1px;border-left-width: 1px;border-right-width: 1px;"><strong>Balance due $ &nbsp;&nbsp;&nbsp;&nbsp;'.$total_amount.'</strong></td>'								
 				. '</tr>'
 				. '</table>';
 			
@@ -304,7 +304,7 @@
 
 			
 			//BL data
-			$html = '<table width="80%" >'
+			$html = '<table width="80%"  border="0" cellspacing="0" cellpadding="0" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px" >'
 				. '<tr>'
 				. '<td style="text-align: left;" width="10%"><strong>BL datas:</strong></td>'
 				. '<td style="text-align: left;" width="20%"><strong></strong></td>'
