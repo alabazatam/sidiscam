@@ -20,7 +20,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         
-		<?php if(count($list_menu_padres)>0):?>
+		<?php if(count($list_menu_padres)>0 and ($_SESSION['rol'] != 'REP')):?>
 			<?php foreach($list_menu_padres as $list_padre):?>
 				<li class="dropdown">
 					<a href="<?php echo $list_padre['link']?>" class="dropdown-toggle facebook_font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="<?php echo $list_padre['icon_class']?>"></i> <?php echo $list_padre['description']?> <span class="caret"></span></a>	
@@ -42,6 +42,21 @@
 				</li>
 			<?php endforeach;?>
 		<?php endif;?>
+                <?php if($_SESSION['rol']=='REP'):?>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle facebook_font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-line-chart"></i> Reportes <span class="caret"></span></a>	
+                                    <ul class="dropdown-menu">
+                                        <li><a href="<?php echo full_url;?>/adm/reporte1/index.php">Reporte 1</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle facebook_font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Usuario <span class="caret"></span></a>	
+                                    <ul class="dropdown-menu">
+                                        <li><a href="<?php echo full_url;?>/adm/users/index.php?action=change_pass_view">Cambio de clave</a></li>
+                                    </ul>
+                                </li>   
+                <?php endif;?>
+                
       <ul class="nav navbar-nav navbar-right">
         <li><a class="facebook_font text-right" href="<?php echo full_url;?>/adm/index.php?action=logout"><i class="fa fa-sign-out"></i> Cerrar sesión</a></li>
       </ul>
