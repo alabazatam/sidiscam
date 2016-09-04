@@ -40,42 +40,32 @@ unset($values['PHPSESSID']);
 	}
 	function executeReporte1ListJson($values)
 	{
-		$Sales = new Sales();
-		$sales_json = $Sales ->getSalesList($values);
-		$sales_json_cuenta = $Sales ->getCountSalesList($values);
+		$Reporte1 = new Reporte1();
+		$reporte1_json = $Reporte1 ->getDataList($values);
+		$reporte1_json_cuenta = $Reporte1 ->getCountDataList($values);
 		$array_json = array();
-		$array_json['recordsTotal'] = $sales_json_cuenta;
-		$array_json['recordsFiltered'] = $sales_json_cuenta;
-		if(count($sales_json)>0)
+		$array_json['recordsTotal'] = $reporte1_json_cuenta;
+		$array_json['recordsFiltered'] = $reporte1_json_cuenta;
+		if(count($reporte1_json)>0)
 		{
-			foreach ($sales_json as $sales) 
+			foreach ($reporte1_json as $data) 
 			{
-				$id_sale= $sales['id_sale'];
-				$status = $sales['status'];
-				if($status == 0)
-				{
-					$message_status = "<label class='label label-success'>Venta completada</label>";
-				}
-				if($status == 1)
-				{
-					$message_status = "<label class='label label-warning'>En transcripción</label>";
-				}
+				$id_sale= $data['id_sale'];
 				
 
                                         $array_json['data'][] = array(
                                                 "id_sale" => $id_sale,
-                                                "client_name" => "<p title='".$sales['client_name']."'>".substr($sales['client_name'],0,max_list_text)."</p>",
-                                                "date_sale" => $sales['date_sale'],
-                                                "country_name" => $sales['country_name'],
-                                                "port_name" => $sales['port_name'],
-                                                "name_shipping_lines" => $sales['name_shipping_lines'],
-
-                                                "status" => $message_status,
+                                                "client_name" => "<p title='".$data['client_name']."'>".substr($data['client_name'],0,max_list_text)."</p>",
+                                                "number" => $data['number'],
+                                                "KGS" => $data['kgs'],
+                                                "destino" => $data['destino'],
+                                                "naviera" => $data['naviera'],
                                                 "actions" => 
 
                                                '<form method="POST" action = "'.full_url.'/adm/reporte1/index.php" >'
                                                .'<input type="text" name="action" value="view">  '
-                                               .'<input type="text" name="id_sale" value="'.$id_sale.'">  '
+												.'<input type="text" name="id_sale" value="'.$id_sale.'">  '
+                                               .'<input type="text" name="number" value="'.$data['number'].'">  '
                                                .'<button class="btn btn-default btn-sm" type="submit"><i class="fa fa-edit  fa-pull-left fa-border"></i></button>'
                                                .'</form>'
                                                 ); 
@@ -84,7 +74,7 @@ unset($values['PHPSESSID']);
 		}else{
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
-			$array_json['data'][0] = array("id_sale"=>null,"client_name"=>"","date_sale"=>"","country_name"=>"","port_name"=>"","name_shipping_lines"=>"","status"=>"","actions"=>"");
+			$array_json['data'][0] = array("id_sale"=>null,"client_name"=>"","number"=>"","KGS"=>"","destino"=>"","naviera"=>"","actions"=>"");
 		}
 
 		echo json_encode($array_json);die;

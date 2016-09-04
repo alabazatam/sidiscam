@@ -12,6 +12,8 @@
 			$Clients = new Clients();
 			$ClientsAddressDetail = new ClientsAddressDetail();
             $sale_data = $Sales ->getSalesInvoiceById($values);
+			$containers_data = $Sales ->getSalesContainers($values);
+			
             $sale_date =  $sale_data['date_sale'];
             $id_country_out = $sale_data['id_country_out'];
             $id_port_out = $sale_data['id_port_out'];
@@ -181,19 +183,10 @@
 				. '<th style="text-align: center;" width="14%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px"><strong>Amount ($)</strong></th>'
 			. '</tr>';
 		
-                $i = 0;
+                
 		foreach($products_detail as $products)
 		{
-                    
-                if($i == 0)
-                {
-                    $precinto_number = $precinto_number."".$products['precinto'];
-                    $container_number = $container_number."".$products['number'];
-                }else
-                {
-                    $precinto_number = $precinto_number.",".$products['precinto'];
-                    $container_number = $container_number.",".$products['number'];
-                }
+                
                 
 		$total_amount+= $products['amount'];
 		$total_cases+= $products['cases'];
@@ -207,7 +200,7 @@
 				. '<td style="text-align: right;border-right-width: 1px;">$&nbsp;&nbsp;&nbsp;'.$products['rate'].'</td>'
 				. '<td style="text-align: right;border-right-width: 1px;">$&nbsp;&nbsp;&nbsp;'.$products['amount'].'</td>'
 			. '</tr>';
-                $i++;
+               
 		}
 		$html.='<tr>'
 				. '<td style="border-right-width: 1px;">&nbsp;</td>'
@@ -222,6 +215,23 @@
 		$html.= '</table>';
 		$pdf->ln();
 		$pdf->writeHTML($html, true, false, true, false, '');
+		
+		 $i = 0;
+		foreach($containers_data as $container)
+		{
+                if($i == 0)
+                {
+                    $precinto_number = $precinto_number."".$container['precinto'];
+                    $container_number = $container_number."".$container['number'];
+                }else
+                {
+                    $precinto_number = $precinto_number.",".$container['precinto'];
+                    $container_number = $container_number.",".$container['number'];
+                }
+		$i++;
+		}
+		
+		
 		//fin lista de productos
 		//cuentas bancarios y otros
 		$html = '<table border="0" width="100%">'

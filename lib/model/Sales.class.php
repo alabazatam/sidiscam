@@ -308,6 +308,15 @@
                         
 			
 		}
+		public function getSalesContainers($values){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->sales_products_detail
+			->select("DISTINCT number, precinto ")			
+			->where("id_sale=?",$values['id_sale'])
+			->order("id");
+            return $q; 
+			
+		}        		
 		public function getSalesProductsDetail($values){
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->sales_products_detail

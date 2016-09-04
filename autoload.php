@@ -104,6 +104,7 @@ include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/BrokersBanksDetail
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/FarmsBanksDetail.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/InvoicesPDF.class.php");
 include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/ConnectionsHistory.class.php");
+include($_SERVER["DOCUMENT_ROOT"]."/".main_folder."/lib/model/Reporte1.class.php");
 
 require($_SERVER["DOCUMENT_ROOT"]."/".main_folder.'/lib/vendors/securimage/securimage.php');
 /*validation class*/
