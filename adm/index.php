@@ -63,6 +63,7 @@ $values = $_REQUEST;
 				$user_data = $Users->getUserById($values);
 				$_SESSION['login'] = $user_data['login'];
 				$_SESSION['id_user'] = $user_data['id_user'];
+                                $_SESSION['rol'] = $user_data['rol'];
                                 //print_r($values);die;
                                 unset($values['password'],$values['ct_captcha']);
                                 $values['ip'] = $Utilitarios ->getRealIP();

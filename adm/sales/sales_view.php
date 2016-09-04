@@ -11,13 +11,14 @@
 
 	$Farms= new Farms();
 	$list_farms = $Farms->getFarmsListSelect();	
-	?>					
+	?>
+
 
 
 					<div class="form-group">
 						<div class="col-sm-3">
 							<label for="">Id</label>
-							<input autocomplete="off" readonly="readonly" type="text" class="form-control input-sm" placeholder="" name="id_sale" id="id_sale" value="<?php if(isset($values['id_sale'])) echo $values['id_sale']?>">
+							<input autocomplete="off" readonly="readonly" type="text" class="form-control input-sm activarse" placeholder="" name="id_sale" id="id_sale" value="<?php if(isset($values['id_sale'])) echo $values['id_sale']?>">
 						</div>
 					</div>
 					<div class="form-group">

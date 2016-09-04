@@ -86,11 +86,23 @@ $values = $_REQUEST;
 				$status = $user['status'];
 				if($status == 0)
 				{
-					$message_status = "<label class='label label-danger'><a href='#' onclick = ".'"'."status_changer('users','id_user', '$id_user','1')".'"'.">Desactivado</a></label>";
+                                        $onclick = "";
+                                        if($_SESSION['rol'] == "ADM")
+                                        {
+                                            $onclick = "onclick = ".'"'."status_changer('users','id_user', '$id_user','1')".'"'."";
+ 
+                                        }
+					$message_status = "<label class='label label-danger'><a href='#' $onclick>Desactivado</a></label>";
 				}
 				if($status == 1)
 				{
-					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('users','id_user', '$id_user','0')".'"'.">Activo</a></label>";
+                                        $onclick = "";
+                                        if($_SESSION['rol'] == "ADM")
+                                        {
+                                            $onclick = "onclick = ".'"'."status_changer('users','id_user', '$id_user','0')".'"'."";
+ 
+                                        }
+					$message_status = "<label class='label label-success'><a href='#' $onclick>Activo</a></label>";
 				}
 				
 				$array_json['data'][] = array(

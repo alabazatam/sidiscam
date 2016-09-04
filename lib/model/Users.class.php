@@ -88,7 +88,7 @@
 			
 		}		
 		function saveUser($values){
-			unset($values['action'],$values['PHPSESSID']);
+			unset($values['action'],$values['PHPSESSID'],$values['id_user']);
 			$values['password'] = hash('sha256', $values['password']);
                         $values['date_created'] = new NotORM_Literal("NOW()");
                         $values['date_updated'] = new NotORM_Literal("NOW()");

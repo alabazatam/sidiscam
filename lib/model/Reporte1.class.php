@@ -115,6 +115,25 @@
 			->fetch();
 			return $q['cuenta']; 			
 		}
+		public function getDataView($values)
+		{	
+            $ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->sales_products_detail
+			->select("SUM(quantity) AS KGS,sales_products_detail.id_sale,sales_products_detail.number,cases as cases,amount as monto,sales_products_detail.comision,"
+			. "shipping_lines.name AS naviera,clients_address_detail.state AS destino, clients.name AS client_name,"
+                                . " sales.date_out as estimada_salida,sales.date_out_real as salida, sales.date_in_real as llegada, follow_status as status")
+			->join('sales','LEFT JOIN sales ON sales.id_sale = sales_products_detail.id_sale')
+			->join('shipping_lines','LEFT JOIN shipping_lines ON shipping_lines.id_shipping_lines = sales.id_shipping_lines')
+			->join('clients','LEFT JOIN clients ON clients.id_client = sales.id_client')
+			->join('clients_address_detail','LEFT JOIN clients_address_detail ON clients_address_detail.id = sales.id_client_address')
+                        ->order("number")
+			->where("sales.id_sale =?",$values['id_sale'])
+                        ->and("number =?",$values['number'])
+			->group('sales_products_detail.id_sale,sales_products_detail.number, sales_products_detail.precinto,id_product, id_product_type,cases,amount,sales_products_detail.comision ');
+			
+			//echo $q;die;
+			return $q;			
+		}
 
 	}
 	

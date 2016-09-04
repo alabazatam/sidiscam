@@ -96,11 +96,23 @@ $values = $_REQUEST;
 				$status = $shipping_lines['status'];
 				if($status == 0)
 				{
-					$message_status = "<label class='label label-danger'><a href='#' onclick = ".'"'."status_changer('shipping_lines','id_shipping_lines', '$id_shipping_lines','1')".'"'.">Desactivado</a></label>";
+                                        $onclick = "";
+                                        if($_SESSION['rol'] == "ADM")
+                                        {
+                                            $onclick = "onclick = ".'"'."status_changer('shipping_lines','id_shipping_lines', '$id_shipping_lines','1')".'"'."";
+ 
+                                        } 
+					$message_status = "<label class='label label-danger'><a href='#' $onclick>Desactivado</a></label>";
 				}
 				if($status == 1)
 				{
-					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('shipping_lines','id_shipping_lines', '$id_shipping_lines','0')".'"'.">Activo</a></label>";
+                                        $onclick = "";
+                                        if($_SESSION['rol'] == "ADM")
+                                        {
+                                            $onclick = "onclick = ".'"'."status_changer('shipping_lines','id_shipping_lines', '$id_shipping_lines','0')".'"'."";
+ 
+                                        } 
+					$message_status = "<label class='label label-success'><a href='#' $onclick>Activo</a></label>";
 				}
 				
 				$array_json['data'][] = array(

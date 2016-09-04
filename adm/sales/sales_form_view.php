@@ -1,8 +1,19 @@
 <?php include('../../view_header.php')?>
 <?php include('../menu.php')?>
-<style>
-  
-</style>
+<?php if($values['status'] == 0 and $_SESSION['rol'] !='ADM'):?>
+<script>
+
+$(document).ready(function(){
+$("input,textarea,select,:radio").prop("disabled", true);
+$(".desactivar").prop("onclick", null);
+$(".activarse").prop("disabled", false);	
+$(".activarse").removeAttr("disabled");	
+});
+</script>
+
+<?php endif;?>
+
+
 <?php 
 	$TypeDestiny = new TypeDestiny();
 	$list_destiny = $TypeDestiny -> getListTypeDestiny();
@@ -28,7 +39,7 @@
 <div class="col-sm-12 col-md-12 col-lg-12">
 	<h1 class="text-center">Ventas</h1>
 	<form class="form-horizontal" action="index.php" method="POST">
-	<input type="hidden" name='action' value='<?php if(isset($values['action']))echo $values['action'];?>'>
+            <input type="hidden" name='action' class="activarse" value='<?php if(isset($values['action']))echo $values['action'];?>'>
 
 
       

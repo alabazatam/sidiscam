@@ -6,7 +6,6 @@
 if(isset($_REQUEST["action"]) and $_REQUEST["action"]!=""){
 	$action = $_REQUEST["action"];
 }
-
 $values = $_REQUEST;
 	switch ($action) {
 		case "index":
@@ -98,12 +97,22 @@ $values = $_REQUEST;
 				$status = $client['status'];
 				$id_client = $client['id_client'];
 				if($status == 0)
-				{
-					$message_status = "<label class='label label-danger'><a href='#' onclick = ".'"'."status_changer('clients','id_client', '$id_client','1')".'"'.">Desactivado</a></label>";
+				{       $onclick = "";
+                                        if($_SESSION['rol'] == "ADM")
+                                        {
+                                            $onclick = "onclick = ".'"'."status_changer('clients','id_client', '$id_client','1')".'"'."";
+ 
+                                        }                             
+                                        $message_status = "<label class='label label-danger'><a href='#' $onclick >Desactivado</a></label>";
 				}
 				if($status == 1)
-				{
-					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('clients','id_client', '$id_client','0')".'"'.">Activo</a></label>";
+				{       $onclick = "";
+                                        if($_SESSION['rol'] == "ADM")
+                                        {
+                                            $onclick = "onclick = ".'"'."status_changer('clients','id_client', '$id_client','0')".'"'."";
+ 
+                                        } 
+                                        $message_status = "<label class='label label-success'><a  href='#' $onclick >Activo</a></label>";
 				}
 				
 				$array_json['data'][] = array(

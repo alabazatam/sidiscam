@@ -275,6 +275,46 @@
 			return $q;
 			
 		}
+                public function updateSalesSeguimiento($values)
+                { 
+			$Utilitarios = new Utilitarios();
+                        if(isset($values['date_out_real']) and $values['date_out_real']!='')
+                        {
+                        $values['date_out_real'] = $Utilitarios->formatFechaInput($values['date_out_real']);
+
+                        }else
+                        {
+                            $values['date_out_real']=null;
+                        }
+                        if(isset($values['date_in_real']) and $values['date_in_real']!='')
+                        {
+                        $values['date_in_real'] = $Utilitarios->formatFechaInput($values['date_in_real']);
+
+                        }else
+                        {
+                            $values['date_in_real']=null;
+                        }
+                        if(isset($values['follow_update']) and $values['follow_update']!='')
+                        {
+                        $values['follow_update'] = $Utilitarios->formatFechaInput($values['follow_update']);
+
+                        }else
+                        {
+                            $values['date_in_real']=null;
+                        }
+                        $id_sale = $values['id_sale'];
+                        $array_update = array(
+                            "date_out_real" => $values["date_out_real"],
+                            "date_in_real" => $values["date_in_real"],
+                            "observacion_seguimiento" => $values["observacion_seguimiento"],
+                            "follow_status" => $values["follow_status"],
+                            "follow_amount" => $values["follow_amount"],
+                            "follow_update" => $values["follow_update"]
+                                
+                        );
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->sales("id_sale", $id_sale)->update($array_update);  
+                }
 		public function getListSales($values = null){
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->sales

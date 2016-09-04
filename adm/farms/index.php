@@ -98,11 +98,23 @@ $values = $_REQUEST;
 				$id_farm = $farm['id_farm'];
 				if($status == 0)
 				{
-					$message_status = "<label class='label label-danger'><a href='#' onclick = ".'"'."status_changer('farms','id_farm', '$id_farm','1')".'"'.">Desactivado</a></label>";
+                                        $onclick = "";
+                                        if($_SESSION['rol'] == "ADM")
+                                        {
+                                            $onclick = "onclick = ".'"'."status_changer('farms','id_farm', '$id_farm','1')".'"'."";
+ 
+                                        } 
+					$message_status = "<label class='label label-danger'><a href='#' $onclick>Desactivado</a></label>";
 				}
 				if($status == 1)
 				{
-					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('farms','id_farm', '$id_farm','0')".'"'.">Activo</a></label>";
+                                        $onclick = "";
+                                        if($_SESSION['rol'] == "ADM")
+                                        {
+                                            $onclick = "onclick = ".'"'."status_changer('farms','id_farm', '$id_farm','0')".'"'."";
+ 
+                                        } 
+					$message_status = "<label class='label label-success'><a href='#' $onclick>Activo</a></label>";
 				}
 
 				$array_json['data'][] = array(

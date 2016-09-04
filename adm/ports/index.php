@@ -95,11 +95,23 @@ $values = $_REQUEST;
 				$id_port = $product['id_port'];
 				if($status == 0)
 				{
-					$message_status = "<label class='label label-danger'><a href='#' onclick = ".'"'."status_changer('ports','id_port', '$id_port','1')".'"'.">Desactivado</a></label>";
+                                        $onclick = "";
+                                        if($_SESSION['rol'] == "ADM")
+                                        {
+                                            $onclick = "onclick = ".'"'."status_changer('ports','id_port', '$id_port','1')".'"'."";
+ 
+                                        } 
+					$message_status = "<label class='label label-danger'><a href='#' $onclick>Desactivado</a></label>";
 				}
 				if($status == 1)
 				{
-					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('ports','id_port', '$id_port','0')".'"'.">Activo</a></label>";
+                                        $onclick = "";
+                                        if($_SESSION['rol'] == "ADM")
+                                        {
+                                            $onclick = "onclick = ".'"'."status_changer('ports','id_port', '$id_port','0')".'"'."";
+ 
+                                        } 
+					$message_status = "<label class='label label-success'><a href='#' $onclick>Activo</a></label>";
 				}
 				
 				$array_json['data'][] = array(

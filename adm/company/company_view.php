@@ -1,4 +1,13 @@
-
+<?php if($_SESSION['rol'] != "ADM"):?>
+<script>
+    
+    $(document).ready(function(){
+        
+        $(":radio").prop("disabled", true);        
+        
+    });
+</script>    
+<?php endif;?>
     <form class="form-horizontal" action="index.php" method="POST">
             <input type="hidden" name='action' value='<?php if(isset($values['action']))echo $values['action'];?>'>
       <div class="form-group">

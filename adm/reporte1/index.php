@@ -27,21 +27,14 @@ unset($values['PHPSESSID']);
 	}
 	function executeView($values = null,$msg = null)
 	{	
-		
-		$Sales= new Sales();
-		$values = $Sales->getSalesById($values);
-
-		
-        $id_sale = $values['id_sale'];
-        $values['action'] = 'update';
-        $values['msg'] = $msg;
-		$values['errors'] = array();
-		require('reporte1_form_view.php');
+		$Reporte1 = new Reporte1();
+                $data_list = $Reporte1 ->getDataView($values);
+		require('reporte1_view.php');
 	}
 	function executeReporte1ListJson($values)
 	{
 		$Reporte1 = new Reporte1();
-		$reporte1_json = $Reporte1 ->getDataList($values);
+		$reporte1_json = $Reporte1 -> getDataList($values);
 		$reporte1_json_cuenta = $Reporte1 ->getCountDataList($values);
 		$array_json = array();
 		$array_json['recordsTotal'] = $reporte1_json_cuenta;

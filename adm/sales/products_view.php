@@ -8,7 +8,7 @@
                 $brokers_list = $Brokers->getListBrokers(); 
 ?>			
 <br>
-			<a onclick="openProducts();" class="btn btn-success">Agregar producto <i class="fa fa-plus-circle"></i></a>
+			<a onclick="openProducts();" class="btn btn-success desactivar">Agregar producto <i class="fa fa-plus-circle"></i></a>
 <br><br><br>            
 			<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12" id="products_details">
                             
@@ -84,7 +84,7 @@
                                                                     <input type='text' min="0"  step="0.01" readonly="readonly" name='amount[<?php echo $sales_products_details['id']?>]' id='amount_<?php echo $sales_products_details['id']?>' size="6" autocomplete="off" value="<?php echo $sales_products_details['amount']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'amount_<?php echo $sales_products_details['id'];?>','amount')"> 
                                                                 </td>
                                                                 <td>
-                                                                    <a onclick="deleteProductDetail(<?php echo $sales_products_details['id']?>)"  class="btn btn-danger">Eliminar</a> 
+                                                                    <a onclick="deleteProductDetail(<?php echo $sales_products_details['id']?>)"  class="btn btn-danger desactivar">Eliminar</a> 
                                                                 </td>
                                                             </tr>
                                                             <tr>

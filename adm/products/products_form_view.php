@@ -1,5 +1,15 @@
 <?php include('../../view_header.php')?>
 <?php include('../menu.php')?>
+<?php if($_SESSION['rol'] != "ADM"):?>
+<script>
+    
+    $(document).ready(function(){
+        
+        $(":radio").prop("disabled", true);        
+        
+    });
+</script>    
+<?php endif;?>
 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
 <h1 class="text-center">Productos</h1>
     <form class="" action="index.php" method="POST">

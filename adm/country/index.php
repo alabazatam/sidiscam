@@ -96,11 +96,23 @@ unset($values['PHPSESSID']);
 				$id_country= $country['id_country'];
 				if($status == 0)
 				{
-					$message_status = "<label class='label label-danger'><a href='#' onclick = ".'"'."status_changer('country','id_country', '$id_country','1')".'"'.">Desactivado</a></label>";
+                                       $onclick = "";
+                                        if($_SESSION['rol'] == "ADM")
+                                        {
+                                            $onclick = "onclick = ".'"'."status_changer('country','id_country', '$id_country','1')".'"'."";
+ 
+                                        } 
+					$message_status = "<label class='label label-danger'><a href='#' $onclick>Desactivado</a></label>";
 				}
 				if($status == 1)
 				{
-					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('country','id_country', '$id_country','0')".'"'.">Activo</a></label>";
+                                       $onclick = "";
+                                        if($_SESSION['rol'] == "ADM")
+                                        {
+                                            $onclick = "onclick = ".'"'."status_changer('country','id_country', '$id_country','0')".'"'."";
+ 
+                                        } 
+					$message_status = "<label class='label label-success'><a href='#' $onclick>Activo</a></label>";
 				}
 				
 				$array_json['data'][] = array(

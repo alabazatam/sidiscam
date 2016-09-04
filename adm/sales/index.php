@@ -72,8 +72,21 @@ unset($values['PHPSESSID']);
 	}
 	function executeUpdate($values = null)
 	{
-		$Sales = new Sales();	
-		$errors = validate($values);
+		$Sales = new Sales();
+                $valores_antes = $Sales->getSalesById($values);
+                
+                
+                if($valores_antes['status']==0 and $_SESSION['rol']!="ADM")
+                {
+                   //print_r($values);die;
+                   $Sales->updateSalesSeguimiento($values);
+                   executeEdit($values,message_updated);die;
+		}else
+                {
+                   $errors = validate($values); 
+                }
+		
+                
 		if(count($errors)>0)
 		{	
 			$values['errors'] = $errors;

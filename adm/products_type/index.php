@@ -95,11 +95,23 @@ $values = $_REQUEST;
 				$id_product_type = $products_type['id_product_type'];
 				if($status == 0)
 				{
-					$message_status = "<label class='label label-danger'><a href='#' onclick = ".'"'."status_changer('products_type','id_product_type', '$id_product_type','1')".'"'.">Desactivado</a></label>";
+                                        $onclick = "";
+                                        if($_SESSION['rol'] == "ADM")
+                                        {
+                                            $onclick = "onclick = ".'"'."status_changer('products_type','id_product_type', '$id_product_type','1')".'"'."";
+ 
+                                        } 
+					$message_status = "<label class='label label-danger'><a href='#' $onclick>Desactivado</a></label>";
 				}
 				if($status == 1)
 				{
-					$message_status = "<label class='label label-success'><a href='#' onclick = ".'"'."status_changer('products_type','id_product_type', '$id_product_type','0')".'"'.">Activo</a></label>";
+                                        $onclick = "";
+                                        if($_SESSION['rol'] == "ADM")
+                                        {
+                                            $onclick = "onclick = ".'"'."status_changer('products_type','id_product_type', '$id_product_type','0')".'"'."";
+ 
+                                        } 
+					$message_status = "<label class='label label-success'><a href='#' $onclick>Activo</a></label>";
 				}
 				
 				$array_json['data'][] = array(
