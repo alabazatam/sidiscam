@@ -1,6 +1,6 @@
 /*
-SQLyog Community v12.2.1 (64 bit)
-MySQL - 5.7.13-0ubuntu0.16.04.2 : Database - intelign_sidiscam
+SQLyog Community v12.15 (64 bit)
+MySQL - 5.5.49-0ubuntu0.14.04.1 : Database - intelign_sidiscam
 *********************************************************************
 */
 
@@ -13,8 +13,6 @@ MySQL - 5.7.13-0ubuntu0.16.04.2 : Database - intelign_sidiscam
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`intelign_sidiscam` /*!40100 DEFAULT CHARACTER SET utf8 */;
-
-USE `intelign_sidiscam`;
 
 /*Table structure for table `bank` */
 
@@ -363,7 +361,7 @@ CREATE TABLE `connections_history` (
   `ip` varchar(50) NOT NULL,
   `date_created` datetime NOT NULL,
   PRIMARY KEY (`id_connection`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
 /*Data for the table `connections_history` */
 
@@ -390,7 +388,14 @@ insert  into `connections_history`(`id_connection`,`id_user`,`login`,`ip`,`date_
 (26,8,'tamara','127.0.0.1','2016-09-04 12:34:30'),
 (27,9,'reporte','127.0.0.1','2016-09-04 12:54:44'),
 (28,9,'reporte','127.0.0.1','2016-09-04 12:57:40'),
-(29,9,'reporte','127.0.0.1','2016-09-04 12:59:11');
+(29,9,'reporte','127.0.0.1','2016-09-04 12:59:11'),
+(30,1,'mdeandrade','127.0.0.1','2016-09-05 16:59:05'),
+(31,8,'tamara','127.0.0.1','2016-09-05 16:59:40'),
+(32,8,'tamara','127.0.0.1','2016-09-05 17:01:36'),
+(33,7,'admin','127.0.0.1','2016-09-05 17:04:31'),
+(34,7,'admin','127.0.0.1','2016-09-05 17:04:52'),
+(35,7,'admin','127.0.0.1','2016-09-05 19:44:44'),
+(36,7,'admin','127.0.0.1','2016-09-05 20:49:48');
 
 /*Table structure for table `containers` */
 
@@ -803,11 +808,11 @@ insert  into `menu`(`id_menu`,`id_menu_padre`,`description`,`link`,`icon_class`,
 (18,3,'Tipos de destinos','/adm/type_destiny/index.php','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58'),
 (19,0,'Proveedores','#','fa fa-file-text-o',5,1,'2016-06-11 12:35:57','2016-06-11 12:36:01'),
 (20,0,'Reportes','#','fa fa-line-chart',6,1,'2016-06-11 12:35:57','2016-06-11 12:36:01'),
-(21,0,'Administración de usuarios','#','fa fa-users',7,1,'2016-06-11 12:35:57','2016-06-11 12:36:01'),
+(21,0,'Administración de usuarios','#','fa fa-users',7,0,'2016-06-11 12:35:57','2016-06-11 12:36:01'),
 (22,0,'Usuario','#','fa fa-user',8,1,'2016-06-11 12:35:57','2016-06-11 12:36:01'),
 (23,21,'Usuarios','/adm/users/index.php','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58'),
 (24,22,'Cambio de clave','/adm/users/index.php?action=change_pass_view','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58'),
-(25,20,'Reporte1','/adm/reporte1/index.php','',1,1,'2016-06-11 12:36:46','2016-06-11 12:36:48'),
+(25,20,'Reporte de contenedores','/adm/reporte1/index.php','',1,1,'2016-06-11 12:36:46','2016-06-11 12:36:48'),
 (26,0,'Productos y Servicios','#','fa fa-book',4,1,'2016-06-11 12:37:18','2016-06-11 12:37:20'),
 (27,0,'Clientes','#','fa fa-dollar',2,1,'2016-06-11 12:35:57','2016-06-11 12:36:01'),
 (28,3,'Usuarios','/adm/users/index.php','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58');
@@ -1782,7 +1787,7 @@ CREATE TABLE `sales` (
 /*Data for the table `sales` */
 
 insert  into `sales`(`id_sale`,`id_type_destiny`,`id_company`,`id_client`,`id_shipping_lines`,`id_company_bank`,`id_plant_fact`,`id_farm_fact`,`date_sale`,`id_country_out`,`id_port_out`,`id_country_in`,`id_port_in`,`date_out`,`date_estimate_in`,`date_in_real`,`date_out_real`,`observacion_seguimiento`,`follow_amount`,`follow_update`,`follow_status`,`id_company_address`,`id_client_address`,`id_client_address2`,`terms`,`comision`,`id_bank_in`,`id_incoterm`,`note_sale`,`status`,`date_created`,`date_updated`) values 
-(1,2,1,4,2,12,3,1,'2016-06-11',1,1,65,131,'2016-06-01','2016-06-11','2016-06-24','2016-09-09','observacion de seguimiento','40000.00','2016-09-01','Factura Entregada',2,9,9,'40 000 usd anticipated against proforma Sold 10 days before arrival to destination port','50',0,1,'observacion de la venta',0,'2016-06-10 10:12:51','2016-09-03 11:40:17'),
+(1,2,1,4,2,12,3,1,'2016-06-11',1,1,65,131,'2016-06-01','2016-06-11','2016-09-15','2016-09-01','observacion de seguimiento','40000.00','2016-09-01','Factura Entregada',2,9,9,'40 000 usd anticipated against proforma Sold 10 days before arrival to destination port','50',0,1,'observacion de la venta',0,'2016-06-10 10:12:51','2016-09-05 18:05:32'),
 (2,2,1,2,1,12,NULL,NULL,'2016-11-25',1,1,1,1,'2016-06-22','2016-06-02',NULL,NULL,NULL,NULL,NULL,NULL,NULL,6,NULL,'terminos','comision',0,2,'aaaaaaaaaaaaaaaaaaaaaaaaaaa',0,'2016-06-10 22:53:00','2016-06-18 13:59:37'),
 (3,2,1,2,1,12,1,NULL,'2016-06-04',1,1,1,1,'2016-06-11','2016-06-11',NULL,NULL,NULL,NULL,NULL,NULL,NULL,6,NULL,'hola','5%',0,11,'observacion',1,'2016-06-11 23:42:48','2016-09-01 12:14:24'),
 (4,2,1,1,2,12,NULL,NULL,'2016-06-18',1,1,65,34,'2016-06-18','2016-06-18',NULL,NULL,NULL,NULL,NULL,NULL,NULL,2,NULL,'qqqqqqqqqqq','qqq',NULL,3,'qqqqqqq',0,'2016-06-18 16:41:07','2016-06-18 16:59:56'),
