@@ -33,6 +33,7 @@
 					<th>Naviera</th>					
 					<!--<th>Acciones</th>-->
 					<th>Granja</th>
+					<th>Planta procesadora</th>
 					<th>Fecha estimada salida</th>
 					<th>Retraso en salida</th>
 					<th>Fecha de salida</th>
@@ -57,6 +58,7 @@
 					<th>Naviera</th>					
 					<!--<th>Acciones</th>-->
 					<th>Granja</th>
+					<th>Planta procesadora</th>
 					<th>Fecha estimada salida</th>
 					<th>Retraso en salida</th>
 					<th>Fecha de salida</th>
@@ -124,6 +126,7 @@ $(document).ready(function() {
 			{ "data": "naviera" },
             //{ "data": "actions" },
 			{ "data": "granja" },
+			{ "data": "plant_name" },
 			{ "data": "estimada_salida" },
 			{ "data": "retraso_salida" },
 			{ "data": "salida" },
@@ -143,7 +146,7 @@ $(document).ready(function() {
 			  'aTargets': [ 3 ] 
 		  },
           {
-                "targets": [ 6,7,8,9,10,11,12,13,14,15,16,17,18 ],
+                "targets": [ 6,7,8,9,10,11,12,13,14,15,16,17,18,19 ],
                 "visible": false
            }
 		  

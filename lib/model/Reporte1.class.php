@@ -117,13 +117,14 @@
 			sales.date_out_real AS salida, sales.date_in_real AS llegada, follow_status AS STATUS, 
 			DATEDIFF(date_out_real,date_out) AS retraso_salida, 
 			DATEDIFF(date_in_real,date_estimate_in) AS retraso_llegada,
-			DATEDIFF(date_in_real,date_out_real) AS dias_transito, company.description as company_name")
+			DATEDIFF(date_in_real,date_out_real) AS dias_transito, company.description as company_name, plants.name as plant_name")
 			->join('sales','LEFT JOIN sales ON sales.id_sale = sales_products_detail.id_sale')
 			->join('shipping_lines','LEFT JOIN shipping_lines ON shipping_lines.id_shipping_lines = sales.id_shipping_lines')
 			->join('clients','LEFT JOIN clients ON clients.id_client = sales.id_client')
 			->join('clients_address_detail','LEFT JOIN clients_address_detail ON clients_address_detail.id = sales.id_client_address')
 			->join('farms','LEFT JOIN farms ON farms.id_farm = sales_products_detail.id_farm')
 			->join('company','LEFT JOIN company ON company.id_company= sales.id_company')
+			->join('plants','LEFT JOIN plants ON plants.id_plant = sales_products_detail.id_plant')
 
 			->order("$column_order $order")
 			->where("$where")
@@ -174,12 +175,15 @@
 			->select("SUM(quantity) AS KGS,sales_products_detail.id_sale,sales_products_detail.number,cases as cases,amount as monto,sales_products_detail.comision,sales.observacion_seguimiento,"
 			. "shipping_lines.name AS naviera,clients_address_detail.state AS destino, clients.name AS client_name,"
                                 . " sales.date_out as estimada_salida,sales.date_out_real as salida, sales.date_in_real as llegada, follow_status as status,company.description as company_name,"
-				. "DATEDIFF(IFNULL(date_out_real,NOW()),date_out) AS retraso_salida, DATEDIFF(IFNULL(date_in_real,NOW()),date_estimate_in) AS retraso_llegada,DATEDIFF(date_in_real,date_out_real) AS dias_transito")
+				. "DATEDIFF(IFNULL(date_out_real,NOW()),date_out) AS retraso_salida, DATEDIFF(IFNULL(date_in_real,NOW()),date_estimate_in) AS retraso_llegada,DATEDIFF(date_in_real,date_out_real) AS dias_transito,plants.name as plant_name,farms.name as granja")
 			->join('sales','LEFT JOIN sales ON sales.id_sale = sales_products_detail.id_sale')
 			->join('shipping_lines','LEFT JOIN shipping_lines ON shipping_lines.id_shipping_lines = sales.id_shipping_lines')
 			->join('clients','LEFT JOIN clients ON clients.id_client = sales.id_client')
 			->join('clients_address_detail','LEFT JOIN clients_address_detail ON clients_address_detail.id = sales.id_client_address')
             ->join('company','LEFT JOIN company ON company.id_company= sales.id_company')
+			->join('plants','LEFT JOIN plants ON plants.id_plant = sales_products_detail.id_plant')
+			->join('farms','LEFT JOIN farms ON farms.id_farm = sales_products_detail.id_farm')
+
 			->order("number")
 			->where("sales.id_sale =?",$values['id_sale'])
                         ->and("number =?",$values['number'])

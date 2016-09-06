@@ -67,6 +67,7 @@ unset($values['PHPSESSID']);
                                                .'<button class="btn btn-default btn-sm" type="submit"><i class="fa fa-edit  fa-pull-left fa-border"></i></button>'
                                                .'</form>',
 												"granja" =>$data['granja'],
+												"plant_name" =>$data['plant_name'],
 												"estimada_salida" =>$data['estimada_salida'],
 												"retraso_salida" =>$data['retraso_salida'],
 												"salida" =>$data['salida'],
@@ -89,6 +90,7 @@ unset($values['PHPSESSID']);
 				"id_sale"=>null,
 				"client_name"=>"","number"=>"","KGS"=>"","destino"=>"","naviera"=>"","actions"=>"",
 				"granja"=>"",
+				"plant_name"=>"",
 				"estimada_salida"=>"",
 				"retraso_salida"=>"",
 				"salida"=>"",

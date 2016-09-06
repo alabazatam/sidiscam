@@ -9,6 +9,8 @@
         <th>Cliente</th>
         <th>Naviera</th>
         <th>Contenedor</th>
+		<th>Planta procesadora</th>
+		<th>Granja</th>
         <th>Destino</th>
         <th>Fecha de salida estimada</th>
         <th>Días de retraso en salida</th>
@@ -31,6 +33,8 @@
         <td><?php echo $data['client_name'];?></td>
         <td><?php echo $data['naviera'];?></td>
         <td><?php echo $data['number'];?></td>
+		<td><?php echo $data['plant_name'];?></td>
+		<td><?php echo $data['granja'];?></td>		
         <td><?php echo $data['destino'];?></td>
         <td><?php echo $data['estimada_salida'];?></td>
         <td><?php echo $data['retraso_salida'];?></td>
@@ -54,6 +58,8 @@
         <th>Cliente</th>
         <th>Naviera</th>
         <th>Contenedor</th>
+		<th>Planta procesadora</th>
+		<th>Granja</th>
         <th>Destino</th>
         <th>Fecha de salida estimada</th>
         <th>Días de retraso en salida</th>
@@ -62,7 +68,7 @@
         <th>Días de tránsito</th>
         <th>KG</th>
         <th>Bultos</th>
-        <th>Factura Pomadrosa</th>
+        <th>Factura</th>
         <th>Monto</th>
         <th>Comisión comercial</th>
         <th>Status</th>
@@ -70,7 +76,7 @@
     </tr>
     </tfoot>
 </table>
-								<a class="btn btn-default"  href="<?php echo full_url."/adm/reporte1/index.php"?>"><i class="fa fa-arrow-left  fa-pull-left fa-border"></i> Regresar</a>
+<a class="btn btn-default"  href="<?php echo full_url."/adm/reporte1/index.php"?>"><i class="fa fa-arrow-left  fa-pull-left fa-border"></i> Regresar</a>
 
 </div>       
 
