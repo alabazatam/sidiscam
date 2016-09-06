@@ -41,12 +41,21 @@
 						 <?php endif;?>
 				</li>
 			<?php endforeach;?>
+				
+		<?php endif;?>
+		<?php if($_SESSION['rol'] == 'ADM'):?>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle facebook_font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-users"></i> Administración de usuarios <span class="caret"></span></a>	
+                                    <ul class="dropdown-menu">
+                                        <li><a href="<?php echo full_url;?>/adm/users/index.php">Usuarios</a></li>
+                                    </ul>
+                                </li>
 		<?php endif;?>
                 <?php if($_SESSION['rol']=='REP'):?>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle facebook_font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-line-chart"></i> Reportes <span class="caret"></span></a>	
                                     <ul class="dropdown-menu">
-                                        <li><a href="<?php echo full_url;?>/adm/reporte1/index.php">Reporte 1</a></li>
+                                        <li><a href="<?php echo full_url;?>/adm/reporte1/index.php">Reporte de contenedores</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">

@@ -35,7 +35,7 @@ unset($values['PHPSESSID']);
 	{
 		$Reporte1 = new Reporte1();
 		$reporte1_json = $Reporte1 -> getDataList($values);
-		$reporte1_json_cuenta = $Reporte1 ->getCountDataList($values);
+		$reporte1_json_cuenta = count($Reporte1 ->getCountDataList($values));
 		$array_json = array();
 		$array_json['recordsTotal'] = $reporte1_json_cuenta;
 		$array_json['recordsFiltered'] = $reporte1_json_cuenta;
@@ -52,22 +52,57 @@ unset($values['PHPSESSID']);
                                                 "number" => $data['number'],
                                                 "KGS" => $data['kgs'],
                                                 "destino" => $data['destino'],
-                                                "naviera" => $data['naviera'],
+                                                "naviera" => $data['naviera'].'<form method="POST" action = "'.full_url.'/adm/reporte1/index.php" >'
+                                               .'<input type="hidden" name="action" value="view">  '
+												.'<input type="hidden" name="id_sale" value="'.$id_sale.'">  '
+                                               .'<input type="hidden" name="number" value="'.$data['number'].'">  '
+                                               .'<button class="btn btn-default btn-sm" type="submit"><i class="fa fa-edit  fa-pull-left fa-border"></i></button>'
+                                               .'</form>',
                                                 "actions" => 
 
                                                '<form method="POST" action = "'.full_url.'/adm/reporte1/index.php" >'
-                                               .'<input type="text" name="action" value="view">  '
-												.'<input type="text" name="id_sale" value="'.$id_sale.'">  '
-                                               .'<input type="text" name="number" value="'.$data['number'].'">  '
+                                               .'<input type="hidden" name="action" value="view">  '
+												.'<input type="hidden" name="id_sale" value="'.$id_sale.'">  '
+                                               .'<input type="hidden" name="number" value="'.$data['number'].'">  '
                                                .'<button class="btn btn-default btn-sm" type="submit"><i class="fa fa-edit  fa-pull-left fa-border"></i></button>'
-                                               .'</form>'
+                                               .'</form>',
+												"granja" =>$data['granja'],
+												"estimada_salida" =>$data['estimada_salida'],
+												"retraso_salida" =>$data['retraso_salida'],
+												"salida" =>$data['salida'],
+												"llegada" =>$data['llegada'],
+												"dias_transito" =>$data['dias_transito'],
+												"KGS" =>$data['kgs'],
+												"cases" =>$data['cases'],
+												"factura" =>$data['company_name'],
+												"monto" =>$data['monto'],
+												"comision" =>$data['comision'],
+												"status_seguimiento" =>$data['status_seguimiento'],
+												"observacion_seguimiento" =>$data['observacion_seguimiento'],
                                                 ); 
                                                 
 			}	
 		}else{
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
-			$array_json['data'][0] = array("id_sale"=>null,"client_name"=>"","number"=>"","KGS"=>"","destino"=>"","naviera"=>"","actions"=>"");
+			$array_json['data'][0] = array(
+				"id_sale"=>null,
+				"client_name"=>"","number"=>"","KGS"=>"","destino"=>"","naviera"=>"","actions"=>"",
+				"granja"=>"",
+				"estimada_salida"=>"",
+				"retraso_salida"=>"",
+				"salida"=>"",
+				"llegada"=>"",
+				"dias_transito"=>"",
+				"KGS"=>"",
+				"cases"=>"",
+				"factura"=>"",
+				"monto"=>"",
+				"comision"=>"",
+				"status_seguimiento" => "",
+				"observacion_seguimiento" =>""
+				
+				);
 		}
 
 		echo json_encode($array_json);die;

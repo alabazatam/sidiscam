@@ -3,37 +3,82 @@
 <link href="<?php echo full_url;?>/web/css/buttons.dataTables.min.css" rel="stylesheet">
 <div class="container">
 	<h1 class="text-center">Reporte de contenedores</h1>
+
+ 	<div class="col-sm-12 col-md-12 alert alert-info">
+		<div class="col-sm-4 col-md-4">
+			<label>Fecha desde: </label>
+			<input id="desde" name="desde" type="text">
+		</div>
+		<div class="col-sm-4 col-md-4">
+			<label>Fecha hasta: </label>
+			<input id="hasta" name="hasta" type="text">
+		</div>
+		<div class="col-sm-4 col-md-4">
+			<a id="buscar" class="btn btn-success"><i class="fa fa-filter"></i> Filtrar por fechas</a>
+		</div>			
+
+            
+
+	</div>           
+
+ 
 	<table id="example" class="table table-striped table-bordered table-responsive" width="100%" cellspacing="0">
 			<thead>
 				<tr>
-					<th>Id</th>
+					<th>ID.Venta</th>
 					<th>Cliente</th>
 					<th>Nro de contenedor</th>
 					<th>Total de Kgs</th>
 					<th>Destino</th>
 					<th>Naviera</th>					
-					<th>Acciones</th>
+					<!--<th>Acciones</th>-->
+					<th>Granja</th>
+					<th>Fecha estimada salida</th>
+					<th>Retraso en salida</th>
+					<th>Fecha de salida</th>
+					<th>Fecha de llegada</th>
+					<th>Días en tránsito</th>
+					<th>KGS</th>
+					<th>Bultos</th>
+					<th>Factura</th>
+					<th>Monto</th>
+					<th>Comisión</th>
+					<th>Status</th>
+					<th>Observación</th>
 				</tr>
 			</thead>
 			<tfoot>
 				<tr>
-					<th>Id</th>
+					<th>ID.Venta</th>
 					<th>Cliente</th>
 					<th>Nro de contenedor</th>
 					<th>Total de Kgs</th>
 					<th>Destino</th>
 					<th>Naviera</th>					
-					<th>Acciones</th>
+					<!--<th>Acciones</th>-->
+					<th>Granja</th>
+					<th>Fecha estimada salida</th>
+					<th>Retraso en salida</th>
+					<th>Fecha de salida</th>
+					<th>Fecha de llegada</th>
+					<th>Días en tránsito</th>
+					<th>KGS</th>
+					<th>Bultos</th>
+					<th>Factura</th>
+					<th>Monto</th>
+					<th>Comisión</th>
+					<th>Status</th>
+					<th>Observación</th>
 				</tr>
 			</tfoot>
 		</table>
-	<a class="btn btn-default"  href="<?php echo full_url."/adm/sales/index.php?action=new"?>"><i class="fa fa-file-o fa-pull-left fa-border"></i>Agregar</a>
+
 </div>
 	<?php include('../../view_footer.php')?>
 <script>
 $(document).ready(function() {
 	$('#example tfoot th').each( function () {
-		var title = $('#example thead th').eq( $(this).index() ).text();
+		/*var title = $('#example thead th').eq( $(this).index() ).text();
 		
 		if(title != 'Acciones')
 		{       //$('#toogles').append('- <a class="btn btn-success toggle-vis" data-column="'+$(this).index()+'">'+title+'</a>' );
@@ -46,7 +91,7 @@ $(document).ready(function() {
 		if(title == 'Total de Kgs')
 		{
 			$(this).html( '' );	
-		}		
+		}	*/	
 
 	} );
     var table = $('#example').DataTable({
@@ -54,15 +99,21 @@ $(document).ready(function() {
         "scrollX": true,
         "processing": true,
         "serverSide": true,
-        "ajax": "<?php echo full_url."/adm/reporte1/index.php?action=reporte1_list_json"?>",
+		"bFilter": false,
+        "ajax": {
+			"url": "<?php echo full_url."/adm/reporte1/index.php?action=reporte1_list_json"?>",
+			"data": function(d) {
+                    d.desde = $('#desde').val();
+                    d.hasta =  $('#hasta').val();
+					d.id = $('#column_0').val();
+					}
+			},
 		"language": {
                 "url": "<?php echo full_url."/web/js/"?>datatables.spanish.lang"
         },
         buttons: [
-            'copyHtml5',
             'excelHtml5',
             'csvHtml5',
-            'pdfHtml5'
         ],
         "columns": [
             { "data": "id_sale" },
@@ -71,13 +122,35 @@ $(document).ready(function() {
 			{ "data": "KGS" },
 			{ "data": "destino" },
 			{ "data": "naviera" },
-            { "data": "actions" }
+            //{ "data": "actions" },
+			{ "data": "granja" },
+			{ "data": "estimada_salida" },
+			{ "data": "retraso_salida" },
+			{ "data": "salida" },
+			{ "data": "llegada" },
+			{ "data": "dias_transito" },
+			{ "data": "KGS" },
+			{ "data": "cases" },
+			{ "data": "factura" },
+			{ "data": "monto" },
+			{ "data": "comision" },
+			{ "data": "status_seguimiento" },
+			{ "data": "observacion_seguimiento" }
         ],
       "aoColumnDefs": [
-          { 'bSortable': false, 'aTargets': [ 3,6 ] }
-       ]				
+          { 
+			  'bSortable': false, 
+			  'aTargets': [ 3 ] 
+		  },
+          {
+                "targets": [ 6,7,8,9,10,11,12,13,14,15,16,17,18 ],
+                "visible": false
+           }
+		  
+       ],
+			   
     });
-$('#column_0').on ('keypress', function(e){
+/*$('#column_0').on ('keypress', function(e){
     if(e.which == 13) {
         table.column(table.column(0)).search($(this).val()).draw();
     }
@@ -109,7 +182,13 @@ $('#column_5').on ('keypress', function(e){
 });
 	$('#clear').click(function(){
 		table.search( '' ).columns().search( '' ).draw();
-	});
+	});*/
+	
+$('#buscar').click(function(){
+	 table.draw();
+});
+
+
 } );
 
 </script>

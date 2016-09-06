@@ -109,12 +109,12 @@ define ('PDF_AUTHOR', 'Marcos De Andrade');
 /**
  * Header title.
  */
-define ('PDF_HEADER_TITLE', 'Factura');
+define ('PDF_HEADER_TITLE', ' ');
 
 /**
  * Header description string.
  */
-define ('PDF_HEADER_STRING', "Cosein C.A");
+define ('PDF_HEADER_STRING', " ");
 
 /**
  * Document unit of measure [pt=point, mm=millimeter, cm=centimeter, in=inch].

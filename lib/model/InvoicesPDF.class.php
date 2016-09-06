@@ -192,7 +192,7 @@
 		$total_cases+= $products['cases'];
 		$total_quantity+= $products['quantity'];
 		$html.='<tr>'
-				. '<td style="border-right-width: 1px;"></td>'
+				. '<td style="border-right-width: 1px;">'.$products['number'].'</td>'
 				. '<td style="border-right-width: 1px;">'.$products['product_name']." ".$products['product_type_name'].'</td>'
 				. '<td style="text-align: right;border-right-width: 1px;">'.$products['cases'].'</td>'
 				. '<td style="text-align: center;border-right-width: 1px;">'.$products['packing'].'</td>'

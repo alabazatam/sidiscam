@@ -19,6 +19,8 @@
 		}
 		public function getDataList($values)
 		{	
+			
+			$Utilitarios = new Utilitarios();
 			$columns = array();
 			$columns[0] = 'sales.id_sale';
 			$columns[1] = 'client_name';
@@ -70,7 +72,33 @@
 			{
 				$where.=" AND upper(shipping_lines.name) like ('%".$values['columns'][4]['search']['value']."%')";
 				//echo $values['columns'][0]['search']['value'];die;
-			}	
+			}
+
+			if($values['desde']!='')
+			{
+					
+					$values['desde'] = $Utilitarios->formatFechaInput($values['desde']);
+				
+			}
+
+					
+			
+			if($values['hasta']!='')
+			{
+
+					$values['hasta'] = $Utilitarios->formatFechaInput($values['hasta']);
+				
+			}
+			//echo $values['desde'].$values['hasta'];die;
+			
+			if($values['desde']!='')
+			{
+				$where.=" AND sales.date_sale >= '".$values['desde']."' ";
+			}
+			if($values['hasta']!='')
+			{
+				$where.=" AND sales.date_sale <= '".$values['hasta']."'";
+			}			
 			if(isset($values['order'][0]['column']) and $values['order'][0]['column']!='0')
 			{
 				$column_order = $columns[$values['order'][0]['column']];
@@ -82,51 +110,77 @@
 			//echo $column_order;die;
             $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->sales_products_detail
-			->select("SUM(quantity) AS KGS,sales_products_detail.id_sale,sales_products_detail.number,"
-			. "shipping_lines.name AS naviera,clients_address_detail.state AS destino, clients.name AS client_name")
+			->select("SUM(quantity) AS KGS,sales_products_detail.id_sale,sales_products_detail.number,shipping_lines.name AS naviera,clients_address_detail.state AS destino, 
+			clients.name AS client_name,SUM(quantity) AS KGS,SUM(amount) AS monto,SUM(sales_products_detail.comision) AS comision,SUM(cases) as cases,sales_products_detail.id_sale ,
+			sales_products_detail.number,shipping_lines.name AS naviera, clients_address_detail.state AS destino, clients.name AS client_name,farms.name as granja, 
+			sales.observacion_seguimiento,sales.follow_status as status_seguimiento,shipping_lines.name AS naviera,clients_address_detail.state AS destino, clients.name AS client_name, sales.date_out AS estimada_salida, 
+			sales.date_out_real AS salida, sales.date_in_real AS llegada, follow_status AS STATUS, 
+			DATEDIFF(date_out_real,date_out) AS retraso_salida, 
+			DATEDIFF(date_in_real,date_estimate_in) AS retraso_llegada,
+			DATEDIFF(date_in_real,date_out_real) AS dias_transito, company.description as company_name")
 			->join('sales','LEFT JOIN sales ON sales.id_sale = sales_products_detail.id_sale')
 			->join('shipping_lines','LEFT JOIN shipping_lines ON shipping_lines.id_shipping_lines = sales.id_shipping_lines')
 			->join('clients','LEFT JOIN clients ON clients.id_client = sales.id_client')
 			->join('clients_address_detail','LEFT JOIN clients_address_detail ON clients_address_detail.id = sales.id_client_address')
-            ->order("$column_order $order")
+			->join('farms','LEFT JOIN farms ON farms.id_farm = sales_products_detail.id_farm')
+			->join('company','LEFT JOIN company ON company.id_company= sales.id_company')
+
+			->order("$column_order $order")
 			->where("$where")
 			->group('sales_products_detail.id_sale,sales_products_detail.number, sales_products_detail.precinto')
 			->limit($limit,$offset);
-			//echo $q;die;
 			return $q; 			
 		}
 		public function getCountDataList($values)
 		{	
+			$Utilitarios = new Utilitarios();
 			$where = " sales.status = 0";
-			if(isset($values['search']['value']) and $values['search']['value'] !='')
-			{	
-				$str = $values['search']['value'];
-				$where.=" ";
+			if($values['desde']!='')
+			{		
+					$values['desde'] = $Utilitarios->formatFechaInput($values['desde']);	
 			}
-			$ConnectionORM = new ConnectionORM();
+			if($values['hasta']!='')
+			{
+					$values['hasta'] = $Utilitarios->formatFechaInput($values['hasta']);
+			}
+			//echo $values['desde'].$values['hasta'];die;
+			
+			if($values['desde']!='')
+			{
+				$where.=" AND sales.date_sale >= '".$values['desde']."' ";
+			}
+			if($values['hasta']!='')
+			{
+				$where.=" AND sales.date_sale <= '".$values['hasta']."'";
+			}	
+            $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->sales_products_detail
 			->select("count(*) as cuenta")
 			->join('sales','LEFT JOIN sales ON sales.id_sale = sales_products_detail.id_sale')
 			->join('shipping_lines','LEFT JOIN shipping_lines ON shipping_lines.id_shipping_lines = sales.id_shipping_lines')
 			->join('clients','LEFT JOIN clients ON clients.id_client = sales.id_client')
 			->join('clients_address_detail','LEFT JOIN clients_address_detail ON clients_address_detail.id = sales.id_client_address')
+			->join('farms','LEFT JOIN farms ON farms.id_farm = sales_products_detail.id_farm')
+			->join('company','LEFT JOIN company ON company.id_company= sales.id_company')
 			->where("$where")
-			->group('sales_products_detail.id_sale,sales_products_detail.number, sales_products_detail.precinto')
-			->fetch();
-			return $q['cuenta']; 			
+			->group('sales_products_detail.id_sale,sales_products_detail.number');
+			//->fetch();
+			return $q; 			
 		}
 		public function getDataView($values)
 		{	
             $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->sales_products_detail
-			->select("SUM(quantity) AS KGS,sales_products_detail.id_sale,sales_products_detail.number,cases as cases,amount as monto,sales_products_detail.comision,"
+			->select("SUM(quantity) AS KGS,sales_products_detail.id_sale,sales_products_detail.number,cases as cases,amount as monto,sales_products_detail.comision,sales.observacion_seguimiento,"
 			. "shipping_lines.name AS naviera,clients_address_detail.state AS destino, clients.name AS client_name,"
-                                . " sales.date_out as estimada_salida,sales.date_out_real as salida, sales.date_in_real as llegada, follow_status as status")
+                                . " sales.date_out as estimada_salida,sales.date_out_real as salida, sales.date_in_real as llegada, follow_status as status,company.description as company_name,"
+				. "DATEDIFF(IFNULL(date_out_real,NOW()),date_out) AS retraso_salida, DATEDIFF(IFNULL(date_in_real,NOW()),date_estimate_in) AS retraso_llegada,DATEDIFF(date_in_real,date_out_real) AS dias_transito")
 			->join('sales','LEFT JOIN sales ON sales.id_sale = sales_products_detail.id_sale')
 			->join('shipping_lines','LEFT JOIN shipping_lines ON shipping_lines.id_shipping_lines = sales.id_shipping_lines')
 			->join('clients','LEFT JOIN clients ON clients.id_client = sales.id_client')
 			->join('clients_address_detail','LEFT JOIN clients_address_detail ON clients_address_detail.id = sales.id_client_address')
-                        ->order("number")
+            ->join('company','LEFT JOIN company ON company.id_company= sales.id_company')
+			->order("number")
 			->where("sales.id_sale =?",$values['id_sale'])
                         ->and("number =?",$values['number'])
 			->group('sales_products_detail.id_sale,sales_products_detail.number, sales_products_detail.precinto,id_product, id_product_type,cases,amount,sales_products_detail.comision ');
