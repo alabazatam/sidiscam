@@ -1,4 +1,3 @@
-
 <?php if(count($ports_list)>0):?>
 	<?php foreach($ports_list as $list):?>
 		<option value="<?php echo $list['id_port'];?>"

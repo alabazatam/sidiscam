@@ -5,6 +5,7 @@
         
         function generate1($values)
         {
+			setlocale(LC_NUMERIC,"es_ES.UTF8");
             ob_start();
             $id_sale = $values['id_sale'];
             $Sales = new Sales();
@@ -197,8 +198,8 @@
 				. '<td style="text-align: right;border-right-width: 1px;">'.$products['cases'].'</td>'
 				. '<td style="text-align: center;border-right-width: 1px;">'.$products['packing'].' x '.$products['pack'].'</td>'
 				. '<td style="text-align: center;border-right-width: 1px;">'.$products['quantity'].' Kg</td>'
-				. '<td style="text-align: right;border-right-width: 1px;">$&nbsp;&nbsp;&nbsp;'.$products['rate'].'</td>'
-				. '<td style="text-align: right;border-right-width: 1px;">$&nbsp;&nbsp;&nbsp;'.$products['amount'].'</td>'
+				. '<td style="text-align: right;border-right-width: 1px;">$&nbsp;&nbsp;&nbsp;'.number_format($products['rate'],2,",",".").'</td>'
+				. '<td style="text-align: right;border-right-width: 1px;">$&nbsp;&nbsp;&nbsp;'.number_format($products['amount'],2,",",".").'</td>'
 			. '</tr>';
                
 		}
@@ -209,7 +210,7 @@
 				. '<td style="border-right-width: 1px;">&nbsp;</td>'
 				. '<td style="text-align: center;border-right-width: 1px;"><strong>Kgr. <br>'.$total_quantity.'</strong></td>'
 				. '<td style="text-align: center;border-right-width: 1px;"><strong>INCOMTERMS <br> CFR</strong></td>'
-				. '<td style="text-align: right;"border-right-width: 1px;><strong>$&nbsp;&nbsp;&nbsp;'.$total_amount.'</strong></td>'
+				. '<td style="text-align: right;"border-right-width: 1px;><strong>$&nbsp;&nbsp;&nbsp;'.number_format($total_amount,2,",",".").'</strong></td>'
 			. '</tr>';					
 		
 		$html.= '</table>';
@@ -326,7 +327,7 @@
 				. '<td style="text-align: left;border-top-width: 1px;border-bottom-width: 1px;border-left-width: 1px;border-right-width: 1px;"><strong></strong></td>'
 				. '<td style="text-align: left;border-top-width: 1px;border-bottom-width: 1px;border-left-width: 1px;border-right-width: 1px;"><strong></strong></td>'
 				. '<td style="text-align: left;"></td>'
-				. '<td style="text-align: right; background-color: #ccc; border-top-width: 1px;border-bottom-width: 1px;border-left-width: 1px;border-right-width: 1px;"><strong>Balance due $ &nbsp;&nbsp;&nbsp;&nbsp;'.$total_amount.'</strong></td>'								
+				. '<td style="text-align: right; background-color: #ccc; border-top-width: 1px;border-bottom-width: 1px;border-left-width: 1px;border-right-width: 1px;"><strong>Balance due $ &nbsp;&nbsp;&nbsp;&nbsp;'.number_format($total_amount,2,",",".").'</strong></td>'								
 				. '</tr>'
 				. '</table>';
 			

@@ -212,7 +212,9 @@
 
 			}
 		});
+		<?php if(isset($values['id_sale']) and $values['id_sale']!=''):?>
 		selectCompanyAddress();
+		<?php endif;?>
 
 	}
 	function refreshClientAddress()
