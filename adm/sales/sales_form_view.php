@@ -131,14 +131,16 @@ $(".activarse").removeAttr("disabled");
 <script>
 
 $(document).ready(function(){
+	 
+	selectCompanyBank();
 	//actualizar combo dependiente de puertos
 	<?php if(isset($values['id_sale']) and $values['id_sale']!=''):?>
 		selectPortsCountryOut();
 		selectPortsCountryIn();
-		
-	refreshClientAddress();
+	window.setTimeout( refreshClientAddress, 3000 ); // 5 seconds
+	//refreshClientAddress();
 	<?php endif;?>
-	selectCompanyBank();
+	
 	
 });
 </script>
