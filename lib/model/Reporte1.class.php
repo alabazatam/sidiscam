@@ -110,14 +110,15 @@
 			//echo $column_order;die;
             $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->sales_products_detail
-			->select("SUM(quantity) AS KGS,sales_products_detail.id_sale,sales_products_detail.number,shipping_lines.name AS naviera,clients_address_detail.state AS destino, 
-			clients.name AS client_name,SUM(quantity) AS KGS,SUM(amount) AS monto,SUM(sales_products_detail.comision) AS comision,SUM(cases) as cases,sales_products_detail.id_sale ,
-			sales_products_detail.number,shipping_lines.name AS naviera, clients_address_detail.state AS destino, clients.name AS client_name,farms.name as granja, 
+			->select("SUM(quantity) AS KGS,SUM(quantity) AS KGS,SUM(amount) AS monto,SUM(sales_products_detail.comision) AS comision,SUM(cases) as cases,sales_products_detail.id_sale ,
+                        sales_products_detail.id_sale,sales_products_detail.number,shipping_lines.name AS naviera,clients_address_detail.state AS destino, 
+			clients.name AS client_name,freight,
+			sales_products_detail.number,shipping_lines.name AS naviera, clients_address_detail.state AS destino, clients.name AS client_name,
 			sales.observacion_seguimiento,sales.follow_status as status_seguimiento,shipping_lines.name AS naviera,clients_address_detail.state AS destino, clients.name AS client_name, sales.date_out AS estimada_salida, 
 			sales.date_out_real AS salida, sales.date_in_real AS llegada, follow_status AS STATUS, 
 			DATEDIFF(date_out_real,date_out) AS retraso_salida, 
 			DATEDIFF(date_in_real,date_estimate_in) AS retraso_llegada,
-			DATEDIFF(date_in_real,date_out_real) AS dias_transito, company.description as company_name, plants.name as plant_name")
+			DATEDIFF(date_in_real,date_out_real) AS dias_transito, company.description as company_name, plants.name as plant_name,farms.name as granja")
 			->join('sales','LEFT JOIN sales ON sales.id_sale = sales_products_detail.id_sale')
 			->join('shipping_lines','LEFT JOIN shipping_lines ON shipping_lines.id_shipping_lines = sales.id_shipping_lines')
 			->join('clients','LEFT JOIN clients ON clients.id_client = sales.id_client')
@@ -128,8 +129,9 @@
 
 			->order("$column_order $order")
 			->where("$where")
-			->group('sales_products_detail.id_sale,sales_products_detail.number, sales_products_detail.precinto')
+			->group('sales_products_detail.id_sale,sales_products_detail.number, sales_products_detail.precinto,plants.name, farms.name ')
 			->limit($limit,$offset);
+                        //echo$q;die;
 			return $q; 			
 		}
 		public function getCountDataList($values)
@@ -163,8 +165,10 @@
 			->join('clients_address_detail','LEFT JOIN clients_address_detail ON clients_address_detail.id = sales.id_client_address')
 			->join('farms','LEFT JOIN farms ON farms.id_farm = sales_products_detail.id_farm')
 			->join('company','LEFT JOIN company ON company.id_company= sales.id_company')
-			->where("$where")
-			->group('sales_products_detail.id_sale,sales_products_detail.number');
+                        ->join('plants','LEFT JOIN plants ON plants.id_plant = sales_products_detail.id_plant')
+
+                        ->where("$where")
+			->group('sales_products_detail.id_sale,sales_products_detail.number, sales_products_detail.precinto,plants.name, farms.name ');
 			//->fetch();
 			return $q; 			
 		}
@@ -187,7 +191,7 @@
 			->order("number")
 			->where("sales.id_sale =?",$values['id_sale'])
                         ->and("number =?",$values['number'])
-			->group('sales_products_detail.id_sale,sales_products_detail.number, sales_products_detail.precinto,id_product, id_product_type,cases,amount,sales_products_detail.comision ');
+			->group('sales_products_detail.id_sale,sales_products_detail.number, sales_products_detail.precinto,id_product, id_product_type,cases,amount,sales_products_detail.comision,plants.name,farms.name ');
 			
 			//echo $q;die;
 			return $q;			

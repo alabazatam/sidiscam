@@ -80,6 +80,7 @@ unset($values['PHPSESSID']);
 												"comision" =>$data['comision'],
 												"status_seguimiento" =>$data['status_seguimiento'],
 												"observacion_seguimiento" =>$data['observacion_seguimiento'],
+                                                                                                "freight" =>$data['freight'],
                                                 ); 
                                                 
 			}	
@@ -102,7 +103,8 @@ unset($values['PHPSESSID']);
 				"monto"=>"",
 				"comision"=>"",
 				"status_seguimiento" => "",
-				"observacion_seguimiento" =>""
+				"observacion_seguimiento" =>"",
+                                "freight" =>""
 				
 				);
 		}

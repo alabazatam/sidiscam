@@ -43,6 +43,7 @@
 					<th>Bultos</th>
 					<th>Factura</th>
 					<th>Monto</th>
+                                        <th>Flete</th>
 					<th>Comisión</th>
 					<th>Status</th>
 					<th>Observación</th>
@@ -68,6 +69,7 @@
 					<th>Bultos</th>
 					<th>Factura</th>
 					<th>Monto</th>
+                                        <th>Flete</th>
 					<th>Comisión</th>
 					<th>Status</th>
 					<th>Observación</th>
@@ -136,6 +138,7 @@ $(document).ready(function() {
 			{ "data": "cases" },
 			{ "data": "factura" },
 			{ "data": "monto" },
+                        { "data": "freight" },
 			{ "data": "comision" },
 			{ "data": "status_seguimiento" },
 			{ "data": "observacion_seguimiento" }
@@ -146,7 +149,7 @@ $(document).ready(function() {
 			  'aTargets': [ 3 ] 
 		  },
           {
-                "targets": [ 6,7,8,9,10,11,12,13,14,15,16,17,18,19 ],
+                "targets": [ 6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 ],
                 "visible": false
            }
 		  

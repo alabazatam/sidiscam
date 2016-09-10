@@ -56,7 +56,7 @@
 							
 							<div class="col-sm-4  col-md-4">
 								<label for="">Fecha estimada de salida <small class="text-danger">(*)</small></label>
-								<input id = "datetimepicker2" type="date" autocomplete="off" class="form-control input-sm datetimepicker1" id="" placeholder="" name="date_out" value="<?php if(isset($values['date_out'])) echo $values['date_out']?>">
+								<input id = "datetimepicker2" type="text" autocomplete="off" class="form-control input-sm datetimepicker1" id="" placeholder="" name="date_out" value="<?php if(isset($values['date_out'])) echo $values['date_out']?>">
 								<?php if(isset($values['errors']['date_out']) and $values['errors']['date_out']!=''):?>
 									<label class="alert alert-danger"><?php echo $values['errors']['date_out']?></label>
 								<?php endif;?>
@@ -88,7 +88,7 @@
 							</div>
 							<div class="col-sm-4  col-md-4">
 								<label for="">Fecha estimada de arribo <small class="text-danger">(*)</small></label>
-								<input id = "datetimepicker3" type="date" autocomplete="off" class="form-control input-sm datetimepicker1" id="" placeholder="" name="date_estimate_in" value="<?php if(isset($values['date_estimate_in'])) echo $values['date_estimate_in']?>">
+                                                                <input id = "datetimepicker3" type="text" autocomplete="off" class="form-control input-sm datetimepicker1" id="" placeholder="" name="date_estimate_in" value="<?php if(isset($values['date_estimate_in'])) echo $values['date_estimate_in']?>">
 								<?php if(isset($values['errors']['date_estimate_in']) and $values['errors']['date_estimate_in']!=''):?>
 									<label class="alert alert-danger"><?php echo $values['errors']['date_estimate_in']?></label>
 								<?php endif;?>
@@ -118,6 +118,13 @@
 										</select>
 								<?php if(isset($values['errors']['id_company_address']) and $values['errors']['id_company_address']!=''):?>
 									<label class="alert alert-danger"><?php echo $values['errors']['id_company_address']?></label>
+								<?php endif;?>
+							</div>
+							<div class="col-sm-6  col-md-6">
+								<label for="">Flete </label>
+								<input id = "" type="text" autocomplete="off" class="form-control input-sm" id="" placeholder="" name="freight" value="<?php if(isset($values['freight'])) echo $values['freight']?>">
+								<?php if(isset($values['errors']['freight']) and $values['errors']['freight']!=''):?>
+									<label class="alert alert-danger"><?php echo $values['errors']['freight']?></label>
 								<?php endif;?>
 							</div>
 					</div>

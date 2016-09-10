@@ -33,6 +33,7 @@
 			$farm_name =  $sale_data['farm_name'];
 			$plant_address =  $sale_data['plant_address'];
 			$plant_country =  $sale_data['plant_country'];
+                        $freight = $sale_data['freight'];
 			$shipping_line_name = $sale_data['shipping_line_name'];
 			$precinto_number = "";
 			$container_number = "";
@@ -267,14 +268,29 @@
 			. '<td style="text-align: left;" colspan="2"><strong>'.$precinto_number.'</strong></td>'
 			. '<td style="text-align: left;" colspan=""></td>'
 
-                        . '</tr>'
-			. '<tr>'
-			. '<td style="text-align: left;" colspan=""></td>'
-			. '<td style="text-align: left;" colspan=""></td>'
-			. '<td style="text-align: left;"><strong>Bank: </strong></td>'
-			. '<td style="text-align: left;"> '.$bank_name.'</td>'
-			. '</tr>'
-			. '<tr>'
+                        . '</tr>';
+			
+                        if($freight > 0)
+                        {
+                            $html.='<tr>'
+                            .'<td style="text-align: left;" colspan=""><strong>Freight: </strong></td>'
+                            . '<td style="text-align: left;" colspan="">$  '.$freight.'</td>'
+                            . '<td style="text-align: left;"><strong>Bank: </strong></td>'
+                            . '<td style="text-align: left;"> '.$bank_name.'</td>'
+                            . '</tr>'; 
+                        }else
+                        {
+                            $html.='<tr>'
+                            .'<td style="text-align: left;" colspan=""></td>'
+                            . '<td style="text-align: left;" colspan=""></td>'
+                            . '<td style="text-align: left;"><strong>Bank: </strong></td>'
+                            . '<td style="text-align: left;"> '.$bank_name.'</td>'
+                            . '</tr>';  
+                        }
+
+                        
+                        
+			$html.= '<tr>'
 			. '<td style="text-align: left;" colspan=""><strong>Shipping Line: </strong></td>'
 			. '<td style="text-align: left;" colspan=""><strong> '.$shipping_line_name.'</strong></td>'
 			. '<td style="text-align: left;" colspan="2">&nbsp;</td>'

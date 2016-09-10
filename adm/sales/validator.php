@@ -110,6 +110,12 @@
                             "label" => "Puerto de entrada",
                             "required" => true
                     );
+                    $validator_values['freight'] = array(
+
+                            "type" => "number",
+                            "label" => "Flete",
+                            "required" => false
+                    );
                     $validator_values['date_estimate_in'] = array(
 
                             "type" => "text",

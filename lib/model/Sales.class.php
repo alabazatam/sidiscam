@@ -268,6 +268,7 @@
                         {
                             $values['follow_update']=null;
                         }
+                        
 			//echo $values['date_sale'];die;
 			$id_sale = $values['id_sale'];
 			$ConnectionORM = new ConnectionORM();

@@ -91,7 +91,8 @@ unset($values['PHPSESSID']);
 		{	
 			$values['errors'] = $errors;
 			require('sales_form_view.php');die;
-		}else{		
+		}else{
+                    
 			$Sales->updateSales($values);			
 			executeEdit($values,message_updated);die;
 		}
