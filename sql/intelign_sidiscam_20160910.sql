@@ -1,6 +1,6 @@
 /*
-SQLyog Community v12.15 (64 bit)
-MySQL - 5.5.49-0ubuntu0.14.04.1 : Database - intelign_sidiscam
+SQLyog Community v12.2.1 (64 bit)
+MySQL - 5.7.13-0ubuntu0.16.04.2 : Database - intelign_sidiscam
 *********************************************************************
 */
 
@@ -13,6 +13,8 @@ MySQL - 5.5.49-0ubuntu0.14.04.1 : Database - intelign_sidiscam
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`intelign_sidiscam` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+USE `intelign_sidiscam`;
 
 /*Table structure for table `bank` */
 
@@ -361,7 +363,7 @@ CREATE TABLE `connections_history` (
   `ip` varchar(50) NOT NULL,
   `date_created` datetime NOT NULL,
   PRIMARY KEY (`id_connection`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
 
 /*Data for the table `connections_history` */
 
@@ -399,7 +401,11 @@ insert  into `connections_history`(`id_connection`,`id_user`,`login`,`ip`,`date_
 (37,1,'mdeandrade','127.0.0.1','2016-09-06 17:21:43'),
 (38,1,'mdeandrade','127.0.0.1','2016-09-07 21:35:06'),
 (39,1,'mdeandrade','127.0.0.1','2016-09-08 18:38:50'),
-(40,1,'mdeandrade','127.0.0.1','2016-09-08 20:20:45');
+(40,1,'mdeandrade','127.0.0.1','2016-09-08 20:20:45'),
+(41,1,'mdeandrade','::1','2016-09-10 10:34:20'),
+(42,1,'mdeandrade','127.0.0.1','2016-09-10 11:02:11'),
+(43,1,'mdeandrade','127.0.0.1','2016-09-10 11:03:52'),
+(44,1,'mdeandrade','127.0.0.1','2016-09-10 11:08:32');
 
 /*Table structure for table `containers` */
 
@@ -1766,6 +1772,7 @@ CREATE TABLE `sales` (
   `id_port_in` int(11) DEFAULT NULL,
   `date_out` date DEFAULT NULL,
   `date_estimate_in` date DEFAULT NULL,
+  `freight` decimal(10,2) DEFAULT NULL,
   `date_in_real` date DEFAULT NULL,
   `date_out_real` date DEFAULT NULL,
   `observacion_seguimiento` text,
@@ -1790,16 +1797,16 @@ CREATE TABLE `sales` (
 
 /*Data for the table `sales` */
 
-insert  into `sales`(`id_sale`,`id_type_destiny`,`id_company`,`id_client`,`id_shipping_lines`,`id_company_bank`,`id_plant_fact`,`id_farm_fact`,`date_sale`,`id_country_out`,`id_port_out`,`id_country_in`,`id_port_in`,`date_out`,`date_estimate_in`,`date_in_real`,`date_out_real`,`observacion_seguimiento`,`follow_amount`,`follow_update`,`follow_status`,`id_company_address`,`id_client_address`,`id_client_address2`,`terms`,`comision`,`id_bank_in`,`id_incoterm`,`note_sale`,`status`,`date_created`,`date_updated`) values 
-(1,2,1,4,2,12,3,1,'2016-06-11',1,1,65,131,'2016-06-01','2016-06-11','2016-09-15','2016-09-01','observacion de seguimiento','40000.00','2016-09-01','Factura Entregada',2,9,9,'40 000 usd anticipated against proforma Sold 10 days before arrival to destination port','50',0,1,'observacion de la venta',0,'2016-06-10 10:12:51','2016-09-05 18:05:32'),
-(2,2,1,2,1,12,1,1,'2016-11-25',1,1,1,1,'2016-06-22','2016-06-02',NULL,NULL,NULL,NULL,NULL,NULL,2,6,6,'terminos','comision',0,2,'aaaaaaaaaaaaaaaaaaaaaaaaaaa',1,'2016-06-10 22:53:00','2016-09-08 18:39:26'),
-(3,2,1,2,1,12,1,NULL,'2016-06-04',1,1,1,1,'2016-06-11','2016-06-11',NULL,NULL,NULL,NULL,NULL,NULL,NULL,6,NULL,'hola','5%',0,11,'observacion',1,'2016-06-11 23:42:48','2016-09-01 12:14:24'),
-(4,2,1,1,2,12,NULL,NULL,'2016-06-18',1,1,65,34,'2016-06-18','2016-06-18',NULL,NULL,NULL,NULL,NULL,NULL,NULL,2,NULL,'qqqqqqqqqqq','qqq',NULL,3,'qqqqqqq',0,'2016-06-18 16:41:07','2016-06-18 16:59:56'),
-(5,2,1,4,2,12,NULL,NULL,'2016-06-18',1,1,1,1,'2016-06-24','2016-06-24',NULL,NULL,NULL,NULL,NULL,NULL,NULL,9,NULL,'ddddddd','dddddddd',NULL,3,'sssssssss',1,'2016-06-18 17:30:56','2016-06-24 19:43:07'),
-(6,2,1,4,2,12,NULL,NULL,'2016-06-24',1,1,1,1,'2016-06-24','2016-06-24',NULL,NULL,NULL,NULL,NULL,NULL,NULL,9,NULL,'terminos de la negociacion',NULL,NULL,4,'observacion',1,'2016-06-24 16:16:40','2016-06-24 19:43:42'),
-(7,2,1,4,2,12,NULL,NULL,'2016-06-25',1,1,1,1,'2016-06-24','2016-06-25','2016-06-24','2016-06-24',NULL,NULL,NULL,NULL,NULL,9,NULL,'terminos de la negociacion',NULL,NULL,3,'observacion',0,'2016-06-24 16:21:28','2016-06-24 16:27:26'),
-(8,2,1,4,2,12,NULL,NULL,'2016-06-24',1,1,1,1,'2016-06-25','2016-06-30',NULL,NULL,NULL,NULL,NULL,NULL,NULL,9,NULL,'terminos de la negociacion',NULL,NULL,4,'observacion de la venta',1,'2016-06-24 17:44:09','2016-06-24 17:44:25'),
-(9,2,1,4,2,12,3,1,'2016-09-08',1,1,236,248,'2016-09-08','2016-09-08',NULL,NULL,NULL,NULL,NULL,NULL,2,9,9,'paga de contado',NULL,NULL,3,'Obervacion de prueba',1,'2016-09-08 18:57:10','2016-09-08 18:58:06');
+insert  into `sales`(`id_sale`,`id_type_destiny`,`id_company`,`id_client`,`id_shipping_lines`,`id_company_bank`,`id_plant_fact`,`id_farm_fact`,`date_sale`,`id_country_out`,`id_port_out`,`id_country_in`,`id_port_in`,`date_out`,`date_estimate_in`,`freight`,`date_in_real`,`date_out_real`,`observacion_seguimiento`,`follow_amount`,`follow_update`,`follow_status`,`id_company_address`,`id_client_address`,`id_client_address2`,`terms`,`comision`,`id_bank_in`,`id_incoterm`,`note_sale`,`status`,`date_created`,`date_updated`) values 
+(1,2,1,4,2,12,3,1,'2016-06-11',1,1,65,131,'2016-06-01','2016-06-11','5000.00','2016-09-15','2016-09-01','observacion de seguimiento','40000.00','2016-09-01','Factura Entregada',2,9,9,'40 000 usd anticipated against proforma Sold 10 days before arrival to destination port','50',0,1,'observacion de la venta',0,'2016-06-10 10:12:51','2016-09-10 10:34:43'),
+(2,2,1,2,1,12,1,1,'2016-11-25',1,1,1,1,'2016-06-22','2016-06-02','1000.00',NULL,NULL,NULL,NULL,NULL,NULL,2,6,6,'terminos','comision',0,2,'aaaaaaaaaaaaaaaaaaaaaaaaaaa',1,'2016-06-10 22:53:00','2016-09-10 09:37:33'),
+(3,2,1,2,1,12,1,NULL,'2016-06-04',1,1,1,1,'2016-06-11','2016-06-11',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,6,NULL,'hola','5%',0,11,'observacion',1,'2016-06-11 23:42:48','2016-09-01 12:14:24'),
+(4,2,1,1,2,12,NULL,NULL,'2016-06-18',1,1,65,34,'2016-06-18','2016-06-18',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,2,NULL,'qqqqqqqqqqq','qqq',NULL,3,'qqqqqqq',0,'2016-06-18 16:41:07','2016-06-18 16:59:56'),
+(5,2,1,4,2,12,NULL,NULL,'2016-06-18',1,1,1,1,'2016-06-24','2016-06-24',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,9,NULL,'ddddddd','dddddddd',NULL,3,'sssssssss',1,'2016-06-18 17:30:56','2016-06-24 19:43:07'),
+(6,2,1,4,2,12,NULL,NULL,'2016-06-24',1,1,1,1,'2016-06-24','2016-06-24',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,9,NULL,'terminos de la negociacion',NULL,NULL,4,'observacion',1,'2016-06-24 16:16:40','2016-06-24 19:43:42'),
+(7,2,1,4,2,12,NULL,NULL,'2016-06-25',1,1,1,1,'2016-06-24','2016-06-25',NULL,'2016-06-24','2016-06-24',NULL,NULL,NULL,NULL,NULL,9,NULL,'terminos de la negociacion',NULL,NULL,3,'observacion',0,'2016-06-24 16:21:28','2016-06-24 16:27:26'),
+(8,2,1,4,2,12,NULL,NULL,'2016-06-24',1,1,1,1,'2016-06-25','2016-06-30',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,9,NULL,'terminos de la negociacion',NULL,NULL,4,'observacion de la venta',1,'2016-06-24 17:44:09','2016-06-24 17:44:25'),
+(9,2,1,4,2,12,3,1,'2016-09-08',1,1,236,248,'2016-09-08','2016-09-08',NULL,NULL,NULL,NULL,NULL,NULL,NULL,2,9,9,'paga de contado',NULL,NULL,3,'Obervacion de prueba',1,'2016-09-08 18:57:10','2016-09-08 18:58:06');
 
 /*Table structure for table `sales_containers_detail` */
 
