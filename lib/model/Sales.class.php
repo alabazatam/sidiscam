@@ -379,8 +379,9 @@
 			$ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->sales_products_detail
 			->select("DISTINCT number, precinto ")			
-			->where("id_sale=?",$values['id_sale'])
-			->order("id");
+			->where("id_sale=?",$values['id_sale']);
+			//->order("id");
+                        //echo $q;die;
             return $q; 
 			
 		}        		
