@@ -106,8 +106,20 @@
 				. "DATEDIFF(date_out_real,date_out) as retraso_salida, DATEDIFF(date_in_real,date_estimate_in) as retraso_llegada")
 			->where("id_sale=?",$values['id_sale'])
 			->fetch();
-			//echo $q;die;
-			return $q; 				
+			
+			return $q; 
+                        
+			
+		}
+		public function getStatusSale($values){
+			$ConnectionORM = new ConnectionORM();
+			$q = $ConnectionORM->getConnect()->sales
+			->select("status")
+			->where("id_sale=?",$values['id_sale'])
+			->fetch();
+			
+			return $q['status']; 
+                        
 			
 		}
 		function deleteSales($id){
@@ -182,7 +194,14 @@
                         {
                            $values['date_out_real']=null;
                         }		
-			
+                        if($values['freight'] == '')
+                        {
+                            $values['freight'] = 0.00;
+                        }
+                        if($values['follow_amount'] == '')
+                        {
+                            $values['follow_amount'] = 0.00;
+                        }
 			$values['date_created'] = new NotORM_Literal("NOW()");
 			$values['date_updated'] = new NotORM_Literal("NOW()");
 			
@@ -268,7 +287,14 @@
                         {
                             $values['follow_update']=null;
                         }
-                        
+                        if($values['freight'] == '')
+                        {
+                            $values['freight'] = 0.00;
+                        }
+                        if($values['follow_amount'] == '')
+                        {
+                            $values['follow_amount'] = 0.00;
+                        }
 			//echo $values['date_sale'];die;
 			$id_sale = $values['id_sale'];
 			$ConnectionORM = new ConnectionORM();
@@ -364,7 +390,6 @@
 			->select("*, products.name as product_name, products_type.name as product_type_name")
 			->join("products","LEFT JOIN products on products.id_product = sales_products_detail.id_product")
 			->join("products_type","LEFT JOIN products_type on products_type.id_product_type = sales_products_detail.id_product_type")
-			
 			->where("id_sale=?",$values['id_sale'])
 			->order("id");
             return $q; 

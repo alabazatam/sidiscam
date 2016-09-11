@@ -129,6 +129,8 @@
 		$ValidateBase = new ValidateBase();
 		$errors = $ValidateBase->validate_base($validator_values, $values);
 		
+
+                
 		if($values['status'] == 0)//efectuo validaciones en las pestañas
 		{
 			
