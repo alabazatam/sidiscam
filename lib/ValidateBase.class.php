@@ -60,7 +60,14 @@ class ValidateBase
 							$error = $this->number_validate($values[$name],$key['label']);
 						}else
 						{
-							$error = "Debe seleccionar un registro en ".$key['label'];
+							if($values[$name] == 0)
+							{
+
+							}else
+							{
+								$error = "Debe seleccionar un registro en ".$key['label'];
+							}
+							
 						}
 						
 						if($error != '')
