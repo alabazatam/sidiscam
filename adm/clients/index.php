@@ -129,7 +129,7 @@ $values = $_REQUEST;
 		}else{
 			$array_json['recordsTotal'] = 0;
 			$array_json['recordsFiltered'] = 0;
-			$array_json['data'][0] = array("id_client"=>null,"name"=>"","rif"=>"","contact1"=>"","phone_contact1"=>"","status"=>"","date_created"=>"","date_updated"=>"","actions"=>"");
+			$array_json['data'][0] = array("id_client"=>null,"name"=>"","rif"=>"","contact1"=>"","phone1"=>"","status"=>"","actions"=>"");
 		}
 
 		echo json_encode($array_json);die;
