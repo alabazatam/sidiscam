@@ -60,7 +60,7 @@ class ValidateBase
 							$error = $this->number_validate($values[$name],$key['label']);
 						}else
 						{
-							if($values[$name] == 0)
+							if(@$values[$name] == 0)
 							{
 
 							}else

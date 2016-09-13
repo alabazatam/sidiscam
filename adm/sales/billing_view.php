@@ -122,7 +122,7 @@
 							</div>
 							<div class="col-sm-6  col-md-6">
 								<label for="">Flete </label>
-								<input id = "" type="text" autocomplete="off" class="form-control input-sm" id="" placeholder="" name="freight" value="<?php if(isset($values['freight'])) echo $values['freight']?>">
+								<input id = "" type="text" autocomplete="off" class="form-control input-sm" id="" placeholder="" name="freight" value="<?php if(isset($values['freight'])) echo $values['freight']; else echo "0.00";?>">
 								<?php if(isset($values['errors']['freight']) and $values['errors']['freight']!=''):?>
 									<label class="alert alert-danger"><?php echo $values['errors']['freight']?></label>
 								<?php endif;?>

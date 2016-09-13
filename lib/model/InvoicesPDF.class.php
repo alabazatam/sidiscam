@@ -238,13 +238,13 @@
 		//cuentas bancarios y otros
 		$html = '<table border="0" width="100%">'
 			. '<tr>'
-			. '<td width="30%">&nbsp;</td>'
-			. '<td width="30%">&nbsp;</td>'
+			. '<td width="20%">&nbsp;</td>'
+			. '<td width="40%">&nbsp;</td>'
 			. '<td width="40%" colspan="2"><strong>Make All Checks payable to:</strong></td>'
 			. '</tr>'
 			. '<tr>'
-			. '<td width="30%">&nbsp;</td>'
-			. '<td width="30%">&nbsp;</td>'
+			. '<td width="20%">&nbsp;</td>'
+			. '<td width="40%">&nbsp;</td>'
 			. '<td width="10%" style="text-align: left;"><strong>Beneficiary:</strong></td>'
 			. '<td width="30%" style="text-align: left;"><strong> '.$company_name.'</strong></td>'
 			. '</tr>'
@@ -260,13 +260,13 @@
 			. '</tr>'
 			. '<tr>'
 			. '<td style="text-align: left;" colspan=""><strong>Container No: </strong></td>'
-			. '<td style="text-align: left;" colspan="2"><strong>'.$container_number.'</strong></td>'
-			. '<td style="text-align: left;" colspan=""></td>'
+			. '<td style="text-align: left;" colspan="3"><strong>'.$container_number.'</strong></td>'
+
 			. '</tr>'
 			. '<tr>'
 			. '<td style="text-align: left;" colspan=""><strong>Precinto#: </strong></td>'
-			. '<td style="text-align: left;" colspan="2"><strong>'.$precinto_number.'</strong></td>'
-			. '<td style="text-align: left;" colspan=""></td>'
+			. '<td style="text-align: left;" colspan="3"><strong>'.$precinto_number.'</strong></td>'
+			
 
                         . '</tr>';
 			

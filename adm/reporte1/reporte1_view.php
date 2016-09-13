@@ -21,6 +21,7 @@
         <th>Bultos</th>
         <th>Factura</th>
         <th>Monto</th>
+        <th>Flete</th>
         <th>Comisión comercial</th>
         <th>Status</th>
         <th>Observación</th>
@@ -45,6 +46,7 @@
         <td><?php echo $data['cases'];?></th>
         <td><?php echo $data['company_name'];?></td>
         <td><?php echo $data['monto'];?></td>
+        <td><?php echo $data['freight'];?></td>
         <td><?php echo $data['comision'];?></td>
         <td><?php echo $data['status'];?></td>
         <td><?php echo $data['observacion_seguimiento'];?></td>
@@ -70,6 +72,7 @@
         <th>Bultos</th>
         <th>Factura</th>
         <th>Monto</th>
+        <th>Flete</th>
         <th>Comisión comercial</th>
         <th>Status</th>
         <th>Observación</th>
