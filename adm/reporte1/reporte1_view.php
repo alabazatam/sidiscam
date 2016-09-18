@@ -17,7 +17,8 @@
         <th>Fecha de salida</th>
         <th>Fecha de llegada</th>
         <th>Días de tránsito</th>
-        <th>KG</th>
+		<th>Unidad de medida</th>
+        <th>Cantidad</th>
         <th>Bultos</th>
         <th>Factura</th>
         <th>Monto</th>
@@ -42,6 +43,7 @@
         <td><?php echo $data['salida'];?></td>
         <td><?php echo $data['llegada'];?></td>
         <td><?php echo $data['dias_transito'];?></td>
+		<td><?php echo $data['weight'];?></th>
         <td><?php echo $data['kgs'];?></th>
         <td><?php echo $data['cases'];?></th>
         <td><?php echo $data['company_name'];?></td>
@@ -68,7 +70,8 @@
         <th>Fecha de salida</th>
         <th>Fecha de llegada</th>
         <th>Días de tránsito</th>
-        <th>KG</th>
+		<th>Unidad de medida</th>
+        <th>Cantidad</th>
         <th>Bultos</th>
         <th>Factura</th>
         <th>Monto</th>

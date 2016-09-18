@@ -51,6 +51,7 @@ unset($values['PHPSESSID']);
                                                 "client_name" => "<p title='".$data['client_name']."'>".substr($data['client_name'],0,max_list_text)."</p>",
                                                 "number" => $data['number'],
                                                 "KGS" => $data['kgs'],
+												"LBS" => $data['lbs'],
                                                 "destino" => $data['destino'],
                                                 "naviera" => $data['naviera'].'<form method="POST" action = "'.full_url.'/adm/reporte1/index.php" >'
                                                .'<input type="hidden" name="action" value="view">  '
@@ -89,7 +90,9 @@ unset($values['PHPSESSID']);
 			$array_json['recordsFiltered'] = 0;
 			$array_json['data'][0] = array(
 				"id_sale"=>null,
-				"client_name"=>"","number"=>"","KGS"=>"","destino"=>"","naviera"=>"","actions"=>"",
+				"client_name"=>"","number"=>"",
+				"KGS"=>"",
+				"LBS"=>"","destino"=>"","naviera"=>"","actions"=>"",
 				"granja"=>"",
 				"plant_name"=>"",
 				"estimada_salida"=>"",

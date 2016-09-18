@@ -32,8 +32,7 @@
                                                                 <th>Packing</th>
 																<th>Value</th>
 																<th>Rate</th>
-                                                                <th>Qty Kgs</th>
-                                                                
+                                                                <th>Kgs</th>
                                                                 <th>Amount</th>
                                                                 <th>Acciones</th>
                                                             </tr>
@@ -70,7 +69,10 @@
                                                                 </td>
                                                                 <td>
 																	<input type='text' min="0" name='pack[<?php echo $sales_products_details['id']?>]' id='pack_<?php echo $sales_products_details['id']?>' size="4" autocomplete="off" value="<?php if(isset($sales_products_details['pack'] ) and $sales_products_details['pack']!="")echo $sales_products_details['pack'];else echo "1.8";?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'pack_<?php echo $sales_products_details['id'];?>','pack')"> 
-
+																	<select name='weight[<?php echo $sales_products_details['id']?>]' id='weight_<?php echo $sales_products_details['id']?>' onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'weight_<?php echo $sales_products_details['id'];?>','weight')">
+																		<option value="KGS" <?php if(isset($sales_products_details['weight'] ) and $sales_products_details['weight']=="KGS")echo "selected = 'selected'"?>>KGS</option>
+																		<option value="LBS" <?php if(isset($sales_products_details['weight'] ) and $sales_products_details['weight']=="LBS")echo "selected = 'selected'"?>>LBS</option>
+																	</select>
                                                                 </td>
                                                                 <td>
                                                                     <input type='number' step="0.01" min="0.00" name='rate[<?php echo $sales_products_details['id']?>]' id='rate_<?php echo $sales_products_details['id']?>' size="4" autocomplete="off" value="<?php echo $sales_products_details['rate']?>" onchange="updateSalesProductsDetail(<?php echo $sales_products_details['id'];?>,'rate_<?php echo $sales_products_details['id'];?>','rate')"> 

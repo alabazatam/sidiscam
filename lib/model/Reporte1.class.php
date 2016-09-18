@@ -110,15 +110,16 @@
 			//echo $column_order;die;
             $ConnectionORM = new ConnectionORM();
 			$q = $ConnectionORM->getConnect()->sales_products_detail
-			->select("SUM(quantity) AS KGS,SUM(quantity) AS KGS,SUM(amount) AS monto,SUM(sales_products_detail.comision) AS comision,SUM(cases) as cases,sales_products_detail.id_sale ,
-                        sales_products_detail.id_sale,sales_products_detail.number,shipping_lines.name AS naviera,clients_address_detail.state AS destino, 
-			clients.name AS client_name,freight,
-			sales_products_detail.number,shipping_lines.name AS naviera, clients_address_detail.state AS destino, clients.name AS client_name,
-			sales.observacion_seguimiento,sales.follow_status as status_seguimiento,shipping_lines.name AS naviera,clients_address_detail.state AS destino, clients.name AS client_name, sales.date_out AS estimada_salida, 
-			sales.date_out_real AS salida, sales.date_in_real AS llegada, follow_status AS STATUS, 
-			DATEDIFF(date_out_real,date_out) AS retraso_salida, 
-			DATEDIFF(date_in_real,date_estimate_in) AS retraso_llegada,
-			DATEDIFF(date_in_real,date_out_real) AS dias_transito, company.description as company_name, plants.name as plant_name,farms.name as granja")
+			->select("SUM(quantity) AS KGS,SUM(quantity) AS KGS,SUM(amount) AS monto,SUM(sales_products_detail.comision) AS comision,SUM(cases) AS cases,sales_products_detail.id_sale ,
+sales_products_detail.id_sale,sales_products_detail.number,shipping_lines.name AS naviera,clients_address_detail.state AS destino, clients.name AS client_name,freight,
+sales_products_detail.number,shipping_lines.name AS naviera, clients_address_detail.state AS destino, clients.name AS client_name,sales.observacion_seguimiento,
+sales.follow_status AS status_seguimiento,shipping_lines.name AS naviera,clients_address_detail.state AS destino, 
+clients.name AS client_name, sales.date_out AS estimada_salida,	sales.date_out_real AS salida, sales.date_in_real AS llegada, follow_status AS STATUS, 
+DATEDIFF(date_out_real,date_out) AS retraso_salida, 
+DATEDIFF(date_in_real,date_estimate_in) AS retraso_llegada,
+DATEDIFF(date_in_real,date_out_real) AS dias_transito, company.description AS company_name, plants.name AS plant_name,farms.name AS granja , 
+(SELECT SUM(quantity) FROM sales_products_detail a WHERE a.id_sale = sales_products_detail.id_sale AND weight='KGS' GROUP BY weight) AS KGS,
+(SELECT SUM(quantity) FROM sales_products_detail a WHERE a.id_sale = sales_products_detail.id_sale AND weight='LBS' GROUP BY weight) AS LBS")
 			->join('sales','LEFT JOIN sales ON sales.id_sale = sales_products_detail.id_sale')
 			->join('shipping_lines','LEFT JOIN shipping_lines ON shipping_lines.id_shipping_lines = sales.id_shipping_lines')
 			->join('clients','LEFT JOIN clients ON clients.id_client = sales.id_client')
@@ -131,7 +132,7 @@
 			->where("$where")
 			->group('sales_products_detail.id_sale,sales_products_detail.number, sales_products_detail.precinto,plants.name, farms.name ')
 			->limit($limit,$offset);
-                        //echo$q;die;
+            //echo$q;die;
 			return $q; 			
 		}
 		public function getCountDataList($values)
@@ -179,7 +180,7 @@
 			->select("SUM(quantity) AS KGS,sales_products_detail.id_sale,sales_products_detail.number,cases as cases,amount as monto,sales_products_detail.comision,sales.observacion_seguimiento,"
 			. "shipping_lines.name AS naviera,clients_address_detail.state AS destino, clients.name AS client_name,"
                                 . " sales.date_out as estimada_salida,sales.date_out_real as salida, sales.date_in_real as llegada, follow_status as status,company.description as company_name,"
-				. "DATEDIFF(IFNULL(date_out_real,NOW()),date_out) AS retraso_salida, DATEDIFF(IFNULL(date_in_real,NOW()),date_estimate_in) AS retraso_llegada,DATEDIFF(date_in_real,date_out_real) AS dias_transito,plants.name as plant_name,farms.name as granja, freight")
+				. "DATEDIFF(IFNULL(date_out_real,NOW()),date_out) AS retraso_salida, DATEDIFF(IFNULL(date_in_real,NOW()),date_estimate_in) AS retraso_llegada,DATEDIFF(date_in_real,date_out_real) AS dias_transito,plants.name as plant_name,farms.name as granja, freight, weight")
 			->join('sales','LEFT JOIN sales ON sales.id_sale = sales_products_detail.id_sale')
 			->join('shipping_lines','LEFT JOIN shipping_lines ON shipping_lines.id_shipping_lines = sales.id_shipping_lines')
 			->join('clients','LEFT JOIN clients ON clients.id_client = sales.id_client')

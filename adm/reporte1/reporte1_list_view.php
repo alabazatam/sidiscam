@@ -29,6 +29,7 @@
 					<th>Cliente</th>
 					<th>Nro de contenedor</th>
 					<th>Total de Kgs</th>
+					<th>Total de Lbs</th>
 					<th>Destino</th>
 					<th>Naviera</th>					
 					<!--<th>Acciones</th>-->
@@ -39,7 +40,6 @@
 					<th>Fecha de salida</th>
 					<th>Fecha de llegada</th>
 					<th>Días en tránsito</th>
-					<th>KGS</th>
 					<th>Bultos</th>
 					<th>Factura</th>
 					<th>Monto</th>
@@ -55,6 +55,7 @@
 					<th>Cliente</th>
 					<th>Nro de contenedor</th>
 					<th>Total de Kgs</th>
+					<th>Total de Lbs</th>
 					<th>Destino</th>
 					<th>Naviera</th>					
 					<!--<th>Acciones</th>-->
@@ -65,7 +66,6 @@
 					<th>Fecha de salida</th>
 					<th>Fecha de llegada</th>
 					<th>Días en tránsito</th>
-					<th>KGS</th>
 					<th>Bultos</th>
 					<th>Factura</th>
 					<th>Monto</th>
@@ -124,6 +124,7 @@ $(document).ready(function() {
 			{ "data": "client_name" },
 			{ "data": "number" },
 			{ "data": "KGS" },
+			{ "data": "LBS" },
 			{ "data": "destino" },
 			{ "data": "naviera" },
             //{ "data": "actions" },
@@ -146,10 +147,10 @@ $(document).ready(function() {
       "aoColumnDefs": [
           { 
 			  'bSortable': false, 
-			  'aTargets': [ 3 ] 
+			  'aTargets': [ 5 ] 
 		  },
           {
-                "targets": [ 6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 ],
+                "targets": [ 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21 ],
                 "visible": false
            }
 		  

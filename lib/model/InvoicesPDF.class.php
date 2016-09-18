@@ -29,6 +29,7 @@
 			$client_address = $sale_data['client_address'];
 			$plant_name =  $sale_data['plant_name'];
 			$plant_rif =  $sale_data['plant_rif'];
+			$cuadro_total = '';
 			$terms = $sale_data['terms'];
 			$farm_name =  $sale_data['farm_name'];
 			$plant_address =  $sale_data['plant_address'];
@@ -50,7 +51,7 @@
 			$tel_address1 = $address1['tel'];
 			$email_address1 = $address1['email'];
 			$fax_address1 = $address1['fax'];
-
+			
             $address2 = $ClientsAddressDetail->getAddressBySale($sale_data['id_client_address2']);
 			$notify_address2 = $address2['address'];
 			$country_address2 = $address2['country_name'];
@@ -173,6 +174,7 @@
 		$pdf->ln();
 		$total_amount = 0;
 		$total_quantity = 0;
+		$total_quantity_lbs = 0;
 		$total_cases = 0;
 		$html ='<table width="100%" style="border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px">'
 			. '<tr style="background-color: #CCC;">'
@@ -192,7 +194,17 @@
                 
 		$total_amount+= $products['amount'];
 		$total_cases+= $products['cases'];
-		$total_quantity+= $products['quantity'];
+		
+		if($products['weight'] == 'KGS')
+		{
+			$total_quantity+= $products['quantity'];
+		}
+		if($products['weight'] == 'LBS')
+		{
+			$total_quantity_lbs+= $products['quantity'];
+		}
+		
+		
 		$html.='<tr>'
 				. '<td style="border-right-width: 1px;">'.$products['number'].'</td>'
 				. '<td style="border-right-width: 1px;">'.$products['product_name']." ".$products['product_type_name'].'</td>'
@@ -208,9 +220,19 @@
 				. '<td style="border-right-width: 1px;">&nbsp;</td>'
 				. '<td style="border-right-width: 1px;"><strong>'.$farm_name.'</strong></td>'
 				. '<td style="text-align: right;border-right-width: 1px;"><strong>'.$total_cases.'</strong></td>'
-				. '<td style="border-right-width: 1px;">&nbsp;</td>'
-				. '<td style="text-align: center;border-right-width: 1px;"><strong>Kgr. <br>'.$total_quantity.'</strong></td>'
-				. '<td style="text-align: center;border-right-width: 1px;"><strong>INCOMTERMS <br> CFR</strong></td>'
+				. '<td style="border-right-width: 1px;">&nbsp;</td>';
+				
+				$cuadro_total = '';
+				if($total_quantity>0)
+				{
+					$cuadro_total.= '<br>Kgrs: '.$total_quantity;
+				}
+				if($total_quantity_lbs>0)
+				{
+					$cuadro_total.= '<br>Lbs: '.$total_quantity_lbs;
+				}				
+				$html.= '<td style="text-align: center;border-right-width: 1px;"><strong>'.$cuadro_total.'</strong></td>';
+				$html.='<td style="text-align: center;border-right-width: 1px;"><strong>INCOMTERMS <br> CFR</strong></td>'
 				. '<td style="text-align: right;"border-right-width: 1px;><strong>$&nbsp;&nbsp;&nbsp;'.number_format($total_amount,2,",",".").'</strong></td>'
 			. '</tr>';					
 		
