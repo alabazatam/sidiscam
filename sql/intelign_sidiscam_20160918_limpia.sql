@@ -40,7 +40,7 @@ CREATE TABLE `bank` (
   KEY `id_table` (`id_table`),
   CONSTRAINT `bank_country` FOREIGN KEY (`id_country`) REFERENCES `country` (`id_country`),
   CONSTRAINT `bank_ibfk_1` FOREIGN KEY (`id_table`) REFERENCES `tables` (`id_table`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `bank` */
 
@@ -265,14 +265,16 @@ CREATE TABLE `connections_history` (
   `ip` varchar(50) NOT NULL,
   `date_created` datetime NOT NULL,
   PRIMARY KEY (`id_connection`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `connections_history` */
 
 insert  into `connections_history`(`id_connection`,`id_user`,`login`,`ip`,`date_created`) values 
 (1,7,'admin','127.0.0.1','2016-09-18 18:18:43'),
 (2,1,'admin','127.0.0.1','2016-09-18 18:21:08'),
-(3,1,'admin','127.0.0.1','2016-09-18 18:21:55');
+(3,1,'admin','127.0.0.1','2016-09-18 18:21:55'),
+(4,1,'admin','127.0.0.1','2016-09-18 21:30:35'),
+(5,1,'admin','127.0.0.1','2016-09-18 21:31:27');
 
 /*Table structure for table `country` */
 
@@ -665,7 +667,7 @@ insert  into `menu`(`id_menu`,`id_menu_padre`,`description`,`link`,`icon_class`,
 (25,20,'Reporte de contenedores','/adm/reporte1/index.php','',1,1,'2016-06-11 12:36:46','2016-06-11 12:36:48'),
 (26,0,'Productos y Servicios','#','fa fa-book',4,1,'2016-06-11 12:37:18','2016-06-11 12:37:20'),
 (27,0,'Clientes','#','fa fa-dollar',2,1,'2016-06-11 12:35:57','2016-06-11 12:36:01'),
-(28,3,'Usuarios','/adm/users/index.php','',0,1,'2016-06-11 12:37:55','2016-06-11 12:37:58');
+(28,3,'Usuarios','/adm/users/index.php','',0,0,'2016-06-11 12:37:55','2016-06-11 12:37:58');
 
 /*Table structure for table `plants` */
 
