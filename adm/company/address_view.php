@@ -91,7 +91,7 @@ function deleteAddressDetail(id) {
 	function updateCompanyAddressDetail(id, column_id,column_name)
 	{
 		var value = $("#" + column_id).val();
-		
+		//alert(value);
 		
 		$.ajax({
 			type: "POST",
