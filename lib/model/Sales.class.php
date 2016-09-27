@@ -150,7 +150,8 @@
 				$values['number'],
 				$values['note'],
                                 $values['precinto'],
-                                $values['comision']
+                                $values['comision'],
+				 $values['weight']
 				
 				);
 			$Utilitarios = new Utilitarios();
@@ -194,11 +195,11 @@
                         {
                            $values['date_out_real']=null;
                         }		
-                        if($values['freight'] == '')
+                        if(!isset($values['freight']) or $values['freight'] == '')
                         {
                             $values['freight'] = 0.00;
                         }
-                        if($values['follow_amount'] == '')
+                        if(!isset($values['follow_amount']) or $values['follow_amount'] == '')
                         {
                             $values['follow_amount'] = 0.00;
                         }
@@ -233,7 +234,8 @@
 				$values['note'],
                                 $values['id_broker'],
                                 $values['precinto'],
-                                $values['comision']
+                                $values['comision'],
+				 $values['weight']
 				
 				);
 			//echo $values['date_sale'];die;
@@ -287,11 +289,11 @@
                         {
                             $values['follow_update']=null;
                         }
-                        if($values['freight'] == '')
+                        if(!isset($values['freight']) or $values['freight'] == '')
                         {
                             $values['freight'] = 0.00;
                         }
-                        if($values['follow_amount'] == '')
+                        if(!isset($values['follow_amount']) or $values['follow_amount'] == '')
                         {
                             $values['follow_amount'] = 0.00;
                         }
